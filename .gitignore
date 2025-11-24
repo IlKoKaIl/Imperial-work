@@ -1,3 +1,8 @@
 .venv/
 Applied Machine Learning/Assignments/A2/UK data/
 Applied Machine Learning/Assignments/A2/UK data/**/*.csv
+Applied Machine Learning/lecture notebooks/saved_models/
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
