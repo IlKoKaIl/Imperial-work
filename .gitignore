@@ -4,6 +4,7 @@ Applied Machine Learning/Assignments/A2/UK data/**/*.csv
 Applied Machine Learning/lecture notebooks/saved_models/
 Applied Machine Learning/lecture notebooks/data
 Applied Machine Learning/lecture notebooks/week10/data
+Applied Machine Learning/lecture notebooks/week11/data
 __pycache__/
 *.pyc
 .DS_Store
