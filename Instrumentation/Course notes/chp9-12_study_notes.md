@@ -1,293 +1,408 @@
-# Chapter 9-12 Study Notes (Clear + Problem-Sheet Focus)
+# Chapter 9-12 Notes (Screenshot + Simple Explanations + Problem Sheet Focus)
 
 Sources:
+
 - `chp9-12.pdf`
 - `Problem sheet 4.pdf`
 
-Goal of this version:
-- Keep the ideas in simple words (not just screenshot text).
-- Add exactly the knowledge needed for Problem Sheet 4.
-- Give extra depth for Seminar Question I (Q3), as requested.
+How this file is structured:
 
-## 1. Fast Big Picture
+- Screenshot from the handout (text paragraph or figure).
+- Short simplified explanation in plain words.
+- Explicit note on where it helps in Problem Sheet 4.
 
-You are learning one pipeline:
-1. Take a small analog signal from real hardware.
-2. Use op-amp circuits to amplify/filter/buffer it safely.
-3. Handle differential signals and reject common noise.
-4. Understand real op-amp limits (bandwidth, slew-rate, stability).
-5. Convert between analog and digital (S/H, ADC, DAC).
+## Core Definitions (quick reference)
 
-## 2. Core Definitions (Minimal but Complete)
+- `Vout = A(V+ - V-)`: basic op-amp relation.
+- `A`: open-loop gain (very large, but finite in reality).
+- `G`: closed-loop gain (actual gain with feedback).
+- `beta`: feedback fraction (`Vfeedback / Vout`).
+- Differential signal: `VD = V+ - V-`.
+- Common-mode signal: `VCM = (V+ + V-)/2`.
+- CMRR: `20 log10(AD/ACM)` in dB.
 
-- `op-amp`: a high-gain differential amplifier with `Vout = A(V+ - V-)`.
-- `open-loop gain A`: op-amp gain with no feedback.
-- `closed-loop gain G`: final gain after feedback network is connected.
-- `negative feedback`: send part of output back to inverting path to reduce error and stabilize gain.
-- `single-ended signal`: measured relative to ground.
-- `differential signal`: `VD = V+ - V-`.
-- `common-mode signal`: `VCM = (V+ + V-)/2`.
-- `CMRR`: how well common-mode is rejected, `CMRR(dB) = 20 log10(AD/ACM)`.
-- `slew rate S`: max `|dVout/dt|`.
-- `bandwidth B`: useful frequency range.
+## Chapter 9: Negative Feedback and Standard Op-Amp Circuits
 
-## 3. Golden Rules (When Using Negative Feedback)
+### Key handout text: feedback gain equation
 
-Use these for most op-amp circuit questions in this chapter:
+![Closed-loop feedback gain text](chp9-12_text_snippets/feedback_gain_formula.png)
 
-1. `V+ ~= V-` (virtual short).
-2. Input currents are approximately zero.
+Plain words:
 
-Important:
-- This is an approximation.
-- It becomes very good when open-loop gain `A` is very large and circuit is stable.
+- High open-loop gain plus negative feedback gives stable, predictable gain.
+- When `A` is huge, `G = A/(1+beta*A)` behaves like `1/beta`.
+- This is why resistor ratios set gain in practical op-amp circuits.
 
-## 4. Circuit Cookbook (What to Write in Exams)
+Problem-sheet relevance:
 
-### 4.1 Inverting amplifier
+- Directly needed for Q3 (Seminar I), especially parts (a)-(e).
 
-Setup: input through `Rin` to `-` input, feedback `Rf` from output to `-`, `+` input at ground.
+### Key handout text: golden rules
 
-Method:
-1. By Rule 1, inverting node is virtual ground (`~0 V`).
-2. Current in `Rin`: `Iin = Vin / Rin`.
-3. Current in `Rf`: `If = (0 - Vout)/Rf = -Vout/Rf`.
-4. By KCL and Rule 2, `Iin = If`.
+![Golden rules text](chp9-12_text_snippets/golden_rules.png)
 
-Result:
+Plain words:
 
-`Vout/Vin = -Rf/Rin`
+- Rule 1: feedback drives inputs close together (`V+ ~= V-`).
+- Rule 2: almost no current enters either input.
+- Together these let you use KCL quickly to derive gains.
 
-### 4.2 Non-inverting amplifier
+Problem-sheet relevance:
 
-Setup: input on `+`; divider (`Rf`, `R0`) feeds output back to `-`.
+- Q1 derivation.
+- Q2 gain analysis.
+- Q3 ideal amplifier steps.
+- Q5 summing amplifier design.
 
-Result:
+### Diagram set: Chapter 9 circuits
 
-`Vout/Vin = 1 + Rf/R0`
+![Figure 9.2](chp9-12_diagrams/fig_9_2_p1.png)
 
-Feedback fraction:
+Simplified point:
 
-`beta = V-/Vout = R0/(R0 + Rf)`
+- Think of op-amp as: huge gain block + input/output impedances + rail limits.
 
-and ideally `Gain ~= 1/beta`.
+![Figure 9.3](chp9-12_diagrams/fig_9_3_p2.png)
 
-### 4.3 Summing amplifier (inverting)
+Simplified point:
 
-`Vout = -Rf (V1/R1 + V2/R2 + ...)`
+- Buffer has gain 1 but solves loading problems (high input Z, low output Z).
 
-This is the key tool for Problem Sheet Q5.
+![Figure 9.4](chp9-12_diagrams/fig_9_4_p2.png)
 
-### 4.4 Integrator and differentiator
+Simplified point:
 
-- Integrator: capacitor in feedback path.
-- Differentiator: capacitor in input path.
-- Both are frequency-dependent active filters.
+- This block diagram is the universal idea behind closed-loop control.
 
-## 5. Differential Measurement and Instrumentation Amplifier
+![Figure 9.6](chp9-12_diagrams/fig_9_6_p4.png)
 
-Why needed:
-- Some sensors produce tiny `VD` on top of large `VCM`.
-- Example type: Wheatstone bridge + strain gauges.
+Simplified point:
 
-Difference amp ideal target:
+- Non-inverting gain is `1 + Rf/R0`.
+- Feedback fraction is `beta = R0/(R0+Rf)`.
 
-`Vout = AD (V+ - V-)`
+![Figure 9.7](chp9-12_diagrams/fig_9_7_p4.png)
 
-Real form:
+Simplified point:
 
-`Vout = AD*VD + ACM*VCM`  (common modeling form)
+- Inverting node is virtual ground.
+- `Gain = -Rf/Rin`.
 
-Instrumentation amplifier advantage:
-- Very high input impedance.
-- Better resistor matching internally.
-- Much better CMRR.
+![Figure 9.9](chp9-12_diagrams/fig_9_9_p5.png)
 
-Given course formula:
+Simplified point:
 
-`Vout = (V2 - V1) (R4/R3) (1 + 2R1/R2)`
+- Capacitor location decides integrator vs differentiator behavior.
 
-## 6. Real-World Op-Amp Limits (Needed for Reasoning)
+## Chapter 10: Differential Signals and Instrumentation Amplifier
 
-- Finite `A`: golden rule is approximate, not exact.
-- Finite bandwidth: higher gain means lower usable frequency range (`G*B ~= constant`).
-- Phase lag: can threaten stability at high frequency.
-- Stability condition warning: avoid case where `1 + beta A` approaches zero.
+### Key handout text: differential definition context
 
-## 7. Problem Sheet 4 Prep
+![Differential signal text](chp9-12_text_snippets/diff_and_common_mode_defs.png)
 
-## 7.1 Q1 (Inverting amplifier derivation)
+Plain words:
 
-Use the 4-step KCL method in Section 4.1.
-Final line to show:
+- Useful signal is often the voltage difference between two nodes.
+- Absolute voltage of either node to ground may be irrelevant.
+- This is common in bridge sensors.
 
-`Gain = Vout/Vin = -Rf/Rin`
+Problem-sheet relevance:
 
-## 7.2 Q2 (AC non-inverting amp with input high-pass)
+- Conceptual background for Q4.
 
-Treat as two blocks in cascade:
-1. High-pass input filter (`Rin`, `Cin`)
-2. Non-inverting amplifier (`R0`, `Rf`)
+### Key handout text: CMRR definition
 
-Because op-amp input impedance is very high, the amplifier does not significantly load the filter.
+![CMRR definition text](chp9-12_text_snippets/cmrr_definition.png)
 
-Amplifier gain:
+Plain words:
 
-`Gamp = 1 + Rf/R0 = 1 + (1M/20k) = 51`
+- `AD` should be large, `ACM` should be tiny.
+- CMRR tells how strongly common-mode is rejected.
+- `120 dB` means `AD/ACM = 10^6`.
 
-High-pass magnitude:
+Problem-sheet relevance:
 
-`|Hhp| = (wRC)/sqrt(1 + (wRC)^2)` where `R = Rin`, `C = Cin`
+- Exactly needed in Q4(b).
 
-Given `Rin = 100k`, `Cin = 0.1 uF`:
+### Diagram set: Chapter 10
 
-`RC = 0.01 s`, `fc = 1/(2*pi*RC) ~= 15.9 Hz`
+![Figure 10.1](chp9-12_diagrams/fig_10_1_p6.png)
 
-Total magnitude gain:
+Simplified point:
 
-`|Gtotal| = Gamp * |Hhp|`
+- Differential waveform can be small even when each individual line is large.
 
-At `10 kHz`: `wRC >> 1`, so `|Hhp| ~= 1` and `|Gtotal| ~= 51`.
+![Figure 10.2](chp9-12_diagrams/fig_10_2_p6.png)
 
-At `10 Hz`: `wRC = 2*pi*10*0.01 = 0.628`,
-`|Hhp| ~= 0.532`, so `|Gtotal| ~= 51*0.532 ~= 27`.
+Simplified point:
 
-Bode sketch guidance:
-- Mid-band level: `20 log10(51) ~= 34.15 dB`
-- Low corner near `15.9 Hz`
-- High corner at `80 kHz` (given)
-- Slope below low corner: `+20 dB/dec`
-- Slope above 80 kHz: `-20 dB/dec`
-- So overall shape is a band-pass response with gain.
+- Wheatstone bridge: tiny mismatch becomes measurable differential output.
 
-## 7.3 Q3 Seminar I (Most Important)
+![Figure 10.3](chp9-12_diagrams/fig_10_3_p7.png)
 
-Given:
+Simplified point:
 
-`Gain = A/(1 + beta A)` and ideally `Gain ~= 1/beta`
+- Noise picked up equally on both lines tends to cancel in differential measurement.
 
-For the non-inverting circuit with `R0` to ground and `Rf` to output:
+![Figure 10.4](chp9-12_diagrams/fig_10_4_p7.png)
 
-### (a) Derive beta
+Simplified point:
 
-Inverting input sees a divider of `Vout`:
+- Difference amplifier works but resistor matching and input loading are limitations.
 
-`V- = Vout * R0/(R0 + Rf)`
+![Figure 10.6](chp9-12_diagrams/fig_10_6_p8.png)
 
-So:
+Simplified point:
 
-`beta = R0/(R0 + Rf)`
+- Instrumentation amplifier fixes input impedance and common-mode rejection issues.
 
-### (b) Show ideal equation (2)
+![Figure 10.7](chp9-12_diagrams/fig_10_7_p8.png)
 
-Ideal high-gain feedback drives `V+ ~= V-`.
-Since `V+ = Vin`, then:
+Simplified point:
 
-`Vin = beta*Vout` -> `Vout/Vin = 1/beta`
+- Real parts like AD620 package this architecture in one chip.
 
-Also:
+## Chapter 11: Real-World Op-Amp Limits and Stability
 
-`1/beta = (R0 + Rf)/R0 = 1 + Rf/R0`
+### Key handout text: gain-bandwidth product
 
-which is standard non-inverting gain.
+![Gain-bandwidth text](chp9-12_text_snippets/gain_bandwidth_text.png)
 
-### (c) Show finite-gain equation (1)
+Plain words:
 
-Start from:
+- Gain and bandwidth trade against each other.
+- If you design for larger closed-loop gain, usable frequency range shrinks.
 
-`Vout = A(V+ - V-) = A(Vin - beta Vout)`
+Problem-sheet relevance:
 
-Rearrange:
+- Helps for Q2(c) Bode sketch reasoning.
 
-`Vout(1 + beta A) = A Vin`
+### Key handout text: stability criterion
 
-So:
+![Stability criterion text](chp9-12_text_snippets/stability_criterion.png)
 
-`Vout/Vin = A/(1 + beta A)`
+Plain words:
 
-### (d) Numeric ideal gain for `R0 = 10k`, `Rf = 990k`
+- At high frequency, phase lag can make feedback effectively positive.
+- If denominator of closed-loop formula approaches zero, circuit can oscillate.
 
-`Gain_ideal = 1 + Rf/R0 = 1 + 990/10 = 100`
+Problem-sheet relevance:
 
-### (e) Error vs ideal for real finite A
+- Useful context for Q3(e): why finite open-loop behavior matters.
+
+### Diagram set: Chapter 11
+
+![Figure 11.1](chp9-12_diagrams/fig_11_1_p9.png)
+
+Simplified point:
+
+- Open-loop gain is not flat forever; it rolls off strongly with frequency.
+
+![Figure 11.3](chp9-12_diagrams/fig_11_3_p10.png)
+
+Simplified point:
+
+- Positive gain and phase margins are what keep feedback stable.
+
+## Chapter 12: ADC and DAC Concepts
+
+### Key handout text: sample-and-hold motivation
+
+![Sample-hold text](chp9-12_text_snippets/sample_hold_text.png)
+
+Plain words:
+
+- ADC needs a stable input during conversion.
+- Sample-and-hold freezes the signal briefly so conversion is accurate.
+
+### Diagram set: Chapter 12
+
+![Figure 12.1](chp9-12_diagrams/fig_12_1_p11.png)
+
+Simplified point:
+
+- Switch + capacitor + buffer is the core sample-and-hold idea.
+
+![Figure 12.2](chp9-12_diagrams/fig_12_2_p11.png)
+
+Simplified point:
+
+- Flash ADC is very fast but needs many comparators.
+
+![Figure 12.3](chp9-12_diagrams/fig_12_3_p11.png)
+
+Simplified point:
+
+- DAC can be built as weighted summing of digital bits.
+
+## Problem Sheet 4: Targeted Working Notes
+
+## Q1 Inverting amplifier derivation
 
 Use:
 
-`Greal = A/(1 + beta A)`, with `beta = 1/100 = 0.01`
+1. Virtual ground at inverting node.
+2. `Iin = Vin/Rin`.
+3. `If = -Vout/Rf`.
+4. Set `Iin = If` to get:
 
-Percentage error vs ideal (`Gideal = 100`):
+`Vout/Vin = -Rf/Rin`
 
-`error% = |Gideal - Greal| / Gideal * 100 = 100/(1 + beta A)`
+Memorize vs Derive:
 
-Values:
-- `A = 10^9` -> error `~ 1e-5 %`
-- `A = 10^6` -> error `~ 1e-2 %`
-- `A = 10^3` -> error `~ 9.09 %` (about 10%)
+- Memorize: inverting gain form `-Rf/Rin`, virtual ground idea, and sign convention (inverted output).
+- Derive in exam: write KCL at the inverting node using `Iin = If` and show the gain in 3-4 lines.
 
-This is the key conceptual point: finite open-loop gain matters only when `beta*A` is not very large.
+## Q2 AC non-inverting amplifier with input high-pass
 
-## 7.4 Q4 (Instrumentation amplifier + CMRR)
+Treat as cascade:
 
-Given `R1 = R3 = R4 = 25k`, `R2 = 1k`:
+- High-pass filter magnitude:
+  `|Hhp| = (wRC)/sqrt(1 + (wRC)^2)` with `R = Rin`, `C = Cin`
+- Amplifier gain:
+  `Gamp = 1 + Rf/R0 = 51`
 
-Differential gain:
+Given:
 
-`AD = (R4/R3)(1 + 2R1/R2) = 1*(1 + 50) = 51`
+- `Rin = 100k`, `Cin = 0.1uF` -> `RC = 0.01 s`, `fc ~= 15.9 Hz`
 
-From `CMRR = 120 dB`:
+At `10 kHz`:
 
-`AD/ACM = 10^(120/20) = 10^6` -> `ACM = AD/10^6 = 51e-6`
+- `|Hhp| ~= 1` -> total gain `~ 51`
 
-If `VD = 0.1 V` and `VCM = 0`:
+At `10 Hz`:
 
-`Vout ~= AD*VD = 51*0.1 = 5.1 V`
+- `wRC = 0.628`, `|Hhp| ~= 0.532` -> total gain `~ 27`
 
-If common-mode is large, small extra output appears from `ACM*VCM`.
-Check which exact `VCM` convention your lecturer uses when matching final digits in the sheet.
+Bode highlight:
 
-## 7.5 Q5 Seminar II (Waveform synthesis)
+- low-corner around `15.9 Hz`
+- high-corner at `80 kHz` (given)
+- looks like a band-pass with gain plateau in between
+
+Memorize vs Derive:
+
+- Memorize: non-inverting gain `1 + Rf/R0`, HP magnitude `wRC/sqrt(1 + (wRC)^2)`, and corner `fc = 1/(2*pi*RC)`.
+- Derive in exam: treat filter and amplifier as cascade, compute each gain block, then multiply magnitudes.
+
+## Q3 Seminar I (most important)
+
+Given non-inverting amplifier with divider `R0` to ground and `Rf` to output:
+
+### (a) Derive `beta`
+
+`V- = Vout * R0/(R0 + Rf)` so
+
+`beta = R0/(R0 + Rf)`
+
+### (b) Show ideal equation
+
+With ideal feedback op-amp:
+
+- `V+ ~= V-`
+- `Vin = beta*Vout`
+- `Vout/Vin = 1/beta = 1 + Rf/R0`
+
+### (c) Show finite-`A` equation
+
+`Vout = A(Vin - beta*Vout)`
+
+`Vout(1 + beta*A) = A*Vin`
+
+`Vout/Vin = A/(1 + beta*A)`
+
+### (d) Numeric ideal gain (`R0=10k`, `Rf=990k`)
+
+`Gideal = 1 + 990/10 = 100`
+
+### (e) Gain error for `A = 10^9, 10^6, 10^3`
+
+Use `beta = 0.01`.
+
+`Greal = A/(1 + 0.01A)`
+
+Error against ideal 100:
+
+`error% = |100 - Greal|/100 * 100 = 100/(1 + 0.01A)`
+
+Results:
+
+- `A = 10^9` -> `~ 1e-5 %`
+- `A = 10^6` -> `~ 1e-2 %`
+- `A = 10^3` -> `~ 9.09 %` (about 10%)
+
+Memorize vs Derive:
+
+- Memorize: `beta = R0/(R0 + Rf)`.
+- Memorize: `Gideal = 1/beta = 1 + Rf/R0`.
+- Memorize: `Greal = A/(1 + beta*A)`.
+- Memorize: `error% = |Gideal - Greal|/Gideal * 100`.
+- Derive in exam: part (a) from divider at `V-`.
+- Derive in exam: part (b) with `V+ ~= V-`.
+- Derive in exam: part (c) from `Vout = A(Vin - beta*Vout)` then rearrange.
+- Derive in exam: part (e) plug numbers after symbolic formula is done.
+
+## Q4 Instrumentation amplifier + CMRR
+
+Given `R1=R3=R4=25k`, `R2=1k`:
+
+`AD = (R4/R3)(1 + 2R1/R2) = 51`
+
+Given `CMRR = 120 dB`:
+
+`AD/ACM = 10^(120/20) = 10^6`
+
+`ACM = 51e-6`
+
+For `VD=0.1 V` and `VCM=0`:
+
+- `Vout = AD*VD = 5.1 V`
+
+With large common-mode input:
+
+- small extra term appears from `ACM*VCM`
+- this is why CMRR matters for precision
+
+Memorize vs Derive:
+
+- Memorize: `CMRR(dB) = 20log10(AD/ACM)` and `AD = (R4/R3)(1 + 2R1/R2)` for this sheet.
+- Derive in exam: convert dB to linear ratio first, solve for `ACM`, then compute output terms.
+
+## Q5 Seminar II
 
 Target:
 
 `-A cos^3(wt)`
 
-Use identity:
+Identity:
 
 `cos^3 x = (3 cos x + cos 3x)/4`
 
 So:
 
-`-A cos^3(wt) = -(A/4)[3 cos(wt) + cos(3wt)]`
+`-A cos^3(wt) = -(A/4)[3cos(wt) + cos(3wt)]`
 
-Elegant one-op-amp approach:
-- Use one inverting summing amplifier.
-- Feed `3A cos(wt)` and `A cos(3wt)` through equal input resistors `R`.
-- Choose feedback resistor `Rf = R/4`.
+One elegant circuit:
+
+- one inverting summing op-amp
+- inputs: `3A cos(wt)` and `A cos(3wt)`
+- equal input resistors `R`
+- choose feedback resistor `Rf = R/4`
 
 Then:
 
 `Vout = -(Rf/R)[3A cos(wt) + A cos(3wt)] = -A cos^3(wt)`
 
-## 8. Diagram Guide (Simple Reading Notes)
+Memorize vs Derive:
 
-Images are in `chp9-12_diagrams`. Use these as visual support, not as your main explanation source.
+- Memorize: identity `cos^3 x = (3cos x + cos 3x)/4` and inverting-summer form `Vout = -Rf*sum(Vi/Ri)`.
+- Derive in exam: transform target waveform with trig identity, then choose resistor ratios to implement weights.
 
-- `fig_9_2_p1.png`: op-amp model. Focus on `V+`, `V-`, output, and rails.
-- `fig_9_7_p4.png`: inverting amplifier. Node `X` is virtual ground.
-- `fig_9_9_p5.png`: integrator vs differentiator; capacitor position controls behavior.
-- `fig_10_2_p6.png`: Wheatstone bridge gives tiny differential signal on large common level.
-- `fig_10_6_p8.png`: instrumentation amp uses 3 op-amps for high Zin + high CMRR.
-- `fig_11_1_p9.png`: open-loop gain drops with frequency.
-- `fig_11_3_p10.png`: gain/phase margins explain stability safety.
-- `fig_12_2_p11.png`: flash ADC uses many comparators in parallel.
+## 60-second checklist before attempting the sheet
 
-## 9. 60-Second Revision Checklist
-
-If you can do all items below quickly, you are ready for this sheet:
-
-- Derive inverting and non-inverting gains from golden rules + KCL.
-- Write `beta = R0/(R0 + Rf)` and use both ideal and finite gain formulas.
-- Combine filter magnitude and amplifier gain in cascaded circuits.
-- Compute `AD` and `ACM` from instrumentation-amp formula + CMRR.
-- Use inverting summing amplifier equation for weighted waveform synthesis.
-
+- I can derive inverting gain with KCL from virtual ground.
+- I can write `beta = R0/(R0+Rf)` without looking up.
+- I can move between ideal (`1/beta`) and finite (`A/(1+beta A)`) gain.
+- I can compute high-pass magnitude and multiply by amplifier gain.
+- I can convert CMRR dB to linear ratio and find `ACM`.
+- I can build weighted sums with an inverting summing amplifier.
