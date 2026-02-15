@@ -14,10 +14,18 @@ How this file is structured:
 ## Core Definitions (quick reference)
 
 - `Vout = A(V+ - V-)`: basic op-amp relation.
-- `A`: open-loop gain (very large, but finite in reality).
+    - V+ = voltage at the non-inverting input pin.
+      V- = voltage at the inverting input pin.
+      V+ - V- is the input difference (differential input voltage).
+      A is very large, so even a tiny difference can create a large output.
+      If V+ > V-, output moves positive; if V+ < V-, output moves negative
+      - `A`: open-loop gain (very large, but finite in reality).
 - `G`: closed-loop gain (actual gain with feedback).
 - `beta`: feedback fraction (`Vfeedback / Vout`).
 - Differential signal: `VD = V+ - V-`.
+    - Same subtraction, but now treated as the actual signal you care about.
+      Example: V+ = 5.001 V, V- = 5.000 V → VD = 1 mV.
+      So the useful signal can be tiny even if both wires sit near a large voltage.
 - Common-mode signal: `VCM = (V+ + V-)/2`.
 - CMRR: `20 log10(AD/ACM)` in dB.
 
