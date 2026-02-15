@@ -1,0 +1,158 @@
+
+@misc{thorp_pop-cosmos_2025,
+	title = {pop-cosmos: {Galaxy} property and redshift catalog for {COSMOS2020}},
+	shorttitle = {pop-cosmos},
+	url = {https://zenodo.org/records/17426655},
+	doi = {10.5281/zenodo.17426655},
+	abstract = {This record (v≥2.0.0) contains data products associated with the paper "pop-cosmos: Insights from generative modeling of a deep, infrared-selected galaxy population" by Thorp et al. (2025). Earlier versions of this record (v{\textless}2.0.0) contain data products associated with the paper "pop-cosmos: Scaleable inference of galaxy properties and redshifts with a data-driven population model" by Thorp et al. (2024), which are superseded by the contents of v2.0.0. In v≥2.0.0, we include results for all COSMOS2020 galaxies with \${\textbackslash}textit\{Ch.1\}{\textless}26\$ or \$r{\textless}25\$.
+
+The included products are derived from spectral energy distribution (SED) fits to 26-band COSMOS2020 photometry, using the 16-parameter SPS model described in Thorp et al. (2024, 2025), and the pop-cosmos prior from Thorp et al. (2025). All results are based on Markov Chain Monte Carlo (MCMC) runs using the configuration described in Thorp et al. (2024, 2025). Results correspond to v2.1 of the COSMOS2020 catalog.
+
+The current release includes the following files:
+
+
+
+README\_v2\_2\_0.txt: Detailed information about how to read the other files in the record.
+
+mcmc\_summaries.h5.gz: Zipped HDF5 file with summaries (percentiles) of the posteriors.
+
+mcmc\_samples\_pop\_cosmos.h5.gz: Zipped HDF5 file with posterior samples (using pop-cosmos prior).
+
+mcmc\_samples\_Prospector.h5.gz: Zipped HDF5 file with posterior samples (using Prospector-\${\textbackslash}alpha\$ prior).
+
+
+If you make use of any of these products, please cite this repository and Thorp et al. (2024, 2025). Please also cite the pop-cosmos overview paper by Alsing et al. (2024), and the paper by Deger et al. (2025). If you make use of any COSMOS data products, please cite Weaver et al. (2022) and any other relevant publications. If you make use of COSMOS spectroscopic data, please cite Khostovan et al. (2025) and references therein.
+
+If you spot any issues or have any requests, please contact the corresponding author (Stephen Thorp) using the details in the README.
+
+If you want to access pop-cosmos mock galaxy catalogs, these can be found on Zenodo.
+
+Related software, including a demo notebook for working with the data in this record, can be found on GitHub. 
+
+References:
+
+
+
+Alsing et al. (2024). ApJS 274, 12. [arXiv:2402.00935][doi]
+
+Deger et al. (2025). MNRAS, submitted. [arXiv:2509.20430]
+
+Khostovan et al. (2025). ApJ, submitted. [arXiv:2503.00120]
+
+Thorp et al. (2024). ApJ 975, 145. [arXiv:2406.19437][doi]
+
+Thorp et al. (2025). ApJ, 993, 240. [arXiv:2506.12122][doi]
+
+Weaver et al. (2022). ApJS 258, 11. [arXiv:2110.13923][doi]},
+	language = {eng},
+	urldate = {2025-12-31},
+	publisher = {Zenodo},
+	author = {Thorp, Stephen and Peiris, Hiranya and Jagwani, Gurjeet and Deger, Sinan and Alsing, Justin and Leistedt, Boris and Mortlock, Daniel and Halder, Anik and Leja, Joel},
+	month = oct,
+	year = {2025},
+	file = {Snapshot:C\:\\Users\\Mihir Koka\\Zotero\\storage\\FVRGV8ER\\17426655.html:text/html},
+}
+
+@misc{thorp_pop-cosmos_2025-1,
+	title = {pop-cosmos: {COSMOS}-like mock galaxy catalogs},
+	shorttitle = {pop-cosmos},
+	url = {https://zenodo.org/records/15622325},
+	doi = {10.5281/zenodo.15622325},
+	abstract = {This record contains data products associated with the paper "pop-cosmos: Insights from generative modeling of a deep, infrared-selected galaxy population" by Thorp et al. (2025). The mock galaxy catalogs are generated from the pop-cosmos model presented therein, with all plots in the paper being based on the catalogs included here.
+
+Related software, including a demo notebook for working with the data in this record, can be found on GitHub. 
+
+Galaxy-level parameter inferences for the COSMOS2020 galaxies are included in a seperate listing on Zenodo.
+
+The current release includes the following files:
+
+
+
+README\_v1\_0\_0.txt: Detailed information about how to read the other files in the record.
+
+mock\_catalog\_r\_25.h5: Mock catalog of 2 million galaxies with \$r{\textless}25\$ in HDF5 format.
+
+mock\_catalog\_Ch1\_26.h5: Mock catalog of 2 million galaxies with \${\textbackslash}textit\{Ch.1\}{\textless}26\$ in HDF5 format.
+
+
+If you use any of the products from this record, please cite Alsing et al. (2024) and Thorp et al. (2025).
+
+If you spot any issues or have any requests, please contact the corresponding author (Stephen Thorp) using the details in the README.
+
+If you want to access parameter posteriors for individual COSMOS galaxies, these can be found at this link.
+
+References:
+
+
+
+Alsing et al. (2024). ApJS 274, 12. [arXiv:2402.00935][doi]
+
+Thorp et al. (2025). ApJ, submitted. [arXiv:2506.12122]},
+	urldate = {2025-12-31},
+	publisher = {Zenodo},
+	author = {Thorp, Stephen and Peiris, Hiranya and Jagwani, Gurjeet and Deger, Sinan and Alsing, Justin and Leistedt, Boris and Mortlock, Daniel and Halder, Anik and Leja, Joel},
+	month = jun,
+	year = {2025},
+	file = {Snapshot:C\:\\Users\\Mihir Koka\\Zotero\\storage\\D2YAR3X2\\15622325.html:text/html},
+}
+
+@article{thorp_pop-cosmos_2025-2,
+	title = {pop-cosmos: {Insights} from generative modeling of a deep, infrared-selected galaxy population},
+	volume = {993},
+	issn = {0004-637X, 1538-4357},
+	shorttitle = {pop-cosmos},
+	url = {http://arxiv.org/abs/2506.12122},
+	doi = {10.3847/1538-4357/ae0936},
+	abstract = {We present an extension of the pop-cosmos model for the evolving galaxy population up to redshift \$z{\textbackslash}sim6\$. The model is trained on distributions of observed colors and magnitudes, from 26-band photometry of \${\textbackslash}sim420,000\$ galaxies in the COSMOS2020 catalog with Spitzer IRAC \${\textbackslash}textit\{Ch. 1\}{\textless}26\$. The generative model includes a flexible distribution over 16 stellar population synthesis (SPS) parameters, and a depth-dependent photometric uncertainty model, both represented using score-based diffusion models. We use the trained model to predict scaling relationships for the galaxy population, such as the stellar mass function, star-forming main sequence, and gas-phase and stellar metallicity vs. mass relations, demonstrating reasonable-to-excellent agreement with previously published results. We explore the connection between mid-infrared emission from active galactic nuclei (AGN) and star-formation rate, finding high AGN activity for galaxies above the star-forming main sequence at \$1{\textbackslash}lesssim z{\textbackslash}lesssim 2\$. Using the trained population model as a prior distribution, we perform inference of the redshifts and SPS parameters for 429,669 COSMOS2020 galaxies, including 39,588 with publicly available spectroscopic redshifts. The resulting redshift estimates exhibit minimal bias (\${\textbackslash}text\{median\}[Δ\_z]=-8{\textbackslash}times10{\textasciicircum}\{-4\}\$), scatter (\$σ\_{\textbackslash}text\{MAD\}=0.0132\$), and outlier fraction (\$6.19{\textbackslash}\%\$) for the full \$0{\textless}z{\textless}6\$ spectroscopic compilation. These results establish that pop-cosmos can achieve the accuracy and realism needed to forward-model modern wide--deep surveys for Stage IV cosmology. We publicly release pop-cosmos software, mock galaxy catalogs, and COSMOS2020 redshift and SPS parameter posteriors.},
+	number = {2},
+	urldate = {2025-12-31},
+	journal = {The Astrophysical Journal},
+	author = {Thorp, Stephen and Peiris, Hiranya V. and Jagwani, Gurjeet and Deger, Sinan and Alsing, Justin and Leistedt, Boris and Mortlock, Daniel J. and Halder, Anik and Leja, Joel},
+	month = nov,
+	year = {2025},
+	note = {arXiv:2506.12122 [astro-ph]},
+	keywords = {Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics},
+	pages = {240},
+	annote = {Comment: 47 pages, 34 figures. Accepted for publication in ApJ. Mock galaxy catalogs available at https://doi.org/10.5281/zenodo.15757717 . MCMC chains available at https://doi.org/10.5281/zenodo.15850536 . Software available at https://github.com/Cosmo-Pop},
+	file = {Preprint PDF:C\:\\Users\\Mihir Koka\\Zotero\\storage\\PGS7A54K\\Thorp et al. - 2025 - pop-cosmos Insights from generative modeling of a deep, infrared-selected galaxy population.pdf:application/pdf;Snapshot:C\:\\Users\\Mihir Koka\\Zotero\\storage\\9LCWCAY5\\2506.html:text/html},
+}
+
+@article{thorp_pop-cosmos_2024,
+	title = {pop-cosmos: {Scaleable} {Inference} of {Galaxy} {Properties} and {Redshifts} with a {Data}-driven {Population} {Model}},
+	volume = {975},
+	issn = {0004-637X},
+	shorttitle = {pop-cosmos},
+	url = {https://ui.adsabs.harvard.edu/abs/2024ApJ...975..145T},
+	doi = {10.3847/1538-4357/ad7736},
+	abstract = {We present an efficient Bayesian method for estimating individual photometric redshifts and galaxy properties under a pretrained population model (pop-cosmos) that was calibrated using purely photometric data. This model specifies a prior distribution over 16 stellar population synthesis (SPS) parameters using a score-based diffusion model, and includes a data model with detailed treatment of nebular emission. We use a GPU-accelerated affine-invariant ensemble sampler to achieve fast posterior sampling under this model for 292,300 individual galaxies in the COSMOS2020 catalog, leveraging a neural network emulator (Speculator) to speed up the SPS calculations. We apply both the pop-cosmos population model and a baseline prior inspired by Prospector-α, and compare these results to published COSMOS2020 redshift estimates from the widely used EAZY and LePhare codes. For the ∼12,000 galaxies with spectroscopic redshifts, we find that pop-cosmos yields redshift estimates that have minimal bias (∼10‑4), high accuracy (σ MAD = 7 × 10‑3), and a low outlier rate (1.6\%). We show that the pop-cosmos population model generalizes well to galaxies fainter than its r {\textless} 25 mag training set. The sample we have analyzed is ≳3× larger than has previously been possible via posterior sampling with a full SPS model, with average throughput of 15 GPU-sec per galaxy under the pop-cosmos prior, and 0.6 GPU-sec per galaxy under the Prospector prior. This paves the way for principled modeling of the huge catalogs expected from upcoming Stage IV galaxy surveys.},
+	urldate = {2025-12-31},
+	journal = {The Astrophysical Journal},
+	author = {Thorp, Stephen and Alsing, Justin and Peiris, Hiranya V. and Deger, Sinan and Mortlock, Daniel J. and Leistedt, Boris and Leja, Joel and Loureiro, Arthur},
+	month = nov,
+	year = {2024},
+	note = {Publisher: IOP
+ADS Bibcode: 2024ApJ...975..145T},
+	keywords = {Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics, 1378, 2129, 611, Galaxy photometry, Redshift surveys, Spectral energy distribution, 1886, 1890, 1900, Affine invariant, Astrophysics - Instrumentation and Methods for Astrophysics, Astrostatistics techniques, Bayesian statistics},
+	pages = {145},
+	file = {Submitted Version:C\:\\Users\\Mihir Koka\\Zotero\\storage\\G3FKM69K\\Thorp et al. - 2024 - pop-cosmos Scaleable Inference of Galaxy Properties and Redshifts with a Data-driven Population Mod.pdf:application/pdf},
+}
+
+@article{alsing_pop-cosmos_2024,
+	title = {pop-cosmos: {A} {Comprehensive} {Picture} of the {Galaxy} {Population} from {COSMOS} {Data}},
+	volume = {274},
+	issn = {0067-0049},
+	shorttitle = {pop-cosmos},
+	url = {https://ui.adsabs.harvard.edu/abs/2024ApJS..274...12A},
+	doi = {10.3847/1538-4365/ad5c69},
+	abstract = {We present pop-cosmos: a comprehensive model characterizing the galaxy population, calibrated to 140,938 (r {\textless} 25 selected) galaxies from the Cosmic Evolution Survey (COSMOS) with photometry in 26 bands from the ultraviolet to the infrared. We construct a detailed forward model for the COSMOS data, comprising: a population model describing the joint distribution of galaxy characteristics and its evolution (parameterized by a flexible score-based diffusion model); a state-of-the-art stellar population synthesis model connecting galaxies' intrinsic properties to their photometry; and a data model for the observation, calibration, and selection processes. By minimizing the optimal transport distance between synthetic and real data, we are able to jointly fit the population and data models, leading to robustly calibrated population-level inferences that account for parameter degeneracies, photometric noise and calibration, and selection. We present a number of key predictions from our model of interest for cosmology and galaxy evolution, including the mass function and redshift distribution; the mass–metallicity-redshift and fundamental metallicity relations; the star-forming sequence; the relation between dust attenuation and stellar mass, star formation rate, and attenuation-law index; and the relation between gas-ionization and star formation. Our model encodes a comprehensive picture of galaxy evolution that faithfully predicts galaxy colors across a broad redshift (z {\textless} 4) and wavelength range.},
+	urldate = {2025-12-31},
+	journal = {The Astrophysical Journal Supplement Series},
+	author = {Alsing, Justin and Thorp, Stephen and Deger, Sinan and Peiris, Hiranya V. and Leistedt, Boris and Mortlock, Daniel and Leja, Joel},
+	month = sep,
+	year = {2024},
+	note = {Publisher: IOP
+ADS Bibcode: 2024ApJS..274...12A},
+	keywords = {Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics, 1378, 594, Galaxy evolution, Redshift surveys, Astrophysics - Instrumentation and Methods for Astrophysics, 339, 343, 574, 580, Cosmological parameters, Cosmology, Galaxy abundances, Galaxy chemical evolution},
+	pages = {12},
+	file = {Submitted Version:C\:\\Users\\Mihir Koka\\Zotero\\storage\\JHRR5NEX\\Alsing et al. - 2024 - pop-cosmos A Comprehensive Picture of the Galaxy Population from COSMOS Data.pdf:application/pdf},
+}
