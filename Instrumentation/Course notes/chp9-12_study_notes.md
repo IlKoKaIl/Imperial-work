@@ -14,18 +14,18 @@ How this file is structured:
 ## Core Definitions (quick reference)
 
 - `Vout = A(V+ - V-)`: basic op-amp relation.
-    - V+ = voltage at the non-inverting input pin.
-      V- = voltage at the inverting input pin.
-      V+ - V- is the input difference (differential input voltage).
-      A is very large, so even a tiny difference can create a large output.
-      If V+ > V-, output moves positive; if V+ < V-, output moves negative
-      - `A`: open-loop gain (very large, but finite in reality).
+  - V+ = voltage at the non-inverting input pin.
+    V- = voltage at the inverting input pin.
+    V+ - V- is the input difference (differential input voltage).
+    A is very large, so even a tiny difference can create a large output.
+    If V+ > V-, output moves positive; if V+ < V-, output moves negative
+    - `A`: open-loop gain (very large, but finite in reality).
 - `G`: closed-loop gain (actual gain with feedback).
 - `beta`: feedback fraction (`Vfeedback / Vout`).
 - Differential signal: `VD = V+ - V-`.
-    - Same subtraction, but now treated as the actual signal you care about.
-      Example: V+ = 5.001 V, V- = 5.000 V → VD = 1 mV.
-      So the useful signal can be tiny even if both wires sit near a large voltage.
+  - Same subtraction, but now treated as the actual signal you care about.
+    Example: V+ = 5.001 V, V- = 5.000 V → VD = 1 mV.
+    So the useful signal can be tiny even if both wires sit near a large voltage.
 - Common-mode signal: `VCM = (V+ + V-)/2`.
 - CMRR: `20 log10(AD/ACM)` in dB.
 
@@ -52,8 +52,15 @@ Problem-sheet relevance:
 Plain words:
 
 - Rule 1: feedback drives inputs close together (`V+ ~= V-`).
-- Rule 2: almost no current enters either input.
+- Rule 2: almost no current enters either input (so treat op-amp inputs as “open circuit”).
 - Together these let you use KCL quickly to derive gains.
+- How to use KCL in questions:
+- Pick the “summing node” (usually the node at the `-` input where resistors meet).
+- Use Rule 1 to set that node voltage: `Vnode (= V-) ~= V+` (often `V+ = 0 V` if grounded, so `Vnode ~= 0 V` = “virtual ground”).
+- Write each branch current using Ohm’s law: `I = (Vfrom - Vto)/R`.
+- Apply KCL at the node: sum of currents into the node = sum out (or just `I1 + I2 + ... = 0` with a consistent sign).
+- Solve the resulting equation for what you need (often `Vout/Vin`).
+- Mini-example (inverting amp): `V+ = 0` so `V- ~= 0`; KCL gives `Vin/Rin + Vout/Rf = 0` ⇒ `Vout/Vin = -Rf/Rin`.
 
 Problem-sheet relevance:
 
