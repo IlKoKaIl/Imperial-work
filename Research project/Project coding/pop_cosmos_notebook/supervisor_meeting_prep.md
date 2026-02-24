@@ -92,18 +92,28 @@ Interpretation for discussion:
 - Important note in release docs:
   - LePhare SFR/sSFR are computed without IR, so uncertainties can be large.
 
-## Feb 24, 2026 meeting follow-up (new items)
+## Feb 24, 2026 meeting follow-up
 
-Notes from supervisor and actions to add now:
+Notes from supervisor and actions:
+
+Slope notes:
+
+    At each redshift bin we fit`log10(SFR) = a log10(M*) + c`
+    `slope_fit` = measured a from pop cosmos data in that bin
+    `slope_speagle` = expected a from Speagle at that bin's median redsfhit/time
+
+    So if slope fit is close to speagle they match well.
 
 ### 1) Add visual Speagle comparison plot (not only summary numbers)
 
-Current status:
-- We already have quantitative comparison numbers from Task 1:
-  - `N = 2155`
-  - median `Delta_MS = -0.531 dex`
+Currently:
 
-What to add:
+- have quantitative comparison numbers from Task 1:
+- `N = 2155`
+- median `Delta_MS = -0.531 dex`
+
+to add:
+
 - Make a direct visual plot in the same style as the existing `log10(SFR)` vs `log10(M*)` plot, but with Speagle as reference.
 - Recommended figure setup:
   - keep pop-cosmos points/background as before
@@ -111,17 +121,18 @@ What to add:
   - optionally add `pop-cosmos - Speagle` residual coloring for quick visual offset check
 
 Goal:
-- Easy side-by-side visual comparison with the previous MS plot, not just table/stat outputs.
 
-Status (implemented in notebook):
+- Easy side-by-side visual comparison with the previous MS plot, not just table/stat outputs.
 - Added a new Task 1 visual cell in `catalogue_generation.ipynb`:
+
   - `Task 1 visual: pop-cosmos vs Speagle in 1 <= z < 2`
   - Uses the same `log10(SFR)` vs `log10(M*)` plane, with:
     - pop-cosmos density (hexbin)
     - Speagle MS line at median redshift of the bin
     - pop-cosmos best-fit line for direct visual comparison
 
-Layman explanation:
+explanation:
+
 - We now have a picture where the old galaxy cloud and the Speagle “expected trend line” are in the same graph.
 - This makes it easy to see by eye whether our galaxies mostly sit above, below, or on the reference line.
 - In short: this is the visual version of the `Delta_MS` numbers.
@@ -129,10 +140,12 @@ Layman explanation:
 ### 2) Starburst test with larger mock sample
 
 Issue in current run:
+
 - In `1 <= z < 2` and `9 <= log10M <= 11.5`, only `5` starbursts were found.
 - This is too small for stable tail/statistical interpretation.
 
 What to add:
+
 - Increase generated sample size (for example 5x to 10x more than 10,000 base samples).
 - Re-run starburst classification (`Delta_MS >= 0.6`) and update:
   - starburst number fraction
@@ -140,14 +153,17 @@ What to add:
   - optional z~2 high-mass check
 
 Goal:
+
 - Improve tail statistics and reduce noise from small-number counts.
 
 Status (implemented in notebook):
+
 - Added a larger-sample rerun cell in `catalogue_generation.ipynb`:
   - `Task 2 rerun with larger sample size`
   - Runs starburst summary at `n_samples = 10,000`, `50,000`, and `100,000` with the same cuts/definition.
 
 Latest rerun outputs:
+
 - `10,000` samples:
   - `N(1<=z<2)=791`, `N_SB=5`, starburst fraction `0.632%`, starburst SFR share `6.710%`
   - `N(1.5<=z<2.5, M>=10)=126`, `N_SB=2`, fraction `1.587%`, SFR share `26.862%`
@@ -157,36 +173,290 @@ Latest rerun outputs:
 - `100,000` samples:
   - `N(1<=z<2)=7686`, `N_SB=20`, starburst fraction `0.260%`, starburst SFR share `7.280%`
   - `N(1.5<=z<2.5, M>=10)=1303`, `N_SB=9`, fraction `0.691%`, SFR share `12.821%`
-  - runtime for this run was about `692 s` (~11.5 minutes on current setup)
 
 Quick read:
+
 - Larger sample improved tail stability and reduced small-number noise, especially in the z~2 high-mass slice.
 
-Layman explanation:
+Brief explanation:
+
 - With only a few starburst galaxies, percentages can jump around a lot.
 - Increasing sample size gives us more rare objects in the tail, so the final percentages are more trustworthy.
 - Here, the starburst counts increased from `5` (10k) to `20` (100k), and the SFR-share estimates became less noisy.
 
+Matches literature ?
+
+ **yes.., mostly consistent on SFR share; lower on number fraction**.
+
+Source:
+
+- arXiv: https://arxiv.org/abs/1108.0933
+
+latest results:
+
+- `(1 <= z < 2)`: starburst fraction `~sim 0.26%-0.63%`, SFR share `~6%-7%`
+- 1.5 <= z < 2.5  fraction: ~0.63%-1.59%, SFR share ~13%-27%
+  (100k run: 0.69%, 12.8%)
+
+Literature target (Rodighiero+2011 at z~2, mass-selected SF sample:
+
+- number fraction ~2%
+- SFR density share <~ 10%
+
+So:
+
+- **SFR share:** at 100k value (~12.8% in the z~2 high-mass slice) is close-ish, slightly high.
+- **number fraction:** at value (~0.7%) is lower than 2%
+
+### Why not exact?
+
+setup differs from that paper in several ways:
+
+- different parent sample/selection (`Ch1<26`, pop-cosmos mock, spitzer/irac channel 1 ~3.6 micron near-IR on brighter than mag 26 galaxies in the band)
+- different MS reference (Speagle baseline)
+- your extra SF cuts and mass/redshift cuts are not exactly their selection pipeline
+- finite-sample tail noise still matters, even at 100k
+
+If we want a closer comparison, next step is: replicate their selection as closely as possible (their z range, mass completeness, SF selection, and MS definition), then recompute.
+
+#### 3) What did Rodighiero+2011 do?
+
+- Used **Herschel/PACS** data + optical/near-IR data in **COSMOS + GOODS-South**.
+- Focused on **z = 1.5 to 2.5** (cosmic peak of star formation).
+- Looked at **mass-selected star-forming galaxies**.
+- Defined starbursts as galaxies with SFR **>4x above MS** (equivalent to `Delta_MS >= 0.6 dex`).
+- Reported ``~2%`` by number and about ``~10%`` of SFR density at ``z~2``.
+
+#### 4) Why our setup is not exactly the same (main differences)
+
+- **Sample definition**:
+  - Ours: pop-cosmos mock with `Ch1 < 26`
+  - Paper: observed PACS-based sample in COSMOS/GOODS-S
+- **MS reference**:
+  - Ours: offset computed against **Speagle** relation (external baseline)
+
+$$
+\Delta MS = \log_{10}(\mathrm{SFR}_{\text{your galaxy}}) \;-\; \log_{10}(\mathrm{SFR}_{\text{Speagle}}(M, z))
+$$
+
+- Paper: MS defined from their own z~2 observed SFR-M* distribution
+- **Cuts**:
+  - Ours: global pre-cuts (`log10sSFR > -11`, `8.5<=logM<=11.5`, `0<=z<4`) + Task 2 bin cuts
+  - Paper: their own star-forming/mass-complete cuts at z~2
+- **SFR estimator origin**:
+  - Ours: pop-cosmos model-derived SFR
+  - Paper: observational SFR workflow tied to Herschel/PACS data
+
 ### 3) Open follow-up: wavelength dependence and external catalogs
 
 Question to investigate:
+
 - Are starburst conclusions changing because of wavelength coverage / selection?
 - Need to trace what wavelength information the current SFR inference is sensitive to, and compare with longer-wavelength-selected catalogs.
 
-Suggested direction:
+where to go ?:
+
 - Compare against longer-wavelength datasets (for example HERMES, H-ATLAS) after applying cuts to match pop-cosmos selection as closely as possible.
 - Start with matched redshift and mass cuts, then compare starburst fraction and SFR contribution.
 
-Layman explanation:
+Brief motivation.
+
 - Different telescopes see different parts of galaxy light.
 - Dust can hide star formation in optical data, but infrared/sub-mm can reveal it.
 - So we should check whether our starburst conclusion changes when we use catalogs that are more sensitive to dusty star-forming galaxies.
 
 Data needs:
+
 - Download external catalogs and prepare matched subsamples.
 - If local files are not already available, provide/confirm data access location and preferred catalog versions.
 
-Supervisor-suggested paper:
-- "The Extended Mapping Obscuration to Reionization with ALMA (Ex-MORA) Survey: 5 sigma Source Catalog and Redshift Distribution"
-- arXiv: https://arxiv.org/abs/2408.14546
-- Use as context for obscured/high-z star-forming populations and selection effects.
+#### Longer-wavelength expansion (new: where to get data + comparison plan)
+
+Core equations for the comparison (use same definitions across datasets):
+
+$$
+\Delta_{\mathrm{MS}} = \log_{10}\!\big(\mathrm{SFR}_{\mathrm{gal}}\big) - \log_{10}\!\big(\mathrm{SFR}_{\mathrm{MS}}(M_\star,z)\big)
+$$
+
+$$
+\text{Starburst if } \Delta_{\mathrm{MS}} \ge 0.6
+$$
+
+$$
+f_{\mathrm{SB}}^{N} = \frac{N(\Delta_{\mathrm{MS}} \ge 0.6)}{N_{\mathrm{SF}}}
+$$
+
+$$
+f_{\mathrm{SB}}^{\mathrm{SFR}} = \frac{\sum_{\Delta_{\mathrm{MS}} \ge 0.6}\mathrm{SFR}_i}{\sum_{\mathrm{SF}}\mathrm{SFR}_i}
+$$
+
+Optional IR conversion check (if catalogs provide total IR luminosity):
+
+$$
+\mathrm{SFR}_{\mathrm{IR}} \approx 10^{-10}\,L_{\mathrm{IR}} \quad (\text{in } M_\odot\,\mathrm{yr}^{-1} \text{ for } L_{\mathrm{IR}} \text{ in } L_\odot,\ \text{IMF-dependent})
+$$
+
+Plain-language meaning of the above:
+
+- **Distance from the main sequence**
+
+  $$
+  \Delta_{\mathrm{MS}}
+  $$
+
+  measures “distance from the normal star‑forming trend.”
+- **Starburst threshold**
+
+  $$
+  \Delta_{\mathrm{MS}} \ge 0.6
+  $$
+
+  means roughly
+
+  $$
+  \sim 4\times
+  $$
+
+  above that trend (starburst region).
+- **Starburst fraction by number**
+
+  $$
+  f_{\mathrm{SB}}^{N}
+  $$
+
+  = “Out of all star‑forming galaxies, what percent are starbursts?”
+- **Starburst fraction by SFR contribution**
+
+  $$
+  f_{\mathrm{SB}}^{\mathrm{SFR}}
+  $$
+
+  = “Out of total star formation, what percent is produced by starbursts?”
+
+---
+
+### Papers and likely data access points
+
+1) **pop-cosmos: Star formation over 12 Gyr...**
+   Link: https://arxiv.org/pdf/2509.20430
+   Likely data path (pop-cosmos public releases):
+
+- Galaxy posterior products: https://zenodo.org/records/17426655
+- Mock catalogs: https://zenodo.org/records/15622325
+- Code/tools: https://github.com/Cosmo-Pop
+
+2) **ALPINE-ALMA [CII] survey: nature/LF/SFH of dusty galaxies up to z~6**
+   Link: https://www.aanda.org/articles/aa/full_html/2020/11/aa38487-20/aa38487-20.html
+   Useful catalog/data entry points:
+
+- ALPINE products portal: https://cesam.lam.fr/a2c2s/
+- ALPINE data-processing/catalog paper indicates CDS catalog access:
+  http://cdsarc.u-strasbg.fr/viz-bin/cat/J/A+A/643/A2
+
+3) **Ex-MORA survey (5 sigma source catalog and redshift distribution)**
+   Link: https://arxiv.org/abs/2408.14546
+   Current status:
+
+- arXiv comment notes the fully reduced mosaic will be shared upon publication.
+- For now, use source tables in paper/supplement and track publication repository link when posted.
+
+---
+
+### Short relevant notes from the 3 papers (simple terms)
+
+1) **pop-cosmos: Star formation over 12 Gyr (arXiv:2509.20430)**
+
+- Uses a deep IR-selected COSMOS sample and a generative SPS model.
+- Reports SFRD peaking near
+
+  $$
+  z \approx 1.3
+  $$
+- Shows SF/Q classification can shift depending on whether you use
+
+  $$
+  \mathrm{sSFR}
+  $$
+
+  cuts or color cuts.
+- Relevance for us:
+
+  - solid pop-cosmos baseline for SFR/starburst comparisons.
+
+2) **ALPINE continuum paper (A&A 2020, aa38487-20)**
+
+- Characterizes 56 ALMA Band-7 serendipitous continuum sources in COSMOS/ECDFS.
+- Derives IR luminosity functions and SFRD up to
+
+  $$
+  z \sim 6
+  $$
+- Finds dusty-obscured SF remains important at high redshift; UV/optical-only estimates can be lower.
+- Reports a meaningful contribution from optically/near-IR dark sources at high
+
+  $$
+  z
+  $$
+
+  (e.g. contribution to high-z SFRD discussed in paper).
+- Relevance for us:
+
+  - direct long-wavelength benchmark for how much SF can be missed by optical/NIR selection.
+
+3) **Ex-MORA (arXiv:2408.14546)**
+
+- 2 mm ALMA blank-field survey in COSMOS-Web targeting dusty high-z systems.
+- Reports a high-redshift-heavy sample with median around
+
+  $$
+  z \sim 3.6
+  $$
+
+  and many sources at
+
+  $$
+  z > 3
+  $$
+- Shows rest-optical methods miss a substantial fraction of dusty high-z galaxies.
+- Relevance for us:
+
+  - strong motivation to test starburst fractions under longer-wavelength selection.
+
+---
+
+### Practical methodology to compare with pop-cosmos
+
+Step 1: Build a harmonized sample definition
+
+- Match redshift bins first (for example
+
+  $$
+  1.5 \le z < 2.5
+  $$
+
+  and higher-z bins if needed).
+- Apply a common mass floor where all datasets are reasonably complete.
+- Keep a consistent star-forming selection rule across datasets.
+
+Step 2: Harmonize SFR/Mass conventions
+
+- Confirm Intial mass Function (IMF, implied dist of stellar masses when stars form) assumptions and convert if needed (Chabrier/Kroupa/Salpeter differences).
+- Align stellar mass and SFR units/scales before computing offsets.
+- Use one MS baseline consistently (e.g., Speagle or dataset-native MS), and report which was used.
+
+Step 3: Compute the same summary metrics in each dataset
+
+$$
+f_{\mathrm{SB}}^{N} \quad \text{and} \quad f_{\mathrm{SB}}^{\mathrm{SFR}}
+$$
+
+- Median/dispersion of
+  $$
+  \Delta_{\mathrm{MS}}
+  $$
+- Optional: split by mass bins to check mass dependence of starburst incidence.
+
+Step 4: Report wavelength-sensitive differences explicitly
+
+- Compare optical/NIR-selected versus IR/sub-mm-selected samples at matched cuts.
+- Flag where dusty systems appear in IR/sub-mm but are weak/missed in optical selections.
