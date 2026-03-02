@@ -1,0 +1,6 @@
+multiplying two phase how done, fourier decomposition.
+followed by low pass in wave
+
+understand behavior with phase difference/freq difference
+
+Detecting small signal, bandwidth, have a reference background signal. Used in astronomy with possibly telescope moving at some ref freq, can use that to find small signals
