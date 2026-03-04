@@ -5,6 +5,7 @@ Applied Machine Learning/lecture notebooks/saved_models/
 Applied Machine Learning/lecture notebooks/data
 Applied Machine Learning/lecture notebooks/week10/data
 Applied Machine Learning/lecture notebooks/week11/data
+Research project/Project coding/catalog data/**
 __pycache__/
 *.pyc
 .DS_Store

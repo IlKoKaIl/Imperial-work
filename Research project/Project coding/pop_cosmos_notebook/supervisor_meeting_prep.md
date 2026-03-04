@@ -172,7 +172,7 @@ Latest rerun outputs:
   - `N(1.5<=z<2.5, M>=10)=632`, `N_SB=4`, fraction `0.633%`, SFR share `13.829%`
 - `100,000` samples:
   - `N(1<=z<2)=7686`, `N_SB=20`, starburst fraction `0.260%`, starburst SFR share `7.280%`
-  - `N(1.5<=z<2.5, M>=10)=1303`, `N_SB=9`, fraction `0.691%`, SFR share `12.821%`
+  - `N(1.5<=z<2.5, M>=10)=1303`, `N_SB=9`, fraction `0.691%`, SFR share `12.821% (look at d.p accuracy)`
 
 Quick read:
 
@@ -460,3 +460,258 @@ Step 4: Report wavelength-sensitive differences explicitly
 
 - Compare optical/NIR-selected versus IR/sub-mm-selected samples at matched cuts.
 - Flag where dusty systems appear in IR/sub-mm but are weak/missed in optical selections.
+
+---
+
+## First implemented comparison (pop-cosmos vs Wang 2024)
+
+### Some motivation
+
+Wang gives deblended far-IR/sub-mm photometry in COSMOS (24–850 µm).
+
+* longer wavelengths are sensitive to dusty star formation.
+* optical/NIR can miss dusty systems.
+* we wanted to test if starburst fractions/SFR share change when looking at long-λ-detected subsamples.
+
+So Wang is our first “longer-wavelength lens” on the same COSMOS population.
+
+### Files used
+
+- pop-cosmos:
+  - `catalog data/real pop-cosmos data/mcmc_summaries.h5.gz`
+  - `catalog data/real pop-cosmos data/README_v2_2_0.txt`
+- Wang 2024:
+  - `catalog data/wang/master.dat.gz`
+  - `catalog data/wang/ReadMe.txt`
+
+### Script walkthrough
+
+- The script reads two catalogs:
+
+  - pop-cosmos posterior summaries
+  - Wang long-wavelength deblended catalog
+- It keeps one representative value per pop-cosmos galaxy (median posterior).
+- It matches galaxies between the two catalogs by shared COSMOS ID.
+- It marks whether each matched galaxy is detected at long wavelengths (SPIRE/SCUBA) using SNR.
+- It computes
+
+  $$
+  \Delta_{\mathrm{MS}} = \log_{10}\mathrm{SFR}_{\mathrm{pop}} - \log_{10}\mathrm{SFR}_{\mathrm{Speagle}}(M_\star,z)
+  $$
+
+  and flags starbursts with
+
+  $$
+  \Delta_{\mathrm{MS}} \ge 0.6.
+  $$
+- It then reports starburst fractions for:
+
+  - all matched galaxies in each bin
+  - long-
+
+    $$
+    \lambda
+    $$
+
+    detected subset
+  - not-long-
+
+    $$
+    \lambda
+    $$
+
+    detected subset
+
+### run notes
+
+Method (first pass):
+
+1. Decompress and load pop-cosmos summaries.
+2. Use median posterior values (50th percentile) for:
+   - $$
+     \log_{10}M_\star,\ \log_{10}\mathrm{SFR},\ \log_{10}\mathrm{sSFR},\ z
+     $$
+3. Load Wang master catalog via CDS schema from `ReadMe.txt`.
+4. Join on COSMOS ID:
+   - pop-cosmos `index_farmer` ↔ Wang `ID`
+5. Define long-wavelength detection flag:
+   - SPIRE/SCUBA detected if any of
+
+     $$
+     250,350,500,850\,\mu\mathrm{m}
+     $$
+
+     has (singal to noise ratio = F_lambda/sigma_lamba)
+     meaning measured flux density at given wavelenght/ uncertainty on that flux
+     3 => flux is three times greater than noise
+
+     $$
+     \mathrm{SNR}\ge 3
+     $$
+
+     .
+6. Compute:
+   - $$
+     \Delta_{\mathrm{MS}} = \log_{10}\mathrm{SFR}_{\mathrm{pop}} - \log_{10}\mathrm{SFR}_{\mathrm{Speagle}}(M_\star,z)
+     $$
+   - starburst if
+     $$
+     \Delta_{\mathrm{MS}}\ge 0.6
+     $$
+   - fractions in the same bins used previously.
+
+### First-pass results
+
+What is happening:
+
+So all matched is all galaxies in both catalog after cuts,
+
+long_detect is only matched galaxies with the Wang long-lamba detection and not long is its compliment
+
+So we do not recompute SFR from wang yet, we use pop cosmos SFR for all matched galaxies. wang is just used as a tag for the 250-800um or not.
+
+using external baseline speagle that is strict +0.6 dex and script is using median posterior values per galaxy, so extreme tails are being
+
+Data linkage:
+
+- pop-cosmos rows (valid COSMOS IDs): `429,669`
+- Wang rows used (positive COSMOS IDs): `128,387`
+- Matched rows (inner join on ID): `114,048`
+- Long-detected fraction (SPIRE/SCUBA, SNR>=3): `5.65%`
+
+Bin A (`1 <= z < 2`, `9 <= log10M <= 11.5`):
+
+- All matched: `N=37,149`, `N_SB=8`, starburst fraction `0.0215%`, SFR share `0.2628%`
+- Long-detected: `N=2,673`, `N_SB=2`, starburst fraction `0.0748%`, SFR share `0.2761%`
+- Not long-detected: `N=34,476`, `N_SB=6`, starburst fraction `0.0174%`, SFR share `0.2596%`
+
+Bin B (`1.5 <= z < 2.5`, `log10M >= 10`):
+
+- All matched: `N=15,807`, `N_SB=3`, starburst fraction `0.0190%`, SFR share `0.1695%`
+- Long-detected: `N=1,494`, `N_SB=0`, starburst fraction `0.0000%`, SFR share `0.0000%`
+- Not long-detected: `N=14,313`, `N_SB=3`, starburst fraction `0.0210%`, SFR share `0.2057%`
+
+### Comparison to previous findings ?
+
+Previous pop-cosmos mock (my 100k run)
+
+* **1<=z<2**: starburst SFR share **7.28%(Fraction: 0.26%)**
+* **1.5<=z<2.5, M>=10**: starburst SFR share **12.82%(Fraction:0.691%)**
+
+These were in the ballpark of the expected literature range
+
+### New pop-cosmos × Wang matched real-data run
+
+From the CSV:
+
+* **1<=z<2** all matched: starburst SFR share **0.2628%**
+* **1.5<=z<2.5, M>=10** all matched: **0.1695%**
+* long-λ detected subsets are also very low.
+
+So Wang-matched run is **much lower** than your earlier mock result and lower than the expected 8–14% figure.
+
+### Interpretation
+
+- Under current Speagle-based
+
+  $$
+  \Delta_{\mathrm{MS}}
+  $$
+
+  settings, starburst fractions are extremely low in this matched real-data run.
+- This is prob a calibration/definition mismatch signal (selection + MS baseline + SFR conventions), not a final physics conclusion yet.
+- Next step: test alternative MS baseline choices and IMF/SFR harmonization before drawing physical conclusions.
+
+We likely got very low starburst/SFR-share numbers because this was a much stricter and different comparison than before, not because starbursts disappear physically.
+
+Ideas ?
+
+* We changed sample: earlier was a mock-generated pop-cosmos sample; now it is a real-data ID-matched subset with Wang, which can remove part of the extreme high-SFR tail.
+* We used an external baseline (Speagle)
+  If our sample sits below Speagle normalization, very few galaxies pass the starburst cut .**Δ**MS≥**0.6.**
+* SFR definitions are not identical across datasets/papers (model-based 100 Myr average vs IR-based observational SFRs), so offsets are expected.
+* Detection/matching choices (e.g., SNR threshold, matched IDs only, quality cuts) can strongly reduce rare starbursts.
+* Using median posterior values also suppresses extremes.
+
+## Plain-language clarifications 
+
+### 1) What does `all_matched, N = 37,149` mean?
+
+- `all_matched` means galaxies that are in **both** pop-cosmos and Wang after matching by ID.
+- Then we apply the bin cuts (`1 <= z < 2`, `9 <= log10M <= 11.5`, and SF quality cuts).
+- `N = 37,149` is the number of galaxies left in that bin after those steps.
+
+### 2) Why is Wang smaller than pop-cosmos?
+
+- pop-cosmos has more total objects (`429,669` valid IDs).
+- Wang is a smaller long-wavelength-focused catalog (`128,387` positive IDs).
+- Matched overlap is `114,048`.
+
+Match fractions:
+
+$$
+\frac{114048}{429669} \approx 26.5\%
+$$
+
+of pop-cosmos has a Wang match, and
+
+$$
+\frac{114048}{128387} \approx 88.8\%
+$$
+
+of Wang has a pop-cosmos match.
+
+### 3) What are we comparing in this first pass?
+
+Starburst classification is from pop-cosmos + Speagle:
+
+$$
+\Delta_{\mathrm{MS}} = \log_{10}(\mathrm{SFR}_{\mathrm{pop}}) - \log_{10}(\mathrm{SFR}_{\mathrm{Speagle}}(M_\star,z))
+$$
+
+$$
+\text{starburst if } \Delta_{\mathrm{MS}} \ge 0.6
+$$
+
+Wang is used as a **label** only:
+
+- long-wavelength detected (`SNR >= 3` in any of `250,350,500,850` um)
+- not long-wavelength detected
+
+Important: we did **not** recalculate SFR from Wang IR photometry in this run.
+
+### 4) How incidence is tested
+
+We recompute starburst fraction in each subgroup:
+
+$$
+f_{\mathrm{SB}}^{N} = \frac{N(\Delta_{\mathrm{MS}} \ge 0.6)}{N_{\mathrm{group}}}
+$$
+
+Bin A results:
+
+$$
+f_{\mathrm{SB}}^{N}(\text{all matched}) = \frac{8}{37149} = 0.0215\%
+$$
+
+$$
+f_{\mathrm{SB}}^{N}(\text{long-detected}) = \frac{2}{2673} = 0.0748\%
+$$
+
+$$
+f_{\mathrm{SB}}^{N}(\text{not long-detected}) = \frac{6}{34476} = 0.0174\%
+$$
+
+So yes, we do recalculate the fraction in the same bin; `all_matched` is the baseline.
+
+### 5) Why are matched-sample rates so low vs earlier mock runs?
+
+- Different parent sample (real matched subset vs mock generation).
+- External MS baseline (Speagle) can shift offsets lower.
+- Median posterior values reduce extreme-tail objects.
+- Matching and cuts can remove rare high-SFR galaxies.
+
+### 6) What this means right now
+
+- Similar all-vs-long-detected values do **not** yet prove success or failure on dusty galaxies.
+- It is a first-pass consistency check; final dust validation needs IR-based SFR comparison on the same matched galaxies.
