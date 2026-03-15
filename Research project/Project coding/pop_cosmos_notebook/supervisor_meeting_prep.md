@@ -633,7 +633,7 @@ Ideas ?
 * Detection/matching choices (e.g., SNR threshold, matched IDs only, quality cuts) can strongly reduce rare starbursts.
 * Using median posterior values also suppresses extremes.
 
-## Plain-language clarifications 
+## Plain-language clarifications
 
 ### 1) What does `all_matched, N = 37,149` mean?
 

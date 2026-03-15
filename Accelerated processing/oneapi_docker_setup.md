@@ -53,6 +53,30 @@ make fpga_emu
 ./vector_add.fpga_emu
 ```
 
+### `fpga_template` report flow
+
+From PowerShell in `Accelerated processing`:
+
+```powershell
+.\run_fpga_template_report.ps1
+```
+
+This creates:
+
+- `hls-samples/Tutorials/GettingStarted/fpga_template/build/fpga_template.report.prj/reports/report.html`
+- `hls-samples/Tutorials/GettingStarted/fpga_template/build/fpga_template.report.prj/reports/fpga_template_report.zip`
+
+If you prefer to run it manually inside the container:
+
+```bash
+source /opt/intel/oneapi/setvars.sh --force
+cd hls-samples/Tutorials/GettingStarted/fpga_template
+rm -rf build
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make report
+```
+
 ## Notes
 
 - `setvars.sh` is sourced automatically for interactive shells through `/etc/profile.d/oneapi.sh`.
