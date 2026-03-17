@@ -507,20 +507,8 @@ So Wang is our first “longer-wavelength lens” on the same COSMOS population.
 - It then reports starburst fractions for:
 
   - all matched galaxies in each bin
-  - long-
-
-    $$
-    \lambda
-    $$
-
-    detected subset
-  - not-long-
-
-    $$
-    \lambda
-    $$
-
-    detected subset
+  - long-lambda detected subset
+  - not-long-lambdadetected subset
 
 ### run notes
 
@@ -715,3 +703,106 @@ So yes, we do recalculate the fraction in the same bin; `all_matched` is the bas
 
 - Similar all-vs-long-detected values do **not** yet prove success or failure on dusty galaxies.
 - It is a first-pass consistency check; final dust validation needs IR-based SFR comparison on the same matched galaxies.
+
+## Week of Mar 15, 2026: Light-work planning notes
+
+### 1) How I would test pop-cosmos at extended wavelengths 
+
+What I expect physically:
+
+- Long wavelengths (far-IR/sub-mm) are more sensitive to dusty star formation.
+- So if dust is important, some galaxies that look normal in optical/NIR can move upward in SFR when I use IR-based SFR, and a subset can cross into the starburst region.
+
+What I want to test:
+
+$$
+\Delta_{\mathrm{MS}} = \log_{10}(\mathrm{SFR}) - \log_{10}(\mathrm{SFR}_{\mathrm{MS}}(M_\star,z))
+$$
+
+and whether starburst labels change when SFR comes from longer wavelengths.
+
+Practical steps:
+
+1. Build one matched per-source table with: `ID, z, log10M, log10SFR_pop, DeltaMS_pop, SNR250/350/500/850, long_detect`.
+2. Add an IR-based SFR estimate for the same sources (from external IR-based product/model; Wang master has fluxes and errors, not direct SFR in the subset I used).
+3. Recompute:
+   - `DeltaMS_IR`
+   - starburst flags from pop and IR versions.
+4. Make a transition matrix:
+   - non-SB (pop) -> SB (IR)
+   - SB (pop) -> non-SB (IR)
+5. Report changes in:
+   - number fraction of starbursts
+   - SFR share from starbursts
+     in the same bins I already use (Bin A and Bin B).
+
+What success/failure would look like:
+
+- If many sources go non-SB -> SB with IR SFR, optical/NIR-only likely misses dusty bursts.
+- If labels are stable, pop-cosmos is more robust than I expected to dust-obscuration effects.
+
+Simple action I can do quickly next:
+
+- Run a short sensitivity test before full IR-SFR modeling:
+  - compare `DeltaMS_pop` distributions across long-detected vs not-long-detected and across SNR thresholds (`>=2.5, >=3, >=5`).
+  - this is not the final answer, but it tells me whether the long-lambda subset is already systematically shifted.
+
+### 2) Speagle vs quenched sources (important caveat)
+
+My understanding:
+
+- Speagle MS relation is a star-forming main-sequence baseline.
+- It is not designed as a quenched-galaxy model.
+
+Implication for my analysis:
+
+- If quenched galaxies enter the sample, they naturally get very negative `DeltaMS`, which can dilute starburst fractions.
+- So I should keep a clear star-forming pre-selection before using Speagle offsets.
+
+What I should state clearly in slides/notes:
+
+- Speagle is used as a reference for SF galaxies, not for quiescent population modeling.
+- Any quenched contamination can bias absolute fractions downward.
+
+### 3) Sigma clipping: where useful and where not
+
+Useful:
+
+- Sigma clipping is useful when fitting a baseline MS line/slope, to reduce outlier leverage.
+
+Not useful (or risky):
+
+- I should not sigma-clip when measuring starburst incidence itself, because starbursts are in the high-SFR tail I care about.
+
+Practical rule I will follow:
+
+- Clip only for baseline fitting.
+- Do not clip for final starburst counts/shares.
+- Report both clipped and unclipped baseline fits if needed for transparency.
+
+### 4) Rodighiero+2011 optical/NIR-only comparison idea (useful?)
+
+ useful as a test.
+
+Why ?:
+
+- Rodighiero-style starburst framing is what I used for thresholding.
+- Repeating that style but with optical/NIR-only SFR (no IR boost) gives me a direct "what do I miss without long-lambda" estimate.
+
+How I would do it:
+
+1. Keep Rodighiero-like bin/cuts as close as possible (especially `1.5 <= z < 2.5`, high-mass slice).
+2. Compute starburst fractions using optical/NIR-based SFR definitions.
+3. Compare against the same matched sources with IR-informed SFR.
+4. Quantify missed-burst fraction and SFR-share difference.
+
+Expected outcome:
+
+- I expect optical/NIR-only to miss at least part of dusty starburst activity, especially at higher mass and around z~2.
+
+### 5) Recap of what I'm showing this week
+
+- I now have the matched-catalog setup done.
+- Next I will do an explicit label-transition test using IR-based SFR on the same sources.
+- I will keep Speagle use limited to SF-selected samples, and only use sigma clipping for baseline fitting (not for starburst counting).
+- I also plan a Rodighiero-style optical/NIR-only stress test to quantify what long-lambda adds.

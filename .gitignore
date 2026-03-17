@@ -10,3 +10,5 @@ __pycache__/
 *.pyc
 .DS_Store
 .ipynb_checkpoints/
+Accelerated processing/aes_subbytes_shiftrows_mvp/build/
+Accelerated processing/hls-samples/
