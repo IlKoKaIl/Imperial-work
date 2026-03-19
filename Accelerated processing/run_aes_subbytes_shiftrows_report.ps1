@@ -1,5 +1,6 @@
 param(
     [string]$ImageName = "oneapi-fpga-dev:2025",
+    [string]$UserFlags = "",
     [switch]$RebuildImage
 )
 
@@ -21,7 +22,12 @@ if ($LASTEXITCODE -ne 0 -or $RebuildImage) {
     }
 }
 
-$containerCommand = @'
+$cmakeFlags = "-DCMAKE_BUILD_TYPE=Release"
+if ($UserFlags) {
+    $cmakeFlags += " -DUSER_FLAGS='$UserFlags'"
+}
+
+$containerCommand = @"
 set -euo pipefail
 
 source /opt/intel/oneapi/setvars.sh --force >/dev/null 2>&1
@@ -29,9 +35,9 @@ cd /workspaces/accelerated-processing/aes_subbytes_shiftrows_mvp
 rm -rf build
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake .. $cmakeFlags
 make report
-'@
+"@
 
 $dockerArgs = @(
     "run",

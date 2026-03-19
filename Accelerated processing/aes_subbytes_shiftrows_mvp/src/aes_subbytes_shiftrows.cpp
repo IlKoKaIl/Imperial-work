@@ -16,6 +16,11 @@ constexpr int kStateRows = 4;
 constexpr int kStateCols = 4;
 constexpr int kBlockCount = 4096;
 
+// Maps each output byte position after ShiftRows to the corresponding source
+// byte position before ShiftRows, using AES's column-major state layout.
+constexpr std::uint8_t kShiftRowsSourceIndex[kStateBytes] = {
+    0, 5, 10, 15, 4, 9, 14, 3, 8, 13, 2, 7, 12, 1, 6, 11};
+
 constexpr std::uint8_t kAesSBox[256] = {
     0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b,
     0xfe, 0xd7, 0xab, 0x76, 0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0,
@@ -89,21 +94,52 @@ struct AesSubBytesShiftRowsKernel {
   int block_count;
 
   void operator()() const {
+#if defined(AES_TARGET_OUTER_II_1)
+    [[intel::initiation_interval(1)]]
+#endif
     for (int block = 0; block < block_count; ++block) {
       const int base = block * kStateBytes;
+
+#if defined(AES_FUSE_SUBBYTES_SHIFTROWS)
+      for (int out_idx = 0; out_idx < kStateBytes; ++out_idx) {
+        const int src_idx = kShiftRowsSourceIndex[out_idx];
+        output[base + out_idx] = kAesSBox[input[base + src_idx]];
+      }
+#elif defined(AES_BUFFERED_FUSED_SUBBYTES_SHIFTROWS)
+      std::uint8_t state[kStateBytes];
+
+      for (int idx = 0; idx < kStateBytes; ++idx) {
+        state[idx] = input[base + idx];
+      }
+
+      for (int out_idx = 0; out_idx < kStateBytes; ++out_idx) {
+        const int src_idx = kShiftRowsSourceIndex[out_idx];
+        output[base + out_idx] = kAesSBox[state[src_idx]];
+      }
+#else
       std::uint8_t substituted[kStateBytes];
 
+#if defined(AES_UNROLL_INNER_LOOPS)
+#pragma unroll
+#endif
       for (int idx = 0; idx < kStateBytes; ++idx) {
         substituted[idx] = kAesSBox[input[base + idx]];
       }
 
+#if defined(AES_UNROLL_INNER_LOOPS)
+#pragma unroll
+#endif
       for (int row = 0; row < kStateRows; ++row) {
+#if defined(AES_UNROLL_INNER_LOOPS)
+#pragma unroll
+#endif
         for (int col = 0; col < kStateCols; ++col) {
           const int out_index = row + kStateRows * col;
           const int src_index = row + kStateRows * ((col + row) & 0x3);
           output[base + out_index] = substituted[src_index];
         }
       }
+#endif
     }
   }
 };
