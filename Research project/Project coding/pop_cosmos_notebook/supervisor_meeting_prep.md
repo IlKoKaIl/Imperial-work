@@ -806,3 +806,174 @@ Expected outcome:
 - Next I will do an explicit label-transition test using IR-based SFR on the same sources.
 - I will keep Speagle use limited to SF-selected samples, and only use sigma clipping for baseline fitting (not for starburst counting).
 - I also plan a Rodighiero-style optical/NIR-only stress test to quantify what long-lambda adds.
+
+## Week of Mar 24, 2026: follow-up work from supervisor meeting
+
+### 1) Simpler direct SFR comparison
+
+This week I switched to a simpler comparison idea:
+
+- same matched galaxies
+- compare the SFR values directly between methods
+- do not go through the starburst threshold first
+
+This makes sense, and it is easier to explain.
+
+What I can compare directly right now:
+
+- pop-cosmos vs COSMOS2020 LePhare SFR
+- pop-cosmos vs COSMOS2020 EAZY SFR
+
+Important caveat:
+
+- the SFR methods are not identical, so I expect some systematic offset
+- but if the offset is large and consistent, that is still a useful result
+
+Main results from the new direct SFR table:
+
+- Overall star-forming-like matched sample:
+  - LePhare minus pop-cosmos median `Delta log10(SFR) = +0.224 dex`
+  - this is about a factor `1.67` higher than pop-cosmos
+  - EAZY minus pop-cosmos median `Delta log10(SFR) = +0.082 dex`
+  - this is about a factor `1.21` higher than pop-cosmos
+
+- Bin A (`1 <= z < 2`, `9 <= log10M <= 11.5`):
+  - LePhare minus pop-cosmos median `+0.318 dex`
+  - about a factor `2.08` higher
+  - EAZY minus pop-cosmos median `+0.138 dex`
+  - about a factor `1.37` higher
+
+- Bin B (`1.5 <= z < 2.5`, `log10M >= 10`):
+  - LePhare minus pop-cosmos median `+0.260 dex`
+  - about a factor `1.82` higher
+  - EAZY minus pop-cosmos median `+0.122 dex`
+  - about a factor `1.32` higher
+
+My reading of this:
+
+- LePhare is systematically higher in SFR than pop-cosmos on the same matched galaxies.
+- EAZY is also higher than pop-cosmos, but the offset is smaller.
+- So the very low pop-cosmos starburst fractions are at least partly consistent with pop-cosmos sitting lower in SFR than the COSMOS2020 estimators.
+
+### 2) Narrower redshift-bin MS comparison
+
+The previous MS-plane comparison used a broad `1 <= z < 2` bin.
+
+I now also looked at narrower bins:
+
+- `1.0 <= z < 1.5`
+- `1.5 <= z < 2.0`
+
+Direct SFR offset results in the narrower bins:
+
+- `1.0 <= z < 1.5`:
+  - LePhare minus pop-cosmos median `+0.358 dex` (factor `2.28`)
+  - EAZY minus pop-cosmos median `+0.170 dex` (factor `1.48`)
+
+- `1.5 <= z < 2.0`:
+  - LePhare minus pop-cosmos median `+0.256 dex` (factor `1.80`)
+  - EAZY minus pop-cosmos median `+0.091 dex` (factor `1.23`)
+
+What I take from that:
+
+- the same ordering stays there even after narrowing the redshift bin:
+  - LePhare highest
+  - EAZY in the middle
+  - pop-cosmos lowest
+- the offset is a bit stronger in the lower half of Bin A (`1.0 <= z < 1.5`) than in the upper half (`1.5 <= z < 2.0`)
+- so the earlier broad-bin pattern was not just caused by mixing too much redshift evolution together
+
+### 3) Wang comparison: what I can and cannot do from the current file
+
+Supervisor suggestion was to cross-match and compare SFR more directly.
+
+For Wang, there is one important limitation:
+
+- the local `master.dat` file I downloaded has long-wavelength fluxes
+- it does **not** have a direct SFR column
+
+So from the current Wang file, I cannot yet do a true:
+
+- `SFR_Wang` vs `SFR_pop-cosmos`
+
+comparison.
+
+What I did instead as the closest local test:
+
+- matched Wang to pop-cosmos by ID
+- checked whether galaxies with brighter long-wavelength fluxes also have higher pop-cosmos SFR
+
+Main Wang flux vs pop-cosmos SFR results in Bin A:
+
+- `24 um`: `N_detect = 17,571`, median `log10SFR_pop = 1.18`, Spearman `rho = 0.53`
+- `250 um`: `N_detect = 2,569`, median `log10SFR_pop = 1.43`, Spearman `rho = 0.19`
+- `350 um`: `N_detect = 1,875`, median `log10SFR_pop = 1.45`, Spearman `rho = 0.16`
+- `500 um`: `N_detect = 834`, median `log10SFR_pop = 1.45`, Spearman `rho = 0.11`
+- `850 um`: `N_detect = 294`, median `log10SFR_pop = 1.57`, Spearman `rho = 0.14`
+
+Also, for the long-detected split in Bin A:
+
+- long-detected median `log10SFR_pop = 1.425`
+- not-long-detected median `log10SFR_pop = 0.862`
+
+- long-detected median `log10M_pop = 10.742`
+- not-long-detected median `log10M_pop = 10.143`
+
+My reading of this:
+
+- the Wang long-wavelength detections are, on average, the higher-SFR and higher-mass pop-cosmos galaxies
+- that is qualitatively sensible
+- but this is still **not** the same as a direct Wang SFR comparison
+- to do the real SFR-vs-SFR test with Wang, I still need an IR-based SFR estimate for the same matched sources
+
+### 4) Spectroscopic redshift comparison: local status
+
+I checked whether the currently downloaded local files actually contain a spectroscopic redshift field.
+
+Result:
+
+- `COSMOS2020 farmer.dat.gz`: no spec-like field found
+- `pop-cosmos mcmc_summaries.h5` metadata: no spec-like field found
+
+So with the files currently downloaded, I cannot yet run a direct local:
+
+- pop-cosmos vs spec-z
+- EAZY vs spec-z
+- LePhare vs spec-z
+
+comparison.
+
+What I would do once I have the spec-z compilation / matching file:
+
+$$
+\Delta z = \frac{z_{est} - z_{spec}}{1 + z_{spec}}
+$$
+
+then report:
+
+- median bias
+- `sigma_MAD`
+- outlier fraction
+
+### 5) Mass / luminosity functions and `1 / V_max`
+
+I only wrote this up as methodology for now.
+
+Why I did not run a full `1 / V_max` mass function yet:
+
+- I need a clear parent selection band and magnitude limit
+- I need a consistent `z_max` calculation
+- I need to think about completeness / masking
+
+So for now my position is:
+
+- it is a sensible next step
+- but it should come after I lock down the comparison sample and selection definition more carefully
+
+### 6) Short recap I can say out loud
+
+- I simplified the comparison by looking at direct SFR offsets on the same matched galaxies.
+- LePhare is typically higher in SFR than pop-cosmos, and EAZY is also higher but by less.
+- The same ordering stays there in narrower redshift bins, so it is not just a broad-bin effect.
+- Wang is useful right now as a long-wavelength flux check, but not yet a direct SFR-vs-SFR comparison because the file I have does not include SFR.
+- For spectroscopic redshift benchmarking, I need the spec-z compilation file because it is not in the currently downloaded local Farmer/pop-cosmos files.
