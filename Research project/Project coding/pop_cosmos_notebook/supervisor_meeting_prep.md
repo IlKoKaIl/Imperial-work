@@ -1470,3 +1470,66 @@ So I think these are better meeting figures.
 - `Ch2` is tighter than `Ch1`.
 - Residuals stay close to zero across most of the redshift range.
 - The highest-redshift tail is where things start to get noisier.
+
+## March 31, 2026 add-on: how the recent pop-cosmos papers do mass / luminosity-function style calculations
+
+Papers checked:
+
+- `arXiv:2506.12122` - `pop-cosmos: Insights from generative modeling of a deep, infrared-selected galaxy population`
+- `arXiv:2509.20430` - `pop-cosmos: Star formation over 12 Gyr from generative modelling of a deep infrared-selected galaxy catalogue`
+
+### Quick answer
+
+- These are **not** doing a classic per-galaxy `1/Vmax` estimate.
+- In `1/Vmax`, each observed galaxy contributes `1 / Vmax,i`, where `Vmax,i` is the maximum comoving volume over which that galaxy could have entered the survey given the flux limit.
+- In the pop-cosmos papers, the workflow is instead: apply a completeness cut, normalize to the COSMOS survey area / counts, and then use the generative model to histogram or integrate galaxy properties in redshift bins.
+
+### Paper 1: `2506.12122`
+
+- This paper mainly uses the **stellar mass function as a shape comparison / validation test** for the generative model.
+- Their Figure 11 shows:
+  - pop-cosmos stellar-mass histogram
+  - histogram from galaxy-level COSMOS SED fits
+  - Leja+2020 double-Schechter mass function
+- Important detail:
+  - the caption says the histograms are **normalized to integrate to 1** between the mass-completeness limit and the high-mass cut.
+- They estimate the mass-completeness limit from the **turnover** of the pop-cosmos stellar-mass distribution as a function of redshift.
+- So this is **not** an absolute `1/Vmax` number-density estimate. It is more a comparison of the **shape** of the mass distribution after completeness cuts.
+
+### Paper 2: `2509.20430`
+
+- For the cosmic SFR density they explicitly move away from luminosity-function style methods and instead **sum individual galaxy SFRs** in redshift bins.
+- Their estimator is:
+
+`Psi_b = (N f_b / Vco,b) * mean(SFR of sampled galaxies in bin b)`
+
+where:
+
+- `N` = total number of COSMOS galaxies passing the selection
+- `f_b` = pop-cosmos predicted fraction of galaxies in redshift bin `b`
+- `Vco,b` = comoving volume of that redshift bin over the COSMOS sky area
+
+- So the normalization is done using:
+  - survey area
+  - comoving volume of the bin
+  - total counts / predicted fractions from the model
+- This is **not** a per-object `Vmax` weighting scheme.
+- For the stellar mass functions in that paper, they again work above a **mass-completeness threshold** and use the COSMOS normalization plus redshift-bin volume / count information. I did **not** find any explicit `Vmax` or `1/Vmax` weighting in the paper text.
+- Their uncertainties are described in terms of **Poisson noise + cosmic variance** (and compared against Weaver+2023b Schechter-function results).
+
+### Bottom line for meeting
+
+- If asked "is this the same as `1/Vmax`?" the answer is:
+
+  - **No, not formally.**
+
+- Better wording:
+
+  - `1/Vmax` is a **per-galaxy observational weighting estimator**
+  - these pop-cosmos papers are using a **forward-model / survey-normalized population estimate**
+
+- So they are trying to estimate the same kind of physical quantities:
+  - stellar-mass distributions
+  - cosmic SFR density
+
+- But they are **not** doing it with the standard `sum_i (1 / Vmax,i)` recipe.
