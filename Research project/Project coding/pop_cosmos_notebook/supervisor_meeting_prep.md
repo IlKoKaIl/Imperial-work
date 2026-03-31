@@ -706,7 +706,7 @@ So yes, we do recalculate the fraction in the same bin; `all_matched` is the bas
 
 ## Week of Mar 15, 2026: Light-work planning notes
 
-### 1) How I would test pop-cosmos at extended wavelengths 
+### 1) How I would test pop-cosmos at extended wavelengths
 
 What I expect physically:
 
@@ -832,18 +832,19 @@ Important caveat:
 Main results from the new direct SFR table:
 
 - Overall star-forming-like matched sample:
+
   - LePhare minus pop-cosmos median `Delta log10(SFR) = +0.224 dex`
   - this is about a factor `1.67` higher than pop-cosmos
   - EAZY minus pop-cosmos median `Delta log10(SFR) = +0.082 dex`
   - this is about a factor `1.21` higher than pop-cosmos
-
 - Bin A (`1 <= z < 2`, `9 <= log10M <= 11.5`):
+
   - LePhare minus pop-cosmos median `+0.318 dex`
   - about a factor `2.08` higher
   - EAZY minus pop-cosmos median `+0.138 dex`
   - about a factor `1.37` higher
-
 - Bin B (`1.5 <= z < 2.5`, `log10M >= 10`):
+
   - LePhare minus pop-cosmos median `+0.260 dex`
   - about a factor `1.82` higher
   - EAZY minus pop-cosmos median `+0.122 dex`
@@ -867,10 +868,11 @@ I now also looked at narrower bins:
 Direct SFR offset results in the narrower bins:
 
 - `1.0 <= z < 1.5`:
+
   - LePhare minus pop-cosmos median `+0.358 dex` (factor `2.28`)
   - EAZY minus pop-cosmos median `+0.170 dex` (factor `1.48`)
-
 - `1.5 <= z < 2.0`:
+
   - LePhare minus pop-cosmos median `+0.256 dex` (factor `1.80`)
   - EAZY minus pop-cosmos median `+0.091 dex` (factor `1.23`)
 
@@ -915,7 +917,6 @@ Also, for the long-detected split in Bin A:
 
 - long-detected median `log10SFR_pop = 1.425`
 - not-long-detected median `log10SFR_pop = 0.862`
-
 - long-detected median `log10M_pop = 10.742`
 - not-long-detected median `log10M_pop = 10.143`
 
@@ -977,3 +978,495 @@ So for now my position is:
 - The same ordering stays there in narrower redshift bins, so it is not just a broad-bin effect.
 - Wang is useful right now as a long-wavelength flux check, but not yet a direct SFR-vs-SFR comparison because the file I have does not include SFR.
 - For spectroscopic redshift benchmarking, I need the spec-z compilation file because it is not in the currently downloaded local Farmer/pop-cosmos files.
+
+## Week of Mar 29, 2026: MIR / IRAC follow-up from Boris
+
+### 1) What Boris loaded
+
+Boris sent three useful files:
+
+- `cosmos2020_mir_photometry.h5`
+- `cosmos2020_fsps_subset.h5`
+- `crossmatch_cosmos2020.py`
+
+My read of them:
+
+- `cosmos2020_mir_photometry.h5` is the main full-sample product
+  - it has `429,669` galaxies, so it lines up with the pop-cosmos sample size
+  - it contains predicted MIR quantities for:
+    - `Ch1`
+    - `Ch2`
+    - `Ch3`
+    - `Ch4`
+    - `MIPS24`
+- `cosmos2020_fsps_subset.h5` looks like a smaller `1000` galaxy sanity-check file
+  - this seems to be there to compare the faster emulator-style predictions against direct FSPS outputs on a smaller subset
+- `crossmatch_cosmos2020.py` is a utility script that joins Boris's MIR predictions to:
+  - the COSMOS2020 Farmer catalog
+  - the pop-cosmos `mcmc_summaries.h5`
+
+So overall, this is definitely useful for the main project goal:
+
+- testing pop-cosmos beyond the shorter-wavelength regime
+- especially by checking how well the model does in the MIR before moving further out to FIR / radio / X-ray
+
+### 2) What the script is doing
+
+In simple terms, the script is doing three comparisons.
+
+First:
+
+- take Boris's predicted MIR magnitudes
+- match them to the same objects in COSMOS2020
+- compare prediction vs observed MIR photometry
+
+Second:
+
+- load the stored pop-cosmos model values for `Ch1` and `Ch2`
+- compare those directly to the observed COSMOS2020 `IRAC_CH1` and `IRAC_CH2`
+
+Third:
+
+- print a few example objects to sanity-check the matching
+
+The matching itself is simple:
+
+- COSMOS2020 match is by `index_farmer == ID`
+- pop-cosmos match is by row alignment / slice
+
+That part makes sense and is efficient.
+
+### 3) What bands are actually available
+
+From the local COSMOS2020 `ReadMe`, the Farmer catalog does have:
+
+- `IRAC_CH1`
+- `IRAC_CH2`
+- `IRAC_CH3`
+- `IRAC_CH4`
+- `SPLASH_CH1`
+- `SPLASH_CH2`
+- `SPLASH_CH3`
+- `SPLASH_CH4`
+
+So the professor's memory on the COSMOS2020 side checks out.
+
+On the Boris HDF5 side, I found:
+
+- `speculator` predictions for `Ch1`, `Ch2`, `Ch3`, `Ch4`, `MIPS24`
+- `photulator` predictions for `Ch1`, `Ch2`
+- stored pop-cosmos validation values for `Ch1`, `Ch2`
+
+So right now:
+
+- `Ch1` and `Ch2` are immediately usable
+- `Ch3` and `Ch4` are available on Boris's side and in COSMOS2020, so they are worth testing
+- `MIPS24` is present in the file structure, but current coverage is effectively zero, so I cannot use it yet from the current product
+
+### 4) Quick evaluation: is this useful
+
+Yes, definitely.
+
+But I think the usefulness is different by band.
+
+#### `Ch1` / `Ch2`
+
+These are the strongest immediate checks.
+
+Why:
+
+- they have high coverage
+- the residuals are small
+- we can compare directly to observed COSMOS2020 fluxes now
+
+I checked the local Farmer photometry against Boris's full MIR file.
+
+For residuals, I used:
+
+- `model_mag - observed_mag`
+
+So:
+
+- residual near `0` means good agreement
+- positive residual means the model is a bit fainter than the data
+- negative residual means the model is a bit brighter than the data
+
+Stored pop-cosmos model vs observed IRAC:
+
+- `Ch1`: `N = 423,272`, median residual `+0.020 mag`, MAD `0.084 mag`
+- `Ch2`: `N = 414,272`, median residual `-0.012 mag`, MAD `0.041 mag`
+
+That is good.
+
+My simple read:
+
+- pop-cosmos is modelling `Ch1` and `Ch2` pretty well overall
+- the typical bias is very small
+- the scatter is modest, especially in `Ch2`
+
+This means I can now answer the original professor question:
+
+- yes, I can load the model fluxes for `Ch1` / `Ch2`
+- and yes, they seem good enough to use as a proper validation check
+
+#### `Ch3` / `Ch4`
+
+These are more interesting scientifically, because they go further into the MIR.
+
+They are also less clean right now.
+
+Coverage in Boris's full file:
+
+- `Ch1`: `94.8%`
+- `Ch2`: `80.9%`
+- `Ch3`: `55.4%`
+- `Ch4`: `22.3%`
+- `MIPS24`: `0%`
+
+So the file is already telling me that longer MIR coverage gets much patchier.
+
+Comparing Boris's `speculator` predictions to observed COSMOS2020 IRAC:
+
+- `IRAC_CH3`: `N = 150,712`, median residual `+0.507 mag`, MAD `0.889 mag`
+- `IRAC_CH4`: `N = 55,394`, median residual `+0.866 mag`, MAD `1.037 mag`
+
+Comparing to observed SPLASH instead:
+
+- `SPLASH_CH3`: `N = 71,800`, median residual `-0.181 mag`, MAD `0.629 mag`
+- `SPLASH_CH4`: `N = 5,442`, median residual `-0.703 mag`, MAD `0.740 mag`
+
+My read:
+
+- `Ch3` / `Ch4` are not yet nearly as tight as `Ch1` / `Ch2`
+- the answer depends quite a lot on whether I compare to `IRAC_*` or `SPLASH_*`
+- so these bands are useful, but I would treat them as exploratory for now, not as the cleanest headline result
+
+### 5) What I think this means scientifically
+
+For the overall project, I think this is a nice bridge step.
+
+Why:
+
+- `Ch1` / `Ch2` are close enough to the fitted regime that they let me check whether the modelling pipeline is behaving sensibly
+- `Ch3` / `Ch4` start to push further out in wavelength, so they are more like a real extension test
+- `MIPS24` would be even more interesting for dust-obscured star formation, but I do not have usable coverage for it yet
+
+So my current view is:
+
+- `Ch1` / `Ch2` = strong validation / sanity-check bands
+- `Ch3` / `Ch4` = promising extension bands, but noisier and more sensitive to which observed product I use
+- `MIPS24` = potentially very useful next target if Boris can synthesise it properly
+
+This fits the bigger project story well:
+
+- first show the method behaves properly in the near-to-mid IR
+- then push further into bands that are more sensitive to dust-obscured emission
+- then later compare to FIR / radio / X-ray products
+
+### 6) Questions 
+
+- Is `Ch2` also in the original pop-cosmos stored model output, or is it only in the new synthetic MIR file?
+- For `Ch3` / `Ch4`, which observed comparison should I trust more as the main reference:
+  - `IRAC_*`
+  - or `SPLASH_*`
+- Are the `stored_mag_Ch1` / `stored_mag_Ch2` values straight from `mcmc_summaries`, or re-derived during the MIR synthesis step?
+- Why is `MIPS24` coverage currently `0%` in the full MIR file:
+  - wavelength coverage issue
+  - emulator coverage issue
+  - or just not populated yet
+- Do we want the main validation plots in:
+  - magnitudes
+  - fluxes
+  - or residuals normalized by photometric uncertainty
+
+### 7) What next
+
+I think there is a clean next step here.
+
+Immediate next plot set:
+
+- observed vs model `Ch1`
+- observed vs model `Ch2`
+- residual vs redshift
+- residual vs stellar mass
+- residual vs dust attenuation if available
+
+Why:
+
+- that would directly answer "how well has pop-cosmos modelled the IRAC bands?"
+- and it is already supported by the current files
+
+Then after that:
+
+- do the same for `Ch3` / `Ch4`
+- but treat them more as a first extension test, because the scatter is much larger
+
+And finally:
+
+- if Boris can populate `MIPS24`, that is probably the most interesting next MIR band for the main science goal, because it gets closer to dust-obscured star formation
+
+### 8) Short version I can say out loud
+
+- Boris's new files are definitely useful.
+- They give me predicted MIR photometry matched to the pop-cosmos sample.
+- `Ch1` and `Ch2` already look good: the model-observed residuals are small, so pop-cosmos seems to be modelling those bands reasonably well.
+- `Ch3` and `Ch4` are available too, but they are much noisier, so I would treat them as an extension test rather than the cleanest validation result.
+- `MIPS24` would be very useful for the obscured-star-formation side of the project, but the current file does not yet have usable coverage there.
+
+### 9) Quick note: what MIR means
+
+`MIR` = `mid-infrared`.
+
+Very roughly, this means wavelengths of a few to a few tens of microns.
+
+For this work, the main MIR bands I am looking at are:
+
+- `IRAC Ch1`
+- `IRAC Ch2`
+- `IRAC Ch3`
+- `IRAC Ch4`
+- `MIPS24`
+
+### 10) Quick reading of Boris's 7 figures
+
+Important note:
+
+- most of these figures are internal checks of the synthetic MIR pipeline
+- so they are mostly asking "do Boris's fast predictions agree with stored model photometry / other fast predictions?"
+- they are not all direct "model vs observed COSMOS2020" plots
+
+#### Figure 1: `fig1_speculator_vs_stored.png`
+
+What it shows:
+
+- `Speculator` predicted `Ch1` / `Ch2` magnitudes compared against stored photometry values
+- top panels: point clouds near the `1:1` line
+- bottom panels: residual histograms
+
+My read:
+
+- this is a strong internal consistency check
+- `Ch1` and `Ch2` agree very well overall
+- offsets are small:
+  - `Ch1` median about `-0.024 mag`
+  - `Ch2` median about `-0.052 mag`
+- so the synthetic `Speculator` outputs are reproducing the stored values closely
+
+#### Figure 2: `fig2_residuals_vs_properties.png`
+
+What it shows:
+
+- residuals `Speculator - Stored` for `Ch1` and `Ch2`
+- plotted against:
+  - redshift
+  - stellar mass
+  - `dust2`
+  - `lnfAGN`
+
+My read:
+
+- the residuals stay fairly close to `0` for most of the sample
+- there are some trends, especially with stellar mass and at some redshifts
+- but nothing here looks like a huge catastrophic failure
+- so this suggests the internal MIR prediction is mostly stable, with some mild systematic structure
+
+#### Figure 3: `fig3_coverage_map.png`
+
+What it shows:
+
+- where the model wavelength coverage overlaps the observed filter bands as redshift changes
+
+My read:
+
+- `Ch1` and `Ch2` are well covered over a broad redshift range
+- `Ch3` is more limited
+- `Ch4` is even more limited
+- `MIPS24` is effectively not covered in the current setup
+
+This is useful because it explains why:
+
+- `Ch1` / `Ch2` look like the safest first validation bands
+- `Ch3` / `Ch4` are patchier
+- `MIPS24` is not ready yet
+
+#### Figure 4: `fig4_color_magnitude.png`
+
+What it shows:
+
+- left: predicted `Ch1` magnitude distribution
+- middle: `Ch1 - Ch2` color vs redshift
+- right: IRAC color-color plane
+
+My read:
+
+- this is more of a sanity-check / population-view figure
+- the predicted MIR photometry is not random; it forms structured color trends with redshift and mass
+- the model produces a sensible-looking galaxy population in MIR color space
+
+#### Figure 5: `fig5_speculator_vs_photulator.png`
+
+What it shows:
+
+- `Speculator` vs `Photulator` predictions for `Ch1` and `Ch2`
+- with residuals vs redshift underneath
+
+My read:
+
+- these two fast prediction methods agree almost perfectly
+- the points sit right on the `1:1` line
+- residuals are extremely small
+
+So this is basically saying:
+
+- the two synthetic pipelines are internally consistent for `Ch1` / `Ch2`
+
+#### Figure 6: `fig6_example_seds.png`
+
+What it shows:
+
+- a few example galaxy SEDs at different redshifts
+- with the IRAC / MIPS filter curves drawn on top
+
+My read:
+
+- this is mainly a visual explanation figure
+- it helps show where the MIR filters sit relative to the galaxy spectrum as redshift changes
+- it also helps explain why some bands are easier to model than others, and why coverage gets worse at longer wavelengths
+
+#### Figure 7: `fig7_photulator_vs_stored.png`
+
+What it shows:
+
+- `Photulator - Stored` residuals for `Ch1` and `Ch2` as a function of redshift
+
+My read:
+
+- overall offsets are still small:
+  - `Ch1` median about `-0.026 mag`
+  - `Ch2` median about `-0.058 mag`
+- but this figure makes the redshift-dependent structure easier to see
+- agreement is generally fine, but it looks less clean at the highest redshifts
+
+So I would read this as:
+
+- still good overall for `Ch1` / `Ch2`
+- but there are some redshift-dependent systematics worth keeping in mind
+
+### 11) My overall take on the figures
+
+The main story from these figures is:
+
+- `Ch1` / `Ch2` look strong internally
+- the synthetic MIR machinery seems self-consistent
+- `Ch3` / `Ch4` are more limited by coverage and likely harder to trust as clean headline bands
+- `MIPS24` is clearly the missing next step
+
+Also, these figures are mostly telling me:
+
+- "is the synthetic MIR pipeline behaving sensibly?"
+
+rather than:
+
+- "does it match the real observed COSMOS2020 photometry?"
+
+So I think the next best step is still:
+
+- make a small set of direct observed-vs-model plots for `IRAC Ch1` and `Ch2`
+- then extend to `Ch3` / `Ch4` carefully
+
+### 12) Direct observed-vs-model IRAC check I made now
+
+#### What I actually did
+
+For the same matched pop-cosmos sample:
+
+- took the stored pop-cosmos model magnitudes for `Ch1` / `Ch2` from Boris's MIR file
+- took the observed `IRAC_CH1` / `IRAC_CH2` fluxes from COSMOS2020 Farmer
+- converted the observed fluxes to AB magnitudes
+- plotted observed vs model directly
+- then plotted residuals against redshift
+
+Here residual means:
+
+- `model - observed`
+
+So:
+
+- positive residual = model is a bit fainter than the data
+- negative residual = model is a bit brighter than the data
+
+#### Main result
+
+Overall summary:
+
+- `Ch1`: `N = 423,272`, median residual `+0.020 mag`, MAD `0.084 mag`
+- `Ch2`: `N = 414,272`, median residual `-0.012 mag`, MAD `0.041 mag`
+
+My quick read:
+
+- both bands look good overall
+- `Ch2` is clearly tighter than `Ch1`
+- the typical bias in both bands is small
+
+#### What the observed-vs-model plots show
+
+For both `Ch1` and `Ch2`:
+
+- the dense cloud sits close to the `1:1` line
+- so the model is tracking the real observed magnitudes pretty well
+
+Difference between the two:
+
+- `Ch1` has a broader scatter around the line
+- `Ch2` is tighter and cleaner
+
+So if I want the cleanest simple validation statement right now, it is probably:
+
+- pop-cosmos does a decent job in both `IRAC Ch1` and `Ch2`
+- and the agreement looks especially strong in `Ch2`
+
+#### What the residual-vs-redshift plot shows
+
+`Ch1`:
+
+- mostly near zero through a lot of the redshift range
+- small positive bump around roughly `z ~ 1 to 1.5`
+- small negative dip around roughly `z ~ 2 to 4`
+- then it starts to drift more at the very highest redshift end
+
+`Ch2`:
+
+- starts slightly negative at low `z`
+- stays very close to zero from about `z ~ 1.5` to `z ~ 4.5`
+- gets messy at the very highest redshift end, where there are fewer objects
+
+So the simple overall message is:
+
+- most of the redshift range looks stable
+- the high-redshift tail is less reliable / noisier
+- `Ch2` looks more stable than `Ch1`
+
+#### Why this is different from Boris's figure set
+
+Boris's script already did the direct comparison numerically.
+
+But the figures he shared before were mostly:
+
+- internal consistency checks
+- model vs stored
+- speculator vs photulator
+- coverage / sanity plots
+
+The new three plots are different because they are the cleaner direct answer to:
+
+- "does the pop-cosmos model reproduce the observed `IRAC Ch1/Ch2` measurements?"
+
+So I think these are better meeting figures.
+
+#### Short version
+
+- I now have the clean direct `observed vs model` plots for `IRAC Ch1` and `Ch2`.
+- Both look good overall.
+- `Ch2` is tighter than `Ch1`.
+- Residuals stay close to zero across most of the redshift range.
+- The highest-redshift tail is where things start to get noisier.

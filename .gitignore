@@ -13,3 +13,5 @@ __pycache__/
 Accelerated processing/aes_subbytes_shiftrows_mvp/build/
 Accelerated processing/aes_ctr_full_pipeline_compile_test/build/
 Accelerated processing/hls-samples/
+
+Research project/Project coding/Boris work/cosmos2020_mir_photometry.h5
