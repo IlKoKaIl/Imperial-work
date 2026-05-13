@@ -1,0 +1,169 @@
+V6+ PLAN (COMPACT) - MARCH TO SEPTEMBER 2026
+Goal: consistent V6+ by September 30, 2026 while keeping physique work.
+
+This can break your plateau if you do 3 things:
+1) Keep session quality high (good rest, capped attempts).
+2) Progress finger loads slowly every 1-2 weeks.
+3) Deload every 4th week.
+
+==================
+1) WEEKLY SCHEDULE
+==================
+MON: Climb hard + Max hangs
+TUE: Gym A (7 exercises x 2 working sets each)
+WED: Climb volume + Repeaters
+THU: Home core (8-10 min) + optional 20-30 min easy cardio
+FRI: Climb project day (no full hangboard workout)
+SAT: Gym B (7 exercises x 2 working sets each)
+SUN: Full rest
+
+Keep Thu + Sun as recovery focused.
+
+THU HOME CORE:
+- 3 rounds
+  1) Hanging leg raises x 8-12
+  2) Hollow body hold 20-35s
+  Rest 45-60s between rounds
+- Keep all sets 1-2 reps/seconds away from failure.
+
+==============================
+2) CLIMBING WARM-UP (ALL 3 DAYS)
+==============================
+1) 5-8 min general warm-up
+2) External shoulder rotations: 2 sets
+3) 6-8 easy boulders, gradually harder
+4) Recruitment hangs only: 3 x 10s easy-moderate, full rest
+
+Important:
+- Do NOT do full repeaters before climbing.
+- It may not feel very pumped, but it still adds finger fatigue.
+
+===========================
+3) HANGBOARD (EXACT PLAN)
+===========================
+A) MONDAY - MAX HANGS (AFTER HARD CLIMB)
+- 20 mm edge, half crimp
+- 6 sets x 7-10s
+- Rest 2.5-3.5 min
+- Intensity: RPE 8.5-9 (hard, never failure)
+- Progression: when all 6 sets are strong, add 1-2 kg or reduce assistance slightly
+
+B) WEDNESDAY - REPEATERS (AFTER VOLUME CLIMB)
+- 20 mm edge, half crimp, feet assisted
+- 7s on / 3s off x 6 reps = 1 set
+- 5 sets total
+- Rest 2-3 min between sets
+- Intensity: set 4-5 hard but controlled
+- Progression: reduce foot assistance slightly every 1-2 weeks
+
+C) FRIDAY - NO FULL FINGERBOARD WORK
+- Keep Friday for best project performance.
+- Only do recruitment hangs from warm-up.
+- If you insist on Friday fingerboard: do 2 sets repeaters max, and then skip Wednesday repeaters that week.
+
+Safety rule:
+- Finger pain >2/10 lasting >48h = remove max hangs + campus for 7 days.
+
+=========================
+4) CLIMB DAY STRUCTURE
+=========================
+MON (HARD DAY) - 85-95% effort
+- 4-6 hard problems (board or gym set)
+- Max 4 attempts per problem
+- Rest 3-4 min between hard tries
+- Total hard attempts: 16-24
+- Then max hangs
+
+WED (VOLUME DAY) - 65-80% effort
+- 12-18 total problems
+- Mix board and gym sets (example 6 + 6)
+- 1-2 attempts per problem
+- Rest 1.5-2.5 min
+- Then repeaters
+
+FRI (PROJECT DAY) - 90-100% effort
+- 2-3 project problems (board preferred for MoonBoard goal)
+- 4-6 attempts per project, then move on
+- Rest 4-5 min between serious attempts
+- Optional: finish with 2-3 easier quality sends
+
+Stop rule (all climb days):
+- Stop when power drops clearly for 3 attempts in a row.
+
+==============================
+5) GYM DAYS (YOUR PREFERENCES)
+==============================
+Format: 7 exercises x 2 working sets each.
+Compounds: keep 1-2 reps in reserve.
+
+TUE - GYM A (Lower + Push + Core)
+1) Zercher squat
+2) Deadlift or RDL
+3) Chest press (flat or incline)
+4) Overhead press
+5) Triceps cable extension
+6) TRX: 45s plank + 30s rest, 45s body saw + 30s rest, 45s mountain climber + 30s rest, repeat 3 rounds
+7) Face pull or external rotation
+
+SAT - GYM B (Pull + Arms + Forearm Rehab)
+1) Weighted pull-ups
+2) Chest-supported row
+3) Cable bicep curls or hammer curls
+4) Cable wrist extensions
+5) Cable wrist curls
+6) Lock-off isometrics (90-120 degrees, 5-8s)
+7) Lateral raise or reverse fly
+
+==========================
+6) WEIGHTED PULL-UP PLACEMENT
+==========================
+Keep weighted pull-ups on Saturday gym day.
+Do not move heavy weighted pull-ups to climb days.
+Reason: preserves Monday/Friday board performance and lowers elbow/finger overload risk.
+
+==========================
+7) POWER / CAMPUS QUESTION
+==========================
+Yes, you need power, but first get it through hard/dynamic board climbing.
+Campus is optional and only after May 2026 if pain free.
+
+Campus starter (1x/week max):
+- 4-6 total sets
+- big rungs
+- feet-on laddering or controlled double touches
+- 2-3 min full rest
+- no 1-3-5 maxing yet
+
+====================
+8) PROGRESSION BLOCK
+====================
+Mar 16 - Mar 29: reset fatigue and establish routine
+Mar 30 - May 24: base build (high-quality volume + consistent repeaters)
+May 25 - Jul 19: harder board intensity + max hang progression
+Jul 20 - Sep 06: project conversion, slightly lower gym fatigue
+Sep 07 - Sep 30: peak and send phase
+
+Deload every 4th week:
+- Climbing volume down 35-40%
+- Max hangs: 3 sets only
+- Repeaters: 3 sets only
+- Gym loads down 10-15%
+
+=====================
+9) NUTRITION (COMPACT)
+=====================
+Protein: 130-150 g/day
+Creatine: 5 g/day
+Pre-climb carbs: 60-120 min before session
+If cutting, keep deficit small to protect climbing performance
+
+=========================
+10) SIMPLE TRACKING
+=========================
+Every 4 weeks track:
+1) 20 mm 7s hang load (added or assisted)
+2) MoonBoard benchmark list (8-10 climbs): flash rate + sends within 3 tries
+3) Best gym grade sent in <=5 attempts
+4) Finger pain score and bodyweight trend
+
+End of note.

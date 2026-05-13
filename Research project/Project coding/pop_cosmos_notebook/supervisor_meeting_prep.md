@@ -1,4 +1,4 @@
-# pop-cosmos Supervisor Prep Tasks
+### pop-cosmos Supervisor Prep Tasks
 
 ## Task 1: Quantitative MS comparison to Speagle+2014
 
@@ -1163,7 +1163,7 @@ This fits the bigger project story well:
 - then push further into bands that are more sensitive to dust-obscured emission
 - then later compare to FIR / radio / X-ray products
 
-### 6) Questions 
+### 6) Questions
 
 - Is `Ch2` also in the original pop-cosmos stored model output, or is it only in the new synthetic MIR file?
 - For `Ch3` / `Ch4`, which observed comparison should I trust more as the main reference:
@@ -1508,8 +1508,8 @@ where:
 - `N` = total number of COSMOS galaxies passing the selection
 - `f_b` = pop-cosmos predicted fraction of galaxies in redshift bin `b`
 - `Vco,b` = comoving volume of that redshift bin over the COSMOS sky area
-
 - So the normalization is done using:
+
   - survey area
   - comoving volume of the bin
   - total counts / predicted fractions from the model
@@ -1522,14 +1522,584 @@ where:
 - If asked "is this the same as `1/Vmax`?" the answer is:
 
   - **No, not formally.**
-
 - Better wording:
 
   - `1/Vmax` is a **per-galaxy observational weighting estimator**
   - these pop-cosmos papers are using a **forward-model / survey-normalized population estimate**
-
 - So they are trying to estimate the same kind of physical quantities:
+
   - stellar-mass distributions
   - cosmic SFR density
-
 - But they are **not** doing it with the standard `sum_i (1 / Vmax,i)` recipe.
+
+### April 20, 2026 add-on: IRAC redshift histograms + Kennicutt / obscured-SFR follow-up
+
+This is the follow-up to the meeting note:
+
+- do histogram for the 2 IRAC plots
+- check the build-up around `z ~ 3.5`
+- read Kennicutt
+- pick a standard IMF
+- think about how to go from pop-cosmos SFR to IR / FIR luminosity for an obscured-SFR test
+
+### 1) Histogram check for the IRAC validation sample
+
+* **model** = pop-cosmos stored **Ch1** / **Ch2** magnitudes from Boris’s MIR file
+* **observed** = real **IRAC_CH1** / **IRAC_CH2** measurements from COSMOS2020 Farmer
+
+Plots:
+
+![IRAC matched-sample redshift histograms](outputs/popcosmos_irac_redshift_histograms.png)
+
+![IRAC worst-residual redshift histograms](outputs/popcosmos_irac_worst_residual_redshift_histograms.png)
+
+#### What I did
+
+For the same matched `Ch1` / `Ch2` validation sample:
+
+- took the redshifts of all galaxies used in the direct `observed vs model` plots
+- made full redshift histograms for `Ch1` and `Ch2`
+- then defined the "worst residual" objects as the top `5%` in absolute residual
+- and made redshift histograms for those worst-residual subsets
+
+Residual means:
+
+- `model - observed`
+
+So this histogram check is not changing the photometry result. It is just asking:
+
+- are the odd-looking redshift features in the residual plot real model problems,
+- or are they just places where the sample has a lot of galaxies?
+
+#### Threshold I used for the "worst residual" subset ( are the bad fit galaxies concentrated at some ~z)
+
+- `Ch1`: top `5%` means `|residual| >= 0.674 mag`
+- `Ch2`: top `5%` means `|residual| >= 0.543 mag`
+
+Counts:
+
+- `Ch1 matched`: `423,272`
+- `Ch2 matched`: `414,272`
+- `Ch1 worst 5%`: `21,164`
+- `Ch2 worst 5%`: `20,714`
+
+### 2) What the histograms show
+
+#### Full matched sample
+
+Main redshift pile-up for both `Ch1` and `Ch2` is not at `z ~ 3.5`.
+
+The biggest counts are around:
+
+- `z ~ 0.8 to 1.2`
+
+Examples from the top bins:
+
+- `Ch1` highest bin: `0.9 <= z < 1.0` with `25,341` galaxies
+- `Ch2` highest bin: `0.9 <= z < 1.0` with `24,730` galaxies
+
+### 4) Where do the worst residuals seem more concentrated?
+
+The highest worst-residual fractions are mostly:
+
+- very high redshift bins (`z > 5`)
+- and, for `Ch1`, also some low-redshift bins around `z ~ 0.2 to 0.5`
+
+I do not want to over-interpret the `z > 5` bins too much because:
+
+- the total counts there are small
+- so the fraction is noisy
+
+### 5) IMF choice for the Kennicutt step
+
+I need to pick one IMF convention and keep everything in that system.
+
+My working choice:
+
+- use **Chabrier-equivalent** as the standard comparison IMF
+
+Reason:
+
+- COSMOS2020 physical parameters already use `Chabrier` in the LePhare setup
+- modern COSMOS-area work often reports results in `Chabrier`
+- Wang+2024 also states they adopt `Chabrier (2003)` in the paper
+
+But:
+
+- the classic Kennicutt 1998 IR calibration is written for a **Salpeter** IMF over `0.1-100 stellar masses (IMF tells us how many low/high mass stars form when they do, dist of stars masses at birth)`
+
+So the safe workflow is:
+
+1. write the Kennicutt relation in its original Salpeter form
+2. convert it to a Chabrier-equivalent form before comparing across modern catalogs
+
+So I am not going to mix IMF conventions silently.
+
+### 6) What I got from Kennicutt 1998
+
+The key relation I need is the IR luminosity calibration:
+
+$$
+\mathrm{SFR}\;[M_\odot\,\mathrm{yr}^{-1}] = 4.5\times10^{-44}\;L_{\mathrm{IR}}\;[\mathrm{erg\,s^{-1}}]
+$$
+
+Equivalent solar-luminosity form:
+
+$$
+\mathrm{SFR}\;[M_\odot\,\mathrm{yr}^{-1}] \approx 1.7\times10^{-10}\;L_{\mathrm{IR}}\;[L_\odot]
+$$
+
+So inverted:
+
+$$
+L_{\mathrm{IR}}\;[L_\odot] \approx 5.8\times10^{9}\;\mathrm{SFR}\;[M_\odot\,\mathrm{yr}^{-1}]
+$$
+
+Important assumptions:
+
+- this is for **integrated IR luminosity**, not just one FIR band
+- it is a dust-obscured star-formation calibration
+- it assumes a Salpeter IMF in the original paper
+
+So this does **not** let me convert one raw `250 micron` flux directly into SFR.
+
+It only works cleanly if I have:
+
+- total integrated `L_IR`
+
+### 7) What pop-cosmos SFR I should feed into this
+
+I re-checked the local pop-cosmos notes / notebook setup.
+
+Current working definition is:
+
+- pop-cosmos `log10SFR` is the **average SFR over the most recent `100 Myr`**
+
+This comes from the first two SFH bins:
+
+- `0-30 Myr`
+- `30-100 Myr`
+
+So for this exercise I should treat the pop-cosmos SFR as:
+
+$$
+\mathrm{SFR}_{100}
+$$
+
+That is useful because it makes the timescale explicit.
+
+It also means I should be careful when comparing to any IR-based SFR catalog, because:
+
+- IR SFRs are observationally calibrated tracers of obscured recent star formation
+- but they are not the same in definition to the pop-cosmos `100 Myr` model average
+
+### 8) Which long-wave catalog looks like the best next one if I want `L_IR`
+
+From what I checked, the best immediate next catalog is probably:
+
+- **Jin et al. 2018 COSMOS super-deblended catalog**
+
+Why this looks better than Wang for the obscured-SFR test:
+
+- my local Wang `master.dat` file gives deblended long-wave photometry, but no direct `L_IR` column
+- so Wang is good for a flux-based sanity check, but not the cleanest first `SFR -> L_IR` comparison
+
+Why Jin looks promising:
+
+- it is in the same COSMOS field
+- it is FIR/(sub)mm focused
+- the abstract says the **photometric and value-added catalogs are publicly released**
+- later COSMOS papers explicitly describe the super-deblended sample as having SFR derived from integrated IR luminosity `L_IR`
+
+So right now:
+
+- `Wang 2024` = good for deblended long-wave flux checks
+- `Jin 2018 super-deblended` = better next step if I want direct `L_IR` / obscured-SFR style validation
+
+### 9) What I think the next concrete step should be
+
+ I want to actually test obscured SFR with Kennicutt:
+
+1. download the COSMOS super-deblended value-added catalog
+2. check whether it has:
+   - `L_IR`
+   - or an IR-based SFR column
+3. cross-match it to pop-cosmos / COSMOS2020 IDs
+4. convert pop-cosmos `SFR_100` to predicted `L_IR` using one IMF convention
+5. compare:
+   - predicted `L_IR` from pop-cosmos
+   - observed `L_IR` from the long-wave catalog
+
+That would be the first real direct obscured-SFR test.
+
+### 10) quick summary..
+
+- I made the redshift histograms for the IRAC validation sample and the worst-residual subsets.
+- The main sample build-up is around `z ~ 0.8-1.2`, not `z ~ 3.5`.
+- There is a smaller bump around `z ~ 3.4-3.6`, but the worst-residual fraction there is only around `3-4%`, so it is not a standout failure region.
+- For the Kennicutt step, I am going to use a Chabrier-equivalent convention overall, but convert the original Salpeter Kennicutt calibration first.
+- The pop-cosmos SFR I should use is the `100 Myr`-averaged recent SFR.
+- For a real obscured-SFR test, Jin+2018 super-deblended COSMOS looks like the better next catalog because it is more likely to give me `L_IR` directly, unlike the local Wang flux table.
+
+### May 5, 2026: first check with the new `L_IR` catalog
+
+For today's meeting I used `fsps_lir_scalars.h5` as the first proper FIR-side quantity from pop-cosmos.
+
+Recap:
+
+- `L_IR` is the total infrared luminosity integrated over rest-frame `8-1000 um`.
+- simply, bigger `L_IR` means more energy is coming out in the infrared, so more dust-reprocessed / obscured emission.
+- Important: this is still a **model-derived** quantity from the pop-cosmos posterior medians, not a direct Herschel observation.
+
+#### What I checked
+
+- merged `fsps_lir_scalars.h5` onto the real pop-cosmos catalog using the Farmer ID
+- confirmed the match is exact:
+  - `index` in the new file matches `metadata/index_farmer`
+  - `z` matches exactly too (`max |z_pop - z_lir| = 0`)
+- kept the same broad SF-like cut as before:
+  - `8.5 <= log10M <= 11.5`
+  - `z < 4`
+  - `log10sSFR > -11`
+- compared model `L_IR` to pop-cosmos `log10SFR`
+- compared model `L_IR` to a simple Kennicutt 1998 IR-SFR reference line
+- re-used the Wang matched sample to see whether long-wavelength detected galaxies sit at higher model `L_IR`, which is what I would expect physically
+
+For the quick Kennicutt reference I used the original simple form:
+
+$$
+L_{\mathrm{IR,K98}}\,[L_\odot] \approx 5.8\times 10^9\; \mathrm{SFR}\,[M_\odot\,\mathrm{yr}^{-1}]
+$$
+
+or in log form:
+
+$$
+\log_{10} L_{\mathrm{IR,K98}} = \log_{10}(\mathrm{SFR}_{pop}) + \log_{10}(5.8\times 10^9)
+$$
+
+I am treating this as a quick/general reference , not a final truth, because:
+
+- Kennicutt is a simple calibration
+- the new `L_IR` values come from the full FSPS dust-emission model (more detailed model, not just one formula but full Spectral energy dist model)
+- the file was generated with the AGN torus switched on (so some of the L_IR may come from the AGN-heated dust)
+- IMF / timescale conventions are not fully harmonized yet (which IMF used or what recent time period SFR is defined over)
+
+So if the model sits above the Kennicutt line, that is not automatically a failure. It is just the first thing to quantify.
+
+#### Main results from the summary table
+
+Saved table:
+
+- `outputs/popcosmos_lir_summary.csv`
+
+Key rows:
+
+- `all_sf_like`: `N = 354,562 (all galaxies in the pop cosmos cat after cuts: finite mass, SFR, redshift)`
+
+  - median `z = 1.40`
+  - median `log10SFR = 0.20`
+  - median `log10LIR = 10.31`
+  - median offset from the simple Kennicutt line = `+0.32 dex`
+  - `rho(logSFR, logLIR) = 0.95 (how strongly SFR and L_IR rise together): closer to 1 = stronger`
+- `Bin A (1 <= z < 2, 9 <= logM <= 11.5)`: `N = 107,628`
+
+  - median `z = 1.42`
+  - median `log10SFR = 0.33`
+  - median `log10LIR = 10.51`
+  - median offset from the simple Kennicutt line = `+0.42 dex`
+  - `rho(logSFR, logLIR) = 0.92`
+- `Bin B (1.5 <= z < 2.5, logM >= 10)`: `N = 19,300`
+
+  - median `z = 1.89`
+  - median `log10SFR = 1.25`
+  - median `log10LIR = 11.54`
+  - median offset from the simple Kennicutt line = `+0.60 dex`
+  - `rho(logSFR, logLIR) = 0.82`
+
+Simple read:
+
+- the new model `L_IR` tracks pop-cosmos SFR very strongly, which is good as a first sanity check
+- the relation stays tight in the narrower Bin A / Bin B samples too
+- the model `L_IR` is usually **above** the simple Kennicutt reference line by about `0.3-0.6 dex`
+- the offset is bigger in the higher-mass / higher-SFR Bin B sample
+
+`0.3 dex` is about a factor of `2`, and `0.6 dex` is about a factor of `4`, so these are noticeable offsets, not tiny ones.
+
+#### Plot: model `L_IR` vs pop-cosmos SFR
+
+![Model LIR vs pop-cosmos SFR](outputs/popcosmos_lir_vs_sfr.png)
+
+What this plot is showing:
+
+- x-axis = pop-cosmos SFR
+- y-axis = model total infrared luminosity
+- red dashed line = the simple Kennicutt reference
+- yellow = where most galaxies are
+
+What I take from it:
+
+- there is a very clear positive relation, so galaxies with higher pop-cosmos SFR usually also have higher model `L_IR`
+- most of the dense cloud sits **above** the simple Kennicutt line
+- that means the FSPS-based `L_IR` is generally higher than what the simple one-line Kennicutt conversion would predict from the pop-cosmos SFR alone
+- this doesn't necessarily mean the model is wrong, just that the simple calibration is maybe not capturing all the complexity
+- **What assumptions is the Kennicutt model making??, pop cosmos wrong in FIR?..**
+
+#### Plot: how the offset changes with redshift
+
+![Model LIR offset vs redshift](outputs/popcosmos_lir_offset_by_redshift.png)
+
+**Legend**:
+
+Blue line - Main result, shows the median offset in each redshift bin, so all above the ---0-- line meaning predicting L_IR higher than Kennicutt
+
+Blue area - Spread around mean, the ~16th to 84th percentile. Where most galaxies in that redshift bin sit. Narrow = more tightly grouped. Here it's pretty wide so though the median trend is clear, there is a decent amount of galaxy-to-galaxy srpead.
+
+Histograms: How many galaxies in each redshift bin (read from right side counts axis)
+
+Saved table for the exact redshift-bin values:
+
+- `outputs/popcosmos_lir_offset_redshift_bins.csv`
+
+Main numbers from that table:
+
+- `z ~ 0.25`: median offset `+0.21 dex`
+- `z ~ 0.75`: median offset `+0.27 dex`
+- `z ~ 1.25`: median offset `+0.38 dex`
+- `z ~ 1.75`: median offset `+0.44 dex` (largest median offset in this quick check)
+- `z ~ 2.25`: median offset `+0.33 dex`
+- `z ~ 2.75`: median offset `+0.26 dex`
+- `z ~ 3.25`: median offset `+0.25 dex`
+- `z ~ 3.75`: median offset `+0.23 dex`
+
+quick interpretation:
+
+- the offset is not flat with redshift
+- it grows from low z up to around `z ~ 1.5-2`
+- then it drops back down a bit at higher z
+- so if I keep using the simple Kennicutt line as a reference, the mismatch looks strongest around the main `z ~ 1-2` regime where a lot of the sample lies
+
+#### Wang cross-match: does the new model `L_IR` agree against the longer-wave detections?
+
+Saved tables:
+
+- `outputs/popcosmos_wang_lir_group_summary.csv`
+- `outputs/popcosmos_wang_lir_band_summary.csv`
+
+For the same matched Bin A sample as before:
+
+- `all_matched`: `N = 37,149 (all galaxies in both pop-cosmos and Wang after cuts)`
+
+  - median `log10LIR = 11.18`
+  - median `log10SFR = 0.90`
+- `long_detect`: `N = 2,673 (those where Wang has a significant long-wavelenght detection)`
+
+  - median `log10LIR = 11.78`
+  - median `log10SFR = 1.42`
+- `not_long_detect`: `N = 34,476`
+
+  - median `log10LIR = 11.13`
+  - median `log10SFR = 0.86`
+
+Simple read:
+
+- the long-detected Wang subset sits at clearly higher model `L_IR`
+- it also sits at higher pop-cosmos SFR and higher mass, which is physically sensible
+- the difference in median `log10LIR` between long-detected and not-long-detected is about `0.65 dex`, so roughly a factor of `4-5`
+
+That is encouraging, because it means the galaxies that really do show up at longer wavelengths are also the ones the model is flagging as more IR-luminous.
+
+#### Plot: Wang split + direct flux checks
+
+![Wang LIR checks](outputs/popcosmos_wang_lir_vs_flux.png)
+
+What I take from this figure:
+
+- left panel: the long-detected galaxies are shifted to higher `L_IR` than the rest of the matched sample
+- middle panel (`250 um`): there is a positive trend, but it is broad rather than very tight: (x axis: Model L_IR from file vs Wang flux,)
+- right panel (`850 um`): the trend is still in the expected direction, but it is much noisier because the sample is smaller and the single-band flux is a rougher tracer of total `L_IR`
+
+Band-by-band Spearman rank correlations in Bin A:
+
+- `250 um`: `rho = 0.23` (`N = 2,569`)
+- `350 um`: `rho = 0.22` (`N = 1,875`)
+- `500 um`: `rho = 0.17` (`N = 834`)
+- `850 um`: `rho = 0.16` (`N = 294`)
+
+So the direct single-band flux to total-`L_IR` correlation is only weak-to-moderate here. I do **not** think that is surprising, because one observed-frame FIR/sub-mm flux depends on more than just total `L_IR`:
+
+- redshift
+- SED shape
+- dust temperature
+- bandpass / K-correction effects
+
+So the group split is the cleaner result here than the single-band correlation strength.
+
+#### What this gives me for the project
+
+This is the first real step from:
+
+- "pop-cosmos optical/NIR fit"
+
+to
+
+- "does pop-cosmos imply sensible FIR-side dusty emission?"
+
+So this feels like the right bridge into the multi-wavelength-validation part of the project.
+
+At the moment the strongest safe takeaway is:
+
+- the new model `L_IR` behaves sensibly with pop-cosmos SFR
+- it also behaves sensibly with the Wang long-wavelength detected subset
+- but I still need a true **observed `L_IR` or IR-based SFR catalog** to turn this into a direct observed-vs-model obscured-SFR comparison
+
+#### What I would do next
+
+- use this `L_IR` file as the main pop-cosmos FIR-side quantity from now on
+- next real external comparison should be against a catalog that gives observed `L_IR` (or an IR-based SFR), not just a long-wave detection flag
+- if I can get a COSMOS super-deblended value-added catalog with observed `L_IR`, that should be the cleanest next comparison (any quantity that proves FIR, what model constraints there even if they dont hv L_IR)
+- **AGN, dust params,.. of galaxies and plot against the metrics as b4 to find where/what is causing the discrepencies in our data.**
+- (how did wang extract data here.. Sed etc.), lack of correlation suprising ? .. email Dave.
+
+#### Files
+
+Code used here in:
+
+- `pop_cosmos_notebook/popcosmos_lir_obscured_sfr_check.py`
+
+### May 12, 2026: follow-up from Pf Clements on Wang flux vs model `L_IR`
+
+suggested checking whether the ratio of the model FIR quantity to the Wang single-band flux changes with redshift.
+
+So this week I did the direct diagnostic:
+
+$$
+\log_{10}(L_{IR}) - \log_{10}(F_{\lambda})
+$$
+
+for the Wang bands, using the matched pop-cosmos redshift.
+
+Important note:
+
+- this isn't a physically calibrated luminosity/flux conversion by itself because the units are mixed (`L_\odot` and observed flux units)
+- so I am **not** using the absolute value of the ratio as the main result
+- I am only using it as a trend diagnostic: does the ratio change systematically with redshift?
+
+If it does, that supports the idea that part of the scatter is coming from the fact that:
+
+- `L_IR` is a **rest-frame integrated** quantity (`8-1000 um`)
+- Wang `250/350/500/850 um` are **observed-frame single-band** fluxes
+
+So the same observed Wang band is sampling different parts of the IR SED at different redshifts.
+
+#### Files
+
+Code inside:
+
+- `pop_cosmos_notebook/popcosmos_wang_lir_redshift_ratio_check.py`
+
+Outputs:
+
+- `outputs/popcosmos_wang_lir_fluxratio_summary.csv`
+- `outputs/popcosmos_wang_lir_fluxratio_redshift_bins.csv`
+- `outputs/popcosmos_wang_lir_fluxratio_vs_redshift.png`
+
+#### Main plot
+
+![Wang LIR/flux ratio vs redshift](outputs/popcosmos_wang_lir_fluxratio_vs_redshift.png)
+
+What this plot shows:
+
+- x-axis = redshift
+- y-axis = `log10(L_IR) - log10(F_band)`
+- left panel = Wang `250 um`
+- right panel = Wang `850 um`
+- colored hexagons = where most galaxies are
+- blue line = median trend with redshift
+- blue shaded area = spread around that median trend
+
+Simple interpretation:
+
+- both panels show the ratio rising with redshift
+- this is strongest and clearest for `250 um`
+- `850 um` is noisier, but still broadly rises with redshift too
+
+That is exactly the kind of effect I would expect if observed-frame vs rest-frame shifting is part of the reason the direct `L_IR` vs Wang flux relation looked broad.
+
+#### Summary table
+
+From `outputs/popcosmos_wang_lir_fluxratio_summary.csv`:
+
+- `250 um`
+
+  - `N = 5,896`
+  - median `z = 1.03`
+  - Spearman `rho(ratio, z) = 0.75`
+- `350 um`
+
+  - `N = 3,787`
+  - median `z = 1.17`
+  - Spearman `rho(ratio, z) = 0.68`
+- `500 um`
+
+  - `N = 1,603`
+  - median `z = 1.32`
+  - Spearman `rho(ratio, z) = 0.65`
+- `850 um`
+
+  - `N = 588`
+  - median `z = 1.66`
+  - Spearman `rho(ratio, z) = 0.63`
+
+Simple read:
+
+- all four bands show a fairly strong positive correlation between the `L_IR / F_band` style ratio and redshift
+- the clearest case is `250 um`, which also has the biggest sample
+- so the Wang flux discrepancy is **not** just random scatter: a lot of it looks redshift-dependent
+
+#### A few exact redshift-bin values
+
+From `outputs/popcosmos_wang_lir_fluxratio_redshift_bins.csv`:
+
+For `250 um`:
+
+- `z ~ 0.25`: median ratio `9.67`
+- `z ~ 0.75`: median ratio `10.24`
+- `z ~ 1.25`: median ratio `10.62`
+- `z ~ 1.75`: median ratio `10.89`
+- `z ~ 2.25`: median ratio `11.00`
+- `z ~ 2.75`: median ratio `11.21`
+
+For `850 um`:
+
+- `z ~ 0.25`: median ratio `10.08`
+- `z ~ 0.75`: median ratio `10.64`
+- `z ~ 1.25`: median ratio `11.17`
+- `z ~ 1.75`: median ratio `11.54`
+- `z ~ 2.25`: median ratio `11.58`
+- `z ~ 2.75`: median ratio `11.72`
+
+So even without over-interpreting the exact numbers, the direction is clear: the ratio gets larger as redshift increases.
+
+#### What I think this means
+
+This supports Pf Clements idea
+
+My current interpretation is:
+
+- the weak direct `L_IR` vs Wang single-band correlations are at least partly expected
+- a single observed-frame band is not tracing the same rest-frame part of the dust SED at all redshifts
+- so one reason the `250 um` / `850 um` plots looked broad is simply that the same flux does not map to the same total `L_IR` in the same way across the whole sample
+
+So this makes me less worried that the low direct Spearman coefficients automatically mean pop-cosmos is failing.
+
+#### main conclusion is
+
+- the Wang discrepancy now looks at least partly like a **redshift / observed-frame effect**, not just a bad model-vs-data mismatch
+- this means the direct single-band Wang comparison is useful as a sanity check, but not the best final validation metric
+- for a stronger obscured-SFR test, I still want a catalog with observed `L_IR` or IR-based SFR rather than only single-band fluxes
+
+#### Next steps from here
+
+- keep the Wang analysis as a useful long-wave sanity check
+- do not over-interpret the raw `L_IR` vs `250/850 um` by itself
+- try get a COSMOS catalog with observed `L_IR` (or IR-based SFR) so the next comparison is more apples-to-apples

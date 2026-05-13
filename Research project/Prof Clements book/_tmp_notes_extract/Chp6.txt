@@ -1,0 +1,848 @@
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 1 of 25
+
+     Distant Heat                                                 6 CHAPTER
+
+          6.1 FORGETTING TO BREATHE
+
+              As an observational astronomer, I get to travel to various supposedly exotic locations. People get envious when I tell them
+              I'm going to Hawaii to observe, and they don't believe me when I tell them that, to me, Hawaii is a cold windswept
+              mountaintop, working nights.
+
+                 Of course it's not just the cold and the nights that are the problem. At 14,000 feet, the Mauna Kea Observatory on the
+              Big Island is above a third of the atmosphere. Nothing about the human body works properly at this altitude unless you've
+              done some serious acclimatization, and even then things can go wrong. Observers sleep, when they can, at the
+              accommodation block at 10,000 feet, but this is never restful when you're spending twelve or more hours a night on the
+              summit. And when you're on the summit things can get quite strange.
+
+                 My first observing trip provided a useful demonstration of this. You expect to get out of breath easily, and the infamous
+              staircase at the UK Infrared Telescope (UKIRT), from the control room down to the toilets, is a case in point. It's short
+              enough to run up, but at 14,000 feet you should never try to do this unless you like hypoxia.
+
+                 But what gets to you is the unexpected.
+                 I am sitting at a workstation, examining some of my data, when I get the feeling I'm forgetting something important. I
+              check around me to make sure the telescope's not stopped and that we're still taking data. No trouble there. I check the
+              weather monitor to see if the clouds are rolling in. Nothing there either, and these problems seem rather too distant, too
+              impersonal to be what's worrying me.
+                 I'm forgetting something important, that I do all the time by instinct or reflex, but that isn't currently working.
+                 Breathing.
+                 Yes, that's it!
+                 A few deep inhalations later and I'm feeling much better, and my CO2 levels are back to the point where they can
+              trigger the reflex again.
+                 It's not just small problems like forgetting to breathe that make the mountain hazardous, though. You lose IQ points the
+              higher you go, and this can affect you in very strange ways. It's the things you least expect that catch you out, even when
+              it comes to the simple set-up procedures. For example, we managed to waste fifteen minutes one night working out how to
+              align an instrument on the sky purely because we couldn't remember which way was east.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 2 of 25
+
+   But observers have to face only a limited set of problems. The people building telescopes have to face unexpected
+problems throughout the day as they assemble some of the most complicated constructions on the planet. And altitude
+doesn't help.
+
+   Hence this conversation reputedly overheard at the construction site of an observatory that shall remain nameless:
+   Construction worker at the summit: We have a problem with this part. HQ at sea level: Oh yes? What is it?
+   CW: It's the wrong size.
+   HQ: The wrong size?
+   CW: Yes - I've cut it three times, and it's still too short!
+   HQ: Come down the mountain - now!
+   Fortunately the effects of the altitude aren't permanent. Once you're at sea level everything goes back to normal. In fact,
+it's a little better than normal after any time at the summit. You're suddenly reminded just how much air there is, how
+much oxygen there is in it, and that breathing should not be a major form of exercise.
+
+6.2 GALAXIES STARS AND SO MUCH MORE
+
+Everything we have looked at so far has been in our own Galaxy, the Milky Way, but this is just one of billions of galaxies
+in the observable universe. If we are to understand where we came from, how our own galaxy formed, and what its future
+is likely to be, then we have to look further afield, and study the properties of other galaxies.
+
+   Edwin Hubble was one of the first astronomers to seriously study galaxies, and to realise that they did not lie inside the
+Milky Way but were similar objects to it, much further away. There are two very different classes of galaxy, as defined by
+their shape: elliptical galaxies, and spiral galaxies. The Milky Way is a spiral galaxy. Hubble also devised a broader
+classification scheme which separates spiral and elliptical galaxies into separate types, and which separates spiral galaxies
+into those with and without a central bar-like feature. These are known as barred spirals. As with any taxonomic scheme
+there are, of course, exceptions, which Hubble labelled irregulars. Figure 6.1 shows this classification scheme. The
+original idea was that elliptical galaxies evolved into spiral galaxies, so ellipticals are also known as `early type' galaxies
+whilst spirals are known as `late type'. This evolutionary scheme has since been found to be wrong - if anything the
+evolutionary processes work in the opposite direction, from spiral to elliptical - but, as with so many things in astronomy,
+we are now stuck with that nomenclature.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 3 of 25
+
+                                                               
+
+              Figure 6.1 The Hubble `tuning fork' classification scheme for galaxies.
+              (Courtesy of NASA.)
+
+                 While the visible light that we see from stars in galaxies is the most obvious thing to our eyes, galaxies are much more
+              than just agglomerations of stars. The majority of the mass of a galaxy is in fact made up of dark matter, the mysterious
+              material whose gravitational interactions have defined the large scale structure of the universe. Each large galaxy sits
+              inside a halo of dark matter and, in the outer regions of both spiral and elliptical galaxies, the motion of stars is controlled
+              by the gravitational pull of dark matter, rather than that of other stars. Gas and dust can also lie between the stars, making
+              up the galaxy's interstellar medium (ISM). The interstellar medium is the raw material from which new stars form, as we
+              saw in the previous chapter. There is usually very little star formation in an elliptical galaxy, and they are largely made up
+              of a stellar population that is evolving passively. This simply means that no new stars are being formed. Ellipticals are
+              sometimes referred to as `red and dead', their red colour coming from the lack of hot, and thus blue, young, high-mass
+              stars, and dead referring to their lack of star formation. Spiral galaxies, in contrast, usually have large amounts of gas and
+              dust, as well as active star formation, in their disks. Our own Milky Way Galaxy is a good example of this, with a star
+              formation rate of about one solar mass of new stars being formed each year. Most of these new stars are, of course, low
+              mass stars, given what we learnt about the stellar IMF in the last two chapters.
+
+                 The gas in the interstellar medium of galaxies is similar to that found in the Milky Way. It is largely composed of
+              hydrogen, as this is the most common element in the universe, and there will also be helium and a mixture of heavy
+              elements that have been released into the interstellar medium by previous generations of stars. Hydrogen will be in one of
+              three forms: molecular hydrogen, atomic hydrogen, and ionised hydrogen.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 4 of 25
+
+   Ionised hydrogen can be detected in the optical and near-IR by its emission lines, while atomic hydrogen can be
+detected by its 21cm emission line in the radio. Molecular hydrogen, though, is rather more difficult to detect. It has a
+number of weak emission lines in the near infrared which can be excited in certain environments, but the more usual way
+to assess the total amount of molecular hydrogen is to look at a different molecule that acts as a tracer. The molecule
+usually used for this is carbon monoxide, CO, which has emission lines in the far-infrared and submillimetre. Observations
+at these wavelengths are thus needed to make a proper assessment of the amount and distribution of molecular gas in a
+galaxy.
+
+   Dust is also an important component of the interstellar medium in galaxies. Interstellar dust grains range in size from a
+few molecules to about 0.1 micron across. The smallest dust grains are effectively large molecules of polycyclic aromatic
+hydrocarbons (PAHs), which are a variety of carbon compounds made up of many interlinked hexagonal rings of carbon
+atoms. More exotic carbon molecules have been discovered in the interstellar medium as well, including fullerenes, the
+football-shaped molecules C60 and C70 named after Buckminster Fuller [63]1. Large dust grains are made up of a carbon or
+silicate core onto which other molecules from the interstellar medium, including oxygen and nitrogen, have been adsorbed
+(see Chapter 5).
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 5 of 25
+
+                                                               
+
+              Figure 6.2 Top: A near-infrared image of stars at the centre of the Galaxy; Bottom: Our nearest neighbour, the Andromeda
+              galaxy, seen in the optical, far-infrared and X-ray.
+              Top: The motion of these stars was monitored over 16 years and used to find the mass of the supermassive black hole at
+              the centre of our Galaxy. (Courtesy of ESO). Bottom: The optical shows emission from stars, far-infrared shows emission
+              from dust, X-ray shows the remnants left behind at the end of stellar evolution. (Courtesy of ESA.)
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.                Ebook pages 123-145 | Printed page 6 of 25
+
+                                                                                           
+
+              Figure 6.3 Dust temperature variation in the Andromeda galaxy.
+              (Courtesy of ESA.)
+
+                                                                             
+
+              Figure 6.4 Top: The IRAS all-sky survey. Bottom: The Sombrero galaxy M104, in the optical and infrared.
+              Top: The whole sky from IRAS showing emission at 12 microns as blue, 60 microns as green, and 100 microns as red.
+              The red band across the centre of the image is our own Galaxy. The blue streak across the centre to the edges is zodiacal
+              dust in our own Solar System. (Courtesy of NASA.) Bottom: The Sombrero galaxy is shown in optical light (blue and
+              green) from the HST, and infrared light (red) from Spitzer. While this galaxy is classified as a spiral, it has a very weak
+              disk, but a very strong bulge. (Courtesy of NASA.)
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 7 of 25
+
+                 There is one other constituent of most large galaxies that needs to be mentioned - the central supermassive back hole.
+              Black holes are objects that have collapsed to such high densities that the velocity needed to escape from their
+              gravitational attraction is greater than the speed of light. Normal, stellar-mass black holes are the end point of stellar
+              evolution for some of the most massive stars. Such black holes are typically a few solar masses in size, though the
+              remnants of supernova explosions of the most massive stars may be a few tens of solar masses. The black holes in the
+              centres of galaxies, though, are many times this size. The black hole at the centre of our own Galaxy, for example, has a
+              measured mass of about 4 million solar masses [64]. This was determined after a sixteen year programme monitoring the
+              motions of stars at the very centre of our Galaxy that orbit this black hole. Optical telescopes can't do this since the dust
+              and gas in the disk of the Milky Way obscures light from the Galaxy's centre. Near-infrared observations, which are less
+              subject to this obscuration were used instead. Figure 6.2 shows one of the infrared images used for this study, while a
+              movie showing the movements of these stars over sixteen years can be found via this book's website.
+
+                 While you may think the black hole at the centre of our Galaxy is huge, the black holes at the centres of other galaxies
+              can be much larger. Black holes at the centre of giant elliptical galaxies have been found with masses up to ten billion
+              solar masses [109], over a thousand times the mass of the back hole at the centre of the Milky Way. When matter falls
+              onto a supermassive black hole, a large amount of energy is released. This may seem counter-intuitive, since light cannot
+              escape from a black hole, but the energy released by in-falling matter is produced outside the event horizon, beyond which
+              nothing can escape. This happens through the formation of a black hole accretion disk, a disk of matter spiralling ever
+              faster as it falls towards the black hole. The process is not unlike the way water spirals around the plug hole in a bath, but
+              much faster and much bigger. Friction between the different parts of this accretion disk heat the infalling matter to many
+              millions of degrees, and this is how the energy of an accreting black hole is generated. The high temperature of the
+              accretion disks in AGNs makes them prominent sources at X-ray wavelengths.
+
+                 In most cases, galactic centre black holes in the local universe are quiescent: there isn't much matter falling onto them
+              so they don't emit much energy. In a small number of cases, though, matter is being accreted at a much higher rate,
+              producing what is referred to as an Active Galactic Nucleus (AGN). These objects have a wide range of properties which
+              we will be discussing later in this chapter. While AGNs are rare locally, they were much more common at earlier stages of
+              the universe. This is something we will look at in the next chapter.
+
+          6.3 GALAXIES ACROSS THE ELECTROMAGNETIC SPECTRUM
+
+              A galaxy's energy output as a function of wavelength, its spectral energy distribution (SED), as it is known, is dominated
+              by different components of the galaxy at different wavelengths. The bluest stars are the most massive, with the highest
+              power outputs, the hottest surfaces and, as we saw in Chapter 4, the shortest lives. These are responsible for emission in
+              galaxies at ultraviolet wavelengths, and at the blue end of the optical spectrum. Since these stars are short lived, only
+              galaxies where there is star formation underway are bright in ultraviolet and blue light. This is the case for spiral galaxies
+              like our own Milky Way. As can be seen from Figure 6.5, which plots model SEDs for a number of different galaxy types,
+              elliptical galaxies, lacking significant star formation, also lack the blue and ultraviolet emission that would come from
+              young stars. At somewhat longer wavelengths, moving from the blue (short wavelength) end of the optical towards the red
+              (longer wavelength) end, we reach wavelengths that correspond to lower temperature stellar surfaces, and thus cooler,
+              longer-lived stars. The differences between elliptical galaxies and other types thus get smaller with increasing wavelength
+              until in the near-infrared, where the emission is dominated by M-class stars, the SEDs are almost the same. Observations
+              in the near-infrared can be used to determine the size of the underlying old population of stars in galaxies, with little
+              contamination from the hot and bright, but short-lived, higher mass stellar population.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 8 of 25
+
+   Beyond the near-infrared, we begin to see emission from material in the interstellar medium of galaxies, including gas,
+dust and PAHs. This material is not luminous in and of itself - unlike stars, it is not responsible for any energy generation.
+Instead, this material, in a variety of ways, absorbs light from stars and re-emits that energy at wavelengths different to
+those at which it was received. This is exactly what happens to sunlight when it reaches the earth. Rocks, sand or
+sunbathers on a sunny beach are drenched in light arriving from the Sun at optical wavelengths, peaking at roughly 500
+nm in wavelength (0.5 microns). They absorb the energy in that light and warm up a little. As discussed in Chapter 1, any
+object at a temperature above absolute zero emits electromagnetic radiation with a black body spectrum peaking at a
+wavelength given by its temperature. For the rocks, sand and sunbathers on a beach, that temperature will be about 300 K,
+equivalent to 20 degrees Celsius. A black body spectrum for an object at 300 K peaks at a wavelength of about 10
+microns. This is well beyond the capabilities of our eyes to detect, which is why we can't see everything around us
+glowing, but it can be picked up by thermal imaging cameras, as seen in Chapter 1. By absorbing light from the Sun and
+warming up a bit, our beach and sunbathers have, in effect, reprocessed the light of the Sun into mid-infrared radiation. In
+just the same way, the constituents of the interstellar medium absorb light from stars at ultraviolet, optical and near-
+infrared wavelengths, and reprocess it to longer wavelengths.
+
+                                                               
+
+              Figure 6.5 Model spectral energy distributions of several different types of galaxy.
+              The four different SEDs are shifted vertically so they can be compared. (Data for the model SEDs shown here are from [
+              135]).
+
+                 At the longest wavelengths, in the far-infrared, we see emission from dust at temperatures of 30 to 50 K, with emission
+              peaking around 100 microns in wavelength. The dust responsible for this emission is made up of particles of size about 0.1
+              to 1 micron across. These particles may sit in the general interstellar medium between stars, or might be associated with
+              denser regions of gas and dust responsible for star formation. The temperature of the dust will be somewhat warmer if it is
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 9 of 25
+
+              closer to powerful sources of heat, such as young stars or the galactic centre black hole, and cooler if it is far from such
+              intense heat sources and is merely warmed by light from the general population of stars in a galaxy. The total mass of cool
+              dust in a spiral galaxy can be quite large, up to a hundred million times the mass of the Sun, but an accurate measurement
+              of this dust mass depends on an accurate measurement of the dust temperature, and on the balance between warmer
+              components, close to star formation regions, and cooler components.
+
+                 The mid-infrared spectral energy distribution of galaxies, as can be seen from Figure 6.5, can be rather more
+              complicated than the far-infrared. This is because several different components of the interstellar medium contribute to the
+              shape of a galaxy's SED in the mid-infrared. First of all, there are the emission lines of different widths that can be seen as
+              spikes upwards in Figure 6.5. These are produced by PAHs - large carbon-based molecules floating freely in the
+              interstellar medium. Various motions of these molecules produce strong broad lines centred on wavelengths of 3.3, 6.2,
+              7.7, 8.6, 11.2, 12.7 and 16.4 microns, as well as some other weaker features in the mid-infrared. PAH features are usually
+              associated with regions of star formation, and can be used to investigate the star formation underway in galaxies.
+
+                 As well as the PAH emission features, there is also continuum emission in the mid-infrared, corresponding to
+              temperatures of a few hundred to 1000 K. This emission comes from very small dust grains, with size <0.01 microns.
+              These grains are so small that the absorption of a single ultraviolet photon can produce a spike in their temperature to
+              values much higher than would be expected for larger dust grains [21]. There is also a broad absorption feature in the
+              SEDs of all actively star forming galaxies at a wavelength of about 10 microns. This corresponds to a feature in the
+              spectrum of silicates that are a major constituent of interstellar dust.
+
+                 Almost all of the features we have discussed here can be seen in the SEDs of galaxies where star formation is still under
+              way, be that in spiral galaxies like our own, or in galaxies called starbursts where star formation is taking place much more
+              rapidly. We will learn more about starburst galaxies later in this chapter. Elliptical galaxies, however, usually do not host
+              any star formation, and are largely lacking an interstellar medium. Because of this, their spectral energy distribution, from
+              the mid-infrared to the far-infrared, is largely featureless. A small amount of dust, heated to fairly low temperatures of 20-
+              30 K, can be found in them, and this produces a weak bump in their SED peaking at a wavelength of about 100 microns,
+              but this represents an insignificant contribution to their energy output. Quite how elliptical galaxies come to have so little
+              matter in their interstellar medium will be explored later in this chapter.
+
+                 In star forming galaxies, the mid- and far-infrared can account for a significant fraction of the energy they emit. For a
+              spiral galaxy, the mid- to far-infrared can be responsible for about 30% of the galaxy's energy emission. For the most
+              active star forming galaxies, however, this fraction can be as high as 95%. The most actively star forming galaxies in the
+              local universe may seem quite insignificant when observed in the optical, but can be very powerful emitters at longer,
+              infrared wavelengths.
+
+          6.4 M31: OUR NEAREST NEIGHBOUR
+
+              The galaxy M31, found in the constellation Andromeda and therefore often referred to as the Andromeda galaxy, is the
+              nearest large spiral to the Milky Way. It is likely that our own Galaxy would look pretty much like Andromeda if we were
+              able to view it from the outside. The Andromeda galaxy lies about 2.5 million light years away, and can be seen as a fuzzy
+              blob by the naked eye from a good site on a dark night. Figure 6.2 shows what this galaxy looks like at a range of
+              wavelengths, including the optical, far-infrared and X-rays. The light from stars can be seen in the optical, while the far-
+              infrared shows the emission from dust, and X-rays show emission from the neutron stars and supernova remnants left
+              behind at the end point of stellar evolution. If you compare the optical and far-infrared images, you will see that far-
+              infrared emission is strongest where there are dark regions in the optical. These are dust lanes, where plentiful dust
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 10 of 25
+
+              absorbs much of the optical emission, reradiating it at longer far-infrared wavelengths. Gas is associated with this dust, so
+              these same dust lanes are where star formation may be taking place.
+
+                 By comparing the strength of the far-infrared emission in these dust lanes at different wavelengths, it is possible to
+              measure the dust temperature [155]. This is shown in Figure 6.3. As you can see, the centre, where there are the most stars
+              to heat the dust, has the highest temperature at about 30 K. The rings of dust that coincide with the dust lanes are at lower
+              temperatures, but there are blobs all along these dust lanes where the temperature rises to 20 K or more. Combining the
+              Herschel dust images with observations at other wavelengths [61] shows that star formation is taking place throughout the
+              dust lanes in Andromeda, but the places where the dust is warmest is where stars are forming most rapidly.
+
+                 Most of this star formation is caused by the normal turbulent processes of the interstellar medium (see Chapter 5), but
+              the detailed structure of the dust in the centre of this galaxy, combined with the ring of dust lanes at larger radii seen in
+              Figure 6.2, suggest this galaxy may have had a more violent past. These two rings taken together are thought to be the
+              result of a collision between Andromeda and its smaller neighbouring galaxy M32 (which can be seen as the small fuzzy
+              blob diagonally upwards and to the right of the big galaxy's centre in the optical image of Andromeda) which took place
+              about 200 million years ago [18]. As we will see later, major collisions and mergers between galaxies can trigger large
+              changes in their gas, dust and stellar content, as well as their shape. This more minor collision has left Andromeda largely
+              unchanged, but M32 has lost much of its interstellar dust and gas. You can see this by comparing the optical and infrared
+              images of M32. The smaller galaxy has far less dust, and thus far less gas, compared to its optical emission than its larger
+              companion.
+
+                 While this was just a minor incident, much larger things are in store for the Andromeda galaxy because our own
+              Galaxy, the Milky Way, will collide with it in about four billion years [166]. This will be a much larger collision than
+              Andromeda's encounter with M32. We will discuss what might happen as a result of this collision later in this chapter.
+
+          6.5 THE IRAS REVOLUTION
+
+              Studying our local neighbourhood in the universe is all very well, but we can only understand what is going on more
+              broadly by observing galaxies across the whole sky. Before 1983, and the launch of the first infrared space mission, the far-
+              infrared and much of the mid-infrared were unexplored territory. It was known that warm dust, detectable from the ground
+              in the mid-infrared, was abundant in our own galaxy and was a good tracer of star formation, but very little was known
+              about dust at longer wavelengths, and about its role in other galaxies. The Infrared Astronomical Satellite (IRAS) changed
+              all that.
+
+                 IRAS was the first satellite to observe the sky at mid- and far-infrared wavelengths. IRAS had only a 57 cm diameter
+              main mirror, not much bigger than those in the largest amateur telescopes, but IRAS's mirror was not only in space, it was
+              also cooled to liquid helium temperatures - just 4 degrees above absolute zero (i.e., -269 degrees Celsius), allowing it to
+              make sensitive observations in the mid- and far-infrared. For a ten-month period following its launch on 25th January
+              1983 IRAS continuously scanned the sky, detecting sources at four different infrared wavelengths: 12, 25, 60 and 100
+              microns. While ground-based observations are possible at around 10 and 20 microns, IRAS was much more sensitive at
+              these wavelengths, and was the first instrument to do significant work at 60 and 100 microns. The idea of making
+              observations at these long wavelengths was a risk, since it wasn't clear what would be found, and getting the technology
+              to work was a significant effort. The results, however, were spectacular. Many more sources were detected than were
+              expected, and the scene was set for much of the work discussed in this book. IRAS discovered the first debris disk to be
+              found, around the star Vega [10], found several comets [170] and uncovered the link between comets and meteor showers [
+              160]. To my mind, though, it was IRAS's discovery of the 100 micron bump in the SEDs of spiral galaxies, and the even
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 11 of 25
+
+more unexpected discovery of galaxies whose luminosity is dominated by the far-infrared, that was of most importance,
+since it set the scene for most of the future far-infrared space missions.
+
+   The majority of the IRAS satellite's 10-month operational life was spent on an all-sky survey, mapping out the sky in its
+four wavebands (see Figure 6.4). What the scientists behind the mission expected to find were dust clouds in our own
+galaxy, and to detect a few objects outside the Milky Way, such as the nearby Andromeda galaxy. They actually found
+many more faint point sources, located well away from the Galactic plane, than they were expecting. The first hint that
+these sources were outside our own galaxy came when the IRAS satellite scanned past the Large Magellanic cloud (LMC),
+a small satellite galaxy to the Milky Way. At this point the IRAS team did not have an accurate measurement of where the
+satellite's detectors were pointing [145], so their reaction on seeing the detector scans going crazy was that IRAS had
+detected a large cloud of debris in Earth orbit. Eventually they realised that they were in fact seeing several unexpectedly
+bright dust sources in the LMC, and were able to refine the pointing of the satellite - it turned out that an on-board clock
+was out by several seconds, leading them to think the satellite was pointing in a different direction. Once they had the
+correct positions, they were able to work out that the many point sources they were finding were usually galaxies already
+detected in optical surveys. Examination of the optical images revealed that most of these galaxies were spirals, and
+comparison of the optical and far-infrared data showed that roughly a third of the energy generated by stars in these
+sources was being absorbed by dust and reprocessed to longer, far-infrared, wavelengths.
+
+6.6 THE NORMAL UNIVERSE
+
+The picture presented in Figure 6.5 is largely a product of the IRAS survey. Spiral galaxies form stars at a moderate rate of
+a few solar masses of new stars each year. The dust in the interstellar medium that is closest to the star formation regions
+absorbs more energy from the light of the new stars and heats up to temperatures of 30-40 K, while dust in other parts of
+the interstellar medium is heated to a lesser extent by the general light of stars in the galaxy, reaching a somewhat lower
+temperature of 20-30 K. This is what we see in our own Galaxy and in Andromeda, and the IRAS results show that more
+distant spiral galaxies behave in much the same way.
+
+   There are, however, a couple of things missing from this picture. Firstly, elliptical galaxies clearly don't work the same
+way, since they are largely lacking in interstellar medium, and do not have any significant ongoing star formation.
+Secondly, our discussion of spiral galaxies has so far been restricted to what is going on in their disks. If you look at the
+Hubble tuning fork diagram in Figure 6.1 you will see that spiral galaxies have not only a flat disk of stars, in which you
+can find gas, dust and ongoing star formation, they also possess what is known as a bulge - a spheroidal-shaped
+distribution of stars distributed around the centre of the galaxy, and reaching greater distances above the galactic disk than
+stars from the disk itself. A key feature of the Hubble classification diagram is that spiral galaxies become more `elliptical-
+like' as their bulges become a more significant part of their structure.
+
+   A good example of a galaxy with a very strong bulge and a very weak disk is the Sombrero Galaxy, shown in Figure 6.4
+. This demonstrates a key aspect of disk galaxy bulges: Just like elliptical galaxies, bulges are made up almost entirely of
+stars, and contain very little gas and dust. In fact, in a number of ways, bulges look rather like little elliptical galaxies
+embedded within dusty, star-forming galaxy disks. This broadens the problem, but still leaves us with the core question:
+How and when did elliptical galaxies lose all their gas and make all their stars?
+
+6.7 THE ACTIVE GALAXY MENAGERIE
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 12 of 25
+
+Another thing that became clear from the IRAS all sky survey was that active galactic nuclei (AGNs), the sources at the
+centre of some galaxies powered by accretion onto a supermassive black hole, have surprisingly strong emission in the 12-
+and 25-micron bands. This indicates the presence of hot dust in these objects. More detailed analysis of the SEDs of a
+variety of AGN showed the presence of dust up to temperatures of 2000 K. This is surprisingly hot. In fact, it roughly
+matches the temperature at which dust should sublime - i.e., boil away directly from a solid into a gas. To get so hot, and
+to be emitting so strongly, the dust seen in an AGN would have to be very close, in astronomical terms, to the
+supermassive black hole at the core of an active galactic nucleus. The realisation that dust plays a significant role in the
+energetics of AGNs eventually solved one of the central puzzles that had been around since the original discovery of
+AGNs in the middle of the 20th Century: Why do AGNs have such a wide variety of properties?
+
+   The first AGNs discovered were spotted by Carl Seyfert [152] in the 1940s. He found a number of spiral galaxies with
+bright point-like emission in their nuclei, the spectra of which showed emission lines suggesting gas temperatures higher
+than could be produced in even the most luminous stars. More than that, some of the emission lines were also very broad,
+suggesting that the gas responsible for them was travelling at velocities in excess of several thousand km/s. Over the next
+several years Seyfert found more of these sources, now generally known as Seyfert galaxies, and he classified them into
+two types: Seyfert 1 galaxies with broad hydrogen emission lines as well as high excitation narrow lines, and Seyfert 2
+galaxies with only the narrow high excitation lines (see Figure 6.7). As more data came in, this classification became more
+complicated, with some galaxies having weaker broad hydrogen lines than those classified as Seyfert 1s. These were
+classified as Seyfert 1.5 galaxies, and soon enough people were talking about even smaller gradations in classification,
+with Seyfert 1.8 and 1.9 galaxies.
+
+   While the optical astronomers studying relatively local galaxies were busy with the Seyferts, radio astronomy was
+getting going. The first large-area radio survey to be sensitive enough to detect a few hundred sources was the 3C survey
+(the third Cambridge radio survey), completed with accurate flux measurements in the early 1960s [15]. Gradually, over
+the next several years, optical counterparts to some of these radio sources were identified. Some of these counterparts were
+clearly galaxies when viewed in the optical - these included sources like Cygnus A, which is associated with an unusual
+elliptical galaxy that possesses a prominent dust lane at its centre. However, a number of other 3C radio sources were
+found to be associated with point-like optical objects, whose optical spectra included a large number of emission lines at
+wavelengths that defied identification. These sources were named `quasi-stellar radio sources' (QSOs), a title often
+contracted to quasar.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 13 of 25
+
+                                                               
+
+              Figure 6.6 Example optical spectra of Seyfert galaxies.
+              These optical spectra show the distinction between broad line, Seyfert 1 type galaxies and narrow line Seyfert 2s. The line
+              shown here is the H line of hydrogen.
+
+                 The mystery of QSO emission lines was finally solved when Maarten Schmidt realised that the emission lines in one of
+              the brightest QSOs, called 3C273, could be identified if the lines were assumed to have been shifted red-wards, with the
+              wavelength of each line multiplied by the same amount. It was already known that the spectra of galaxies are
+              systematically shifted to longer wavelengths by an amount that directly depends on their distance from us. This is known
+              as the redshift of a galaxy, and was discovered by Edwin Hubble in 1929. It is a consequence of the expansion of the
+              universe, and provides a useful way of measuring the distance of galaxies. We shall discuss redshift more extensively in
+              Chapters 7 and 8. The redshift Schmidt found for 3C273 was 0.158 [149], an extremely high value at the time. When this
+              high redshift was combined with the brightness of 3C273 it became clear that whatever was responsible for the emission
+              in this source was very powerful indeed. We now know that quasars are powered by supermassive black holes, but it took
+              at least two more decades before that idea was well established.
+
+                 The detection of the first quasars through their radio emission was just a happy accident. Work over the decades
+              subsequent to the discovery of 3C273 showed that only about 10% of quasars emit strongly at radio wavelengths - they are
+              termed `radio loud quasars' - and that the majority are in fact `radio quiet', in the sense that they are not unusually
+              powerful in the radio. The best way of finding quasars (and other types of AGN) is in fact to work at X-ray wavelengths,
+              where they can be very prominent thanks to the high temperature emission of the material falling through their SMBH
+              accretion disks.
+
+                 By the end of the 1970s, astronomers studying AGN were faced with an ever increasing menagerie of different types of
+              objects. Seyfert galaxies had been joined by radio loud and radio quiet quasars in the 1960s. Further studies of radio
+              surveys like 3C had found a class of radio galaxies with prominent jets of radio emission, unexplainable by normal stellar
+              processes2. Some of these had broad emission lines in their optical spectra, and some had narrow lines. A few radio- or X-
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 14 of 25
+
+              ray-selected AGNs were found to vary very rapidly and to have featureless optical spectra, rising to shorter, bluer,
+              wavelengths. One of these was sufficiently bright to have been listed as a blue, variable star in star catalogs of the 1920s,
+              under the (incorrect) assumption that it lay in our own galaxy, and was given the name BL Lacertae (BL Lac). We now
+              know that it lies in a galaxy at a redshift of 0.07 [124], and it has become the archetypal member of a class of AGN now
+              known as BL Lac objects, or blazars.
+
+                 This exploding zoo of different types of active galaxy was, as this brief and incomplete summary suggests, becoming
+              unmanageable. The diversity of properties was so overwhelming that some unifying, underlying principle was needed to
+              bring them back together. Without this, the idea that different types of AGN were all aspects of the same phenomenon
+              might break down completely. Fortunately, detailed observations of the radio emission of blazars, arguably the most
+              extreme AGN class of them all, provided some hints as to what that unifying principle might be. At first, though, these
+              observations seemed to make matters worse, not better, and were initially interpreted as being a challenge to one of the
+              central results of 20th century physics - the special theory of relativity, and the result that nothing can travel faster than the
+              speed of light.
+
+                 Observations of quasar radio jets at very high spatial resolution are able to track the movement of structures within the
+              jets. By measuring how far these structures move along the jets over time, and taking the distance to the AGN derived
+              from the redshift measured by optical spectroscopy, a physical velocity for these moving structures can be calculated.
+              When this was done, a rather disturbing result was found: These blobs appeared to be moving faster than the speed of light
+              (see Figure 6.7).
+
+                 While some astronomers claimed that these apparently superluminal motions were evidence that the measured redshifts
+              of quasars were not cosmological at all, it turns out that the answer to the apparent conflict with special relativity was
+              already available. Some years before their observation, Martin Rees had shown that an observer looking straight down a
+              column of material travelling towards them at close to the speed of light might perceive the material to be moving at
+              superluminal speeds [140]. The superluminal motions weren't evidence against special relativity, they were in fact an
+              optical illusion caused by it. The fact that these superluminal motions only occur when there is a very precise alignment
+              between the direction of an emitted jet and the line of sight to the observer was consistent with the fact that they appear in
+              only a very small fraction of AGNs. But what did this say about the broader population? Could it be that orientation
+              effects, central to the perceived superluminal motions, might play a broader role in explaining the growing menagerie of
+              different classes of AGN?
+
+          6.8 AGN UNIFICATION
+
+              An active galactic nucleus powered by the accretion of material onto a super-massive black hole can outshine an entire
+              galaxy, but the central engine, where all the power is generated, is actually quite small. A region roughly the size of our
+              own Solar System would encompass the black hole itself, the accretion disk and the region of rapidly rotating gas
+              responsible for the broad emission lines. The narrow emission lines, however, lie much further away from this central
+              engine, at least several light years, and in more luminous quasars potentially much further. This raises the possibility that
+              something intermediate in size between that of the broad line region and that of the narrow line region might be able to
+              obscure the emission from the accretion disk and the broad line region, but leave the narrow emission lines unaffected.
+              The difference between a broad-line object, such as a quasar or a Seyfert 1, and a narrow-line object, such as a Seyfert 2,
+              would be whether we were looking through this obscuring material or not. But you can't just make the emission from the
+              central regions of the quasar disappear. These are compact objects that can, on their own, outshine the rest of the stars in
+              their host galaxies. If the light from the central engine is going to be absorbed, it has to end up somewhere.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 15 of 25
+
+                                                               
+
+              Figure 6.7 Radio images of the Blazar 3C279.
+              These radio images were taken over a period of six years, and appear to show structures, such as the blob at the end of this
+              jet, moving at speeds greater than the speed of light. In this case the rightmost blob appears to move about 30 light years in
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 16 of 25
+
+just six years time, suggesting that it is moving at five times the speed of light. This apparent contradiction with special
+relativity is in fact the result of an optical illusion, coming from the fact that we are looking right down a jet of material
+that is moving very close to, but not exceeding, the speed of light [175]. (Courtesy of NRAO; https://public.nrao.edu/.)
+
+   This is where the IRAS result, that AGNs contain a surprising amount of hot dust, proved significant. The hot dust seen
+by IRAS is being heated by the central engine of the AGN, and is indicating that dust, close to the central engine, is
+capable of absorbing a significant amount of its emission, reprocessing it from the X-rays, ultraviolet and optical, into
+longer wavelength, mid-infrared emission. If dust lay in a spherical distribution all around the central engine, then all
+AGN would be narrow line objects, as there would be no way for us to see through to the broad-line region or the
+accretion disk. Instead, the dust must lie in a structure like a doughnut - something known technically as a torus - so that
+some lines of sight can see the central engine and the broad emission lines, but others see only narrow line emission.
+
+   The idea that the orientation of our line of sight to the structures within an AGN determine how we see it, and how we
+classify it, has solved many of the issues surrounding the otherwise bewildering diversity of the AGN menagerie. The
+picture that has emerged of the structure of an AGN, and how we then classify what we see, is shown in Figure 6.8.
+Viewing angles that intersect with the dust torus around the AGN see a narrow line object, those that can see past the torus
+to the central engine see a broad line object, while those most precisely aligned with the radio jet, in the 10% fraction of
+objects that emit such a jet, see superluminal motions and a BL Lac-type AGN.
+
+   This picture of the internal structure of an AGN also brings some interesting predictions, depending on the exact
+interaction between the dust in the obscuring torus and the emission of the central engine. If the dust acts like the
+interstellar dust we see in our own galaxy, then it should absorb light at shorter wavelengths more strongly than at longer
+wavelengths. This means that some AGN, aligned so that our view of their central engine only intersects with the edge of
+the obscuring dust, might reveal their central engine in the infrared, but hide it behind dust in the optical.
+
+   A good example of this is the powerful radio galaxy Centaurus A which, in the optical, appears as a an elliptical galaxy
+with a prominent dust lane running across its centre. Radio jets are seen to emerge from the centre of the galaxy,
+presumably from an AGN, but optical light from that central engine cannot be seen because it is, presumably, absorbed by
+a dusty torus that surrounds it. Observations at longer wavelengths, though, can see through the obscuring dust and reveal
+a bright, compact source at the centre of the galaxy. This can be seen in Figure 6.10. This has been done both from space,
+using the Spitzer Space Telescope [88], and from the ground using a mid-infrared camera on the 8m Gemini-S telescope [
+138]. The latter observations, capable of reaching a higher resolution thanks to the large size of the telescope, show that
+the bright nucleus of Centaurus A, which outshines the rest of the galaxy at mid-infrared wavelengths, must be less than
+about 10 light years across. Only an accreting supermassive black hole could produce such powerful emission.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 17 of 25
+
+                                                               
+
+              Figure 6.8 How the obscuring dust torus changes the observed appearance of an AGN.
+              (Copyright Astronomy Society of the Pacific, reprinted by kind permission of the authors [164].)
+
+                 Another prediction of these so-called unified schemes is that some of the light from the central engine will be reflected
+              by the obscuring torus rather than absorbed. This reflected light will not be very bright, but, because it has been reflected,
+              it will be polarised, unlike the light received directly from the galaxy. For a few objects aligned in just the right way this
+              means it might be possible to use reflected, polarised, light as a kind of periscope, able to peer into the depths of a central
+              engine that could not be seen directly. This type of observation was first done in 1985 [5], when it was shown that the
+              archetypical Seyfert 2 galaxy, NGC1068, had broad emission lines, the defining property of a Seyfert 1, when viewed in
+              polarised light. A more modern example of such observations is shown in Figure 6.9.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 18 of 25
+
+   What all these results show is that the various types of AGN are facets of the same phenomenon that appear different to
+us because we are viewing them from different angles. From some directions, when an AGN is being viewed through the
+obscuring torus of dust surrounding the central supermassive black hole, we cannot see any direct emission from the
+central engine. Instead, this light is absorbed by dust, which is heated to quite high temperatures, up to about 2000 K on
+the inner face of the dusty torus, a temperature so high that the dust is boiled away. Observations in the infrared, that can
+see this reprocessed emission, and using polarisation, that can, in some cases, see past the obscuration, have successfully
+unified the AGN menagerie.
+
+6.9 GALAXIES AND AGN
+
+While we only see AGN in a small fraction of galaxies, it is now generally accepted that nearly all galaxies contain a
+supermassive black hole at their centre, and that they all go through AGN phases during their lives. The supermassive
+black hole in the centre of a galaxy is ignited when a significant amount of material begins to fall onto it, triggering the
+formation of an accretion disk and driving all the other processes we have been discussing. As discussed above, our own
+galaxy has a supermassive black hole of about 4 million solar masses at its centre. If this were to ignite, it would be a
+fairly weak AGN - more powerful quasars are driven by supermassive black holes that are ten or more times as massive as
+that in the Milky Way.
+
+                                                               
+
+              Figure 6.9 Left: The emergence of broad lines in polarised light. Right: Near infrared image of the gas cloud currently
+              passing close to the black hole at the centre of our own galaxy.
+              Left: The top plot shows the unpolarised spectrum of the galaxy NGC4507. In this, the object appears as a normal Seyfert
+              2, with narrow emission lines. How the degree of polarisation changes with wavelength is shown in the middle figure,
+              while the spectrum of polarised light is shown at the bottom. A much broader emission line emerges in this, which would
+              classify the object as a Seyfert 1. The polarised spectrum is due to light being scattered off the dust torus from the
+              otherwise obscured region around the central supermassive black hole. (Left: Reproduced by kind permission of Edward
+              Moran. Right: Courtesy of ESO.)
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 19 of 25
+
+                 There is, in fact, a cloud of gas currently (at the time of writing) passing very close to the Milky Way's supermassive
+              black hole [65] (see Figure 6.9). At closest approach this cloud will be just 20 light hours away from the supermassive
+              black hole. In Solar System terms, that is a distance of 144 AU, which puts this cloud of gas closer to the black hole than
+              the Kuiper Belt object Sedna is to the Sun. While observations of this cloud clearly show that it is being ripped apart by
+              the gravity of the black hole, there is, so far, no indication that any material from it has fallen onto the black hole. Even if
+              it does, the total mass of gas in the cloud is small enough that the energy released will only amount to a short-lived burp in
+              comparison to other AGN. But this does raise the more general question: what effects do AGN have on their host galaxy,
+              and vice versa?
+
+                 For a long time it was thought that the host galaxy could have an effect on the supermassive black hole - feeding it, or
+              starving it for example - but there was little reaction in the other direction. After all, a galaxy is a large structure, many
+              thousands of light years across, while even the most powerful AGN central engines are much less than a light year in size.
+              Comparisons of the properties of galaxy bulges and supermassive black holes in local, non-active galaxies, have changed
+              that view. A series of studies, starting with a publication in 1998 by Magorrian and collaborators [104], have found a clear
+              relationship between the central black hole mass and the mass of stars in a galaxy's bulge. This suggests that the formation
+              of the bulge of a galaxy, a structure that can be many thousands of light years in size, and the formation and growth of the
+              galactic centre black hole are somehow inextricably linked. Fortunately, one of IRAS's other major discoveries provides
+              some hints as to how this might occur.
+
+          6.10 STARBURST GALAXIES
+
+              The discovery of strong mid-infrared emission from AGN, and the subsequent development of unification schemes for the
+              various classes of active galaxies, was just one of the major successes of IRAS. Another major surprise was the discovery
+              of galaxies forming stars much, much more rapidly than is seen in quiescent spiral galaxies like the Milky Way. These
+              objects are forming stars so quickly that they can form a Milky Way-sized galaxy, containing a hundred billion stars, in
+              only a few billion years - much less time than the age of the universe. They will also exhaust the gas and dust supply of a
+              typical spiral galaxy on a timescale of a few tens of millions of years. The star formation episodes we are seeing have to be
+              of limited duration, so these sources are known as starburst galaxies.
+
+                 M82, shown in Figure 6.11, is the nearest starburst galaxy, at a distance of about 12 million light years from the Milky
+              Way. It is a relatively small galaxy, with a total mass about one hundredth that of our own galaxy [69]. However, M82 is
+              forming stars at a rate of 10 solar masses of new stars each year, ten times faster than the Milky Way. In fact, it is forming
+              stars so rapidly that it seems to be blowing itself apart, with a strong wind of material flowing away from the central
+              starburst regions of the galaxy. This outflowing material is revealed by emission from ionised hydrogen and is shown in
+              red in Figure 6.11. M82 turns out to be very bright in the far-infrared (see Figure 6.5), with roughly 90% of its total energy
+              output emerging at these wavelengths. This is because much of the energy being emitted by the young stars born in M82's
+              starburst is being absorbed by dust, and reradiated in the far-infrared.
+
+                 M82, despite being a relatively minor galaxy in the grand scheme of things, provides several useful insights. Firstly, the
+              wind of material being blown out by the starburst is an excellent example of how a high rate of star formation can provide
+              feedback that acts to reduce the star formation rate, or even extinguish it completely. The starburst is blowing gas out of
+              M82 that would otherwise lead to even more star formation, so the process is, in a sense, self-limiting. Secondly, when we
+              try to find what might have triggered such an extreme star formation rate in such a small galaxy, we find evidence to
+              suggest that M82 has had a close encounter with its larger neighbour, the galaxy M81. The two can be seen together in
+              Figure 6.11 in an image taken by the WISE satellite. In this image the colours red and green represent emission in the mid-
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.                        Ebook pages 123-145 | Printed page 20 of 25
+
+infrared, coming from warm dust, while blue represents light from stars. As you can see, despite being a much smaller
+galaxy than M81 - which is about 100 times more massive than M82 with roughly the same mass as the Milky Way - M82
+outshines it in the mid-infrared, thanks to its prodigious star formation rate. The interaction between M81 and M82 will
+have caused gas in the centre of M82 to collapse, forming dense giant molecular clouds that are the site for the star
+formation driving its starburst. Without the interaction this gas would have remained in a stable orbit around M82's centre,
+forming stars at a much more sedate rate.
+
+6.11 GALAXY MERGERS
+
+M82 was a prominent IRAS source because it has a high star formation rate and because it is quite close to the Milky
+Way. Once detected by IRAS it was quite easy to identify its optical counterpart because it was already a well known
+object - the final Messier catalog, from which it takes its name, was published in 1781. The same could be said for many
+of the normal spiral galaxies that were detected by IRAS. However, many other IRAS point sources, some faint, but some
+very bright, were less easy to track down. When counterparts were sought by looking for optical sources at the positions of
+the IRAS objects, many were found to be faint anonymous blobs on the photographic plates available at the time. Others
+were found to have no optical identification at all. This led to a long-running series of campaigns to identify IRAS sources
+and to follow them up with optical imaging and spectroscopy.
+
+                                                                                                                                                                          
+
+Figure 6.10 The radio galaxy Centaurus A in optical (left) and mid-infrared (right).
+(Left: Courtesy of NASA. Right: Courtesy of ESO.)
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 21 of 25
+
+                                                                                                                                                                          
+
+Figure 6.11 Left: M82, the nearest starburst galaxy. Right: M81 and M82 in the infrared.
+Left: This optical and near-infrared image of M82 shows that it is a small disk galaxy, with plentiful dust in its disk. It also
+has a superwind of interstellar material blown out of the galactic disk, seen here as red emission tracing ionised hydrogen.
+Right: An infrared image from the WISE satellite showing M82 (upper yellow object) and its larger neighbour M81. Blue
+shows the emission from starlight (3.4 and 4.6 microns), while green and yellow shows emission from the mid-infrared
+(12 and 22 microns). M82 is much brighter than M81 in the mid-infrared thanks to its very high star formation rate.
+(Courtesy of NASA.)
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 22 of 25
+
+                                                               
+
+              Figure 6.12 Arp220 (top) and the Antennae galaxy (bottom).
+              Top: An optical image showing the galaxy Arp220. Note the prominent dust lane across the centre and the unusual shape,
+              which is unlike either a disk or an elliptical galaxy. (Courtesy of NASA.) Bottom: The Antennae galaxy is a merger
+              between two spiral galaxies which has triggered a burst of star formation. (Courtesy of ESO.)
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 23 of 25
+
+                 Much of this activity was kicked off when it was realised that one of the brightest extragalactic sources in the IRAS sky
+              was associated with a galaxy known as Arp220. In the optical, this source isn't particularly bright. It has an unusual shape
+              (see Figure 6.12), of which more later, which is why it was included in Arp's Atlas of Peculiar Galaxies [8], but at optical
+              wavelengths it is otherwise undistinguished. In the far-infrared, though, Arp220 is an absolute monster, brighter than many
+              galaxies much closer than its distance of roughly 250 million light years. M82 has a far-infrared luminosity equivalent to
+              the power output of 30 billion suns; Arp220 is thirty times more luminous, emitting the power of a thousand billion suns
+              in the far-infrared. In fact, as you can see from Figure 6.5, the far-infrared is responsible for over 95% of the energy output
+              of a major starburst like Arp220, which is why this galaxy looks so unexceptional in the optical, despite its prodigious
+              energy output in the far-infrared. The power source for Arp220 is thought to be a massive starburst, as in M82, but in this
+              case the star formation rate is a hundred solar masses of new stars each year - ten times the star formation rate of M82 and
+              a hundred times the star formation rate of our own Galaxy. All of this star formation is buried beneath thick dense clouds
+              of dust and gas, which is why all of the light they emit in the optical and ultraviolet is absorbed by dust and reradiated in
+              the far-infrared. This has led to these sources being called `dust dominated' since, although dust makes up only a small
+              fraction of their mass, they are brightest at wavelengths where dust emits.
+
+                 As more and more of the IRAS galaxies were identified, more and more galaxies like Arp220, called ultraluminous
+              infrared galaxies (ULIRGs) because of their extreme far infrared luminosity (formally a ULIRG is a galaxy with far-
+              infrared luminosity between 1012, a thousand billion, and 1013, ten thousand billion, times the luminosity of the Sun),
+              were found. At the same time, more detailed followup observations of these ULIRGs were also undertaken, trying to find
+              out what might have caused them to be so luminous. Hints from less luminous systems, like M82 or the Antennae galaxy
+              (see Figure 6.12), which is a merger between two galaxies as well as a starburst about ten times as luminous as M82,
+              suggested that galaxy interactions and mergers might trigger these massive starbursts. Confirmation that nearly every
+              ULIRG found by IRAS was a galaxy interaction or merger took many years of followup, with the case not being fully
+              proven until the mid-1990s (something I had a hand in myself [31]), more than a decade after the IRAS satellite had died.
+
+                 More detailed studies of ULIRGs and other galaxy mergers, together with computer simulations of how stars, gas and
+              dark matter react in a galaxy collision, have shown a number of things. Firstly, galaxy mergers will drive gas and dust into
+              the centre of a galaxy, in much the same way that the weak interaction between M81 and M82 drove gas and dust into the
+              centre of M82. This will promote a burst of star formation. The stronger the interaction, and the more dust and gas
+              available to drive it, the bigger the starburst will be [12]. In principle, a major merger will be able to use up all the gas in
+              the interstellar medium of a spiral galaxy. Secondly, the effect of the galaxy merger on the existing stellar populations in
+              colliding disk galaxies is to destroy the rather delicate structure of the galactic disks. The end result of a violent merger
+              between two gas-rich spiral galaxies turns out to look pretty much like an elliptical galaxy, in terms of both its shape and
+              the lack of gas and dust in its interstellar medium. The question raised earlier in this chapter, about how elliptical galaxies
+              came to have little or no interstellar medium, seems to have been answered.
+
+                 But where do AGN come into this? Alongside the triggering of a major starburst, it seems likely that galaxy mergers are
+              capable of driving gas deep into the core of a galaxy, fuelling the supermassive black hole lurking there and triggering
+              AGN activity [146]. At the same time, the merger-induced starburst leads to the growth of the galaxy bulge with
+              essentially the same structure as an elliptical galaxy. The simple coincidence of these two processes is not enough to
+              produce the strong correlations between supermassive black hole and bulge masses seen in the nearby universe. For this to
+              happen, the galactic centre AGN must take a more active role in terminating the star formation activity in its host galaxy.
+              This is thought to occur in a process termed `quasar feedback', whereby the energy generated by gravitational accretion
+              onto the galactic centre black hole in an AGN drives powerful gas outflows into the host galaxy. These disrupt the giant
+              molecular clouds formed around the galactic centre by the galaxy merger, ending the burst of star formation.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 24 of 25
+
+   This process can probably be seen in action in the galaxy Markarian 231. This is a galaxy in the nearby universe, lying
+at a distance of about 600 million light years. Markarian 231 has pretty much everything - it is a broad line AGN, a
+ULIRG and, as you can see in Figure 6.13, it is an interacting galaxy. What you can't see on these images, and which
+required far-infrared spectroscopic observations with the Herschel Space Observatory to find, is that there is a huge
+outflow of cool gas from the centre of this galaxy [57]. In this unusual object, we may be seeing all the processes that
+transform spiral galaxies into ellipticals underway at the same time: a galaxy merger, a massive burst of star formation, a
+new, powerful AGN lighting up at its core, and a massive outflow of material, driven by this AGN, that is even now
+beginning to turn off the starburst.
+
+6.12 CONCLUSION
+
+In this chapter we have looked at how observations across the infrared have revealed the processes that shape galaxies and
+the stellar populations within them, and have found how the IRAS satellite, which gave us the first all sky infrared survey,
+was instrumental in solving a wide range of problems behind the evolution of local galaxies. The importance of galaxy
+collisions and mergers was suspected before IRAS, but it took the observations of that satellite, and many years of
+followup studies of the sources it detected, to fully understand the linkages between galaxy mergers, star formation and
+AGN.
+
+   Studying these processes helps us understand how the universe came to be what we see today, but there is also a much
+more local reason why we might be interested in what happens during the merger of two large, gas rich spiral galaxies.
+That is because, in about four billion years, the Milky Way and the Andromeda Galaxy, M31, will collide and merge. That
+means our distant descendants, whatever they might be, will have a ringside seat to all of the processes we've been
+discussing here, with bursts of star formation, the ignition of galactic centre black holes as AGN, and the transformation of
+the two spiral galaxies into an elliptical. We're not going to be around to see it ourselves, but the view will be spectacular3.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 123-145 | Printed page 25 of 25
+
+                                                               
+
+              Figure 6.13 Markarian 231, the galaxy that has everything.
+              The bright, star-like source at the centre is the AGN, but this is surrounded by a galaxy merger hosting a massive burst of
+              star formation. (Courtesy of NASA.)
+
+                  1 Fullerenes were first discovered in a lab experiment trying to recreate spectroscopic features seen in the interstellar medium
+               with laser-blasted graphite. While these molecules didn't explain all the features that we now know are due to PAHs, they did
+               revolutionise carbon chemistry and start new industries aiming to exploit fullerenes for practical applications.
+
+                  2 In fact there are two classes of radio galaxies, known as FR1 and FR2, as defined by the spatial structure of their radio
+               emission, but that isn't relevant to the current discussion.
+
+                  3 A preview of what this interaction might look like has been produced by some of the people who simulate galaxy mergers, and
+               is available via a link on this book's webpages.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:34:00.
+

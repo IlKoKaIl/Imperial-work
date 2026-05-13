@@ -1,0 +1,972 @@
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 1 of 26
+
+     Ancient Heat                                                 7 CHAPTER
+
+          7.1 LAUNCH DAY
+
+              It's Launch Day. In just a few hours I'll find out if my scientific career is about to move into high gear, or if my future will
+              end up in pieces on the bottom of the Atlantic Ocean.
+
+                 I start early, waiting for a taxi to take me to Bush House, home of the BBC World Service. Across the UK and Europe
+              other astronomers working on the Herschel and Planck satellites are doing the same. We're all getting media appearances
+              out of the way before heading to wherever we can watch a live feed of the satellites' launch. After my interview, I'll be
+              going to the Rutherford Appleton Lab near Oxford, where the UK Herschel and Planck teams are gathering with visiting
+              dignitaries and members of the media.
+
+                 I've been working on these two satellites for eight years and they've been a part of the scientific landscape since I
+              completed my PhD in 1991. But success or failure depends on what happens today.
+
+                 UK media are dominated by BBC television or, for more thoughtful coverage, BBC Radio 4. But if you want a massive
+              audience and worldwide reach you go to the World Service. A top-rated Radio 4 appearance might reach eight million, but
+              the World Service regularly gets audiences of over a hundred million. I try to put thoughts of this vast number of listeners
+              out of my mind as I answer the interviewer's questions. I describe what the satellites will do and what will happen with
+              today's launch. Then it's over and I'm ushered through the splendid art deco interior and into a taxi to Paddington Station
+              for my journey to the Rutherford Lab.
+
+                 Of the two satellites, Herschel has been around the longest, at least in terms of conceptual development. It is the last of
+              the European Space Agency's cornerstone missions in the Horizon 2000 programme. Originally named FIRST, the Far-
+              Infrared and submillimetre Space Telescope, it's a big expensive mission, costing about a billion Euros. All ESA countries
+              are involved and there are contributions from NASA, Canada and China.
+
+                 At the Rutherford Lab we've taken over the main lecture theatre. There's an audience of fellow scientists,
+              administrators and the leaders of the funding agencies who paid for the satellites, as well as local politicians and
+              journalists. The partners and children of some of the scientists have also come along so they can find out more about the
+              project that has taken their loved ones away from home, or forced them to work late into the night.
+
+                 But some people are missing. We're effectively the B-team, left at home to entertain and inform the local media and
+              watch the launch on television. The real bigwigs are seven thousand kilometres away at Kouru, French Guiana, on the
+              coast of South America where ESA launches its rockets. They have ringside seats for the launch and will do their bit for
+              the visiting international media.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 2 of 26
+
+                 The closer we get to the opening of the fifty minute launch window - the period during which the spacecraft have to be
+              launched - the more the tension rises. This isn't just a result of natural excitement. It isn't me worrying about the talk I
+              have to give on the Planck satellite. It's because there's a ghost haunting the party, the ghost of Cluster and the launch of
+              Ariane 501. Back in 1996, the first Ariane 5 rocket was launched carrying the Cluster satellites for the first ESA
+              cornerstone mission. Ariane 5 was a new launch vehicle, the great hope of ESA and Arianespace, its commercial launch
+              company. It could carry larger payloads than previous ESA rockets and was predicted by the engineers to be at least
+              ninety-five percent reliable. I watched the 501 launch on a live video-feed in a lecture theatre not that different from today'
+              s. The rocket exploded just seconds after launch, scattering debris over the jungle and into the Atlantic. That explosion
+              was the end of the scientific careers of several friends who had worked on Cluster. Having tied my career to the success or
+              failure of Herschel and Planck, I'm in the same position today as they were before the 501 launch.
+
+                 I give my talk, and the countdown presses closer to zero. While we have a fifty minute launch window, we aim to
+              launch the instant it opens. Because we're launching two satellites on the same rocket, the launch itself isn't the only
+              hazard. The satellites must get cleanly away from the launch bus before they can make their separate ways to their final
+              destinations. Separation happens thirty minutes after launch, and only at that point can we declare it a success.
+
+                 There's nothing we can do. When the Vulcain main engine and solid rocket boosters fire, we're entirely dependent on
+              the Arianespace engineers. They have to make sure that hundreds of tonnes of high-explosive rocket fuel explodes in just
+              the right way to get our delicate, high-precision scientific instruments, strapped on top of it all, into orbit without damage.
+
+                 The final countdown begins.
+                 `Trois, deux, une, tup!'
+                 The Vulcain fires, plumes of steam erupt from either side of the launch pad. Then the solid boosters fire, blasting out
+              distinctive yellow smoke, and the rocket stack is hurled upwards. Across Europe, at JPL, Caltech and online in astronomy
+              groups all over the world, eyes are glued to screens. The roar of the rockets reaches the microphones a few seconds after
+              the rocket clears the pad. By this point, it's already atop a vast column of flame, climbing into a clear blue sky.
+                 Thus begins what must be the longest thirty minutes of my life. We follow the rocket every step of the way. We watch
+              the exhaust plume as it climbs into the sky but, more important, we also follow the telemetry track from the control room,
+              showing how the actual launch is proceeding compared to the prediction for perfect performance.
+                 Soon the camera flicks away from the control room, now filled by our colleagues in Kouru who have seen all they can
+              from the ground, to a view from the rocket itself as the solid fuel boosters are jettisoned - an astounding view from the
+              very edge of space. We ignore the calls from some of the non-astronomers to open the champagne because we know there
+              is still a long way to go.
+                 Next is the separation of the first stage and the ignition of the second. Like every step so far, this goes like clockwork. I
+              begin to think the launch might be going well, but desperately try to suppress these thoughts to avoid the crushing
+              disappointment that will come if some later stage fails. The coverage is now focused on the control room, showing
+              controllers sitting at their desks doing nothing. I am pleased to see they almost look bored.
+                 We reach the final critical phase for Herschel, where it separates from the launch bus. We're treated to a final few
+              frames of video taken by a camera at the back of Herschel showing its clean separation from Planck - the last external
+              view of Planck and its Sylda 5 launch bus that anyone will see. Soon after that, it's time for Planck to cast aside the
+              launcher itself.
+                 Applause erupts. We start breathing again. And outside, at the reception, we hear champagne corks starting to pop.
+                 This afternoon we can celebrate, but tomorrow we start the hard work of commissioning the instruments. It will still be
+              months before real science can begin.
+                 But launch, the most dangerous phase of all, has been a huge success.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 3 of 26
+
+7.2 GALAXY EVOLUTION
+
+Chapter 6 looked at the state of galaxies in the local universe. Because they're close, we see them as they are now, at a
+time that is 13.8 billion years since the Big Bang. We saw that galaxy interactions and mergers are implicated in turning
+spiral galaxies into ellipticals, in triggering massive bursts of star formation and in fuelling the supermassive black holes at
+the centres of galaxies, triggering the emergence of active galactic nuclei (AGN). If we look at the universe today we find
+that about 50% of galaxies are ellipticals, though many of these are dwarf elliptical galaxies that are much smaller than the
+Milky Way. The fraction of elliptical galaxies is much higher where galaxies are gathered together in galaxy clusters.
+
+   If galaxy interactions and mergers turn spiral galaxies into ellipticals, then the ratio of spirals to ellipticals must have
+been different in the past. The elliptical galaxies we see today represent mergers of two or more galaxies that were
+previously gas-rich spirals. The merger converted them into an elliptical galaxy through a large burst of star formation and
+possibly triggered an AGN. If we were to look back in time, we would see the galaxy population changing, with more
+spirals and fewer ellipticals, and we might also see the star formation rate and the number of AGN increase.
+
+   Thanks to the finite speed of light we can make this exact observation. Light takes time to reach us so, in looking at
+sources that are a very long way away, we see those sources at an earlier stage of the universe. Looking at how the
+properties of galaxies change with distance, or, equivalently for our purposes here, with increasing redshift, is the study of
+galaxy evolution. This field has been very active over the last decade, as our observational capabilities have allowed us to
+identify ever-increasing numbers of galaxies and AGN at greater and greater distances.
+
+   Before we were able to study galaxy evolution in detail it was clear that the AGN population changed radically with
+redshift. Optical spectroscopy of quasars showed that their numbers increase rapidly as we look to higher redshifts. The
+number of quasars reached a maximum of about thirty times the local value at a redshift of about 2, when the universe was
+about 3.3 billion years old, roughly a quarter of its age today.
+
+   Quasars are much easier to detect and identify at high redshift than galaxies, which is why these results on quasar
+evolution were arrived at as early as the late 1980s. Similar observations of galaxies require 8 m class telescopes and
+concerted programmes to obtain spectroscopy of many thousands of galaxies. Studying the shape of galaxies as you look
+to higher redshift requires instruments capable of resolving very small scale features, since the further away you look the
+smaller and less distinct the characteristic features of spirals and ellipticals become. Such studies require the resolving
+power of the Hubble Space Telescope or large ground-based telescopes equipped with instruments that can measure and
+correct the distorting effects of fluctuations in the atmosphere. All this is required to study the evolution of galaxies in the
+optical. Studying galaxy evolution in the far-infrared is even more difficult but very necessary because, as we shall see, the
+optical and far-infrared stories are very different.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 4 of 26
+
+                                                               
+
+              Figure 7.1 The original HDF (top) and the HXDF (bottom).
+              The original HDF (top) is in the optical, the HXDF (bottom) in the optical and near-infrared, with red showing near-
+              infrared light. Each object seen here is a galaxy. Courtesy of NASA.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 5 of 26
+
+                                                               
+
+              Figure 7.2 Top: HerMES Observations around the HDF; Bottom: The discovery of HFLS3.
+              Top: Subimages show separate SPIRE channels to left, main image shows a small part of the HerMES survey. Blue is 250
+              microns, green 350 microns and red 500 microns. Each blob seen here is a galaxy. Inset, to scale, is the 850 micron
+              SCUBA map of the Hubble Deep Field. (Courtesy of ESA.) Bottom: Main image shows the region in which HFLS3 was
+              found, colour scheme as above. At the right are images of HFLS3 at each of these wavelengths and a `redness image'
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 6 of 26
+
+              showing how it was selected. Insets show region around HFLS3 in the optical (HFLS3 is not detected) and a close-up of
+              dust emission from the Plateau de Bure interferometer and weak near-infrared emission observed by Keck. (Courtesy of
+              ESA.)
+
+          7.3 GALAXY EVOLUTION IN THE OPTICAL
+
+              To be able to study the evolution of galaxies at different times over the age of the universe, you have to be able to detect
+              them at the distances corresponding to those ages. The further away an object is, the fainter it appears, so the detection of
+              distant galaxies needs a really sensitive instrument. This meant that the study of galaxy evolution started off, and became
+              most fully developed, in the optical, thanks to the sensitivity of 8 to 10 m ground-based telescopes and the Hubble Space
+              Telescope (HST) in orbit.
+
+                 A defining moment for galaxy evolution studies was the release of the first Hubble Deep Field observations (HDF - see
+              Figure 7.1) in 1995 [176]. These observations represented a new paradigm for astronomy in two ways. Firstly, they made
+              use of an unprecedented amount of time on the HST - a total of 10 full days spent with the telescope pointing continuously
+              at a single small patch of sky. This produced the most sensitive optical image that, at the time, had ever been obtained.
+
+                 Secondly, the HDF observations were made as a community service. Unlike traditional observations, the data did not
+              belong to anybody, so nobody had a head start in analysing the data and producing results. When the data were released in
+              early 1996, everybody could have access to it. There was a feeding frenzy. I took part in it myself, writing a paper from
+              scratch to submission in about two weeks [32]1. The principles set by this initial set of observations, and the tremendous
+              scientific success they were to become, led to many similar very sensitive, openly available `legacy' projects, including a
+              series of ever more sensitive Hubble Deep Fields that now stretch into the near-infrared [83].
+
+                 A sensitive image is not sufficient for galaxy evolution studies, even when it is the most sensitive image ever obtained.
+              This is because extreme faintness does not immediately indicate extreme distance. A galaxy that is very faint might be
+              very far away, but it is usually more likely that it is actually fairly nearby, and just emitting very little light. A bright thing
+              can appear faint if it is far away, but a faint thing appears faint no matter where it is - and there are many more faint things
+              than bright things. This is a central problem in astronomy - the night sky appears pretty much as it would if it was simply
+              painted on the inside of a sphere, with all objects the same distance away. This was what ancient astronomers thought was
+              going on and remained the general view until Copenicus and Kepler established the heliocentric view of the Solar System.
+              The only objects that the naked eye can tell are moving against this celestial sphere are the planets, given that name
+              because they are `planetes' - Greek for `wanderers'. Much of the study of the position of objects on the sky does not
+              require knowledge of their distance, so it is known as spherical astronomy, since it is conducted on the celestial sphere.
+
+                 But for studies of galaxy evolution we need to know the distance of sources. The usual way for extragalactic
+              astronomers to determine distances is to obtain spectroscopy for a source, from which a redshift can be derived. Then,
+              thanks to the work of Edwin Hubble, who established that the recession velocity of a galaxy is directly proportional to its
+              distance, we can obtain a distance by dividing through by the Hubble constant, now known to be 20.8 km/s per million
+              light years (or 67.8 km/s per Mpc in astronomers' units) [129]. Spectroscopic observations take the light from a source and
+              spread it out over a range of wavelengths. This means you need a more sensitive instrument to get spectroscopy for an
+              object than you need to simply get an image of it. For the faint, potentially very distant, objects detected in the HDF there
+              wasn't, and might never be, a telescope big enough to measure their spectra.
+
+                 While the direct measurement of optical spectra for HDF galaxies isn't something that is going to happen soon, there
+              are several ways of getting redshift estimates for these galaxies that are accurate enough for the study of galaxy evolution.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 7 of 26
+
+These all rely at some level on examination of the observed shape of the spectral energy distribution of galaxies as
+revealed by their colours. A measurement of these colours was available since the HDF observations were taken in four
+different optical filters, covering the whole of the optical part of the spectrum. These included a filter at the edge of the
+ultraviolet, at 300 nm, bluewards of what the eye can perceive, towards the infrared, at a wavelength of 814 nm, at longer
+wavelengths than the eye can perceive, as well as one in the blue (450 nm) and one in the red (606 nm). The colours given
+to the objects shown in Figure 7.1 are derived from their different brightnesses in each of these four bands. More recent
+deep optical surveys such as the Hubble Ultradeep and Extremely Deep fields (HUDF, HXDF) [83] have added extra
+optical filters and, most recently, have extended these observations into the near-infrared.
+
+   The first method used for estimating the redshifts of faint galaxies in deep surveys, and the one still used to search for
+the most distant galaxies, is known as the dropout method. This relies not so much on the detailed properties of the source
+being observed, but on the presence of neutral hydrogen gas in the emitting galaxy and in the intergalactic medium along
+our line of sight to the source.
+
+   Neutral hydrogen will be ionised - its single electron is ejected from the atom - if it is hit by a photon with a wavelength
+less than 91.2 nm. So any ultraviolet light emitted in a galaxy at this or shorter wavelengths will be very strongly absorbed
+by even a very small amount of neutral hydrogen. The energy emitted by a galaxy as a function of wavelength drops
+precipitously in the ultraviolet beyond 91.2nm. Observations that match emitted wavelengths shorter than 91.2 nm will not
+be able to see the galaxy, while it will be much more detectable at longer wavelengths. This, all other things being equal,
+gives us a way of estimating the redshift of a galaxy: if a source is detected at long wavelengths but disappears when
+observed at shorter wavelengths, you can guess that the redshift is such that the wavelength at which it disappears - the
+wavelength at which it `drops out' - corresponds to a wavelength of 91.2 nm at the redshift of the source.
+
+   But things are a bit more complicated than that, since the light from any distant galaxy has to travel through many
+millions of light years of intergalactic space to reach us, and that intergalactic space is not entirely empty. Instead, it is
+filled with clouds of neutral hydrogen. Neutral hydrogen not only absorbs light at wavelengths short enough to cause
+ionisation, it will also absorb light at wavelengths that match any of its numerous line transitions (see Chapter 1).
+
+                                                               
+
+              Figure 7.3 The effect of the Lyman- forest.
+              Left: A cartoon showing how the Lyman- forest is produced. Right: Comparison of nearby and high redshift quasar
+              spectra showing the effect of the Lyman- forest. (After an original by Edward Wright.) Right: Real observations of the
+              effect of the Lyman- forest, showing a local quasar, 3C273, where there is no forest absorption, compared to a higher
+              redshift object, affected by a plethora of narrow absorption lines. The wavelengths quoted here are those at which the light
+              is emitted, before it has been redshifted. (Figure used with permission from the Astronomy Society of the Pacific.)
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 8 of 26
+
+                 One particularly important line transition, which leads to very strong absorption and emission, is at a wavelength of
+              121.6 nm, and is called the Lyman- line. Clouds of neutral hydrogen lying between us and a distant source will absorb
+              light from that source at a wavelength matching that of the Lyman- line at the redshift of the cloud. Since the cloud lies
+              between us and the emitting source, it will be at a lower redshift than the emitter, so that Lyman- absorption in the cloud
+              will be at a shorter wavelength than that of Lyman- in the emitter. Conversely, an emitting galaxy will probably have a
+              bright Lyman- emission line, powered by ultraviolet light coming from young stars and any AGN that might lie at its
+              core.
+
+                 A cartoon showing the process of Lyman- absorption by clouds in the intergalactic medium can be found in Figure 7.3.
+              The clouds are very thin, but the Lyman- transition in hydrogen is so strong that an individual cloud will absorb most of
+              the light of a background source at the wavelength matching that of Lyman- at its redshift. This leads to a narrow
+              absorption line in the spectrum of the emitting source.
+
+                 Above a redshift of 2, these clouds are very numerous. While each cloud only absorbs at a specific wavelength, there
+              are enough of them that they gradually eat away the light of a background source, producing a forest of absorption lines at
+              different wavelengths. In fact these absorption lines are known collectively as the Lyman- forest. For sources at high
+              redshift they absorb much of the light of a source at wavelengths shorter than that of Lyman- at the redshift of the source.
+              This means the source drops out of observations at wavelengths shorter than this.
+
+                 The clouds of hydrogen that produce the forest lines were gradually ionised over time by the ultraviolet light they are
+              absorbing, so there are few, if any, of these clouds lurking in intergalactic space today. This can be seen in Figure 7.3,
+              which shows spectra of the nearby quasar 3C273 and a more distant cousin at a much higher redshift. While the
+              underlying emitted spectrum of the sources are broadly similar, you can see the effect of the Lyman- forest in the higher
+              redshift source in the way the spectrum is eroded away by many individual narrow Lyman- absorption lines at
+              wavelengths shorter than the bright emission line (which is Lyman- emission from the quasars).
+
+                 The Lyman- forest and absorption in the emitting galaxy at wavelengths shorter than 91.2 nm mean that any distant
+              galaxy or quasar will have little or no detectable emission at wavelengths shorter than that of Lyman- at the redshift of
+              emission. In a series of images taken at different wavelengths, such as those taken in the HDF, sources bright at long
+              wavelengths that disappear completely at shorter wavelengths, are likely to be at high redshift - in fact, at a redshift that
+              would put Lyman- at the wavelength where the source disappears. You can see an example of this from the original HDF
+              in Figure 7.4. This kind of colour-based approach for selecting high redshift objects is quite similar to that used for
+              selecting cool stars in large surveys discussed in Chapter 4.
+
+          7.4 REDDER FIELDS, HIGHER REDSHIFTS
+
+              Dropout methods were originally applied to optical data from the first Hubble Deep Field and to deep surveys from
+              ground-based optical telescopes. The ground-based surveys are not as sensitive as the HST observations but they can
+              cover much larger areas, so the two types of instrument are very complementary. The original HDF was taken in just four
+              optical bands. Objects that drop out of all except the longest wavelength of these bands would lie at a redshift of about five.
+
+                 Pushing to higher redshift requires observations in the near-infrared, at wavelengths beyond one micron. Fortunately,
+              the HST is up to the job, firstly with the NICMOS instrument (Near Infrared Camera and Multiobject Spectrometer), and,
+              more recently, with the more sensitive WFC3 instrument (Wide Field Camera 3 - see Chapter 1 for details about the
+              installation and operation of these instruments). WFC3 can observe out to wavelengths of 1.6 microns, so a galaxy visible
+              in this filter that drops out of all shorter wavelengths would potentially be at a redshift of about 10. That corresponds to a
+              time when the universe was 500 million years old, only a few percent of its current age of 13.8 billion years. This is so far
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 9 of 26
+
+back in time that we really have very little idea of whether galaxies existed, what they might look like, or what kind of
+stars they might be home to. The discovery of galaxies at such early times would be a major result.
+
+                                                               
+
+              Figure 7.4 Lyman- dropout galaxies in the HDF-South.
+              The images show 15 Lyman- dropout galaxies in the Hubble Deep Field South. The images are in groups of four
+              horizontally, with the rightmost image being at the shortest wavelength, corresponding to the Hubble F300W filter at 300
+              nm. All these sources are undetected or very faint in this, the shortest wavelength filter, making them candidate dropout
+              galaxies at red-shifts of about three. (Image after one in [33]).
+
+                 The descendent of the HDF using WFC3 and other updated instruments on the Hubble Space Telescope is called the
+              Hubble Extremely Deep Field, or HXDF. It is shown in Figure 7.1 and is, currently, the deepest optical and near-infrared
+              image ever obtained. This image is the result of the Hubble Space Telescope staring at the same small patch of sky
+              continuously for over three weeks.
+
+                 When these data were released to the public [83] there was the inevitable feeding frenzy. Astronomers from across the
+              globe searched the catalogs and images for candidate very high redshift galaxies, with dropout selection able to find
+              galaxies not only at redshifts around 10. Also, by looking at sources dropping out at shorter wavelengths, and because of
+              this detected in several longer wavelength bands, galaxies at redshifts from four to eight. could also be found The
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 10 of 26
+
+advantage of these lower redshift searches is that their sources are detected in several different wavelength images, which
+adds confidence that they are genuine objects at the indicated redshift. Some tens of galaxies at redshifts out to eight were
+detected in this way [23].
+
+   Armed with a reasonable number of sources at these very great distances, it is possible to investigate the history of
+galaxy formation, as revealed by optical and near-infrared observations. This is done by working out the amount of energy
+each source is emitting - termed its luminosity - and then calculating how many sources of each luminosity are found in
+the volume of the survey. The quantity derived in this way is called the luminosity function, and tracking how it changes
+with redshift allows us to see how and when galaxies, and the stars inside them, are forming. If most galaxies form at a
+redshift of, say, six, but a few form at around a redshift of seven, then the luminosity function will be higher at the lower
+redshift since there will be more galaxies, and more stars inside them, powering them to a higher luminosity.
+
+   Figure 7.5, using data from [122], shows how the luminosity function of galaxies selected this way changes as we look
+from redshifts of four - corresponding to a time when the universe was about 1.5 billion years old - to a redshift of eight,
+when the universe was less than half that age. Between these redshifts the number of galaxies decreased dramatically, with
+the number of galaxies of a typical luminosity being a factor of about ten smaller at a redshift of eight than at a redshift of
+four. The number of high luminosity galaxies decreased by an even larger factor, perhaps by as much as 100, but these
+sources are so rare at a redshift of eight that hardly any are found in the small area of sky covered by the Hubble deep
+fields, so the uncertainties on this factor are rather large.
+
+   The total amount of star formation underway in the galaxies seen in the Hubble Deep Fields can also be calculated from
+these luminosity functions.
+
+                                                               
+
+              Figure 7.5 Luminosity function evolution for dropout-selected galaxies at a redshift of eight.
+
+              This shows how the number of dropout-selected galaxies changes at the highest redshifts. The most luminous galaxies are
+
+              about a hundred times more common at a redshift of four than they are at a redshift of eight. (Data taken from [122]).
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 11 of 26
+
+                                                               
+
+              Figure 7.6 The history of star formation in the universe.
+              The data points at high redshift are taken from [122], while the line shows the results of these data and a compendium of
+              observations at lower redshifts. The star formation rate of the universe, as determined from these observations, peaked at a
+              redshift of about two and then fell. The rate at the present time is about 30 times lower than the rate at its peak.
+
+                 This is shown in Figure 7.6. You can see that the overall rate of star formation rose steadily from high redshift until it
+              reached a peak at a redshift of about two, corresponding to a time when the universe was about 3.3 billion years old. The
+              star formation rate then steadily declined over the subsequent ten billion years. Today, the star formation rate of the
+              universe is about 30 times less than it was when it reached its peak. The inescapable conclusion from these observations is
+              that the gas that collapses to form new stars is already running out.
+
+          7.5 THE MOST DISTANT GALAXIES KNOWN
+
+              While the Hubble Deep Fields have provided us with a good number of galaxies at a redshift of eight, they are also
+              capable of finding galaxies at redshifts as great as 10, corresponding to just 500 million years after the Big Bang. Have
+              they detected any such objects?
+
+                 The first data capable of finding such sources was released in 2009 with the Hubble Ultradeep Field, a predecessor to
+              the deeper HXDF data shown in Figure 7.1. The initial indications were good, with several candidates found that appeared
+              to be detected in just the longest wavelength, 1.6 micron, near-infrared band. But as further work was done, this list, small
+              to begin with, was gradually whittled down to just one candidate that survived all the tests. A paper on this source,
+              potentially at a redshift of 10, was published in the prestigious scientific journal Nature [22].
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 12 of 26
+
+                 The story doesn't end there, though. More observations have since been collected, producing the even more sensitive
+              HXDF, and the data on the initial redshift 10 candidate has been studied intently by other groups. The problem with a
+              source like this is that it is only detected in a single waveband, and it is so faint that it is very difficult to obtain a spectrum
+              for the source. A good spectrum would provide an unambiguous measurement of the redshift, but without that, there are
+              other possible explanations for its appearance. The source might not be real, for example, but be an unfortunate statistical
+              conspiracy between different sorts of noise that produce the appearance of a source. The deeper HXDF data put paid to
+              that hypothesis - the source is definitely real. However, there are also more subtle alternative possibilities. The source is
+              real, but, rather than lying at a redshift of 10, could it be closer to us? Could its appearance in a single imaging band be
+              due to an unusually bright emission line at an appropriate wavelength in a lower redshift and otherwise very faint galaxy?
+              Could it appear very red not through its high redshift, but as a result of dust obscuration reddening the spectrum of a more
+              nearby object?
+
+                 These and other ideas have all been checked for this particular source over the last several years, and it now appears that
+              it might not be as distant as it was once thought. The team that originally discovered this object obtained some very
+              sensitive spectroscopic observations with the Hubble Space Telescope that suggest the presence of an emission line from
+              oxygen at the much lower redshift of 2.19 [25]. The brightness of this emission line compared to that of stellar light in the
+              same object is very surprising, but the same study finds other sources with similarly strong emission lines. The unfortunate
+              conclusion is that the first claimed redshift 10 galaxy is probably a much more nearby object.
+
+                 Further studies, both in the HXDF [123, 53] and elsewhere, have produced other very high redshift candidates, and
+              some of them may well be real. However, the possibility that they are lower redshift sources that are being picked up
+              because of bright emission lines makes it difficult to be absolutely sure about any of them. What is needed is a sensitive
+              near-infrared spectrometer in space, more sensitive than the Hubble Space Telescope can provide. Fortunately such an
+              instrument is planned as part of the James Webb Space Telescope (JWST), due for launch towards the end of this decade.
+              We will say more about this project in Chapter 9.
+
+          7.6 THE COSMIC INFRARED BACKGROUND
+
+              The picture of high redshift galaxy evolution that has emerged from optical and near-infrared studies over the two decades
+              since the first Hubble Deep Field is one of relatively quiet change. The sort of objects responsible for the star formation
+              history of the universe seen in Figure 7.6 are systems which change slowly, grow stars consistently over a long period of
+              time, and which have little or no excitement in their lives. The kind of fireworks we see in the local universe in objects
+              like Arp220 are not to be found at high redshift in this picture.
+
+                 But it turns out that this picture is incomplete.
+                 Hints that this is the case, and that far-infrared luminous, starbursting galaxies like Arp220 have a far bigger role in the
+              history of galaxy evolution than suggested by optical studies, first came from IRAS. Studies of the most luminous galaxies
+              detected by this satellite found that their numbers were increasing rapidly with redshift, indicating that they might be much
+              more common at the redshifts where most star formation took place [147]. Of course this is easy to say now, with the
+              benefit of hindsight.
+                 The true significance of dusty starburst galaxies in the history of the universe only became clear in the late 1990s, when
+              the results from two instruments on the Cosmic Background Explorer (COBE) satellite were announced. COBE's main
+              job was to look for small fluctuations in the cosmic microwave background (CMB). This is the dull glow, at a temperature
+              of 2.73 K, left over by the Big Bang. The CMB, the Big Bang, and what it can tell us about the origin of the universe will
+              be the subject of the next chapter.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 13 of 26
+
+   The two instruments on COBE of interest to us here are the Diffuse Infrared Background Experiment (DIRBE) and the
+Far-InfraRed Absolute Spectrophotometer (FIRAS). The goal of these two instruments, in the current context, was to
+search for any other diffuse backgrounds, other than the CMB, that might exist. DIRBE did this by observing the sky with
+a small, 19 cm, telescope in ten different bands from the near- to far-infrared. FIRAS, in contrast, measured the spectrum
+of the sky from the far-infrared into the radio, taking an accurate measurement of the amount of energy received at about
+40 different wavelengths. It's main job was to determine how closely the CMB matched a black body spectrum2, but, once
+that was determined, the CMB could be removed and any other backgrounds could be examined.
+
+   Two completely independent teams analysed the data from these two instruments in search of any background emission
+that might appear at wavelengths between those of the CMB and those in the optical and near-infrared produced by the
+light from galaxies like those seen in the Hubble Deep Fields. In 1996, a French team published the surprising result that
+the FIRAS data revealed a far-infrared background, whose spectrum peaked at a wavelength of about 200 microns [137].
+A lot of careful analysis was needed to remove other contaminating sources from this background, and the results
+remained somewhat noisy, so the paper only described this detection as `tentative'. Confirmation, though, of the existence
+of a cosmic infrared background (CIB) arrived two years later with the results of the DIRBE instrument [58]. The two data
+sets matched perfectly. Even more surprising was the amount of energy in the CIB. When this is compared to the amount
+of energy emitted by all the distant optical and near-infrared galaxies found in deep surveys such as the Hubble Deep
+Fields, which can be thought of as the cosmic optical background (COB), the two are found to be almost identical. This
+means that the sources that power the CIB have, over the history of the universe, generated as much energy as all the stars
+we can see in all the galaxies observed by our optical telescopes. This can be seen diagrammatically in Figure 7.7, which
+also shows that both of these backgrounds still contain much less energy than the CMB - not that surprising since the
+CMB comes from the formation of the universe.
+
+                                                                                                                                                                          
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 14 of 26
+
+Figure 7.7 The cosmic optical, infrared and microwave backgrounds compared.
+The energy density of the CMB is the highest, but the optical (COB) and infrared (CIB) backgrounds contain similar
+amounts of energy. (Modified from an original figure by H. Dole et al. The cosmic infrared background resolved by
+Spitzer. Contributions of mid-infrared galaxies to the far-infrared background. A&A, 451:417429, May 2006 [46]).
+
+   What are the sources that power the CIB? At the time of its discovery this was unclear, since there were no far-infrared
+instruments that were sensitive enough to probe the details of its structure. The suspicion, though, was that the CIB would,
+like the COB, be made up from contributions of many individual galaxies emitting at the appropriate wavelengths. Far-
+infrared light, as we have already seen, is the result of dust absorbing light from some source of energy, usually stars and
+star formation, and being heated to temperatures of about 50 K. The discovery that the CIB and COB each encompass
+comparable amounts of energy meant that half of the energy generation in the history of the universe is obscured by
+absorbing dust. Optical surveys, even the most sensitive ones available, will miss this energy, so the history of galaxy
+formation revealed by the Hubble Deep Fields is incomplete - it is telling only half of the story.
+
+   The immediate assumption of many astronomers was that the CIB and COB are generated by the same types of
+galaxies, and that everything they had discovered in the optical could account for the CIB just by doubling all the
+numbers, on the basis that half of the emission of their sources was absorbed by dust. When the first results from the new
+generation of instruments on ground-based telescopes capable of saying something about the sources responsible for the
+CIB were announced, something rather different was found.
+
+7.7 SCUBA AND SUBMILLIMETRE GALAXIES
+
+In the late 1990s a brand new, and much anticipated, instrument arrived at the James Clerk Maxwell telescope in Hawaii.
+It was called SCUBA - the Submillimetre Common User Bolometer Array [77] - and promised to revolutionise our
+knowledge of dusty objects. This is because it operated in the submillimetre - at wavelengths just shorter than 1 mm,
+where the atmosphere is reasonably transparent, but where the long wavelength tail of far-infrared emission from dust is
+still detectable - and was several hundred times more powerful than previous instruments at these wavelengths. It managed
+this huge stride in capability in two ways. Firstly, by having multiple bolometer detectors (see Chapter 2 for a description
+of how bolometers work) - 128 in total - compared to the single detector in the previous submillimetre instrument at
+JCMT known as UKT-14. Secondly, each of the bolometer detectors inside SCUBA was several times as sensitive as the
+single detector in UKT-14. Multiply those factors together, and the stage was set for something rather special.
+
+   The Hubble Deep Field was an obvious first target for deep extragalactic observations with SCUBA. In early 1998,
+during the first months of SCUBA operation, a total of fifty hours of observing time was spent staring at the Hubble Deep
+Field [81], in what amounted to one of the single longest exposures in the nearly 9 year operational life of the instrument.
+The results of these observations can be seen in Figure 7.8, which can be compared to the optical view of this same field in
+Figure 7.1.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 15 of 26
+
+                                                               
+
+              Figure 7.8 The SCUBA image of the Hubble Deep Field at a wavelength of 850 microns.
+              HDF850.1 is the brightest source in this image, visible as the white blob just to the lower left of the centre of the image.
+              (Taken from [77], courtesy of the Royal Observatory Edinburgh.)
+
+                 These two views of the universe, one looking at the sources that make up the COB, the other looking at the sources that
+              make up the CIB, are very different, as you can see. While the optical image of this field reveals about two thousand
+              relatively faint galaxies, the SCUBA image, showing emission at a wavelength of 850 microns, finds only a few sources -
+              five in total - but each of these is individually quite bright. The picture of the galaxies responsible for the CIB that emerges
+              from these observations is strikingly different to what has been found from the deep Hubble observations of the galaxies
+              that make up the optical background. While the latter evolve slowly and quietly, forming stars at a moderate rate of one or
+              two solar masses per year, the CIB galaxies, as revealed by SCUBA, are individually much more luminous. They are
+              forming stars a hundred times faster than the galaxies behind the optical background. If we compare these distant galaxy
+              populations to the kind of galaxies we see locally, the galaxies contributing to the optical background are like our own
+              Milky Way Galaxy, while the CIB sources revealed by SCUBA are similar to Arp220 and other starbursts. Like the local
+              starbursts, the phase of rapid star formation we are seeing in the SCUBA objects cannot last very long as they will use up
+              all the gas available to them.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 16 of 26
+
+   After the observations of the HDF with SCUBA, a new industry of surveys at submillimetre wavelengths got underway.
+Over the lifetime of SCUBA, the first five submillimetre galaxies (SMGs) detected in the HDF were joined by a few
+hundred others that were uncovered in surveys that, when they are all added together, amounted to a bit less than one
+square degree on the sky (the whole sky amounts to a little over 40000 square degrees). The most ambitious of these
+surveys, known as SHADES, short for the SCUBA Half A Degree Extragalactic Survey [114], aimed to cover half a
+square degree, reaching sensitivities not quite as good as the SCUBA HDF observations. These observations took place
+over a seven year period [36] and, as a result of technical failures that led to the retirement of SCUBA in late 2005, the full
+half degree area was never completed. Nevertheless, SHADES discovered over a hundred new SMGs which was, at the
+time, a significant step forward from the handfulls of sources found in surveys like the HDF and the Canada-UK Deep
+Submillimetre Survey (CUDSS) [50].
+
+   Analysis of these surveys confirmed that the population of far-infrared luminous galaxies evolved very rapidly with
+redshift, with this type of source being up to a hundred times more common at a redshift of two, about ten billion years
+ago, than they are in the local universe. The cause of this rapid evolution, and the origin of the spectacular starbursts that
+power both these individual objects and the CIB as a whole, is still unclear. One possibility is that galaxy interactions and
+mergers were much more common at earlier stages of the universe, as the galaxies we see today assembled themselves
+through gravitational attraction from the smaller galaxies that formed earlier in the universe. Another is that these galaxies
+are growing through the gravitational accretion of cool hydrogen gas from their surroundings, and that this infalling gas is
+fuelling bursts of star formation.
+
+                                                               
+
+              Figure 7.9 The identification of SMGs from the SHADES survey.
+              These show optical images (greyscale), the positions from SCUBA (circle), the positions of sources detected in the near-
+              and mid-infrared (triangles) and radio (diamonds) for three SHADES sources. In the leftmost case a clear identification is
+              indicated by the radio data. For the middle source there are three plausible identifications in the radio, while on the right,
+              there is no clear identification inside the SCUBA error circle [34].
+
+          7.8 SUBMILLIMETRE GALAXIES AT OTHER WAVELENGTHS
+
+              To test the different ideas for the origin of the vast bursts of star formation that power SMGs we have to study them with
+              the full range of observational facilities available to astronomers. Before that can be done, we have to identify their
+              counterparts at other wavelengths. This turns out to be harder than you might think. The precision with which the position
+              of sources can be measured with SCUBA isn't particularly good. On the basis of these positions alone, there might be
+              several tens of possible optical counterparts for any given source in the SCUBA HDF, or in any of the other SCUBA
+              surveys. To home in on the correct identification, we have to rely on the fact that sources that are bright in the
+              submillimetre and far-infrared, under certain assumptions, are likely to be bright at other wavelengths, including the mid-
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 17 of 26
+
+              infrared and the radio. We can then use observations at these other wavelengths to measure the position of an SMG more
+              precisely, and so track down their optical counterparts. An example of this process is shown in Figure 7.9. These are
+              optical images centred on the positions of sources from the SHADES survey [34]. The positional uncertainty from
+              SCUBA is given by the circle at the centre of the image. If you look at the leftmost part of the figure, you can see there are
+              plenty of optical sources that lie inside this circle, and so plenty of plausible optical identifications. But there is no way of
+              telling which of these is the correct identification using the SCUBA position and the optical data alone. The triangles
+              indicate the positions of sources found in the SWIRE near- and mid-infrared survey using the Spitzer space telescope [101
+              ], while the diamonds indicate the positions of sources detected in the radio using the Very Large Array [86]. With this
+              extra data you can clearly see that the correct identification for the leftmost SMG is the faint optical galaxy indicated by
+              the diamond.
+
+                 Once an optical identification has been obtained, a wide range of followup observations become possible. The most
+              important of these is the ability to measure a redshift using optical spectroscopy. In 2005, after a heroic effort at cross
+              identification and followup optical spectroscopy, the astronomer Scott Chapman and collaborators [29] showed that SMGs
+              identified in this way lay at redshifts of around 2.3. Once the distance of these sources were known, many of their physical
+              properties, such as their size and power output, could be calculated.
+
+                 However, the identification process used by Chapman and others has its flaws. As you can see in Figure 7.9, while this
+              process works well in many cases, in some, such as the source in the middle, the results can be ambiguous, while in others,
+              such as the source on the right, the process fails completely. At redshifts above 3, the brightness of the sources in the radio
+              or near- and mid-infrared are expected to fall off. More distant sources, which will also be the most powerful and most
+              interesting, are likely to be missed by this particular approach.
+
+          7.9 THE HDF850.1 STORY
+
+              The brightest submillimetre source found in the Hubble Deep Field, given the prosaic name of HDF850.1, is a great
+              illustration of the problems of identifying the most distant submillimetre galaxies. This source was originally found in the
+              HDF SCUBA observations in 1998 [81]. As the brightest source found, it might be expected to be the brightest at other
+              wavelengths as well, but this turned out not to be the case. Over subsequent years there were observations at a range of
+              different observatories and wavelengths. A better position was obtained from millimetre interferometers [49], which led to
+              claims that it was associated with an optical source at a redshift of about 1.7, but there remained a significant disagreement
+              between the millimetre and optical position. More and more sensitive observations at a range of wavelengths were
+              acquired, from X-ray to radio, but still no convincing identification was made. There were even suggestions that HDF850.
+              1, and, by implication, many of the other unidentified SMGs, weren't galaxies at all, but were cold dusty gas clouds in our
+              own galaxy [96].
+
+                 Eventually, a campaign of millimetre spectroscopic observations, scanning a wide range of frequencies for an emission
+              line from the carbon dioxide molecule, made a detection [171] and allowed a redshift to be measured, as well as a much
+              more accurate position. The redshift of 5.2, meaning that this object is seen just a billion years after the Big Bang, was
+              surprisingly high. To be as bright as it was seen by SCUBA at such a high redshift, HDF850.1 must be forming stars at a
+              rate of almost 1000 solar masses of new stars each year - nearly a thousand times faster than the rate of star formation in
+              the Milky Way or in a typical optical/near-infrared detected galaxy from the Hubble Deep Fields. Just as surprising was
+              the fact that no optical or near-infrared emission could be seen at the position of HDF850.1, even in the deepest Hubble
+              Space Telescope data available. This galaxy must have so much gas and dust in its interstellar medium that most of its
+              starlight is absorbed by dust and re-emitted in the far-infrared.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 18 of 26
+
+   The fact that it took fourteen years to get a redshift measurement of HDF850.1 is a salutary warning for all far-infrared
+and submillimetre astronomers. Sometimes the universe doesn't put your sources where you think they should be, and
+doesn't make them easily detectable at other wavelengths. HDF850.1 was one of the first five such objects to be found.
+All the SCUBA surveys combined have found a few hundred more, and other similar instruments that have come along
+since then have added a few hundred more. Chasing all of those down the way HDF850.1 was eventually dealt with could
+take a long time indeed. However, catalogs of a few hundred SMGs can now be considered pitifully small. With the
+Herschel Space Observatory we can now find hundreds of thousands of these objects.
+
+7.10 THE HERSCHEL REVOLUTION
+
+The Herschel Space Observatory, shown in Figure 7.10, was launched on 14th May 2009. It was the culmination of many
+decades of planning - the original ideas for a space based far-infrared telescope date back to the early 1980s, and, once
+fully approved, it took about ten years to build and get ready for launch. Herschel is one of the largest space astronomy
+missions ever undertaken by the European Space Agency. Its most obvious unique feature is a huge, 3.5 m diameter,
+primary mirror, the largest mirror ever launched on an astronomical telescope3. Previous infrared astronomy satellites all
+had much smaller mirrors, with the largest of those being Spitzer at 85 cm. The large mirror allows Herschel to collect
+nearly seventeen times as much light as Spitzer. When this is combined with more modern detectors, and instruments that
+extend to longer wavelengths, major advances are possible. You will have seen some of these results in previous chapters
+but, to my mind at least, it is in the observations of SMGs where Herschel's capabilities are shown most clearly.
+
+   Of the three scientific instruments on Herschel, the most important for detecting large numbers of SMGs is SPIRE - the
+Spectral and Photometric Imaging Receiver [70]. This instrument, developed largely in the UK, uses bolometers to image
+the sky simultaneously at three separate far-infrared/submm wavelengths - 250, 350 and 500 microns. The combination of
+Herschel's large mirror, the absence of atmospheric absorption and lack of a large thermal background mean that SPIRE
+can scan large areas of the sky very quickly. Over its entire career, SPIRE images were taken which covered almost a
+tenth of the entire sky. The two most important projects in the context of searching for distant SMGs are the HerMES [125
+] (Herschel Multitier Extragalactic Survey) and H-ATLAS (Herschel Astrophysical Terahertz Large Area Survey)4
+surveys [51]. These take two different but complementary approaches to studying distant far-infrared luminous galaxies.
+The HerMES survey aims to be a little bit like the Hubble Deep Fields, taking sensitive observations in parts of the sky
+that are already well studied at other wavelengths. It covers a total of about 100 square degrees, with a more recent and
+less sensitive extension of a further 270 square degrees. The H-ATLAS survey, in contrast, aims for somewhat less
+sensitive observations but, at 570 square degrees, it covers a much larger area. Both the surveys are in areas of the sky free
+from contamination by the dust inside our own galaxy, making them ideal for extragalactic astronomy. Between them,
+HerMES and H-ATLAS have scanned nearly a thousand square degrees, roughly 5% of the sky suitable for extragalactic
+astronomy, and nearly a thousand times the area covered so far by ground-based surveys in the submillimetre using
+instruments like SCUBA.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 19 of 26
+
+                                                               
+
+              Figure 7.10 The Herschel Space Observatory.
+              (Courtesy of ESA http://www.esa.int/ESA.)
+
+                 Figure 7.2 gives an impression of just how much of an advance the SPIRE surveys are over what has come before. The
+              SCUBA image of the Hubble Deep Field, shown to scale as an inset, took fifty hours of observing time, and found five
+              galaxies. The much larger HerMES image, a small fraction of the survey as a whole, contains about 700 galaxies and took
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 20 of 26
+
+about eight hours of observations. In total the H-ATLAS and HerMES surveys have detected several hundred thousand
+SMGs. The days when you could recall the details of every single known SMG are now gone. We now have to look at
+these objects not as individuals, but as a population, in much the same way that we can look at stars or local galaxies. This
+really is a revolution, and the final results of this vast new database are still to be seen.
+
+7.11 THE MOST DISTANT DUSTY GALAXIES
+
+One of the things made possible by the huge catalogs of SMGs that are now available thanks to Herschel is that we can
+start looking for the most exceptional objects. The fact that SPIRE works at three different frequencies simultaneously is a
+great help. If we look at the typical spectral energy distribution for a star-forming galaxy at low redshift (see Figure 6.5)
+you will see that such a source will appear `blue' in the SPIRE bands, meaning that it looks brightest at the shortest
+wavelengths available. At higher redshifts, though, this colour will change, as shown in Figure 7.11.
+
+   A local dusty galaxy will appear brighter in the 250 micron channel than at 350 or 500 microns. At a redshift of three,
+though, at the upper range of redshifts measured for the SCUBA detected and radio/mid-infrared identified SMGs, it will
+have roughly the same brightness in the 250 and 350 micron channels. At still higher redshifts, beyond that of HDF850.1,
+the 500 micron channel will be the brightest. So, as the source moves to higher redshift, the peak of the dust emission,
+which lies at a wavelength of about 100 microns when it is emitted, will be shifted through the SPIRE bands. Any sources
+that appear red, in other words sources that are brightest at 500 microns, may well lie at redshifts beyond those where
+SMGs have previously been found.
+
+                                                                                                                                                                          
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 21 of 26
+
+Figure 7.11 How the SED of a dusty galaxy changes with redshift.
+This shows how the SED of a dusty star-forming galaxy like Arp220 changes its appearance with redshift. The SPIRE
+bands are shown with vertical dashed lines, and the galaxy SED is shown at three different redshifts: solid for a redshift of
+zero, dotted for a redshift of three, and dashed for a redshift of six.
+
+   This colour selection method is actually quite simple to apply to catalogs of SPIRE sources and to SPIRE images. The
+HerMES team did this to some of the first data that arrived from Herschel and were quite surprised to find more red
+SPIRE sources than they expected. One of these sources, given the name of HFLS3, was exceptionally red (see in Figure
+7.2) and was the subject of a multi-telescope followup campaign to confirm its existence and measure its redshift, which
+was found to be 6.34 [141], corresponding to a time less than a billion years after the Big Bang. This made it not only the
+most distant dusty star-forming galaxy currently known, but also put it among the most distant galaxies for which a
+spectroscopically confirmed redshift is available. Among the many surprising things about HFLS3 is the rate at which it is
+forming stars - about 2000 solar masses of new stars per year. On its own, HFLS3 is forming stars at a rate comparable to
+that of all galaxies at a similar redshift that were found in the optical/near-infrared images of the Hubble Deep Field. The
+mass of dust in this galaxy, about a billion solar masses, is also a problem. The carbon and silicon that makes up this dust
+has to have been made since the Big Bang, fused from primordial hydrogen and helium in stars. These stars have less than
+a billion years from the Big Bang until the time at which we see HFLS3 to form, live out their lives, and recycle their
+enriched material back into the interstellar medium as dust. Clearly stars like our own Sun, which has an expected lifespan
+of about 10 billion years, are not able to do this in time, so we are beginning to learn something about the very first
+generation of stars to form in the universe, so called Population 3 stars, even though we have yet to detect any of them
+directly.
+
+   Work is still underway to fully understand the other red sources seen in the HerMES studies which found HFLS3. The
+search for red Herschel sources is also being extended across the full HerMES and H-ATLAS surveys. A number of other
+galaxies at redshifts greater than four have already been confirmed, though HFLS3 remains the record holder. Taking
+these measured redshifts as confirmation that most of these sources are genuinely at redshifts greater than four, we can
+start to define the properties of this population of dusty, rapidly star-forming galaxies. We can also compare the number of
+sources we see to the number predicted by the best existing models of galaxy formation. It turns out that none of these
+models predict the number or brightness of red sources that the Herschel surveys are finding [48]. This presents an
+interesting problem for those modelling galaxy formation. We can also look at the contribution of these galaxies, which
+are rare but which are forming stars very rapidly, to the star-formation history of the universe. At first sight, the high
+redshift Herschel sources only contribute about 10% of the star-formation rate of optical/near-infrared sources at a similar
+redshift. However, the sources that Herschel can detect in this way have to be very luminous. If you assume that there is
+an underlying population of similar but fainter objects that Herschel cannot directly detect, you find that these high-
+redshift dusty star-forming galaxies might contribute as much star formation as the sources found at similar redshifts
+through optical/near-infrared observations. Once again, it looks as if the optical is only telling us half the story, and our
+picture of the history of star formation in the universe will only be complete when we also understand what is happening
+in the far-infrared.
+
+7.12 GALAXIES AS TELESCOPES
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 22 of 26
+
+While Herschel allows us to detect very distant, very powerful far-infrared and submillimetre galaxies, it is not capable of
+providing the kind of detailed, high resolution view of these sources that Hubble can provide for the sources it detects. The
+Hubble Space Telescope has an angular resolution that can be measured in the ten millionths of a degree. Herschel can
+only resolve structures a hundred times bigger. Also, as we have seen in the previous section, Herschel can only detect the
+most powerful dusty galaxies at high redshifts, sources like HFLS3 which is forming stars at a massive 3000 solar masses
+of new stars each year. To be able to understand the processes that drive these sources, to see if their bursts of star
+formation are triggered by galaxy interactions and mergers, as is the case for their lower redshift, lower luminosity
+equivalents like Arp220, we need to be able to examine them with much greater precision. New instruments, such as the
+Atacama Large Millimetre Array (ALMA) are currently being constructed that will be able to do this, but, in the interim,
+there is another way for us to get a close up view of these sources. This approach also has the potential to tell us something
+about the mysterious dark matter which makes up much of the mass of the universe.
+
+   One of the key predictions of Einstein's General Theory of Relativity is that gravity bends the path of light rays in a
+process known as gravitational lensing. The degree to which mass bends light is actually quite small, so this effect is only
+visible when light passes close to a massive object. This can be seen when light passes close to a star like the Sun, which
+slightly distorts the view of stars close behind it, but it is seen most clearly when light from a distant galaxy passes close to
+another galaxy or through a cluster of galaxies. An example of the latter can be seen in Figure 7.14, where light from
+background galaxies passes through the galaxy cluster RCS2 032727-132623, producing a variety of spectacular arcs.
+These are the distorted images of the lensed background galaxies. Gravitational lensing not only makes the background
+galaxies brighter, it also spreads their light out over a much larger area. This allows much smaller structures in the lensed
+background galaxy to be seen than would otherwise be possible. Since the strength of lensing depends on the gravitational
+mass of material bending the light, you can also use lensing images, like Figure 7.14, to measure the distribution of mass
+in a galaxy or galaxy cluster. Since most of this mass is made up of dark matter, not the ordinary matter that you, me, the
+Earth and Sun are made of, determining the distribution of mass inside objects like galaxies and galaxy clusters is a first
+step to working out what the dark matter actually is, and how it behaves.
+
+                                                               
+
+              Figure 7.12 Strong gravitational lensing.
+              Diagram showing how galaxy-galaxy lensing produces multiple images of a background source.
+
+                 Galaxy clusters can strongly magnify a number of objects behind them, as you can see in Figure 7.14, but they are
+              relatively rare objects. Individual galaxies, which are much more common, can also provide lensing magnification when a
+              distant object lies right behind them. This is known as galaxy-galaxy lensing, and a diagram showing how it functions can
+              be seen in Figure 7.12. A source lying behind a foreground lensing galaxy can, in this way, appear as multiple images. If
+              the geometry is exactly right, the light from the background source is spread out into a ring that surrounds the lensing
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 23 of 26
+
+              galaxy. This ring is known as an Einstein ring. As with galaxy cluster lensing, the background source is magnified so it
+              appears brighter than it would otherwise be, and its light is spread out so that smaller scale features can be seen. You can
+              also use the shape of the lensed source to work out the amount and distribution of mass in the lensing galaxy. This means
+              that galaxy-galaxy lensing is potentially a very powerful tool as it can provide a lot of extra information about both the
+              background lensed source, and about the dark matter in the lensing galaxy. If a large number of galaxy-galaxy lenses were
+              available, with the lensing galaxies at a range of redshifts, you could, for example, use them to see how the mass of
+              galaxies grows with time, irrespective of whether that mass is luminous, in the form of stars, or dark matter.
+
+                 While studies of galaxy-galaxy lenses are potentially very powerful, they are not very easy to find. The efficiency of
+              previous lensing searches, in terms of the number of lenses found compared to the number of candidates studied, has been
+              pretty low. The CLASS lensing survey (Cosmic Lens All Sky Survey), which used radio data, found 22 lensed systems in
+              a survey of 16,000 candidates [116], giving an efficiency a bit better than one in a thousand. Optical searches for strong
+              lenses using the Sloan Digital Sky Survey (SDSS) have found 62 lenses from a sample of about 51,000 candidates [84] for
+              a similar efficiency. Studying the images of potential lensing galaxies in deep Hubble imaging fields has produced twenty
+              lenses from about 9000 candidates, for an efficiency of about one in 500 [56]. The most efficient lens survey to date is
+              probably the Sloan Lens ACS survey (SLACS), which uses a combination of optical spectroscopy from the SDSS and
+              imaging from the Hubble Space Telescope [9]. This has found about 100 lenses with an efficiency of about 68% but relies
+              on both the large existing database of the SDSS, and on expensive HST followup observations. These searches have found
+              a total of about 200 strong galaxy-galaxy lenses [163] which have begun to reveal interesting results about the distribution
+              of mass in the lenses, and about the background lensed sources. What is needed to significantly advance the field is a
+              larger and cleaner sample of galaxy-galaxy gravitational lensing systems, and the central obstacle to this is the low
+              efficiency of most selection methods.
+
+                 When Herschel was launched, not many people thought it would prove to be useful for gravitational lens searches.
+              However, with hindsight, its potential for pinpointing lenses should have been clear. The key to this is the fact that the
+              background, distant dusty galaxies, discussed in the previous section, are fairly numerous, are quite faint, and have a
+              distinctive colour. Because of this, exceptionally bright sources with the same distinctive red colour are unlikely to be
+              intrinsically bright - sources like this just don't exist. Instead, they appear to be bright because their emission is being
+              magnified by a foreground galaxy.
+
+                 The first data that arrived from the H-ATLAS survey was searched for candidate gravitational lenses. The H-ATLAS
+              team selected the brightest eleven objects from the 7000 sources detected in the first 15 square degrees of the 570 square
+              degree survey. One of these sources turned out to lie within our own galaxy, one was an unusual radio source (a blazar,
+              see Chapter 6) and four were easily identified as nearby galaxies. That left five remaining candidates. These were all
+              found to have the red colours characteristic of high redshift dusty galaxies. Followup observations of these sources [118]
+              found that every single one of them was the result of strong gravitational lensing, meaning that Herschel has provided us
+              with a near 100% efficient way of finding gravitational lenses. Further observations of these candidates have found some
+              spectacular examples of multiple images and one Einstein Ring - see Figure 7.16.
+
+                 The exploitation of this technique is still in its early days, but it seems very likely that a large number of lensed systems
+              will be found, stretching out to high redshift for both the lens and the background source. This will be ideal for
+              understanding the assembly of mass over time, and in examining the details of the distant dusty galaxies magnified by
+              gravitational lensing.
+
+          7.13 ALMA THE NEXT REVOLUTION
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 24 of 26
+
+Herschel isn't the only far-infrared/submm telescope that has proved to be ideal for finding gravitational lenses. The South
+Pole Telescope (SPT), an instrument designed mainly to study the CMB, uncovered a number of unusually bright point
+sources whose colours suggested they might be gravitational lenses. Followup observations with the Atacama Large
+Millimetre Array (ALMA) showed that these sources were all gravitationally lensed [169]. Even though ALMA was only
+a quarter completed at the time of the observations, it was still able to produce some of the best images of lensed dusty
+systems ever seen. Some of these are shown in Figure 7.15.
+
+                                                               
+
+              Figure 7.13 Some of the many dishes of ALMA.
+              (Courtesy of ALMA http://www.almaobservatory.org/.)
+
+                 ALMA will be the next great far-infrared/submillimetre telescope, and the observations of the SPT lenses are just the
+              first glimpse of its capabilities. ALMA will be made up of 66 antennas spread across a plateau 5000 m up in the Atacama
+              desert of Chile (see Figure 7.13). The 66 dishes give it a much greater collecting area than any previous millimetre or
+              submillimetre telescope, and the high, dry location will minimise the effects of atmospheric absorption. ALMA is an
+              interferometer, which means that the light from separate antennas is combined to provide an angular resolution equivalent
+              to that of a single dish that matches the separation of the antennae. Since ALMA's antennae can be up to 16 kilometres
+              apart, this means that finally we will get resolutions in the far-infrared and submillimetre that match, or even exceed, those
+              that optical and near infrared astronomers can achieve with the Hubble Space Telescope.
+
+          7.14 CONCLUSIONS
+
+              The story of galaxy formation and galaxy evolution is not complete. As we have seen, we now know that our traditional
+              optical and near-infrared observations, with large ground-based telescopes or the Hubble Space Telescope, tell only half of
+              the story, and we need the far-infrared and submillimetre to tell us what happens in the dusty objects responsible for
+              producing the CIB. Only with Herschel has it been possible to find the large numbers of far-infrared sources necessary to
+              really understand what is going on, but our work with the Herschel data is far from complete.
+
+                 The Herschel space telescope stopped operation at the end of April 2013, after nearly four years in space. It has left a
+              huge legacy of observations, much of which, like the HerMES and H-ATLAS projects, is concerned with the high redshift
+              universe. Meanwhile, new ground-based telescopes such as ALMA, and next-generation instruments such as SCUBA2,
+              the successor to the immensely successful SCUBA, are now coming on stream.
+
+                 While the story of the dusty, high redshift universe is not yet complete, we now have the tools to fully get to grips with
+              the history of the obscured universe.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 25 of 26
+
+                                                               
+
+Figure 7.14 Gravitational lensing in the galaxy cluster RCS2 032727-132623.
+This shows a Hubble Space Telescope optical image of the galaxy cluster RCS2 032727-132623. Galaxies behind this
+cluster are gravitationally lensed by its large mass, producing the spectacular arc-like structure in the image. (Courtesy of
+NASA.)
+
+                                                               
+
+              Figure 7.15 ALMA images of the SPT lenses.
+
+              The dust emission from the lensed sources is shown here in red, while blue shows HST optical emission from foreground
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+Copyright © 2014. Taylor & Francis Group. All rights reserved.  Ebook pages 146-172 | Printed page 26 of 26
+
+sources and the lenses themselves. As you can see, the lensed objects appear as multiple images, rings and arcs, exactly
+what you expect to find with galaxy-galaxy gravitational lensing. (Courtesy of ALMA http://www.almaobservatory.org/ [
+169].)
+
+                                                               
+
+              Figure 7.16 Hubble Space Telescope image of one of the first H-ATLAS lenses.
+              Light from the lensed source forms the ring around the elliptical galaxy at the centre of the image. (Image used by kind
+              permission of Mattia Negrello and the H-ATLAS Consortium.)
+
+                  1 It wasn't one of my best.
+                  2 So closely, it turned out, that the CMB was a better black body than the calibrator on the instrument.
+                  3 It might be the largest mirror ever launched into orbit, but there are persistent rumours that various spy satellites, looking
+               down rather than up, have still larger mirrors. But nobody is giving details of these, and they're certainly not making them
+               available for astronomers to use.
+                  4 Any acronym that uses the word Teraherz is clearly just a little bit too contrived.
+
+Clements, David L.. Infrared Astronomy - Seeing the Heat : From William Herschel to the Herschel Space Observatory, Taylor & Francis Group, 2014. ProQuest Ebook Central,
+       http://ebookcentral.proquest.com/lib/imperial/detail.action?docID=1691080.
+
+Created from imperial on 2026-04-10 09:35:15.
+
