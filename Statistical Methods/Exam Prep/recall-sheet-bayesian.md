@@ -1,3 +1,5 @@
+jhhhj
+
 # Bayesian Recall Sheet
 
 Rebuild this from memory first. Watch notation conventions carefully.
@@ -119,13 +121,13 @@ integrates to $1$, the exponential part alone must integrate to $\sqrt{2\pi}s$.
 
 Prior choice cheat sheet:
 
-| Parameter type | Typical prior | When/why |
-|---|---|---|
-| Location parameter, e.g. mean/true length $\mu$ | Uniform prior $\pi(\mu)\propto 1$ | Shifting the origin/units should not change prior preference; no preferred location. |
-| Scale parameter, e.g. $\sigma,\lambda,\tau$ when positive | Jeffreys/log-uniform prior $\pi(\theta)\propto 1/\theta$ | Equal weight per multiplicative scale; no preferred order of magnitude. |
-| Probability $q\in[0,1]$ with no prior preference | Uniform/Beta$(1,1)$ | Every value of $q$ equally weighted before data. |
-| Probability $q\in[0,1]$ with pseudo-count information | Beta prior $\pi(q)\propto q^{\alpha-1}(1-q)^{\beta-1}$ | Conjugate to binomial; $\alpha,\beta$ encode prior successes/failures shape. |
-| Model comparison/evidence | Proper normalised prior over finite range | Evidence requires an actual normalised prior volume. |
+| Parameter type                                             | Typical prior                                             | When/why                                                                             |
+| ---------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Location parameter, e.g. mean/true length$\mu$           | Uniform prior$\pi(\mu)\propto 1$                        | Shifting the origin/units should not change prior preference; no preferred location. |
+| Scale parameter, e.g.$\sigma,\lambda,\tau$ when positive | Jeffreys/log-uniform prior$\pi(\theta)\propto 1/\theta$ | Equal weight per multiplicative scale; no preferred order of magnitude.              |
+| Probability$q\in[0,1]$ with no prior preference          | Uniform/Beta$(1,1)$                                     | Every value of$q$ equally weighted before data.                                    |
+| Probability$q\in[0,1]$ with pseudo-count information     | Beta prior$\pi(q)\propto q^{\alpha-1}(1-q)^{\beta-1}$   | Conjugate to binomial;$\alpha,\beta$ encode prior successes/failures shape.        |
+| Model comparison/evidence                                  | Proper normalised prior over finite range                 | Evidence requires an actual normalised prior volume.                                 |
 
 Improper priors such as $\pi(\mu)\propto 1$ or $\pi(\sigma)\propto 1/\sigma$ can be fine for parameter inference if the posterior normalises, but they cannot be used directly for evidence/model comparison.
 
