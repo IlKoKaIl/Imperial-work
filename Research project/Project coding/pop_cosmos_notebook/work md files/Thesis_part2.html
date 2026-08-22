@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Thesis_part2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*
+
+Arduino® Light Theme - Stefania Mellai <s.mellai@arduino.cc>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #FFFFFF;
+}
+
+.hljs,
+.hljs-subst {
+  color: #434f54;
+}
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-doctag,
+.hljs-name {
+  color: #00979D;
+}
+
+.hljs-built_in,
+.hljs-literal,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #D35400;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #00979D;
+}
+
+.hljs-type,
+.hljs-string,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #005C5F;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+
+.hljs-comment {
+  color: rgba(149,165,166,.8);
+}
+
+.hljs-meta-keyword {
+  color: #728E00;
+}
+
+.hljs-meta {
+  color: #434f54;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-function {
+  color: #728E00;
+}
+
+.hljs-number {
+  color: #8A7B52;  
+}
+
+</style>
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family:   "HelveticaNeue-Light", sans-serif, "宋体","Segoe WPC", "Segoe UI", "SFUIText-Light","Droid Sans Fallback";
+	font-size: 18px;
+	padding: 0 12px;
+	line-height: 1.6;
+	word-wrap: break-word;
+	color: #333333;
+}
+
+.content-wrapper{
+	max-width: 860px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom: 1px solid #eee;
+}
+
+
+h2{
+	padding-bottom: .3em;
+    font-size: 2em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+h3{
+	font-size: 1.75em;
+    line-height: 1.225;
+}
+
+h1, h2, h3 {
+	font-weight: bold;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Obsidian syntax defaults for legacy export (PDF / HTML / DOCX) */
+
+.callout {
+	--callout-accent: #0969da;
+	margin: 12px 0;
+	border-radius: 6px;
+	border-left: 4px solid var(--callout-accent);
+	background: rgba(9, 105, 218, 0.08);
+	color: #333333;
+	overflow: hidden;
+}
+
+.callout[data-callout="note"],
+.callout[data-callout="abstract"],
+.callout[data-callout="info"],
+.callout[data-callout="todo"],
+.callout[data-subtype="note"],
+.callout[data-subtype="abstract"],
+.callout[data-subtype="info"],
+.callout[data-subtype="todo"],
+.callout[data-callout="note" i],
+.callout[data-callout="abstract" i],
+.callout[data-callout="info" i],
+.callout[data-callout="todo" i],
+.callout[data-subtype="note" i],
+.callout[data-subtype="abstract" i],
+.callout[data-subtype="info" i],
+.callout[data-subtype="todo" i] {
+	--callout-accent: #0969da;
+	border-left-color: #0969da;
+	background: rgba(9, 105, 218, 0.08);
+}
+
+.callout[data-callout="tip"],
+.callout[data-callout="hint"],
+.callout[data-subtype="tip"],
+.callout[data-subtype="hint"],
+.callout[data-callout="tip" i],
+.callout[data-callout="hint" i],
+.callout[data-subtype="tip" i],
+.callout[data-subtype="hint" i] {
+	--callout-accent: #116329;
+	border-left-color: #116329;
+	background: rgba(17, 99, 41, 0.08);
+}
+
+.callout[data-callout="important"],
+.callout[data-subtype="important"],
+.callout[data-callout="important" i],
+.callout[data-subtype="important" i] {
+	--callout-accent: #8250df;
+	border-left-color: #8250df;
+	background: rgba(130, 80, 223, 0.08);
+}
+
+.callout[data-callout="warning"],
+.callout[data-subtype="warning"],
+.callout[data-callout="warning" i],
+.callout[data-subtype="warning" i] {
+	--callout-accent: #bc4c00;
+	border-left-color: #bc4c00;
+	background: rgba(188, 76, 0, 0.08);
+}
+
+.callout[data-callout="caution"],
+.callout[data-callout="danger"],
+.callout[data-callout="error"],
+.callout[data-callout="bug"],
+.callout[data-callout="fail"],
+.callout[data-subtype="caution"],
+.callout[data-subtype="danger"],
+.callout[data-subtype="error"],
+.callout[data-subtype="bug"],
+.callout[data-subtype="fail"],
+.callout[data-callout="caution" i],
+.callout[data-callout="danger" i],
+.callout[data-callout="error" i],
+.callout[data-callout="bug" i],
+.callout[data-callout="fail" i],
+.callout[data-subtype="caution" i],
+.callout[data-subtype="danger" i],
+.callout[data-subtype="error" i],
+.callout[data-subtype="bug" i],
+.callout[data-subtype="fail" i] {
+	--callout-accent: #cf222e;
+	border-left-color: #cf222e;
+	background: rgba(207, 34, 46, 0.08);
+}
+
+.callout[data-callout="question"],
+.callout[data-callout="help"],
+.callout[data-callout="faq"],
+.callout[data-subtype="question"],
+.callout[data-subtype="help"],
+.callout[data-subtype="faq"],
+.callout[data-callout="question" i],
+.callout[data-callout="help" i],
+.callout[data-callout="faq" i],
+.callout[data-subtype="question" i],
+.callout[data-subtype="help" i],
+.callout[data-subtype="faq" i] {
+	--callout-accent: #9a6700;
+	border-left-color: #9a6700;
+	background: rgba(154, 103, 0, 0.08);
+}
+
+.callout .callout-title,
+.callout .callout-info {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 14px 0;
+	margin-bottom: 10px;
+	color: var(--callout-accent);
+}
+
+.callout .callout-title-icon,
+.callout .callout-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+	color: var(--callout-accent);
+}
+
+.callout .callout-title-icon svg {
+	width: 16px;
+	height: 16px;
+}
+
+.callout .callout-title-inner,
+.callout .callout-info > .callout-title {
+	font-weight: 700;
+	font-size: 0.95em;
+	line-height: 1.35;
+	color: var(--callout-accent);
+}
+
+.callout .callout-content {
+	padding: 6px 14px 12px;
+	color: #333333;
+}
+
+.callout .callout-content > :first-child {
+	margin-top: 0;
+}
+
+.callout .callout-content > :last-child {
+	margin-bottom: 0;
+}
+
+.obsidian-wikilink {
+	color: #7c3aed;
+	text-decoration: underline;
+}
+
+.obsidian-wikilink-embed {
+	display: inline-block;
+	padding: 2px 8px;
+	border: 1px dashed #d0d7de;
+	border-radius: 4px;
+	color: #7c3aed;
+}
+
+.obsidian-tag {
+	color: #7c3aed;
+	background: rgba(124, 58, 237, 0.12);
+	border-radius: 4px;
+	padding: 0 4px;
+}
+
+mark {
+	background: rgba(154, 103, 0, 0.35);
+	color: inherit;
+	padding: 0 2px;
+	border-radius: 2px;
+}
+
+[data-type="yaml-front-matter"] {
+	margin: 0 0 16px;
+}
+
+.vditor-properties {
+	border: 1px solid #d0d7de;
+	border-radius: 8px;
+	background: #f6f8fa;
+	overflow: hidden;
+}
+
+.vditor-properties__heading {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 12px;
+	border-bottom: 1px solid #d0d7de;
+	background: #f3f4f6;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: #6b7280;
+}
+
+.vditor-properties__heading-icon::before {
+	content: "☰";
+	opacity: 0.75;
+}
+
+.vditor-properties__table {
+	display: flex;
+	flex-direction: column;
+}
+
+.vditor-properties__row {
+	display: grid;
+	grid-template-columns: minmax(120px, 34%) 1fr;
+	gap: 8px 12px;
+	align-items: start;
+	padding: 8px 12px;
+	border-top: 1px solid rgba(208, 215, 222, 0.45);
+}
+
+.vditor-properties__row:first-child {
+	border-top: none;
+}
+
+.vditor-properties__key {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	min-width: 0;
+	color: #6b7280;
+	font-size: 0.85rem;
+}
+
+.vditor-properties__key-icon {
+	flex-shrink: 0;
+	width: 14px;
+	height: 14px;
+	opacity: 0.72;
+	text-align: center;
+}
+
+.vditor-properties__key-icon[data-icon="tag"]::before { content: "#"; }
+.vditor-properties__key-icon[data-icon="alias"]::before { content: "⛓"; }
+.vditor-properties__key-icon[data-icon="date"]::before { content: "📅"; }
+.vditor-properties__key-icon[data-icon="toggle"]::before { content: "◉"; }
+.vditor-properties__key-icon[data-icon="number"]::before { content: "#"; }
+.vditor-properties__key-icon[data-icon="list"]::before { content: "≡"; }
+.vditor-properties__key-icon[data-icon="text"]::before { content: "T"; }
+
+.vditor-properties__key-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.vditor-properties__value {
+	min-width: 0;
+	font-size: 0.92rem;
+	color: #333333;
+	word-break: break-word;
+}
+
+.vditor-properties__value--tags,
+.vditor-properties__value--aliases {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.vditor-properties__value--aliases {
+	gap: 6px;
+}
+
+.vditor-properties__list {
+	margin: 0;
+	padding-left: 1.1rem;
+}
+
+.vditor-properties__checkbox {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	margin-right: 6px;
+	border: 1px solid #d0d7de;
+	border-radius: 3px;
+	vertical-align: -2px;
+	background: #ffffff;
+}
+
+.vditor-properties__checkbox[is-checked="true"] {
+	background: #7c3aed;
+	border-color: #7c3aed;
+	box-shadow: inset 0 0 0 2px #ffffff;
+}
+
+.vditor-properties__empty {
+	opacity: 0.45;
+}
+
+</style>
+
+<style>
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+.table-of-contents li{
+	list-style-type: initial;
+}
+
+</style>
+
+<style>
+@font-face{font-display:block;font-family:KaTeX_AMS;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_AMS-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_AMS-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_AMS-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Caligraphic;font-style:normal;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Bold.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Bold.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Bold.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Caligraphic;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Caligraphic-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Fraktur;font-style:normal;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Bold.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Bold.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Bold.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Fraktur;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Fraktur-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:normal;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Bold.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Bold.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Bold.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:italic;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-BoldItalic.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-BoldItalic.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-BoldItalic.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:italic;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Italic.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Italic.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Italic.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Main;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Main-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Math;font-style:italic;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-BoldItalic.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-BoldItalic.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-BoldItalic.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Math;font-style:italic;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-Italic.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-Italic.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Math-Italic.ttf") format("truetype")}@font-face{font-display:block;font-family:"KaTeX_SansSerif";font-style:normal;font-weight:700;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Bold.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Bold.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Bold.ttf") format("truetype")}@font-face{font-display:block;font-family:"KaTeX_SansSerif";font-style:italic;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Italic.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Italic.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Italic.ttf") format("truetype")}@font-face{font-display:block;font-family:"KaTeX_SansSerif";font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_SansSerif-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Script;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Script-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Script-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Script-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size1;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size1-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size1-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size1-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size2;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size2-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size2-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size2-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size3;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size3-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size3-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size3-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Size4;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size4-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size4-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Size4-Regular.ttf") format("truetype")}@font-face{font-display:block;font-family:KaTeX_Typewriter;font-style:normal;font-weight:400;src:url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Typewriter-Regular.woff2") format("woff2"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Typewriter-Regular.woff") format("woff"),url("https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/fonts/KaTeX_Typewriter-Regular.ttf") format("truetype")}.katex{font:normal 1.21em KaTeX_Main,Times New Roman,serif;line-height:1.2;position:relative;text-indent:0;text-rendering:auto}.katex *{-ms-high-contrast-adjust:none!important;border-color:currentColor}.katex .katex-version:after{content:"0.16.47"}.katex .katex-mathml{border:0;-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;overflow:hidden;padding:0;position:absolute;width:1px}.katex .katex-html>.newline{display:block}.katex .base{position:relative;white-space:nowrap;width:-webkit-min-content;width:-moz-min-content;width:min-content}.katex .base,.katex .strut{display:inline-block}.katex .textbf{font-weight:700}.katex .textit{font-style:italic}.katex .textrm{font-family:KaTeX_Main}.katex .textsf{font-family:KaTeX_SansSerif}.katex .texttt{font-family:KaTeX_Typewriter}.katex .mathnormal{font-family:KaTeX_Math;font-style:italic}.katex .mathit{font-family:KaTeX_Main;font-style:italic}.katex .mathrm{font-style:normal}.katex .mathbf{font-family:KaTeX_Main;font-weight:700}.katex .boldsymbol{font-family:KaTeX_Math;font-style:italic;font-weight:700}.katex .amsrm,.katex .mathbb,.katex .textbb{font-family:KaTeX_AMS}.katex .mathcal{font-family:KaTeX_Caligraphic}.katex .mathfrak,.katex .textfrak{font-family:KaTeX_Fraktur}.katex .mathboldfrak,.katex .textboldfrak{font-family:KaTeX_Fraktur;font-weight:700}.katex .mathtt{font-family:KaTeX_Typewriter}.katex .mathscr,.katex .textscr{font-family:KaTeX_Script}.katex .mathsf,.katex .textsf{font-family:KaTeX_SansSerif}.katex .mathboldsf,.katex .textboldsf{font-family:KaTeX_SansSerif;font-weight:700}.katex .mathitsf,.katex .mathsfit,.katex .textitsf{font-family:KaTeX_SansSerif;font-style:italic}.katex .mainrm{font-family:KaTeX_Main;font-style:normal}.katex .vlist-t{border-collapse:collapse;display:inline-table;table-layout:fixed}.katex .vlist-r{display:table-row}.katex .vlist{display:table-cell;position:relative;vertical-align:bottom}.katex .vlist>span{display:block;height:0;position:relative}.katex .vlist>span>span{display:inline-block}.katex .vlist>span>.pstrut{overflow:hidden;width:0}.katex .vlist-t2{margin-right:-2px}.katex .vlist-s{display:table-cell;font-size:1px;min-width:2px;vertical-align:bottom;width:2px}.katex .vbox{align-items:baseline;display:inline-flex;flex-direction:column}.katex .hbox{width:100%}.katex .hbox,.katex .thinbox{display:inline-flex;flex-direction:row}.katex .thinbox{max-width:0;width:0}.katex .msupsub{text-align:left}.katex .mfrac>span>span{text-align:center}.katex .mfrac .frac-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline,.katex .hline,.katex .mfrac .frac-line,.katex .overline .overline-line,.katex .rule,.katex .underline .underline-line{min-height:1px}.katex .mspace{display:inline-block}.katex .smash{display:inline;line-height:0}.katex .clap,.katex .llap,.katex .rlap{position:relative;width:0}.katex .clap>.inner,.katex .llap>.inner,.katex .rlap>.inner{position:absolute}.katex .clap>.fix,.katex .llap>.fix,.katex .rlap>.fix{display:inline-block}.katex .llap>.inner{right:0}.katex .clap>.inner,.katex .rlap>.inner{left:0}.katex .clap>.inner>span{margin-left:-50%;margin-right:50%}.katex .rule{border:0 solid;display:inline-block;position:relative}.katex .hline,.katex .overline .overline-line,.katex .underline .underline-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline{border-bottom-style:dashed;display:inline-block;width:100%}.katex .sqrt>.root{margin-left:.2777777778em;margin-right:-.5555555556em}.katex .fontsize-ensurer.reset-size1.size1,.katex .sizing.reset-size1.size1{font-size:1em}.katex .fontsize-ensurer.reset-size1.size2,.katex .sizing.reset-size1.size2{font-size:1.2em}.katex .fontsize-ensurer.reset-size1.size3,.katex .sizing.reset-size1.size3{font-size:1.4em}.katex .fontsize-ensurer.reset-size1.size4,.katex .sizing.reset-size1.size4{font-size:1.6em}.katex .fontsize-ensurer.reset-size1.size5,.katex .sizing.reset-size1.size5{font-size:1.8em}.katex .fontsize-ensurer.reset-size1.size6,.katex .sizing.reset-size1.size6{font-size:2em}.katex .fontsize-ensurer.reset-size1.size7,.katex .sizing.reset-size1.size7{font-size:2.4em}.katex .fontsize-ensurer.reset-size1.size8,.katex .sizing.reset-size1.size8{font-size:2.88em}.katex .fontsize-ensurer.reset-size1.size9,.katex .sizing.reset-size1.size9{font-size:3.456em}.katex .fontsize-ensurer.reset-size1.size10,.katex .sizing.reset-size1.size10{font-size:4.148em}.katex .fontsize-ensurer.reset-size1.size11,.katex .sizing.reset-size1.size11{font-size:4.976em}.katex .fontsize-ensurer.reset-size2.size1,.katex .sizing.reset-size2.size1{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size2.size2,.katex .sizing.reset-size2.size2{font-size:1em}.katex .fontsize-ensurer.reset-size2.size3,.katex .sizing.reset-size2.size3{font-size:1.1666666667em}.katex .fontsize-ensurer.reset-size2.size4,.katex .sizing.reset-size2.size4{font-size:1.3333333333em}.katex .fontsize-ensurer.reset-size2.size5,.katex .sizing.reset-size2.size5{font-size:1.5em}.katex .fontsize-ensurer.reset-size2.size6,.katex .sizing.reset-size2.size6{font-size:1.6666666667em}.katex .fontsize-ensurer.reset-size2.size7,.katex .sizing.reset-size2.size7{font-size:2em}.katex .fontsize-ensurer.reset-size2.size8,.katex .sizing.reset-size2.size8{font-size:2.4em}.katex .fontsize-ensurer.reset-size2.size9,.katex .sizing.reset-size2.size9{font-size:2.88em}.katex .fontsize-ensurer.reset-size2.size10,.katex .sizing.reset-size2.size10{font-size:3.4566666667em}.katex .fontsize-ensurer.reset-size2.size11,.katex .sizing.reset-size2.size11{font-size:4.1466666667em}.katex .fontsize-ensurer.reset-size3.size1,.katex .sizing.reset-size3.size1{font-size:.7142857143em}.katex .fontsize-ensurer.reset-size3.size2,.katex .sizing.reset-size3.size2{font-size:.8571428571em}.katex .fontsize-ensurer.reset-size3.size3,.katex .sizing.reset-size3.size3{font-size:1em}.katex .fontsize-ensurer.reset-size3.size4,.katex .sizing.reset-size3.size4{font-size:1.1428571429em}.katex .fontsize-ensurer.reset-size3.size5,.katex .sizing.reset-size3.size5{font-size:1.2857142857em}.katex .fontsize-ensurer.reset-size3.size6,.katex .sizing.reset-size3.size6{font-size:1.4285714286em}.katex .fontsize-ensurer.reset-size3.size7,.katex .sizing.reset-size3.size7{font-size:1.7142857143em}.katex .fontsize-ensurer.reset-size3.size8,.katex .sizing.reset-size3.size8{font-size:2.0571428571em}.katex .fontsize-ensurer.reset-size3.size9,.katex .sizing.reset-size3.size9{font-size:2.4685714286em}.katex .fontsize-ensurer.reset-size3.size10,.katex .sizing.reset-size3.size10{font-size:2.9628571429em}.katex .fontsize-ensurer.reset-size3.size11,.katex .sizing.reset-size3.size11{font-size:3.5542857143em}.katex .fontsize-ensurer.reset-size4.size1,.katex .sizing.reset-size4.size1{font-size:.625em}.katex .fontsize-ensurer.reset-size4.size2,.katex .sizing.reset-size4.size2{font-size:.75em}.katex .fontsize-ensurer.reset-size4.size3,.katex .sizing.reset-size4.size3{font-size:.875em}.katex .fontsize-ensurer.reset-size4.size4,.katex .sizing.reset-size4.size4{font-size:1em}.katex .fontsize-ensurer.reset-size4.size5,.katex .sizing.reset-size4.size5{font-size:1.125em}.katex .fontsize-ensurer.reset-size4.size6,.katex .sizing.reset-size4.size6{font-size:1.25em}.katex .fontsize-ensurer.reset-size4.size7,.katex .sizing.reset-size4.size7{font-size:1.5em}.katex .fontsize-ensurer.reset-size4.size8,.katex .sizing.reset-size4.size8{font-size:1.8em}.katex .fontsize-ensurer.reset-size4.size9,.katex .sizing.reset-size4.size9{font-size:2.16em}.katex .fontsize-ensurer.reset-size4.size10,.katex .sizing.reset-size4.size10{font-size:2.5925em}.katex .fontsize-ensurer.reset-size4.size11,.katex .sizing.reset-size4.size11{font-size:3.11em}.katex .fontsize-ensurer.reset-size5.size1,.katex .sizing.reset-size5.size1{font-size:.5555555556em}.katex .fontsize-ensurer.reset-size5.size2,.katex .sizing.reset-size5.size2{font-size:.6666666667em}.katex .fontsize-ensurer.reset-size5.size3,.katex .sizing.reset-size5.size3{font-size:.7777777778em}.katex .fontsize-ensurer.reset-size5.size4,.katex .sizing.reset-size5.size4{font-size:.8888888889em}.katex .fontsize-ensurer.reset-size5.size5,.katex .sizing.reset-size5.size5{font-size:1em}.katex .fontsize-ensurer.reset-size5.size6,.katex .sizing.reset-size5.size6{font-size:1.1111111111em}.katex .fontsize-ensurer.reset-size5.size7,.katex .sizing.reset-size5.size7{font-size:1.3333333333em}.katex .fontsize-ensurer.reset-size5.size8,.katex .sizing.reset-size5.size8{font-size:1.6em}.katex .fontsize-ensurer.reset-size5.size9,.katex .sizing.reset-size5.size9{font-size:1.92em}.katex .fontsize-ensurer.reset-size5.size10,.katex .sizing.reset-size5.size10{font-size:2.3044444444em}.katex .fontsize-ensurer.reset-size5.size11,.katex .sizing.reset-size5.size11{font-size:2.7644444444em}.katex .fontsize-ensurer.reset-size6.size1,.katex .sizing.reset-size6.size1{font-size:.5em}.katex .fontsize-ensurer.reset-size6.size2,.katex .sizing.reset-size6.size2{font-size:.6em}.katex .fontsize-ensurer.reset-size6.size3,.katex .sizing.reset-size6.size3{font-size:.7em}.katex .fontsize-ensurer.reset-size6.size4,.katex .sizing.reset-size6.size4{font-size:.8em}.katex .fontsize-ensurer.reset-size6.size5,.katex .sizing.reset-size6.size5{font-size:.9em}.katex .fontsize-ensurer.reset-size6.size6,.katex .sizing.reset-size6.size6{font-size:1em}.katex .fontsize-ensurer.reset-size6.size7,.katex .sizing.reset-size6.size7{font-size:1.2em}.katex .fontsize-ensurer.reset-size6.size8,.katex .sizing.reset-size6.size8{font-size:1.44em}.katex .fontsize-ensurer.reset-size6.size9,.katex .sizing.reset-size6.size9{font-size:1.728em}.katex .fontsize-ensurer.reset-size6.size10,.katex .sizing.reset-size6.size10{font-size:2.074em}.katex .fontsize-ensurer.reset-size6.size11,.katex .sizing.reset-size6.size11{font-size:2.488em}.katex .fontsize-ensurer.reset-size7.size1,.katex .sizing.reset-size7.size1{font-size:.4166666667em}.katex .fontsize-ensurer.reset-size7.size2,.katex .sizing.reset-size7.size2{font-size:.5em}.katex .fontsize-ensurer.reset-size7.size3,.katex .sizing.reset-size7.size3{font-size:.5833333333em}.katex .fontsize-ensurer.reset-size7.size4,.katex .sizing.reset-size7.size4{font-size:.6666666667em}.katex .fontsize-ensurer.reset-size7.size5,.katex .sizing.reset-size7.size5{font-size:.75em}.katex .fontsize-ensurer.reset-size7.size6,.katex .sizing.reset-size7.size6{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size7.size7,.katex .sizing.reset-size7.size7{font-size:1em}.katex .fontsize-ensurer.reset-size7.size8,.katex .sizing.reset-size7.size8{font-size:1.2em}.katex .fontsize-ensurer.reset-size7.size9,.katex .sizing.reset-size7.size9{font-size:1.44em}.katex .fontsize-ensurer.reset-size7.size10,.katex .sizing.reset-size7.size10{font-size:1.7283333333em}.katex .fontsize-ensurer.reset-size7.size11,.katex .sizing.reset-size7.size11{font-size:2.0733333333em}.katex .fontsize-ensurer.reset-size8.size1,.katex .sizing.reset-size8.size1{font-size:.3472222222em}.katex .fontsize-ensurer.reset-size8.size2,.katex .sizing.reset-size8.size2{font-size:.4166666667em}.katex .fontsize-ensurer.reset-size8.size3,.katex .sizing.reset-size8.size3{font-size:.4861111111em}.katex .fontsize-ensurer.reset-size8.size4,.katex .sizing.reset-size8.size4{font-size:.5555555556em}.katex .fontsize-ensurer.reset-size8.size5,.katex .sizing.reset-size8.size5{font-size:.625em}.katex .fontsize-ensurer.reset-size8.size6,.katex .sizing.reset-size8.size6{font-size:.6944444444em}.katex .fontsize-ensurer.reset-size8.size7,.katex .sizing.reset-size8.size7{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size8.size8,.katex .sizing.reset-size8.size8{font-size:1em}.katex .fontsize-ensurer.reset-size8.size9,.katex .sizing.reset-size8.size9{font-size:1.2em}.katex .fontsize-ensurer.reset-size8.size10,.katex .sizing.reset-size8.size10{font-size:1.4402777778em}.katex .fontsize-ensurer.reset-size8.size11,.katex .sizing.reset-size8.size11{font-size:1.7277777778em}.katex .fontsize-ensurer.reset-size9.size1,.katex .sizing.reset-size9.size1{font-size:.2893518519em}.katex .fontsize-ensurer.reset-size9.size2,.katex .sizing.reset-size9.size2{font-size:.3472222222em}.katex .fontsize-ensurer.reset-size9.size3,.katex .sizing.reset-size9.size3{font-size:.4050925926em}.katex .fontsize-ensurer.reset-size9.size4,.katex .sizing.reset-size9.size4{font-size:.462962963em}.katex .fontsize-ensurer.reset-size9.size5,.katex .sizing.reset-size9.size5{font-size:.5208333333em}.katex .fontsize-ensurer.reset-size9.size6,.katex .sizing.reset-size9.size6{font-size:.5787037037em}.katex .fontsize-ensurer.reset-size9.size7,.katex .sizing.reset-size9.size7{font-size:.6944444444em}.katex .fontsize-ensurer.reset-size9.size8,.katex .sizing.reset-size9.size8{font-size:.8333333333em}.katex .fontsize-ensurer.reset-size9.size9,.katex .sizing.reset-size9.size9{font-size:1em}.katex .fontsize-ensurer.reset-size9.size10,.katex .sizing.reset-size9.size10{font-size:1.2002314815em}.katex .fontsize-ensurer.reset-size9.size11,.katex .sizing.reset-size9.size11{font-size:1.4398148148em}.katex .fontsize-ensurer.reset-size10.size1,.katex .sizing.reset-size10.size1{font-size:.2410800386em}.katex .fontsize-ensurer.reset-size10.size2,.katex .sizing.reset-size10.size2{font-size:.2892960463em}.katex .fontsize-ensurer.reset-size10.size3,.katex .sizing.reset-size10.size3{font-size:.337512054em}.katex .fontsize-ensurer.reset-size10.size4,.katex .sizing.reset-size10.size4{font-size:.3857280617em}.katex .fontsize-ensurer.reset-size10.size5,.katex .sizing.reset-size10.size5{font-size:.4339440694em}.katex .fontsize-ensurer.reset-size10.size6,.katex .sizing.reset-size10.size6{font-size:.4821600771em}.katex .fontsize-ensurer.reset-size10.size7,.katex .sizing.reset-size10.size7{font-size:.5785920926em}.katex .fontsize-ensurer.reset-size10.size8,.katex .sizing.reset-size10.size8{font-size:.6943105111em}.katex .fontsize-ensurer.reset-size10.size9,.katex .sizing.reset-size10.size9{font-size:.8331726133em}.katex .fontsize-ensurer.reset-size10.size10,.katex .sizing.reset-size10.size10{font-size:1em}.katex .fontsize-ensurer.reset-size10.size11,.katex .sizing.reset-size10.size11{font-size:1.1996142719em}.katex .fontsize-ensurer.reset-size11.size1,.katex .sizing.reset-size11.size1{font-size:.2009646302em}.katex .fontsize-ensurer.reset-size11.size2,.katex .sizing.reset-size11.size2{font-size:.2411575563em}.katex .fontsize-ensurer.reset-size11.size3,.katex .sizing.reset-size11.size3{font-size:.2813504823em}.katex .fontsize-ensurer.reset-size11.size4,.katex .sizing.reset-size11.size4{font-size:.3215434084em}.katex .fontsize-ensurer.reset-size11.size5,.katex .sizing.reset-size11.size5{font-size:.3617363344em}.katex .fontsize-ensurer.reset-size11.size6,.katex .sizing.reset-size11.size6{font-size:.4019292605em}.katex .fontsize-ensurer.reset-size11.size7,.katex .sizing.reset-size11.size7{font-size:.4823151125em}.katex .fontsize-ensurer.reset-size11.size8,.katex .sizing.reset-size11.size8{font-size:.578778135em}.katex .fontsize-ensurer.reset-size11.size9,.katex .sizing.reset-size11.size9{font-size:.6945337621em}.katex .fontsize-ensurer.reset-size11.size10,.katex .sizing.reset-size11.size10{font-size:.8336012862em}.katex .fontsize-ensurer.reset-size11.size11,.katex .sizing.reset-size11.size11{font-size:1em}.katex .delimsizing.size1{font-family:KaTeX_Size1}.katex .delimsizing.size2{font-family:KaTeX_Size2}.katex .delimsizing.size3{font-family:KaTeX_Size3}.katex .delimsizing.size4{font-family:KaTeX_Size4}.katex .delimsizing.mult .delim-size1>span{font-family:KaTeX_Size1}.katex .delimsizing.mult .delim-size4>span{font-family:KaTeX_Size4}.katex .nulldelimiter{display:inline-block;width:.12em}.katex .delimcenter,.katex .op-symbol{position:relative}.katex .op-symbol.small-op{font-family:KaTeX_Size1}.katex .op-symbol.large-op{font-family:KaTeX_Size2}.katex .accent>.vlist-t,.katex .op-limits>.vlist-t{text-align:center}.katex .accent .accent-body{position:relative}.katex .accent .accent-body:not(.accent-full){width:0}.katex .overlay{display:block}.katex .mtable .vertical-separator{display:inline-block;min-width:1px}.katex .mtable .arraycolsep{display:inline-block}.katex .mtable .col-align-c>.vlist-t{text-align:center}.katex .mtable .col-align-l>.vlist-t{text-align:left}.katex .mtable .col-align-r>.vlist-t{text-align:right}.katex .svg-align{text-align:left}.katex svg{fill:currentColor;stroke:currentColor;display:block;height:inherit;position:absolute;width:100%}.katex svg path{stroke:none}.katex svg{fill-rule:nonzero;fill-opacity:1;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1}.katex img{border-style:none;max-height:none;max-width:none;min-height:0;min-width:0}.katex .stretchy{display:block;overflow:hidden;position:relative;width:100%}.katex .stretchy:after,.katex .stretchy:before{content:""}.katex .hide-tail{overflow:hidden;position:relative;width:100%}.katex .halfarrow-left{left:0;overflow:hidden;position:absolute;width:50.2%}.katex .halfarrow-right{overflow:hidden;position:absolute;right:0;width:50.2%}.katex .brace-left{left:0;overflow:hidden;position:absolute;width:25.1%}.katex .brace-center{left:25%;overflow:hidden;position:absolute;width:50%}.katex .brace-right{overflow:hidden;position:absolute;right:0;width:25.1%}.katex .x-arrow-pad{padding:0 .5em}.katex .cd-arrow-pad{padding:0 .55556em 0 .27778em}.katex .mover,.katex .munder,.katex .x-arrow{text-align:center}.katex .boxpad{padding:0 .3em}.katex .fbox,.katex .fcolorbox{border:.04em solid;box-sizing:border-box}.katex .cancel-pad{padding:0 .2em}.katex .cancel-lap{margin-left:-.2em;margin-right:-.2em}.katex .sout{border-bottom-style:solid;border-bottom-width:.08em}.katex .angl{border-right:.049em solid;border-top:.049em solid;box-sizing:border-box;margin-right:.03889em}.katex .anglpad{padding:0 .03889em}.katex .eqn-num:before{content:"(" counter(katexEqnNo) ")";counter-increment:katexEqnNo}.katex .mml-eqn-num:before{content:"(" counter(mmlEqnNo) ")";counter-increment:mmlEqnNo}.katex .mtr-glue{width:50%}.katex .cd-vert-arrow{display:inline-block;position:relative}.katex .cd-label-left{display:inline-block;position:absolute;right:calc(50% + .3em);text-align:left}.katex .cd-label-right{display:inline-block;left:calc(50% + .3em);position:absolute;text-align:right}.katex-display{display:block;margin:1em 0;text-align:center}.katex-display>.katex{display:block;text-align:center;white-space:nowrap}.katex-display>.katex>.katex-html{display:block;position:relative}.katex-display>.katex>.katex-html>.tag{position:absolute;right:0}.katex-display.leqno>.katex>.katex-html>.tag{left:0;right:auto}.katex-display.fleqn>.katex{padding-left:2em;text-align:left}body{counter-reset:katexEqnNo mmlEqnNo}
+
+</style>
+<style>
+body {
+    padding-top: 25px;
+}
+</style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <h1 id="supervisor-meeting-prep-sequel%3A-wang-%2F-valiante-checks" tabindex="-1">Supervisor Meeting Prep Sequel: Wang / Valiante Checks</h1>
+<p>Follow-up to the main <code>supervisor_meeting_prep.md</code>.</p>
+<p>Goal:</p>
+<blockquote>
+<p>check whether the SPIRE mismatch is a real pop-cosmos physics problem, or partly a Wang/Valiante data-handling / normalisation problem.</p>
+</blockquote>
+<hr>
+<h2 id="0.-rundown%3A" tabindex="-1">0. Rundown:</h2>
+<p>THe main comparisons I'm doing</p>
+<h3 id="a.-wang-vs-jin-is-an-object-by-object-flux-check" tabindex="-1">A. Wang vs Jin is an object-by-object flux check</h3>
+<p>Question:</p>
+<blockquote>
+<p>for the same matched source, does Wang measure about the same SPIRE flux as Jin?</p>
+</blockquote>
+<p>What it uses:</p>
+<ul>
+<li>
+<p>Wang <code>master.dat.gz</code>: XID+ deblended fluxes for COSMOS2020/Farmer sources.</p>
+</li>
+<li>
+<p>Jin 2018 FITS: older COSMOS2015-style super-deblended fluxes.</p>
+</li>
+<li>
+<p>COSMOS2020 Farmer <code>ID_COSMOS2015</code> bridge to match the two catalogues.</p>
+</li>
+<li>
+<p>matching and units are sane.</p>
+</li>
+<li>
+<p>Wang and Jin agree well at 250 um.</p>
+</li>
+<li>
+<p>Wang is lower than Jin at longer SPIRE wavelengths.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">band</th>
+<th style="text-align:right">matched strong sources</th>
+<th style="text-align:right">median Wang/Jin flux</th>
+<th>read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">250</td>
+<td style="text-align:right">2297</td>
+<td style="text-align:right">0.996</td>
+<td>basically same as Jin</td>
+</tr>
+<tr>
+<td style="text-align:right">350</td>
+<td style="text-align:right">885</td>
+<td style="text-align:right">0.870</td>
+<td>Wang about 13 percent lower</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">265</td>
+<td style="text-align:right">0.815</td>
+<td>Wang about 19 percent lower</td>
+</tr>
+</tbody>
+</table>
+<p>So:</p>
+<blockquote>
+<p>the Wang/Jin plot supports a modest long-wavelength flux-scale offset, not a factor-of-10 count problem.</p>
+</blockquote>
+<h3 id="b.-wang-paper-itself-says-the-spire-xid%2B-fluxes-can-be-low" tabindex="-1">B. Wang paper itself says the SPIRE XID+ fluxes can be low</h3>
+<p>Wang's own SPIRE simulation/validation says:</p>
+<ul>
+<li>output flux is close to unbiased at the bright end.</li>
+<li>toward fainter fluxes, median flux underestimation grows to roughly:
+<ul>
+<li><code>10%</code> at 250 um</li>
+<li><code>15%</code> at 350 um</li>
+<li><code>25%</code> at 500 um</li>
+</ul>
+</li>
+<li>they say this gets worse at longer wavelength because prior-source density increases from <code>0.34</code> to <code>1.34</code> sources per beam from 250 to 500 um.</li>
+</ul>
+<p>Figures that support this:</p>
+<ul>
+<li>Wang Fig. 15: simulation input flux vs XID+ output flux.</li>
+<li>Wang Fig. 19: simulation input number counts vs XID+ output counts.</li>
+<li>Wang Fig. 23: real COSMOS SPIRE flux comparison against HELP blind catalogue and Jin; red shifted line marks the expected systematic underestimation.</li>
+</ul>
+<p>But:</p>
+<blockquote>
+<p>10-25 percent in flux can move sources between bins, but it is not by itself enough to explain our largest factor 5-12 number-count offsets.</p>
+</blockquote>
+<h3 id="c.-the-area-corrected-overlay-is-a-number-count-comparison" tabindex="-1">C. The area-corrected overlay is a number-count comparison</h3>
+<p>Question:</p>
+<blockquote>
+<p>how many sources per deg2 per flux bin does each model/catalogue imply?</p>
+</blockquote>
+<p>This is the plot:</p>
+<p><img src="../outputs/popcosmos_differential_count_area_corrected_overlay.png" alt="Differential count area-corrected overlay"></p>
+<p>Important:</p>
+<ul>
+<li>Clements / Glenn / Oliver / Pearson / Valiante / Varnish are <strong>published observed number-count tables</strong>.</li>
+<li>FSPS / ALESS / hybrid curves are <strong>pop-cosmos model-predicted number counts</strong> from the synthetic catalogue.</li>
+<li>Wang raw is <strong>not a published corrected count table</strong>. It is raw positive-flux source counts from Wang <code>master.dat.gz</code>, divided by the COSMOS/Farmer area <code>1.278 deg2</code>.</li>
+</ul>
+<p>So it is only partly apples-to-apples:</p>
+<table>
+<thead>
+<tr>
+<th>curve/data</th>
+<th>what it is</th>
+<th>apples-to-apples with published counts?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clements, Glenn, Oliver, Pearson, Valiante, Varnish</td>
+<td>published observed differential counts, usually corrected for completeness/flux bias/deboosting</td>
+<td>yes, these are the main benchmarks</td>
+</tr>
+<tr>
+<td>FSPS</td>
+<td>pop-cosmos model fluxes converted into differential counts</td>
+<td>mostly yes as a model-vs-observation test</td>
+</tr>
+<tr>
+<td>ALESS / hybrid SEDs</td>
+<td>alternative model SED assumptions converted into counts</td>
+<td>mostly yes as model-vs-observation tests</td>
+</tr>
+<tr>
+<td>Wang raw</td>
+<td>raw deblended catalogue counts in COSMOS</td>
+<td>no, useful context only</td>
+</tr>
+<tr>
+<td>Wang vs Jin</td>
+<td>matched-object flux comparison</td>
+<td>no, not a count comparison</td>
+</tr>
+</tbody>
+</table>
+<h3 id="d.-how-far-off-are-the-model-count-curves%3F" tabindex="-1">D. How far off are the model count curves?</h3>
+<p>This is from <code>popcosmos_differential_count_evaluator_pooled_summary.csv</code>, using all scored published count points.</p>
+<p>Positive dex means model is above the observed published counts like Clements, Glenn, Pearson etc..
+Each point is an individual flux-bin measurement</p>
+<table>
+<thead>
+<tr>
+<th>model curve</th>
+<th style="text-align:right">N points</th>
+<th style="text-align:right">median log10(model/obs)</th>
+<th>linear read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50% ALESS</td>
+<td style="text-align:right">188</td>
+<td style="text-align:right">-0.044</td>
+<td>0.90x low (-10%)</td>
+</tr>
+<tr>
+<td>25% ALESS</td>
+<td style="text-align:right">188</td>
+<td style="text-align:right">+0.126</td>
+<td>1.34x high (+34%)</td>
+</tr>
+<tr>
+<td>75% ALESS</td>
+<td style="text-align:right">188</td>
+<td style="text-align:right">-0.200</td>
+<td>0.63x low (-37%)</td>
+</tr>
+<tr>
+<td>FSPS</td>
+<td style="text-align:right">188</td>
+<td style="text-align:right">+0.327</td>
+<td>2.12x high (+112%)</td>
+</tr>
+<tr>
+<td>ALESS</td>
+<td style="text-align:right">188</td>
+<td style="text-align:right">-0.367</td>
+<td>0.43x low (-57%)</td>
+</tr>
+</tbody>
+</table>
+<p>Simple read:</p>
+<ul>
+<li>baseline FSPS is high overall.</li>
+<li>pure ALESS is too low overall.</li>
+<li>hybrid SEDs sit between them.</li>
+<li>the overlay is not saying every curve is high; it says the SED choice strongly changes the counts.</li>
+</ul>
+<h3 id="e.-how-bad-is-fsps-by-band-and-flux-regime%3F" tabindex="-1">E. How bad is FSPS by band and flux regime?</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">band</th>
+<th>flux regime</th>
+<th style="text-align:right">N points</th>
+<th style="text-align:right">median log10(FSPS/obs)</th>
+<th>linear read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">250</td>
+<td>10-30 mJy</td>
+<td style="text-align:right">17</td>
+<td style="text-align:right">+0.109</td>
+<td>1.29x high (+29%)</td>
+</tr>
+<tr>
+<td style="text-align:right">250</td>
+<td>30-100 mJy</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">+0.204</td>
+<td>1.60x high (+60%)</td>
+</tr>
+<tr>
+<td style="text-align:right">250</td>
+<td>100-300 mJy</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">+0.689</td>
+<td>4.88x high (+388%)</td>
+</tr>
+<tr>
+<td style="text-align:right">350</td>
+<td>10-30 mJy</td>
+<td style="text-align:right">17</td>
+<td style="text-align:right">+0.234</td>
+<td>1.71x high (+71%)</td>
+</tr>
+<tr>
+<td style="text-align:right">350</td>
+<td>30-100 mJy</td>
+<td style="text-align:right">27</td>
+<td style="text-align:right">+0.227</td>
+<td>1.69x high (+69%)</td>
+</tr>
+<tr>
+<td style="text-align:right">350</td>
+<td>100-300 mJy</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">+0.817</td>
+<td>6.56x high (+556%)</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td>10-30 mJy</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">+0.361</td>
+<td>2.30x high (+130%)</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td>30-100 mJy</td>
+<td style="text-align:right">22</td>
+<td style="text-align:right">+0.552</td>
+<td>3.57x high (+257%)</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td>100-300 mJy</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">+1.076</td>
+<td>11.92x high (+1092%)</td>
+</tr>
+</tbody>
+</table>
+<p>To understand where we get this:
+obs is the published number counts from the paper tables</p>
+<p>We Take each published obs point e.g Valiante 500um at some flux bin (one point)</p>
+<p>Interpolate the FSPS model curve to that same flux
+Compute log10(FSPS/ obs point)
+Then Group those ratios by the band and regime
+Then take median offset for each group</p>
+<p>Simple read:</p>
+<blockquote>
+<p>FSPS gets worse toward longer wavelength and brighter flux.</p>
+</blockquote>
+<p>That is much larger than Wang's 10-25 percent flux bias.</p>
+<h3 id="f.-is-wang-raw-lower-than-the-published-count-tables%3F" tabindex="-1">F. Is Wang raw lower than the published count tables?</h3>
+<p>In the overlay, the black Wang raw curve is below the published observed count tables.</p>
+<p>This is from <code>popcosmos_differential_count_evaluator_scorecard.csv</code>, using Wang raw counts with area <code>1.278 deg2</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">band</th>
+<th style="text-align:right">comparison points</th>
+<th style="text-align:right">median log10(Wang raw / published obs)</th>
+<th>linear read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">250</td>
+<td style="text-align:right">60</td>
+<td style="text-align:right">-0.315</td>
+<td>0.48x low (-52%)</td>
+</tr>
+<tr>
+<td style="text-align:right">350</td>
+<td style="text-align:right">42</td>
+<td style="text-align:right">-0.340</td>
+<td>0.46x low (-54%)</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">27</td>
+<td style="text-align:right">-0.276</td>
+<td>0.53x low (-47%)</td>
+</tr>
+<tr>
+<td style="text-align:right">all</td>
+<td style="text-align:right">129</td>
+<td style="text-align:right">-0.315</td>
+<td>0.48x low (-52%)</td>
+</tr>
+</tbody>
+</table>
+<p>Simple read:</p>
+<blockquote>
+<p>Wang raw counts are about a factor of two below the published count tables.</p>
+</blockquote>
+<p>But this might make sense because Wang raw is not a corrected number-count product.</p>
+<p>Likely reasons:</p>
+<ul>
+<li>small COSMOS area: <code>1.278 deg2</code>.</li>
+<li>Wang is prior-selected and deblended, not a blind count catalogue.</li>
+<li>raw counts are not completeness-corrected.</li>
+<li>350/500 um have larger beams and stronger blending.</li>
+<li>rare bright sources are poorly sampled in such a small field.</li>
+</ul>
+<h3 id="g.-current-best-interpretation" tabindex="-1">G. Current best interpretation</h3>
+<blockquote>
+<p>Wang helps explain a modest long-wavelength flux offset, but the much larger FSPS bright-end number-count excess is probably a model/SED/population issue, not just Wang calibration.</p>
+</blockquote>
+<p>Table of all the main discrepencies + idea on why ?</p>
+<table>
+<thead>
+<tr>
+<th>thing seen</th>
+<th style="text-align:right">size</th>
+<th>what it probably means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wang vs Jin flux offset at 350/500</td>
+<td style="text-align:right">13-19 percent low</td>
+<td>Wang XID+ long-wave fluxes are slightly lower than Jin for matched sources</td>
+</tr>
+<tr>
+<td>Wang paper expected SPIRE bias</td>
+<td style="text-align:right">up to 10/15/25 percent at 250/350/500</td>
+<td>confusion/prior density causes wavelength-dependent underestimation</td>
+</tr>
+<tr>
+<td>Wang raw counts vs published counts</td>
+<td style="text-align:right">about 0.5x</td>
+<td>Wang raw catalogue should not be treated as formal corrected counts</td>
+</tr>
+<tr>
+<td>FSPS vs published counts</td>
+<td style="text-align:right">up to 5-12x high at bright 250-500</td>
+<td>model/SED/bright dusty population problem</td>
+</tr>
+<tr>
+<td>ALESS vs published counts</td>
+<td style="text-align:right">about 0.43x overall</td>
+<td>pure ALESS-like SED is too low overall</td>
+</tr>
+<tr>
+<td>hybrids</td>
+<td style="text-align:right">closest overall</td>
+<td>mixing FSPS with ALESS-like long-wave SED helps, but bright 500 remains hard</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h.-literature-%2F-web-audit-for-explanations" tabindex="-1">H. Literature / web audit for explanations</h3>
+<p>Quick web audit, done to see whether this is a known kind of problem:</p>
+<ul>
+<li>I didn't find a paper that directly explains this exact pop-cosmos discrepancy. Wang is recent; ADS currently lists it as cited, but the strongest directly useful explanation is still Wang's own validation plus older SPIRE number-count papers.</li>
+<li>Wang et al. 2024 is itself the most directly relevant source. It says SPIRE XID+ flux underestimation grows from about <code>10%</code> to <code>25%</code> from 250 to 500 um at the faint end, and links this to the higher prior-source density per beam. Source: <code>https://arxiv.org/html/2405.18290v1</code></li>
+<li>Wang Fig. 23 uses the HELP blind SPIRE catalogue, not a Wang-published blind catalogue. It has <code>9382</code> blind 250 um sources in COSMOS and <code>3591</code> matches to Wang. Source: <code>https://arxiv.org/html/2405.18290v1</code></li>
+<li>Oliver et al. 2010 HerMES says many models fail at bright SPIRE counts above <code>100 mJy</code>, and suggests model issues could involve SED variety/evolution or redshift distributions. Source: <code>https://orca.cardiff.ac.uk/id/eprint/11014/1/SPIRE_galaxy_number_counts_at_250%2C_350%2C_and_500.pdf</code></li>
+<li>Glenn et al. 2010 P(D) counts say many galaxy count models overpredict bright galaxies, and that beam/systematic uncertainties matter. Source: <code>https://arxiv.org/abs/1009.5675</code></li>
+<li>Valiante et al. 2016 H-ATLAS DR1 gives the wide-area corrected counts and says H-ATLAS counts are similar to HerMES at 250/350 with a small difference at 500. It also includes completeness and flux-bias corrections. Source: <code>https://arxiv.org/abs/1606.09615</code></li>
+<li>Recent Herschel work still treats source confusion and deblending as the central limitation. 3D-Herschel 2026 says Herschel can often only provide upper limits for lower-mass high-z sources because of source confusion, and warns MIR-to-FIR template conversions can be wrong without FIR data. Source: <code>https://arxiv.org/abs/2602.22384</code></li>
+<li>Super-resolution/deblending work after Wang explicitly motivates itself by the poor angular resolution of Herschel/SPIRE and the difficulty/fine-tuning of prior-driven deblending. Source: <code>https://arxiv.org/abs/2512.13353</code></li>
+<li>Bright 500 um counts can include strongly lensed galaxies. Negrello et al. selected <code>F500 &gt;= 100 mJy</code> lensed candidates from H-ATLAS. This can matter for bright observed counts, though lensing would usually make observed bright counts higher, not explain FSPS being high. Source: <code>https://ui.adsabs.harvard.edu/abs/2017MNRAS.465.3558N/abstract</code></li>
+</ul>
+<p>What this supports:</p>
+<ol>
+<li>large SPIRE beams/confusion make catalogue-level comparisons hard.</li>
+<li>long-wavelength flux underestimation in Wang is real but modest.</li>
+<li>bright SPIRE number counts are known to be difficult for models.</li>
+<li>SED shape, dust temperature, redshift distribution, and rare bright/lensed populations are plausible physical/statistical explanations.</li>
+<li>our factor 5-12 FSPS bright-end excess is too large to blame only on Wang's 10-25 percent flux bias.</li>
+</ol>
+<hr>
+<h2 id="1." tabindex="-1">1.</h2>
+<p>Plots used below:</p>
+<p><img src="../outputs/wang_raw_count_context.png" alt="Wang raw cumulative counts"></p>
+<p><img src="../outputs/valiante_2016_hatlas_dr1_number_counts_quicklook.png" alt="Valiante H-ATLAS DR1 number counts quicklook"></p>
+<hr>
+<h2 id="2.-wang-check" tabindex="-1">2. Wang Check</h2>
+<h3 id="what-i-tried" tabindex="-1">What I Tried</h3>
+<p>The relevant Wang paper figure for counts is Fig. 19:</p>
+<p><img src="image/supervisor_meeting_prep_aug16_wang_valiante_sequel/1786907764007.jpg" alt="1786907764007"></p>
+<blockquote>
+<p>input 250 um number counts vs XID+ output counts in a SIDES-style simulation.</p>
+</blockquote>
+<p>can't exactly recreate Wang Fig. 19 from the released <code>master.dat</code>, because Fig. 19 uses simulated truth + XID+ output/posterior samples. The released <code>master.dat</code> is the real COSMOS deblended catalogue, not the simulation truth table.</p>
+<h3 id="wang-catalogue" tabindex="-1">Wang Catalogue</h3>
+<p>The Wang catalogue is not mainly a number-count table.</p>
+<p>It  provides:</p>
+<ul>
+<li>deblended point-source fluxes at known COSMOS/radio positions</li>
+<li>median fluxes and errors in <code>master.dat</code></li>
+<li>posterior samples in <code>master_post.fits</code> in the full CDS release</li>
+<li>cross-matched long-wavelength photometry for galaxy studies</li>
+</ul>
+<p>limitation:</p>
+<p>I only have <code>master.dat.gz</code></p>
+<p>can't exactly recreate plots that need:</p>
+<ul>
+<li>simulation truth</li>
+<li>posterior samples</li>
+<li>map cutouts</li>
+<li>blind catalogue inputs</li>
+<li>ALMA comparison catalogues</li>
+<li>COSMOS2020 physical parameters not stored in <code>master.dat</code></li>
+</ul>
+<h3 id="wang-paper-details-that-matter" tabindex="-1">Wang Paper Details That Matter</h3>
+<p>From the Wang paper / local HTML:</p>
+<ul>
+<li><code>FLAG_COMBINED = 0</code> COSMOS2020 area is <code>1.278 deg2</code>.</li>
+<li>SPIRE map units are already <code>mJy/beam</code>.</li>
+<li>Wang catalogue SPIRE fluxes are in <code>mJy</code>.</li>
+<li>SPIRE confusion noise is about:
+<ul>
+<li><code>6.8 mJy</code> at 250 um</li>
+<li><code>6.3 mJy</code> at 350 um</li>
+<li><code>5.8 mJy</code> at 500 um</li>
+</ul>
+</li>
+<li>Wang say their output counts are close to true counts above the 1-sigma instrument/noise scale, but fall below at fainter fluxes.</li>
+<li>Their SPIRE validation uses simulations, not the same object as published corrected observed count tables.</li>
+</ul>
+<h3 id="wang-figure-audit" tabindex="-1">Wang Figure Audit</h3>
+<p>I went through the Wang figures again. Short version:</p>
+<p>the best local comparison from our data is not the simulation count figure. It is a Wang-vs-Jin SPIRE matched-source diagnostic, similar in spirit to Wang Fig. 23 bottom panels.</p>
+<table>
+<thead>
+<tr>
+<th>Wang figure</th>
+<th>what it shows</th>
+<th>can I reproduce from current local data?</th>
+<th>useful for normalisation?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fig. 1</td>
+<td>CIGALE predicted 24 um / IRAC flux ratios</td>
+<td>no, needs CIGALE runs/training library</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Fig. 2</td>
+<td>DLNN 24 um predictions vs CIGALE</td>
+<td>no, needs DLNN test set</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Fig. 3</td>
+<td>prior catalogue sky distribution</td>
+<td>partly, only with positions in<code>master.dat</code>, but not initial prior construction</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Fig. 4</td>
+<td>progressive deblending flowchart</td>
+<td>no, method schematic</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Fig. 5</td>
+<td>DLNN PACS 100 um predictions</td>
+<td>no, needs DLNN/CIGALE test set</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Fig. 6</td>
+<td>DLNN SPIRE 250 um predictions</td>
+<td>no, needs DLNN/CIGALE test set</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Fig. 7</td>
+<td>real vs simulated map cutouts</td>
+<td>no, needs maps/SIDES cutouts</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Fig. 8-13</td>
+<td>MIPS simulation validation</td>
+<td>no, needs simulation truth and posterior samples</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Fig. 14-19</td>
+<td>PACS/SPIRE simulation validation</td>
+<td>no exact recreation; needs SIDES true fluxes and XID+ posterior samples</td>
+<td>useful conceptually</td>
+</tr>
+<tr>
+<td>Fig. 19</td>
+<td>input 250 um number counts vs XID+ output counts</td>
+<td>no exact recreation from<code>master.dat</code>; it is simulation truth/output, not real catalogue counts</td>
+<td>useful as warning: counts reliable above noise, not below</td>
+</tr>
+<tr>
+<td>Fig. 20</td>
+<td>joint posterior for two close simulated sources</td>
+<td>no, needs posterior samples/simulation</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Fig. 21</td>
+<td>MIPS flux comparison to blind catalogue and Jin</td>
+<td>partly possible if Le Floc'h 2009 MIPS blind catalogue is local</td>
+<td>maybe</td>
+</tr>
+<tr>
+<td>Fig. 22</td>
+<td>PACS flux comparison to blind catalogue and Jin</td>
+<td>partly possible if PEP PACS blind catalogue is local</td>
+<td>maybe</td>
+</tr>
+<tr>
+<td>Fig. 23</td>
+<td>SPIRE flux comparison to blind catalogue and Jin</td>
+<td>partly possible if HELP SPIRE blind catalogue is local; current version only does Wang-vs-Jin matched-source diagnostic</td>
+<td>yes, useful sanity check</td>
+</tr>
+<tr>
+<td>Fig. 24-25</td>
+<td>850 um comparison to ALMA</td>
+<td>no, needs AS2COSMOS/A3COSMOS ALMA catalogues</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Fig. 26</td>
+<td>stellar mass vs redshift</td>
+<td>not from<code>master.dat</code>; needs COSMOS2020 physical properties</td>
+<td>not for flux normalisation</td>
+</tr>
+<tr>
+<td>Fig. 27</td>
+<td>SFR vs stellar mass by redshift</td>
+<td>not from<code>master.dat</code>; needs SFR/Mstar catalogue</td>
+<td>not for flux normalisation</td>
+</tr>
+<tr>
+<td>Fig. 28</td>
+<td>q250 distribution for MIGHTEE radio-only sources</td>
+<td>not from current local files</td>
+<td>maybe radio-specific only</td>
+</tr>
+<tr>
+<td>Fig. B.1-B.2</td>
+<td>uncertainty/confusion-noise checks</td>
+<td>no exact recreation without posterior/confusion products</td>
+<td>useful conceptually</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wang-raw-count-result" tabindex="-1">Wang Raw Count Result</h3>
+<p>Using positive COSMOS2020 IDs and <code>1.278 deg2</code>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">band</th>
+<th style="text-align:right">N(&gt;10 mJy) / deg2</th>
+<th style="text-align:right">N(&gt;20 mJy) / deg2</th>
+<th style="text-align:right">N(&gt;50 mJy) / deg2</th>
+<th style="text-align:right">N(&gt;100 mJy) / deg2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">250</td>
+<td style="text-align:right">3011.7</td>
+<td style="text-align:right">849.0</td>
+<td style="text-align:right">36.8</td>
+<td style="text-align:right">1.6</td>
+</tr>
+<tr>
+<td style="text-align:right">350</td>
+<td style="text-align:right">2041.5</td>
+<td style="text-align:right">476.5</td>
+<td style="text-align:right">9.4</td>
+<td style="text-align:right">0.0</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">797.3</td>
+<td style="text-align:right">115.0</td>
+<td style="text-align:right">0.8</td>
+<td style="text-align:right">0.0</td>
+</tr>
+</tbody>
+</table>
+<p>read:</p>
+<ul>
+<li>250 um has enough raw Wang sources to be useful.</li>
+<li>350 um bright end is thin.</li>
+<li>500 um bright end is basically one object above 50 mJy and none above 100 mJy.</li>
+<li>So the Wang bright-end drop is not surprising once I look at the raw counts.</li>
+</ul>
+<p>Raw count plot:</p>
+<p><img src="../outputs/wang_raw_count_context.png" alt="Wang raw cumulative counts"></p>
+<h3 id="wang-bright-end-issue" tabindex="-1">Wang Bright-End Issue</h3>
+<p>Bright sources should normally be easier to detect.</p>
+<p>But for Wang, the issue is probably not simple detectability. It is more likely:</p>
+<ul>
+<li>small COSMOS area: <code>1.278 deg2</code></li>
+<li>rare bright sources</li>
+<li>prior-selected catalogue</li>
+<li>deblending choices</li>
+<li>radio-prior negative-ID rows</li>
+<li>350/500 um larger beams and more blending</li>
+<li>raw catalogue counts are not corrected formal number counts</li>
+</ul>
+<p>Useful numbers:</p>
+<ul>
+<li>Using <code>1.278 deg2</code> instead of <code>2 deg2</code> raises densities by <code>1.56x</code>.</li>
+<li>Including all Wang prior rows instead of only positive COSMOS2020 IDs raises counts by roughly:
+<ul>
+<li><code>1.3x</code> to <code>1.8x</code> depending on band/cut.</li>
+</ul>
+</li>
+<li>SNR &gt;= 3 barely changes bright counts above 20-50 mJy, so the bright issue is not mostly SNR threshold.</li>
+</ul>
+<hr>
+<h2 id="2b.-wang-%2F-jin-normalisation-check" tabindex="-1">2b. Wang / Jin Normalisation Check</h2>
+<p>This is the best local diagnostic similar to something Wang actually does.</p>
+<p>Wang Fig. 23 compares:</p>
+<p>Wang XID+ deblended SPIRE fluxes vs blind catalogue / Jin super-deblended fluxes.</p>
+<p><img src="image/supervisor_meeting_prep_aug16_wang_valiante_sequel/1786910376950.jpg" alt="1786910376950"></p>
+<p>I can't reproduce the blind-catalogue top panels unless we have the HELP SPIRE blind catalogue locally.</p>
+<p>But I can make a Jin-style matched-source comparison because we have:</p>
+<ul>
+<li>Wang <code>master.dat.gz</code></li>
+<li>Jin super-deblended FITS catalogue</li>
+<li>pop-cosmos FSPS predicted SPIRE fluxes</li>
+</ul>
+<p>Method:</p>
+<ul>
+<li>Wang IDs are COSMOS2020 Farmer IDs.</li>
+<li>Jin IDs are mostly older COSMOS2015-style IDs.</li>
+<li>use COSMOS2020 Farmer's <code>ID_COSMOS2015</code> bridge to match Wang/pop-cosmos sources to Jin.</li>
+<li>compare 250/350/500 um fluxes</li>
+<li>plot Wang vs Jin and FSPS vs Jin</li>
+</ul>
+<p>ID bridge sanity check:</p>
+<table>
+<thead>
+<tr>
+<th>check</th>
+<th style="text-align:right">value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pop-cosmos/Wang rows used</td>
+<td style="text-align:right">114048</td>
+</tr>
+<tr>
+<td>rows with COSMOS2015 bridge</td>
+<td style="text-align:right">108153</td>
+</tr>
+<tr>
+<td>ID-bridge matches to Jin</td>
+<td style="text-align:right">72982</td>
+</tr>
+<tr>
+<td>coordinate matches within 1 arcsec</td>
+<td style="text-align:right">80518</td>
+</tr>
+<tr>
+<td>matched by both ID bridge and coordinate</td>
+<td style="text-align:right">72982</td>
+</tr>
+<tr>
+<td>coordinate-only extras</td>
+<td style="text-align:right">7536</td>
+</tr>
+<tr>
+<td>ID-bridge median separation</td>
+<td style="text-align:right">0.121 arcsec</td>
+</tr>
+</tbody>
+</table>
+<p>Matched-object scatter:</p>
+<p><img src="../outputs/popcosmos_wang_jin_fsps_flux_scatter.png" alt="Wang and FSPS vs Jin scatter"></p>
+<p>Ratio summary:</p>
+<p><img src="../outputs/popcosmos_wang_jin_fsps_ratio_summary.png" alt="Wang and FSPS vs Jin ratio summary"></p>
+<p>Key ratios for sources with both Jin and Wang SNR &gt;= 3:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">band</th>
+<th style="text-align:right">N</th>
+<th style="text-align:right">median Wang/Jin</th>
+<th style="text-align:right">median FSPS/Jin</th>
+<th style="text-align:right">median FSPS/Wang</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">250</td>
+<td style="text-align:right">2297</td>
+<td style="text-align:right">0.996</td>
+<td style="text-align:right">0.899</td>
+<td style="text-align:right">0.896</td>
+</tr>
+<tr>
+<td style="text-align:right">350</td>
+<td style="text-align:right">885</td>
+<td style="text-align:right">0.870</td>
+<td style="text-align:right">0.728</td>
+<td style="text-align:right">0.849</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">265</td>
+<td style="text-align:right">0.815</td>
+<td style="text-align:right">0.614</td>
+<td style="text-align:right">0.692</td>
+</tr>
+</tbody>
+</table>
+<p>read:</p>
+<ul>
+<li>250 um: Wang and Jin agree very well for strong common detections.</li>
+<li>350 um: Wang is lower than Jin by about 14 percent in the median.</li>
+<li>500 um: Wang is lower than Jin by about 19 percent in the median.</li>
+<li>FSPS is also lower than Jin in this matched strong-detection subset, especially at 500 um.</li>
+</ul>
+<hr>
+<h2 id="3.-valiante-bright-end-uptick" tabindex="-1">3. Valiante Bright-End Uptick</h2>
+<h3 id="what-i-checked" tabindex="-1">What I Checked</h3>
+<ul>
+<li><code>outputs/valiante_2016_hatlas_dr1_number_counts_quicklook.png</code></li>
+<li><img src="image/supervisor_meeting_prep_aug16_wang_valiante_sequel/1786910472681.png" alt="1786910472681"></li>
+</ul>
+<p>using the hand-entered Valiante DR1 tables:</p>
+<ul>
+<li>Table 5: 250 um</li>
+<li>Table 8: 350 um</li>
+<li>Table 9: 500 um</li>
+</ul>
+<p>These are area-weighted across:</p>
+<ul>
+<li>GAMA9</li>
+<li>GAMA12</li>
+<li>GAMA15</li>
+</ul>
+<p>Total area used in the paper/data:</p>
+<ul>
+<li>about <code>161.6 deg2</code></li>
+</ul>
+<p>I also checked the Valiante paper text:</p>
+<ul>
+<li>the matrix-inversion source counts are shown in their Figure 16 and Tables 5/8/9.</li>
+<li>the paper says the GAMA fields are generally similar except at the brightest flux densities, where differences are due to cosmic variance.</li>
+<li>the table notes say the quoted uncertainties do not include correlation between flux bins.</li>
+</ul>
+<h3 id="does-the-uptick-exist-in-the-prepared-valiante-data%3F" tabindex="-1">Does The Uptick Exist In The Prepared Valiante Data?</h3>
+<p>Yes.</p>
+<p>The last bin at 300 mJy jumps relative to the 244.2 mJy bin. This is visible directly in the table values / quicklook, so it is not produced by the later pop-cosmos evaluator.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">band</th>
+<th style="text-align:right">value at 244.2 mJy</th>
+<th style="text-align:right">value at 300 mJy</th>
+<th style="text-align:right">ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">250</td>
+<td style="text-align:right">0.639</td>
+<td style="text-align:right">1.756</td>
+<td style="text-align:right">2.75</td>
+</tr>
+<tr>
+<td style="text-align:right">350</td>
+<td style="text-align:right">0.192</td>
+<td style="text-align:right">0.486</td>
+<td style="text-align:right">2.53</td>
+</tr>
+<tr>
+<td style="text-align:right">500</td>
+<td style="text-align:right">0.0477</td>
+<td style="text-align:right">0.104</td>
+<td style="text-align:right">2.17</td>
+</tr>
+</tbody>
+</table>
+<p>So:</p>
+<p>the uptick is already in the Valiante prepared source table, not introduced later by the pop-cosmos evaluator.</p>
+<h3 id="likely-interpretation" tabindex="-1">Likely Interpretation</h3>
+<p>This is probably a real feature of the bright-end corrected H-ATLAS counts, or at least of the Valiante table.</p>
+<p>Possible causes:</p>
+<ul>
+<li>rare bright source statistics</li>
+<li>local low-redshift galaxies</li>
+<li>lensed bright sources</li>
+<li>field-to-field variation</li>
+<li>binning at the extreme bright end</li>
+<li>Euclidean normalisation makes high-flux behaviour look visually strong</li>
+<li>correction/inversion method has larger uncertainty at the rare bright end</li>
+</ul>
+<p>The quicklook shows all three GAMA fields rise in the last bin, so it does not look like one totally isolated field caused the whole effect.</p>
+<hr>
+<h2 id="4.-evidence-list" tabindex="-1">4. Evidence List</h2>
+<p>Simple current evidence table:</p>
+<table>
+<thead>
+<tr>
+<th>source</th>
+<th style="text-align:right">band</th>
+<th>flux regime</th>
+<th>result</th>
+<th>possible reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wang raw catalogue</td>
+<td style="text-align:right">250</td>
+<td>faint/mid</td>
+<td>many sources; usable sanity check</td>
+<td>released catalogue has enough 250 um detections</td>
+</tr>
+<tr>
+<td>Wang raw catalogue</td>
+<td style="text-align:right">350</td>
+<td>bright</td>
+<td>very few bright sources</td>
+<td>small area + larger beam + deblending/prior selection</td>
+</tr>
+<tr>
+<td>Wang raw catalogue</td>
+<td style="text-align:right">500</td>
+<td>bright</td>
+<td>almost no bright sources</td>
+<td>rare sources + small area + 500 um blending</td>
+</tr>
+<tr>
+<td>Wang vs Jin matched fluxes</td>
+<td style="text-align:right">250</td>
+<td>SNR&gt;=3</td>
+<td>Wang/Jin median ~1.00</td>
+<td>flux units/matching look sensible</td>
+</tr>
+<tr>
+<td>Wang vs Jin matched fluxes</td>
+<td style="text-align:right">350</td>
+<td>SNR&gt;=3</td>
+<td>Wang/Jin median ~0.87</td>
+<td>longer-wave deblending/systematic offset</td>
+</tr>
+<tr>
+<td>Wang vs Jin matched fluxes</td>
+<td style="text-align:right">500</td>
+<td>SNR&gt;=3</td>
+<td>Wang/Jin median ~0.81</td>
+<td>strongest long-wave offset / lower N</td>
+</tr>
+<tr>
+<td>Valiante DR1</td>
+<td style="text-align:right">250</td>
+<td>bright</td>
+<td>last bin jumps up</td>
+<td>rare/local/lensed bright sources or bright-bin correction</td>
+</tr>
+<tr>
+<td>Valiante DR1</td>
+<td style="text-align:right">350</td>
+<td>bright</td>
+<td>last bin jumps up</td>
+<td>same, weaker than 250 but present</td>
+</tr>
+<tr>
+<td>Valiante DR1</td>
+<td style="text-align:right">500</td>
+<td>bright</td>
+<td>last bin jumps up</td>
+<td>same, noisy but present</td>
+</tr>
+<tr>
+<td>pop-cosmos FSPS vs external counts</td>
+<td style="text-align:right">250</td>
+<td>10-30 mJy</td>
+<td>model high by ~0.11 dex</td>
+<td>mild overprediction</td>
+</tr>
+<tr>
+<td>pop-cosmos FSPS vs external counts</td>
+<td style="text-align:right">250</td>
+<td>30-100 mJy</td>
+<td>model high by ~0.20 dex</td>
+<td>mild/moderate overprediction</td>
+</tr>
+<tr>
+<td>pop-cosmos FSPS vs external counts</td>
+<td style="text-align:right">250</td>
+<td>100-300 mJy</td>
+<td>model high by ~0.69 dex</td>
+<td>bright-end problem</td>
+</tr>
+<tr>
+<td>pop-cosmos FSPS vs external counts</td>
+<td style="text-align:right">350</td>
+<td>10-30 mJy</td>
+<td>model high by ~0.23 dex</td>
+<td>long-wavelength issue begins</td>
+</tr>
+<tr>
+<td>pop-cosmos FSPS vs external counts</td>
+<td style="text-align:right">350</td>
+<td>30-100 mJy</td>
+<td>model high by ~0.23 dex</td>
+<td>long-wavelength issue</td>
+</tr>
+<tr>
+<td>pop-cosmos FSPS vs external counts</td>
+<td style="text-align:right">350</td>
+<td>100-300 mJy</td>
+<td>model high by ~0.82 dex</td>
+<td>strong bright-end problem</td>
+</tr>
+<tr>
+<td>pop-cosmos FSPS vs external counts</td>
+<td style="text-align:right">500</td>
+<td>10-30 mJy</td>
+<td>model high by ~0.36 dex</td>
+<td>500 um too bright</td>
+</tr>
+<tr>
+<td>pop-cosmos FSPS vs external counts</td>
+<td style="text-align:right">500</td>
+<td>30-100 mJy</td>
+<td>model high by ~0.55 dex</td>
+<td>strong long-wavelength issue</td>
+</tr>
+<tr>
+<td>pop-cosmos FSPS vs external counts</td>
+<td style="text-align:right">500</td>
+<td>100-300 mJy</td>
+<td>model high by ~1.08 dex</td>
+<td>strongest bright/long-wave issue</td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul>
+<li>positive log10 model/obs means model is above observed counts.</li>
+<li>FSPS gets worse from 250 to 500 um and from mid to bright flux.</li>
+<li>Hybrid/template models improve several regimes but do not fully remove the bright-end issue.</li>
+</ul>
+<hr>
+<h2 id="5.-current-hypotheses" tabindex="-1">5. Current Hypotheses</h2>
+<h3 id="hypothesis-1%3A-fir-sed-shape-is-wrong" tabindex="-1">Hypothesis 1: FIR SED shape is wrong</h3>
+<p>If the model is okay-ish at 250 but too high at 350/500:</p>
+<blockquote>
+<p>the long-wavelength dust SED shape may be too bright, too cold, or too shallow.</p>
+</blockquote>
+<p>This fits:</p>
+<ul>
+<li>500 um is worse than 250 um</li>
+<li>hybrid/ALESS-style changes matter</li>
+<li>Casey/MBB templates sometimes improve specific regimes</li>
+</ul>
+<h3 id="hypothesis-2%3A-bright-dusty-tail-is-too-strong" tabindex="-1">Hypothesis 2: Bright dusty tail is too strong</h3>
+<p>If the model overpredicts bright counts:</p>
+<blockquote>
+<p>pop-cosmos may have too many high-SFR dusty bright galaxies, or the dust/SFR scatter creates too many extreme objects.</p>
+</blockquote>
+<p>This fits:</p>
+<ul>
+<li>bright-end residuals are largest</li>
+<li>FSPS is high at 100-300 mJy in all SPIRE bands</li>
+</ul>
+<h3 id="hypothesis-3%3A-wang-is-not-the-formal-count-benchmark" tabindex="-1">Hypothesis 3: Wang is not the formal count benchmark</h3>
+<p>If Wang alone disagrees:</p>
+<blockquote>
+<p>it may be a catalogue/selection/deblending issue, not a pop-cosmos physics issue.</p>
+</blockquote>
+<p>This fits:</p>
+<ul>
+<li>Wang is prior-selected and deblended</li>
+<li>raw counts are not completeness-corrected number counts</li>
+<li>500 um bright end has tiny raw N</li>
+</ul>
+<h3 id="hypothesis-4%3A-valiante-bright-end-is-special-population-%2F-correction-territory" tabindex="-1">Hypothesis 4: Valiante bright-end is special population / correction territory</h3>
+<p>If Valiante has a real last-bin rise:</p>
+<blockquote>
+<p>bright bins may include rare local galaxies, lensed systems, or correction/binning effects.</p>
+</blockquote>
+<p>This means:</p>
+<ul>
+<li>do not overinterpret one bright bin as a smooth SED failure</li>
+<li>discuss bright bins separately, not only pooled chi-square</li>
+</ul>
+<h3 id="hypothesis-5%3A-if-all-corrected-observations-agree-against-fsps%2C-then-physics-is-more-likely" tabindex="-1">Hypothesis 5: If all corrected observations agree against FSPS, then physics is more likely</h3>
+<p>If Clements/Oliver/Pearson/Valiante all point the same way:</p>
+<blockquote>
+<p>then the mismatch is more likely in pop-cosmos assumptions than in one observational catalogue.</p>
+</blockquote>
+<p>This is why the evidence list should be by source, band, and flux regime.</p>
+<h2 id="7.-email-draft-for" tabindex="-1">7. Email Draft For</h2>
+<p>Hi both,</p>
+<p>I have been trying to separate two questions in the SPIRE number-count comparison:</p>
+<ol>
+<li>is the disagreement due to catalogue/normalisation/selection handling?</li>
+<li>or is it pointing to a real physical limitation in the pop-cosmos far-IR predictions?</li>
+</ol>
+<p>I reran the Wang catalogue checks using the Wang catalogue fluxes in mJy and the paper's <code>FLAG_COMBINED=0</code> area of <code>1.278 deg2</code>. The main result is that the raw Wang catalogue is very sparse at the bright end, especially at 500 um: for positive COSMOS2020 IDs I get only about <code>0.8 deg^-2</code> above 50 mJy at 500 um and none above 100 mJy. So I think Wang is best used as an object-level flux/residual check, rather than as the formal corrected number-count benchmark.</p>
+<p>For Valiante, I checked the prepared H-ATLAS DR1 number-count table and the paper context. The bright-end uptick around <code>S ~ 300 mJy</code> is already present in the source table: the 300 mJy bin is about <code>2.2-2.7x</code> higher than the 244 mJy bin across 250/350/500 um. The paper also notes field differences at the brightest fluxes due to cosmic variance. So this does not look like a downstream pop-cosmos plotting bug.</p>
+<p>For Wang, the most useful local diagnostic is Wang vs Jin at matched source level, similar to the Jin-comparison part of Wang Fig. 23. I now match via the COSMOS2020 Farmer <code>ID_COSMOS2015</code> bridge, then sanity-check the separation on sky. For sources with both Jin and Wang SNR &gt;= 3, the median Wang/Jin ratios are about <code>1.00</code>, <code>0.87</code>, and <code>0.81</code> at 250/350/500 um. This supports the idea that the units/matching are sensible, while also showing a real wavelength-dependent offset at longer wavelengths.</p>
+<p>For the model comparison, the clearest pattern is that baseline FSPS is above the observed counts, and the problem gets worse toward longer wavelength and brighter flux. The median log10(model/obs) for FSPS is roughly:</p>
+<ul>
+<li>250 um: <code>+0.11</code>, <code>+0.20</code>, <code>+0.69</code> dex from faint to bright regimes</li>
+<li>350 um: <code>+0.23</code>, <code>+0.23</code>, <code>+0.82</code> dex</li>
+<li>500 um: <code>+0.36</code>, <code>+0.55</code>, <code>+1.08</code> dex</li>
+</ul>
+<p>My current physical hypotheses are:</p>
+<ol>
+<li>the far-IR SED shape may be too bright/too cold/too shallow at long wavelengths;</li>
+<li>the model may produce too many high-SFR dusty bright sources;</li>
+<li>Wang-specific disagreement is probably partly selection/deblending/small-area rather than pure physics;</li>
+<li>the very bright Valiante bins may be affected by rare populations, lensing, or correction/binning effects.</li>
+</ol>
+<p>Does this framing sound sensible? In particular, would you expect a model that is reasonable at 250 um but high at 350/500 um to point more toward the dust SED shape, the star-forming tail, or something else in the population model?</p>
+<p>Best,
+Mihir</p>
+<hr>
+<h2 id="8.-sources-%2F-evidence-used" tabindex="-1">8. Sources / Evidence Used</h2>
+<p>Local files:</p>
+<ul>
+<li><code>Research project/Mres proj papers/wang et all.pdf</code></li>
+<li><code>Project coding/catalog data/wang/wang_2024_aa49055-23.html</code></li>
+<li><code>Project coding/catalog data/wang/master.dat.gz</code></li>
+<li><code>Project coding/catalog data/wang/ReadMe.txt</code></li>
+<li><code>Project coding/catalog data/Jin-et-all_files/COSMOS_Super_Deblended_FIRmm_Catalog_20180719.fits</code></li>
+<li><code>Project coding/catalog data/external_number_counts/valiante_2016_hatlas_dr1_number_counts.csv</code></li>
+<li><code>Project coding/catalog data/external_number_counts/valiante_2016_hatlas_dr1_number_counts_area_weighted.csv</code></li>
+<li><code>pop_cosmos_notebook/outputs/popcosmos_wang_jin_fsps_flux_scatter.png</code></li>
+<li><code>pop_cosmos_notebook/outputs/popcosmos_wang_jin_fsps_ratio_summary.png</code></li>
+<li><code>pop_cosmos_notebook/outputs/popcosmos_wang_jin_fsps_ratio_summary.csv</code></li>
+<li><code>pop_cosmos_notebook/outputs/popcosmos_wang_jin_fsps_match_audit.csv</code></li>
+<li><code>pop_cosmos_notebook/outputs/popcosmos_model_family_flux_regime_summary.csv</code></li>
+<li><code>pop_cosmos_notebook/outputs/popcosmos_differential_count_evaluator_regime_summary.csv</code></li>
+</ul>
+<p>External check:</p>
+<ul>
+<li>Wang et al. 2024 arXiv HTML: <code>https://arxiv.org/html/2405.18290v1</code></li>
+<li>Wang et al. 2024 A&amp;A page: <code>https://www.aanda.org/articles/aa/full_html/2024/08/aa49055-23/aa49055-23.html</code></li>
+<li>Wang catalogue CDS/VizieR: <code>https://cdsarc.cds.unistra.fr/viz-bin/cat/J/A%2BA/688/A20</code></li>
+<li>Oliver et al. 2010 HerMES SPIRE counts: <code>https://orca.cardiff.ac.uk/id/eprint/11014/1/SPIRE_galaxy_number_counts_at_250%2C_350%2C_and_500.pdf</code></li>
+<li>Glenn et al. 2010 HerMES P(D) counts: <code>https://arxiv.org/abs/1009.5675</code></li>
+<li>Valiante et al. 2016 H-ATLAS DR1 arXiv page/PDF: <code>https://arxiv.org/abs/1606.09615</code></li>
+<li>3D-Herschel 2026: <code>https://arxiv.org/abs/2602.22384</code></li>
+<li>Super-resolving Herschel 2025: <code>https://arxiv.org/abs/2512.13353</code></li>
+<li>Negrello et al. 2017 lensed 500 um sample ADS page: <code>https://ui.adsabs.harvard.edu/abs/2017MNRAS.465.3558N/abstract</code></li>
+</ul>
+
+    </div>
+</body>
+</html>

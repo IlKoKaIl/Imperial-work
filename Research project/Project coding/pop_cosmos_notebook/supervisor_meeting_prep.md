@@ -6169,3 +6169,225 @@ Backup only:
 One-sentence summary:
 
 > The clean result is not that one exact template is perfect. The clean result is that the FIR count mismatch is sensitive to dust SED shape, and warmer/more flexible dust treatments improve pop-cosmos predictions at fixed `L_IR`.
+
+## Tuesday August 11th
+
+### Goals to do.
+
+- check Wang enough to explain why it sits off
+- add Valiante as the wide-area H-ATLAS count source
+- make the chi-square/evaluator data-source split cleaner
+
+### Valiante / H-ATLAS DR1 added
+
+Used Valiante et al. 2016 Tables 5, 8, 9.
+
+These are the useful tables because they are already published corrected differential counts:
+
+- Table 5 = 250 um
+- Table 8 = 350 um
+- Table 9 = 500 um
+
+Stored raw GAMA field rows here:
+
+- `catalog data/external_number_counts/valiante_2016_hatlas_dr1_number_counts.csv`
+
+Made an area-weighted GAMA9/GAMA12/GAMA15 average here:
+
+- `catalog data/external_number_counts/valiante_2016_hatlas_dr1_number_counts_area_weighted.csv`
+
+Quick check plot:
+
+![Valiante H-ATLAS DR1 counts](outputs/valiante_2016_hatlas_dr1_number_counts_quicklook.png)
+
+Simple read:
+
+- each GAMA field has 13 flux bins per band
+- total table rows = `117`
+- area-weighted average has `39` rows total
+- useful wide-area bright-end count source
+
+I added Valiante into the compiled external counts:
+
+- `catalog data/external_number_counts/external_spire_differential_counts_compiled.csv`
+
+Updated external count plot:
+
+![External counts with Valiante](outputs/external_spire_differential_counts_july21_3dex.png)
+
+### Independent-source / evaluator cleanup
+
+Made a simple source-use table:
+
+- `catalog data/external_number_counts/external_count_independence_plan.csv`
+
+Current split:
+
+| type                         | sources                                   | use                                               |
+| ---------------------------- | ----------------------------------------- | ------------------------------------------------- |
+| main resolved / prior counts | Valiante, Oliver, maybe one Pearson table | main chi-square score                             |
+| H-ATLAS cross-check          | Clements                                  | useful, but same broad H-ATLAS family as Valiante |
+| P(D) faint checks            | Glenn, Varnish                            | sensitivity only, correlated knots                |
+| Wang                         | COSMOS XID+ catalogue                     | diagnostic, not formal count truth                |
+
+chi-square is a scorecard. For the thesis, I should probably show the score split by source/band/flux and be clear about correlated bins / overlapping surveys.
+
+### Wang check
+
+Re-checked the Wang 2024 paper quickly.
+
+Useful details:
+
+- Wang is a progressive XID+ deblended catalogue, not a number-count paper like these others
+- SPIRE maps are confusion dominated
+- their prior density gets worse from 250 to 500 um, from about `0.34` to `1.34` sources per beam
+- they compare deblended fluxes to blind HELP and Jin super-deblended catalogues
+- they explicitly say SPIRE deblended fluxes have a systematic underestimation that gets worse with wavelength, roughly max median bias:
+  - `~10%` at 250 um
+  - `~15%` at 350 um
+  - `~25%` at 500 um
+- important correction: this bias is **not enough by itself** to explain the big count mismatch in my plots
+  - the plots can be off by factors of a few, sometimes close to `~10x`
+  - a `25%` flux bias is much smaller than that
+  - so if Wang raw counts sit very low, the bigger issue is probably catalogue/count methodology, not just the quoted median flux bias
+
+useful?:
+
+- an earlier Wang/Pearson style XID+ paper
+- *A multi-wavelength de-blended Herschel view of the statistical properties of dusty star-forming galaxies across cosmic time*
+- [arxiv.org/abs/1902.09172](https://arxiv.org/abs/1902.09172)
+- that paper says:
+
+  - 250 um counts agree well with previous Herschel studies
+  - 350 and 500 um counts are considerably below previous Herschel results
+  - they interpret this as older studies suffering from source confusion, worse at longer wavelengths
+
+So maybe our Wang curve sitting low is not just our mistake.
+It may be a known thing with deblended COSMOS/XID+ counts vs traditional/blind Herschel counts.
+
+Simple interpretation:
+
+- Wang is useful as matched-object photometry
+- Wang raw catalogue counts aren't the same thing as a published corrected number-count table
+- deblending can split one bright Herschel blob across several priors
+- small COSMOS area also makes the bright end noisy
+
+### Wang data again
+
+Regenerated:
+
+- `outputs/popcosmos_full_sed_external_counts_overlay_corrected.png`
+- `outputs/popcosmos_differential_count_area_corrected_overlay.png`
+
+![Wang / pop-cosmos corrected overlay](outputs/popcosmos_full_sed_external_counts_overlay_corrected.png)
+
+![Differential counts with raw Wang](outputs/popcosmos_differential_count_area_corrected_overlay.png)
+
+Still need:
+
+- quick neighbour/beam test for Wang bright sources
+- idea: for bright Wang SPIRE sources, count/sum nearby priors inside one SPIRE beam
+- if one bright external source becomes several fainter Wang priors, the flux has been redistributed rather than truly lost
+
+### Clean independent-count table + new evaluator
+
+Made a cleaner table saying what sources I should actually use for the chi-square score:
+
+- `catalog data/external_number_counts/external_spire_clean_independent_count_sources.csv`
+
+This is the current split:
+
+| source                    | sky / field                                                                                                              | role                                               |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+| Valiante H-ATLAS DR1      | GAMA9 + GAMA12 + GAMA15, about`161.55 deg2`                                                                            | main wide bright-end count source                  |
+| Oliver HerMES SDP         | A2218 + FLS + Lockman-North + Lockman-SWIRE + GOODS-N, about`19.6 deg2` total but effective area changes with flux bin | main mid-flux count source                         |
+| Pearson Dark Field XID    | SPIRE Dark Field near the North Ecliptic Pole                                                                            | main deep-field count source                       |
+| Clements H-ATLAS SDP      | first H-ATLAS`~14 deg2`                                                                                                | backup only, same broad H-ATLAS family as Valiante |
+| Pearson Dark Field SUSSEX | same SPIRE Dark Field as Pearson XID                                                                                     | backup only, same field as XID                     |
+| Glenn HerMES P(D)         | HerMES SDP fields                                                                                                        | sensitivity only, P(D) knots are correlated        |
+| Varnish Dark Field P(D)   | SPIRE Dark Field near NEP                                                                                                | sensitivity only, same broad field as Pearson      |
+| Wang COSMOS raw           | COSMOS2020/Farmer area`1.278 deg2`                                                                                     | diagnostic only, not a corrected count table       |
+
+So the clean chi-square score now uses only:
+
+- Valiante H-ATLAS DR1
+- Oliver HerMES
+- Pearson Dark Field XID
+
+This gives a less messy evaluator:
+
+![Clean independent count evaluator](outputs/popcosmos_clean_independent_count_evaluator_heatmap.png)
+
+Clean pooled score:
+
+| model     | points | rough reduced chi2 | quick read                               |
+| --------- | -----: | -----------------: | ---------------------------------------- |
+| 25% ALESS | `83` |           `3.34` | best in this cleaner score               |
+| 50% ALESS | `83` |           `3.60` | very close                               |
+| 75% ALESS | `83` |           `7.06` | too ALESS/hot                            |
+| FSPS      | `83` |           `8.43` | too cold / overpredicts long-wave counts |
+| ALESS     | `83` |          `11.87` | too hot / underpredicts too much         |
+
+Simple interpretation:
+
+- this is cleaner than pooling every table blindly
+- it still says the same basic thing: pure FSPS is not best
+- a small/moderate move away from FSPS towards an ALESS-like warmer SED helps
+- but chi-square is still a scorecard, not a final likelihood, because count bins and surveys still have correlations
+
+### Wang literature check again
+
+Checked again for papers using Wang 2024 / the COSMOS-XID+ catalogue.
+
+What I found:
+
+- newer papers seem to use Wang mainly as deblended photometry for galaxies, not as a corrected number-count product
+- I did not find a later paper that uses the Wang 2024 catalogue and explicitly explains this exact raw-count mismatch
+
+So for now:
+
+- use Wang for matched-object validation / residuals
+- don't use raw Wang counts as the main observed number-count truth
+- for real count validation, use published corrected counts: Valiante, Oliver, Pearson, plus Clements/Glenn/Varnish as backup/context
+
+Possible replacement/add-on to Wang:
+
+- `Béthermin et al. 2012` is probably useful if I want something closer to COSMOS/GOODS-N and below-confusion number counts
+- `Jin et al. 2018` is useful as another COSMOS deblended catalogue for per-object photometry, not necessarily as a clean number-count table
+
+### Quick Jin vs Wang vs pop-cosmos check
+
+Made a first simple comparison using the Jin super-deblended FIR/mm catalogue I downloaded.
+
+Important setup:
+
+- Jin IDs aren't the same as Wang / COSMOS2020 IDs
+- direct ID matching was wrong, because same-number IDs were thousands of arcsec apart
+- so I matched by coordinates instead, using `<1 arcsec`
+- got `80,518` coordinate matches
+- 
+
+![Wang/Jin/FSPS flux scatter](outputs/popcosmos_wang_jin_fsps_flux_scatter.png)
+
+![Wang/Jin/FSPS ratio summary](outputs/popcosmos_wang_jin_fsps_ratio_summary.png)
+
+For Jin `SNR>=3` detections:
+
+| band   | Wang / Jin median | FSPS / Jin median | FSPS / Wang median |
+| ------ | ----------------: | ----------------: | -----------------: |
+| 250 um |         `0.91x` |         `0.97x` |          `1.14x` |
+| 350 um |         `0.69x` |         `0.81x` |          `1.31x` |
+| 500 um |         `0.49x` |         `0.65x` |          `1.45x` |
+
+Simple read:
+
+- at 250 um, Wang and Jin basically agree
+- at 350/500 um, Wang is lower than Jin
+- pop-cosmos FSPS is still above Wang at 350/500
+- compared to Jin, FSPS does **not** look as wildly high as it does compared to Wang
+- so this supports the idea that part of the Wang mismatch is Wang/deblending/catalogue-method related, not purely pop-cosmos being wrong
+
+Still caveat:
+
+- Jin is also COSMOS and also deblended, so it is not an independent sky-count truth
+- but it is a very useful second COSMOS photometry check

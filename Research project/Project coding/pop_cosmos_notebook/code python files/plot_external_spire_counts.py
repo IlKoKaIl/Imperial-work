@@ -6,14 +6,15 @@ import numpy as np
 import pandas as pd
 
 NB_DIR = Path(__file__).resolve().parent
-ROOT = NB_DIR.parent
-PROJECT_OUT = ROOT / "outputs"
-NB_OUT = NB_DIR / "outputs"
+NOTEBOOK_DIR = NB_DIR.parent
+ROOT = NB_DIR.parents[1]
+PROJECT_OUT = NOTEBOOK_DIR / "outputs"
+NB_OUT = NOTEBOOK_DIR / "outputs"
 DIFF_COUNTS_CSV = ROOT / "catalog data/external_number_counts/external_spire_differential_counts_compiled.csv"
 INTEGRAL_COUNTS_CSV = ROOT / "catalog data/external_number_counts/external_spire_number_counts_starter.csv"
 PREDICTION_CACHE = NB_OUT / "popcosmos_full_sed_band_predictions.pkl"
 SR_PER_DEG2 = 3282.806350011744
-COSMOS_AREA_DEG2 = 2.0
+COSMOS_AREA_DEG2 = 1.278
 
 PROJECT_OUT.mkdir(parents=True, exist_ok=True)
 NB_OUT.mkdir(parents=True, exist_ok=True)
@@ -46,6 +47,24 @@ STYLES = {
         "marker": "v",
         "ls": "--",
         "label": "Pearson XID",
+    },
+    ("Valiante et al.", "Table 5 area-weighted GAMA9/12/15"): {
+        "color": "#332288",
+        "marker": "P",
+        "ls": "-",
+        "label": "Valiante H-ATLAS DR1",
+    },
+    ("Valiante et al.", "Table 8 area-weighted GAMA9/12/15"): {
+        "color": "#332288",
+        "marker": "P",
+        "ls": "-",
+        "label": "Valiante H-ATLAS DR1",
+    },
+    ("Valiante et al.", "Table 9 area-weighted GAMA9/12/15"): {
+        "color": "#332288",
+        "marker": "P",
+        "ls": "-",
+        "label": "Valiante H-ATLAS DR1",
     },
     ("Varnish et al.", "Table 4 P(D) best-fit spline"): {
         "color": "#CC79A7",
@@ -160,14 +179,13 @@ def plot_corrected_cumulative_overlay():
 
     for ax, band in zip(axes, [250, 350, 500]):
         obs_col = f"F{band}"
-        snr_col = f"SNR{band}"
         fsps_col = f"F{band}_fsps_mjy"
         aless_col = f"F{band}_aless_mjy"
 
-        wang_det_flux = wang.loc[
+        wang_raw_flux = wang.loc[
             np.isfinite(wang[obs_col])
-            & np.isfinite(wang[snr_col])
-            & (wang[snr_col] >= 3)
+            & np.isfinite(wang[f"s_F{band}"])
+            & (wang[f"s_F{band}"] > 0)
             & (wang[obs_col] > 0),
             obs_col,
         ]
@@ -189,8 +207,8 @@ def plot_corrected_cumulative_overlay():
         )
         ax.plot(
             grid,
-            cumulative_counts(wang_det_flux, grid) / COSMOS_AREA_DEG2,
-            label="Wang SNR>=3",
+            cumulative_counts(wang_raw_flux, grid) / COSMOS_AREA_DEG2,
+            label="Wang raw",
             color=pc.OKABE_ITO["black"],
             lw=2,
         )
@@ -260,7 +278,10 @@ def plot_corrected_cumulative_overlay():
     axes[0].set_ylabel(r"cumulative counts $N(>S)$ per deg$^2$")
     handles, labels = axes[0].get_legend_handles_labels()
     axes[0].legend(handles, labels, fontsize=7.5)
-    fig.suptitle("pop-cosmos/Wang cumulative counts with corrected external SPIRE counts")
+    fig.suptitle(
+        "pop-cosmos/Wang cumulative counts with corrected external SPIRE counts\n"
+        "Wang/model curves use raw positive fluxes and area=1.278 deg^2"
+    )
     fig.tight_layout()
     out = NB_OUT / "popcosmos_full_sed_external_counts_overlay_corrected.png"
     fig.savefig(out, dpi=180)
@@ -270,7 +291,10 @@ def plot_corrected_cumulative_overlay():
 
 def main():
     print(plot_external_differential_counts())
-    print(plot_corrected_cumulative_overlay())
+    try:
+        print(plot_corrected_cumulative_overlay())
+    except FileNotFoundError as exc:
+        print(f"Skipped cumulative Wang overlay because an input file was missing: {exc}")
 
 
 if __name__ == "__main__":

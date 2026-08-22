@@ -22,7 +22,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-NB_DIR = Path(__file__).resolve().parent
+CODE_DIR = Path(__file__).resolve().parent
+NB_DIR = CODE_DIR.parent
 ROOT = NB_DIR.parent
 OUT_DIR = NB_DIR / "outputs"
 EXTERNAL_DIFF_COUNTS = ROOT / "catalog data/external_number_counts/external_spire_differential_counts_compiled.csv"
@@ -30,7 +31,7 @@ PREDICTION_CACHE = OUT_DIR / "popcosmos_full_sed_band_predictions.pkl"
 
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-sys.path.insert(0, str(NB_DIR))
+sys.path.insert(0, str(CODE_DIR))
 import popcosmos_full_sed_250_counts as pc  # noqa: E402
 import popcosmos_aless_hybrid_counts as ah  # noqa: E402
 
@@ -122,10 +123,11 @@ def add_restframe_hybrid_fluxes(pred, ratios):
 
 
 def wang_differential_counts(wang, band, bins_mjy):
+    """Raw Wang positive-flux catalogue counts, with no SNR>=3 cut."""
     flux = wang.loc[
         np.isfinite(wang[f"F{band}"])
-        & np.isfinite(wang[f"SNR{band}"])
-        & (wang[f"SNR{band}"] >= 3)
+        & np.isfinite(wang[f"s_F{band}"])
+        & (wang[f"s_F{band}"] > 0)
         & (wang[f"F{band}"] > 0),
         f"F{band}",
     ]
@@ -146,9 +148,9 @@ def make_count_tables(sample, wang, bins_mjy):
             rows.append(table)
 
         wtable = wang_differential_counts(wang, band, bins_mjy)
-        wtable.insert(0, "model", "wang_snr3")
+        wtable.insert(0, "model", "wang_raw")
         wtable.insert(0, "band_um", band)
-        tables[(band, "wang_snr3")] = wtable
+        tables[(band, "wang_raw")] = wtable
         rows.append(wtable)
 
     return tables, pd.concat(rows, ignore_index=True)
@@ -161,7 +163,7 @@ def plot_restframe_hybrid_counts(tables, external):
         ("resthybrid50", "50% ALESS", "#D55E00", "-", 2.1),
         ("resthybrid75", "75% ALESS", "#E69F00", "--", 1.7),
         ("aless", "ALESS avg", "#E69F00", ":", 2.0),
-        ("wang_snr3", "Wang SNR>=3", "#000000", "-", 1.8),
+        ("wang_raw", "Wang raw", "#000000", "-", 1.8),
     ]
 
     fig, axes = plt.subplots(1, 3, figsize=(15, 4.4), sharey=True)
@@ -208,12 +210,12 @@ def make_bright_count_summary(sample, wang):
                 row[f"N_{key}_per_deg2"] = np.sum(np.isfinite(flux) & (flux >= cut)) / ah.COSMOS_AREA_DEG2
             wflux = wang.loc[
                 np.isfinite(wang[f"F{band}"])
-                & np.isfinite(wang[f"SNR{band}"])
-                & (wang[f"SNR{band}"] >= 3)
+                & np.isfinite(wang[f"s_F{band}"])
+                & (wang[f"s_F{band}"] > 0)
                 & (wang[f"F{band}"] >= cut),
                 f"F{band}",
             ]
-            row["N_wang_snr3_per_deg2"] = len(wflux) / ah.COSMOS_AREA_DEG2
+            row["N_wang_raw_per_deg2"] = len(wflux) / ah.COSMOS_AREA_DEG2
             rows.append(row)
     return pd.DataFrame(rows)
 

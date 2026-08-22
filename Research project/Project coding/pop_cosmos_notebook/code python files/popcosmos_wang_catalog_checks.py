@@ -15,9 +15,10 @@ from astropy.table import Table
 
 NB_DIR = Path(__file__).resolve().parent
 ROOT = NB_DIR.parent
-OUT_DIR = NB_DIR / "outputs"
-WANG_MASTER = ROOT / "catalog data/wang/master.dat.gz"
-WANG_README = ROOT / "catalog data/wang/ReadMe.txt"
+PROJECT_CODING = NB_DIR.parents[1]
+OUT_DIR = ROOT / "outputs"
+WANG_MASTER = PROJECT_CODING / "catalog data/wang/master.dat.gz"
+WANG_README = PROJECT_CODING / "catalog data/wang/ReadMe.txt"
 
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 

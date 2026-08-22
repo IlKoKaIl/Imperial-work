@@ -4,6 +4,7 @@ Start here. This folder is for Squarepoint-style quant prep: coding, probability
 
 ## Main Files
 
+- [Squarepoint_Desk_Quant_Prep.md](Squarepoint_Desk_Quant_Prep.md): start here for the Squarepoint Desk Quant Analyst role.
 - [study-plan.md](study-plan.md): the working plan.
 - [interview-stats-cheatsheet.md](interview-stats-cheatsheet.md): joint frequentist + Bayesian + regression notes for interview questions.
 - [coding-tracker.md](coding-tracker.md): NeetCode/Blind 75 tracker.
@@ -65,4 +66,3 @@ Sources:
 - CMU 36-705 page: https://www.stat.cmu.edu/~larry/%3Dstat705/
 - Squarepoint Early Careers: https://www.squarepoint-capital.com/early-careers
 - Squarepoint Open Opportunities: https://www.squarepoint-capital.com/open-opportunities
-

@@ -31,8 +31,9 @@ import astropy.units as u
 from astropy.table import Table
 
 
-ROOT = Path(__file__).resolve().parents[1]
-NB_DIR = Path(__file__).resolve().parent
+CODE_DIR = Path(__file__).resolve().parent
+NB_DIR = CODE_DIR.parent
+ROOT = NB_DIR.parent
 OUT_DIR = NB_DIR / "outputs"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 

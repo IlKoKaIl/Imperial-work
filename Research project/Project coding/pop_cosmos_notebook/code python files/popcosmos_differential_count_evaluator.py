@@ -24,10 +24,12 @@ import numpy as np
 import pandas as pd
 
 
-NB_DIR = Path(__file__).resolve().parent
+CODE_DIR = Path(__file__).resolve().parent
+NB_DIR = CODE_DIR.parent
 ROOT = NB_DIR.parent
 OUT_DIR = NB_DIR / "outputs"
 EXTERNAL_COUNTS = ROOT / "catalog data/external_number_counts/external_spire_differential_counts_compiled.csv"
+CLEAN_SOURCE_TABLE = ROOT / "catalog data/external_number_counts/external_spire_clean_independent_count_sources.csv"
 MODEL_COUNTS = OUT_DIR / "popcosmos_restframe_hybrid_sed_differential_counts.csv"
 
 MODEL_COUNT_AREA_DEG2 = 1.278
@@ -46,10 +48,10 @@ MODEL_LABELS = {
     "resthybrid50": "50% ALESS",
     "resthybrid75": "75% ALESS",
     "aless": "ALESS",
-    "wang_snr3": "Wang raw SNR>=3",
+    "wang_raw": "Wang raw",
 }
 
-MODEL_ORDER = ["fsps_lirnorm", "resthybrid25", "resthybrid50", "resthybrid75", "aless", "wang_snr3"]
+MODEL_ORDER = ["fsps_lirnorm", "resthybrid25", "resthybrid50", "resthybrid75", "aless", "wang_raw"]
 
 
 def log_interp(x, xp, fp):
@@ -93,6 +95,18 @@ def prepare_external_counts():
     # sparse bins can dominate a first-pass score. Keep the range explicit.
     external["source_key"] = external["paper"] + " / " + external["method_or_table"]
     return external
+
+
+def prepare_clean_independent_external_counts():
+    """Use only the count sources marked as clean independent anchors."""
+    external = prepare_external_counts()
+    clean = pd.read_csv(CLEAN_SOURCE_TABLE)
+    clean = clean[clean["use_in_clean_chi_square"].astype(str).str.lower() == "yes"].copy()
+    clean = clean[["clean_source_key", "paper", "method_or_table", "sky_field", "survey_family", "role"]]
+    merged = external.merge(clean, on=["paper", "method_or_table"], how="inner")
+    if merged.empty:
+        raise ValueError(f"No clean independent rows matched {CLEAN_SOURCE_TABLE}")
+    return merged
 
 
 def prepare_model_counts(area_deg2):
@@ -218,11 +232,68 @@ def make_scorecard():
     return out
 
 
+def make_clean_independent_scorecard():
+    external = prepare_clean_independent_external_counts()
+    rows = []
+
+    for scenario, area in AREA_SCENARIOS.items():
+        model_counts = prepare_model_counts(area)
+        for clean_source_key, group in external.groupby("clean_source_key"):
+            for model_name in MODEL_ORDER:
+                band_rows = []
+                for band in [250, 350, 500]:
+                    result = compare_one_model_to_external(model_counts, group, band, model_name)
+                    if result is not None:
+                        band_rows.append(result)
+                        result.update(
+                            {
+                                "area_scenario": scenario,
+                                "area_deg2": area,
+                                "external_source": clean_source_key,
+                                "sky_field": "; ".join(sorted(group["sky_field"].dropna().unique())),
+                                "survey_family": "; ".join(sorted(group["survey_family"].dropna().unique())),
+                                "score_set": "clean_independent",
+                            }
+                        )
+                        rows.append(result)
+
+                if band_rows:
+                    n_total = sum(r["N_points"] for r in band_rows)
+                    chi2_total = sum(r["chi2_log"] for r in band_rows)
+                    deltas = np.repeat(
+                        [r["median_log10_model_over_obs"] for r in band_rows],
+                        [r["N_points"] for r in band_rows],
+                    )
+                    rows.append(
+                        {
+                            "area_scenario": scenario,
+                            "area_deg2": area,
+                            "external_source": clean_source_key,
+                            "sky_field": "; ".join(sorted(group["sky_field"].dropna().unique())),
+                            "survey_family": "; ".join(sorted(group["survey_family"].dropna().unique())),
+                            "score_set": "clean_independent",
+                            "band_um": "all",
+                            "model": model_name,
+                            "model_label": MODEL_LABELS.get(model_name, model_name),
+                            "N_points": n_total,
+                            "chi2_log": chi2_total,
+                            "reduced_chi2_log": chi2_total / max(n_total, 1),
+                            "median_log10_model_over_obs": float(np.nanmedian(deltas)),
+                            "rms_log10_model_over_obs": np.nan,
+                            "mean_abs_log10_model_over_obs": np.nan,
+                        }
+                    )
+
+    out = pd.DataFrame(rows)
+    out = out.sort_values(["area_scenario", "external_source", "band_um", "model"])
+    return out
+
+
 def plot_scorecard(scorecard):
     sub = scorecard[
         (scorecard["area_scenario"] == "wang_farmer_1p278deg2")
         & (scorecard["band_um"].astype(str) == "all")
-        & (scorecard["model"] != "wang_snr3")
+        & (scorecard["model"] != "wang_raw")
     ].copy()
     if sub.empty:
         return None
@@ -233,7 +304,7 @@ def plot_scorecard(scorecard):
         values="reduced_chi2_log",
         aggfunc="first",
     )
-    cols = [MODEL_LABELS[m] for m in MODEL_ORDER if m != "wang_snr3" and MODEL_LABELS[m] in pivot.columns]
+    cols = [MODEL_LABELS[m] for m in MODEL_ORDER if m != "wang_raw" and MODEL_LABELS[m] in pivot.columns]
     pivot = pivot[cols]
 
     fig, ax = plt.subplots(figsize=(9.5, 4.8))
@@ -262,6 +333,66 @@ def plot_scorecard(scorecard):
     return path
 
 
+def plot_clean_independent_scorecard(scorecard):
+    sub = scorecard[
+        (scorecard["area_scenario"] == "wang_farmer_1p278deg2")
+        & (scorecard["band_um"].astype(str) == "all")
+        & (scorecard["model"] != "wang_raw")
+    ].copy()
+    if sub.empty:
+        return None
+
+    pivot = sub.pivot_table(
+        index="external_source",
+        columns="model_label",
+        values="reduced_chi2_log",
+        aggfunc="first",
+    )
+    cols = [MODEL_LABELS[m] for m in MODEL_ORDER if m != "wang_raw" and MODEL_LABELS[m] in pivot.columns]
+    pivot = pivot[cols]
+
+    fig, ax = plt.subplots(figsize=(8.0, 3.5))
+    im = ax.imshow(np.log10(pivot.to_numpy(float)), aspect="auto", cmap="viridis_r")
+    ax.set_xticks(np.arange(len(pivot.columns)))
+    ax.set_xticklabels(pivot.columns, rotation=25, ha="right")
+    ax.set_yticks(np.arange(len(pivot.index)))
+    ax.set_yticklabels(pivot.index, fontsize=8)
+    ax.set_title(
+        "Clean independent-count evaluator\n"
+        "main anchors only: Valiante H-ATLAS, Oliver HerMES, Pearson Dark Field XID"
+    )
+    cbar = fig.colorbar(im, ax=ax)
+    cbar.set_label(r"$\log_{10}(\chi^2_\nu)$")
+
+    for i in range(pivot.shape[0]):
+        for j in range(pivot.shape[1]):
+            val = pivot.iloc[i, j]
+            if np.isfinite(val):
+                ax.text(j, i, f"{val:.1f}", ha="center", va="center", fontsize=7, color="white" if val > 10 else "black")
+
+    fig.tight_layout()
+    path = OUT_DIR / "popcosmos_clean_independent_count_evaluator_heatmap.png"
+    fig.savefig(path, dpi=180)
+    plt.close(fig)
+    return path
+
+
+def make_pooled_summary(scorecard, out_path):
+    pooled = scorecard[
+        (scorecard["area_scenario"] == "wang_farmer_1p278deg2")
+        & (scorecard["band_um"].astype(str) != "all")
+        & (scorecard["model"] != "wang_raw")
+    ].groupby("model_label", as_index=False).agg(
+        N_points=("N_points", "sum"),
+        chi2_log=("chi2_log", "sum"),
+        median_log10_model_over_obs=("median_log10_model_over_obs", "median"),
+    )
+    pooled["reduced_chi2_log"] = pooled["chi2_log"] / pooled["N_points"]
+    pooled = pooled.sort_values("reduced_chi2_log")
+    pooled.to_csv(out_path, index=False)
+    return pooled
+
+
 def plot_area_corrected_overlay():
     external = pd.read_csv(EXTERNAL_COUNTS)
     external["euclidean_best_jy15_deg2"] = pd.to_numeric(
@@ -286,7 +417,7 @@ def plot_area_corrected_overlay():
         ("resthybrid50", "50% ALESS", "#D55E00", "-"),
         ("resthybrid75", "75% ALESS", "#E69F00", "--"),
         ("aless", "ALESS", "#E69F00", ":"),
-        ("wang_snr3", "Wang raw SNR>=3", "#000000", "-"),
+        ("wang_raw", "Wang raw", "#000000", "-"),
     ]
     markers = {
         "Clements et al.": ("s", "#0072B2"),
@@ -321,7 +452,7 @@ def plot_area_corrected_overlay():
                 sub["euclidean_jy15_deg2"],
                 color=color,
                 ls=ls,
-                lw=2.0 if model_name in {"fsps_lirnorm", "resthybrid50", "wang_snr3"} else 1.4,
+                lw=2.0 if model_name in {"fsps_lirnorm", "resthybrid50", "wang_raw"} else 1.4,
                 label=label,
             )
         ax.set_xscale("log")
@@ -338,7 +469,7 @@ def plot_area_corrected_overlay():
     axes[0].legend(dedup.values(), dedup.keys(), fontsize=6.8, ncol=1)
     fig.suptitle(
         "Differential counts overlay using Wang/Farmer area=1.278 deg^2\n"
-        "Wang curve is still raw SNR-selected catalogue counts, not a published corrected count table"
+        "Wang curve is raw positive-flux catalogue counts, not a published corrected count table"
     )
     fig.tight_layout(rect=[0, 0, 1, 0.92])
     path = OUT_DIR / "popcosmos_differential_count_area_corrected_overlay.png"
@@ -352,7 +483,7 @@ def make_leave_one_source_out_validation(scorecard, area_scenario="wang_farmer_1
     base = scorecard[
         (scorecard["area_scenario"] == area_scenario)
         & (scorecard["band_um"].astype(str) == "all")
-        & (scorecard["model"] != "wang_snr3")
+        & (scorecard["model"] != "wang_raw")
     ].copy()
 
     rows = []
@@ -457,7 +588,7 @@ def make_regime_summary(scorecard, area_scenario="wang_farmer_1p278deg2"):
     base = scorecard[
         (scorecard["area_scenario"] == area_scenario)
         & (scorecard["band_um"].astype(str) != "all")
-        & (scorecard["model"] != "wang_snr3")
+        & (scorecard["model"] != "wang_raw")
     ].copy()
 
     regimes = {
@@ -496,7 +627,7 @@ def plot_regime_summary(regime_summary):
         "resolved_or_prior_counts_only": "resolved/prior",
         "pd_statistical_counts_only": "P(D) only",
     }
-    model_labels = [MODEL_LABELS[m] for m in MODEL_ORDER if m != "wang_snr3"]
+    model_labels = [MODEL_LABELS[m] for m in MODEL_ORDER if m != "wang_raw"]
     x = np.arange(len(model_labels))
     width = 0.24
 
@@ -531,6 +662,14 @@ def main():
     out_csv = OUT_DIR / "popcosmos_differential_count_evaluator_scorecard.csv"
     scorecard.to_csv(out_csv, index=False)
     heatmap = plot_scorecard(scorecard)
+    clean_scorecard = make_clean_independent_scorecard()
+    clean_csv = OUT_DIR / "popcosmos_clean_independent_count_evaluator_scorecard.csv"
+    clean_scorecard.to_csv(clean_csv, index=False)
+    clean_heatmap = plot_clean_independent_scorecard(clean_scorecard)
+    clean_pooled = make_pooled_summary(
+        clean_scorecard,
+        OUT_DIR / "popcosmos_clean_independent_count_evaluator_pooled_summary.csv",
+    )
     overlay = plot_area_corrected_overlay()
     validation = make_leave_one_source_out_validation(scorecard)
     validation_csv = OUT_DIR / "popcosmos_differential_count_leave_one_source_out.csv"
@@ -544,6 +683,9 @@ def main():
     print(out_csv)
     if heatmap is not None:
         print(heatmap)
+    print(clean_csv)
+    if clean_heatmap is not None:
+        print(clean_heatmap)
     print(overlay)
     print(validation_csv)
     if validation_plot is not None:
@@ -555,7 +697,7 @@ def main():
     best = scorecard[
         (scorecard["area_scenario"] == "wang_farmer_1p278deg2")
         & (scorecard["band_um"].astype(str) == "all")
-        & (scorecard["model"] != "wang_snr3")
+        & (scorecard["model"] != "wang_raw")
     ].copy()
     best = best.sort_values(["external_source", "reduced_chi2_log"])
     print("\nBest model per external source, Wang/Farmer area scenario:")
@@ -566,7 +708,7 @@ def main():
     pooled = scorecard[
         (scorecard["area_scenario"] == "wang_farmer_1p278deg2")
         & (scorecard["band_um"].astype(str) != "all")
-        & (scorecard["model"] != "wang_snr3")
+        & (scorecard["model"] != "wang_raw")
     ].groupby("model_label", as_index=False).agg(
         N_points=("N_points", "sum"),
         chi2_log=("chi2_log", "sum"),
@@ -577,6 +719,9 @@ def main():
     pooled.to_csv(OUT_DIR / "popcosmos_differential_count_evaluator_pooled_summary.csv", index=False)
     print("\nPooled rough summary:")
     print(pooled.to_string(index=False))
+
+    print("\nClean independent pooled summary:")
+    print(clean_pooled.to_string(index=False))
 
     print("\nLeave-one-source-out validation:")
     print(validation.to_string(index=False))

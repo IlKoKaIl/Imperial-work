@@ -4,10 +4,11 @@ import numpy as np
 import pandas as pd
 
 NB_DIR = Path(__file__).resolve().parent
-ROOT = NB_DIR.parent
+ROOT = NB_DIR.parents[1]
 SOURCE_COUNTS_CSV = ROOT / "catalog data/external_number_counts/external_spire_number_counts_starter.csv"
 VARNISH_COUNTS_CSV = ROOT / "catalog data/external_number_counts/external_spire_differential_counts_starter.csv"
 GLENN_COUNTS_CSV = ROOT / "catalog data/external_number_counts/external_spire_glenn_2010_pd_counts.csv"
+VALIANTE_COUNTS_CSV = ROOT / "catalog data/external_number_counts/valiante_2016_hatlas_dr1_number_counts_area_weighted.csv"
 OUT_CSV = ROOT / "catalog data/external_number_counts/external_spire_differential_counts_compiled.csv"
 SR_PER_DEG2 = 3282.806350011744
 VARNISH_LOG10_ERROR_FLOOR_DEX = 0.08
@@ -165,6 +166,35 @@ def convert_glenn_row(row):
     }
 
 
+def convert_valiante_row(row):
+    euclidean = to_float(row["euclidean_best_jy15_deg2"])
+    euclidean_err = to_float(row["euclidean_err_jy15_deg2"])
+    flux_mjy = to_float(row["flux_mjy"])
+    return {
+        "paper": row["paper"],
+        "year": row["year"],
+        "survey": row["survey"],
+        "method_or_table": row["method_or_table"],
+        "band_um": int(float(row["band_um"])),
+        "flux_mjy": flux_mjy,
+        "flux_jy": to_float(row["flux_jy"]),
+        "euclidean_best_jy15_deg2": euclidean,
+        "euclidean_err_jy15_deg2": euclidean_err if np.isfinite(euclidean_err) else "",
+        "log10_euclidean_best_jy15_deg2": np.log10(euclidean) if euclidean > 0 else "",
+        "source_n_galaxies": "",
+        "flux_correction": "",
+        "source_differential_value": euclidean,
+        "source_differential_err": euclidean_err if np.isfinite(euclidean_err) else "",
+        "source_differential_unit": "Jy^1.5 deg^-2",
+        "standard_unit": "Jy^1.5 deg^-2",
+        "notes": (
+            f"{row['notes']} Added as the area-weighted H-ATLAS DR1 "
+            "GAMA9/GAMA12/GAMA15 curve; use as wide-area bright-end counts."
+        ),
+        "source_url": row["source_url"],
+    }
+
+
 def main():
     rows = []
     source = pd.read_csv(SOURCE_COUNTS_CSV)
@@ -180,6 +210,10 @@ def main():
     if GLENN_COUNTS_CSV.exists():
         glenn = pd.read_csv(GLENN_COUNTS_CSV)
         rows.extend(convert_glenn_row(row) for _, row in glenn.iterrows())
+
+    if VALIANTE_COUNTS_CSV.exists():
+        valiante = pd.read_csv(VALIANTE_COUNTS_CSV)
+        rows.extend(convert_valiante_row(row) for _, row in valiante.iterrows())
 
     out = pd.DataFrame(rows)
     out = out.sort_values(["band_um", "flux_mjy", "paper", "method_or_table"])

@@ -16,10 +16,11 @@ import pandas as pd
 
 NB_DIR = Path(__file__).resolve().parent
 ROOT = NB_DIR.parent
-OUT_DIR = NB_DIR / "outputs"
+PROJECT_CODING = NB_DIR.parents[1]
+OUT_DIR = ROOT / "outputs"
 
 WANG_SCENARIOS = OUT_DIR / "wang_master_catalog_count_scenarios.csv"
-EXTERNAL_STARTER = ROOT / "catalog data/external_number_counts/external_spire_number_counts_starter.csv"
+EXTERNAL_STARTER = PROJECT_CODING / "catalog data/external_number_counts/external_spire_number_counts_starter.csv"
 
 OUT_PNG = OUT_DIR / "wang_raw_count_context.png"
 OUT_CSV = OUT_DIR / "wang_raw_count_context_area_selection_summary.csv"
