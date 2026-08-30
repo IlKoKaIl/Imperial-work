@@ -1,0 +1,20 @@
+role,first,year,title,journal,doi,cites
+pop-cosmos I — the model being validated (Alsing+24),Alsing,2024,pop-cosmos: A Comprehensive Picture of the Galaxy Population from COSMOS Data,The Astrophysical Journal Supplement Series,10.3847/1538-4365/ad5c69,24
+pop-cosmos II — inference/redshifts (Thorp+24),Thorp,2024,pop-cosmos: Scaleable Inference of Galaxy Properties and Redshifts with a Data-driven Population Model,The Astrophysical Journal,10.3847/1538-4357/ad7736,13
+Prospector/FSPS SED inference framework underlying pop-cosmos (Leja+17),Leja,2017,Deriving Physical Properties from Broadband Photometry with Prospector: Description of the Model and a Demonstration of its Accuracy Using 129 Galaxies in the Local Universe,The Astrophysical Journal,10.3847/1538-4357/aa5ffe,509
+Draine & Li dust-emission model — the physical FIR SED family (Draine&Li 07),Draine,2007,"Infrared Emission from Interstellar Dust. IV. The Silicate‐Graphite‐PAH Model in the Post‐
+          Spitzer
+          Era",The Astrophysical Journal,10.1086/511055,1877
+Casey FIR SED (MBB+mid-IR power law) — your template family (Casey 12),Casey,2012,Far-infrared spectral energy distribution fitting for galaxies near and far,Monthly Notices of the Royal Astronomical Society,10.1111/j.1365-2966.2012.21455.x,353
+Clements H-ATLAS SDP counts — bright-end anchor (Clements 10),Clements,2010,Herschel-ATLAS: Extragalactic number counts from 250 to 500 microns,Astronomy and Astrophysics,10.1051/0004-6361/201014581,97
+Oliver HerMES SPIRE counts — mid-flux anchor (Oliver 10),Oliver,2010,"HerMES: SPIRE galaxy number counts at 250, 350, and 500 μm",Astronomy and Astrophysics,10.1051/0004-6361/201014697,206
+Glenn HerMES P(D) counts — faint-end sensitivity (Glenn 10),Glenn,2010,HerMES: deep galaxy number counts from a P(D) fluctuation analysis of SPIRE Science Demonstration Phase observations,Monthly Notices of the Royal Astronomical Society,10.1111/j.1365-2966.2010.17781.x,105
+Bethermin submm counts 250/350/500 — method context (Bethermin 10),Béthermin,2010,"Submillimeter number counts at 250 μm, 350 μm and 500 μm in BLAST data",Astronomy and Astrophysics,10.1051/0004-6361/200913910,63
+Pearson SPIRE Dark Field I — deep resolved counts (Pearson 25),Pearson,2025,The Herschel-SPIRE Dark Field I: the deepest Herschel image of the submillimetre Universe,Monthly Notices of the Royal Astronomical Society,10.1093/mnras/staf335,3
+Varnish SPIRE Dark Field II — P(D) faint counts (Varnish 25),Varnish,2025,The Herschel-SPIRE Dark Field – II. A P(D) fluctuation analysis of the deepest Herschel image of the submillimetre universe,Monthly Notices of the Royal Astronomical Society,10.1093/mnras/staf318,2
+Swinbank ALESS — empirical SMG SED template (Swinbank 14),Swinbank,2013,An ALMA survey of sub-millimetre Galaxies in the Extended Chandra Deep Field South: the far-infrared properties of SMGs,Monthly Notices of the Royal Astronomical Society,10.1093/mnras/stt2273,305
+Jin super-deblended COSMOS FIR catalogue — Wang/Jin flux check (Jin 18),Jin,2018,“Super-deblended” Dust Emission in Galaxies. II. Far-IR to (Sub)millimeter Photometry and High-redshift Galaxy Candidates in the Full COSMOS Field,The Astrophysical Journal,10.3847/1538-4357/aad4af,174
+Schreiber dust-temperature evolution — warm-dust context (Schreiber 18),Schreiber,2017,"Dust temperature and mid-to-total infrared color  distributions for star-forming galaxies at 0 &lt;
+          z
+          &lt; 4",Astronomy &amp; Astrophysics,10.1051/0004-6361/201731506,213
+Bethermin SIDES simulation — count/evaluator context (Bethermin 17),Béthermin,2017,The impact of clustering and angular resolution on far-infrared and millimeter continuum observations,Astronomy &amp; Astrophysics,10.1051/0004-6361/201730866,163

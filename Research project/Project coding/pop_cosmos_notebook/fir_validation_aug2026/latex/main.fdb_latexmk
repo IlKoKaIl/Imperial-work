@@ -1,0 +1,26 @@
+# Fdb version 4
+["pdflatex"] 1788005429.75579 "main.tex" "main.pdf" "main" 1788005430.1044 2
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1711295501 1288 655e228510b4c2a1abe905c368440826 ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty" 1711295503 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty" 1711295503 1057 525c2192b5febbd8c1f662c9468335bb ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls" 1711295503 20144 147463a6a579f4597269ef9565205cfe ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty" 1711295503 5048 425739d70251273bf93e3d51f3c40048 ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size12.clo" 1711295503 8449 f07039d8e4e89f21078d9b5137579bfc ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/float/float.sty" 1711295503 6749 16d2656a1984957e674b149555f1ea1d ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty" 1711295503 41601 9cf6c5257b1bc7af01a58859749dd37a ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty" 1711295503 2671 7e67d78d9b88c845599a85b2d41f2e39 ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/placeins/placeins.sty" 1777299935 4087 636308456f60d2b31cbf97867db5708d ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/setspace/setspace.sty" 1777299936 22490 8cac309b79a4c53a4ffce4b1b07aead0 ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty" 1711295503 12667 e4b5eb11e4b7239e6c8a52bbe074a6c6 ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/tabularx.sty" 1711295503 7147 d45559f8a31b8c53ada0640516660003 ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-dist/web2c/texmf.cnf" 1711295504 41663 c82a74d8036de408d74af2c8ae75c7e5 ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1711295553 6813348 16a091ed03a6854f8103e945c63433c8 ""
+  "c:/Users/Mihir Koka/AppData/Roaming/TinyTeX/texmf.cnf" 1711295514 956 62eec9df7d23310ba78b3c2c869e65c5 ""
+  "main.aux" 1788005429 34 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "main.tex" 1787498228 23013 be9610bb1ebc07dcd7fafe9e82026eb1 ""
+  "siunitx.sty" 0 -1 0 ""
+  (generated)
+  "main.aux"
+  "main.log"
+  "main.pdf"
+  (rewritten before read)

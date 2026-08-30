@@ -1,0 +1,163 @@
+\documentclass[12pt,twoside]{report}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title-page metadata
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\reporttitle}{Extending Pop-cosmos to the Far-Infrared:
+  A Number-Count Validation}
+\newcommand{\degreetype}{Master of Research}
+\newcommand{\ProjectCode}{MLBD\_2025\_17}
+\newcommand{\StudentName}{Mihir Koka}
+\newcommand{\CID}{06067948}
+\newcommand{\Supervisor}{David Clements \& Boris Leistedt}
+\newcommand{\Assessor}{Alan Heavens}
+\newcommand{\WordCount}{<<final word count, excluding layperson's summary>>}
+\newcommand{\SubmissionDate}{4 September 2026}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages, layout, bibliography  (includes.tex)
+% Macros                          (notation.tex)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{includes}
+\input{notation}
+
+\date{September 2026}
+
+\begin{document}
+
+% ===================== TITLE PAGE =====================
+\input{titlepage}
+
+% ===================== LAYPERSON'S SUMMARY =====================
+% NOT included in the word count.  Limit: one A4 page, < 700 words.
+\newpage
+\section*{\centering Layperson's Summary}
+\vspace{-0.3cm}
+\begin{center}
+{\large\bfseries The Galaxies That Were Too Bright}\\[2pt]
+{\small Mihir Koka}
+\end{center}
+
+Astronomers have a problem that sounds like it should be simple: we cannot see most
+of the light that stars produce. In galaxies where stars are forming fastest, thick
+clouds of interstellar dust swallow the starlight before it ever reaches us. The dust
+warms up and re-radiates that stolen energy at much longer wavelengths, in the
+far-infrared, where our eyes are useless and even ordinary telescopes cannot follow.
+If you want to know how fast a galaxy is really building stars, you have to account
+for the light you cannot see.
+
+Modern astronomy handles this with computer models of entire galaxy populations. One
+of the most sophisticated is \textsc{pop-cosmos}, built at Imperial and its partner
+institutions, which learns the statistical properties of hundreds of thousands of real
+galaxies and can then generate realistic artificial ones. It is a powerful tool: the
+next generation of surveys, from the \emph{Euclid} space telescope and the Rubin
+Observatory, will catalogue billions of galaxies, far too many to study one at a time.
+Models like \textsc{pop-cosmos} are how we will make sense of them.
+
+But \textsc{pop-cosmos} was taught using visible and near-infrared light only. It has
+never been shown a far-infrared observation. It still makes far-infrared predictions,
+because it assumes the dust must re-emit exactly as much energy as it absorbs --- a
+sensible bookkeeping rule known as energy balance. The catch is that energy balance
+tells you \emph{how much} energy the dust radiates, but nothing about \emph{which}
+wavelengths it comes out at. That depends on how hot the dust is, and nothing in the
+model's training pins that down. So the far-infrared predictions are, in effect, an
+untested extrapolation.
+
+My project was to test them. Rather than compare galaxy by galaxy, which requires
+trusting a chain of uncertain assumptions, I used a measurement astronomers have been
+making for over a decade: \emph{number counts}. You simply count how many galaxies on
+the sky are brighter than a given brightness. It is a blunt instrument, but it is
+honest --- it compares an observation directly against a prediction, with almost
+nothing in between. I compiled counts from nine published tables covering four
+independent patches of sky, observed with the \emph{Herschel} Space Observatory, and
+asked whether \textsc{pop-cosmos} reproduces them.
+
+It does not. The model predicts too many bright far-infrared galaxies, and the
+disagreement gets worse at longer wavelengths --- roughly $25\%$ too many at
+\SI{250}{\micro\metre}, rising to more than double at \SI{500}{\micro\metre}. Crucially,
+every single one of the seven independent datasets agrees on this, so it is not one
+survey being odd.
+
+Then I asked why. Inspecting the model's own dust emission revealed the culprit: its
+dust is too cold. Most model galaxies radiate their peak energy near
+\SI{136}{\micro\metre}, corresponding to roughly $21$ degrees above absolute zero, which
+is colder than real star-forming galaxies are known to be. Cold dust shifts light
+towards longer wavelengths --- exactly the pattern in the mismatch. When I replaced the
+model's dust emission with a warmer one, keeping the total energy fixed so the
+bookkeeping still balanced, the disagreement largely vanished.
+
+The most interesting result came last, and it was not what I expected. Comparing
+individual galaxies, the model looked too \emph{faint}, the opposite of the counts.
+Both are true. The model's predictions are not uniformly wrong; they are too
+\emph{scattered}. Because bright galaxies are rare, a model that spreads its
+predictions too widely mistakenly promotes many ordinary galaxies into the rare-bright
+category, inflating the counts even while typical galaxies come out too dim. Warming
+the dust fixes the average but not the scatter. So there are two separate problems, and
+only one of them is a dust-temperature problem.
+
+That matters beyond this model. It tells the \textsc{pop-cosmos} team where to look
+next, and it is a caution for every model that predicts beyond where it was trained:
+matching the average is not the same as matching the distribution.
+
+% ===================== FRONT MATTER =====================
+\pagenumbering{roman}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\setcounter{page}{1}
+\pagestyle{fancy}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+
+
+
+\end{abstract}
+
+\cleardoublepage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgments}
+% Comment this out if not needed.
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--- table of contents
+\fancyhead[RE,LO]{\sffamily {Table of Contents}}
+\tableofcontents
+
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\fancyhead[LE,RO]{\slshape \rightmark}
+\fancyhead[LO,RE]{\slshape \leftmark}
+
+% ===================== MAIN TEXT =====================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Background}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Contribution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Experimental Results}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Conclusion}
+
+
+% ===================== BIBLIOGRAPHY =====================
+\bibliographystyle{apa}
+\bibliography{references}
+
+
+\end{document}

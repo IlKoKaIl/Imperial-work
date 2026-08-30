@@ -2,6 +2,10 @@
 
 Start here. This folder is for Squarepoint-style quant prep: coding, probability/statistics, regression/ML, puzzles, and behavioural/resume stories.
 
+## Immediate Priority
+
+- [Squarepoint_Round2_Sep2_Runbook.md](Squarepoint_Round2_Sep2_Runbook.md): use this first for the 2026-09-02 Squarepoint round 2 HackerRank pair-coding interview.
+
 ## Main Files
 
 - [Squarepoint_Desk_Quant_Prep.md](Squarepoint_Desk_Quant_Prep.md): start here for the Squarepoint Desk Quant Analyst role.

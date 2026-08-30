@@ -1,0 +1,338 @@
+{
+ "cites pop-cosmos I": [
+  {
+   "bibcode": "2024ApJ...976..101S",
+   "title": [
+    "Medium Bands, Mega Science: A JWST/NIRCam Medium-band Imaging Survey of A2744"
+   ],
+   "year": "2024",
+   "citation_count": 111
+  },
+  {
+   "bibcode": "2024MNRAS.531..953G",
+   "title": [
+    "Scalable hierarchical BayeSN inference: investigating dependence of SN Ia host galaxy dust properties on stellar mass and redshift"
+   ],
+   "year": "2024",
+   "citation_count": 49
+  },
+  {
+   "bibcode": "2024MNRAS.531.1398G",
+   "title": [
+    "Does the fundamental metallicity relation evolve with redshift? I: the correlation between offsets from the mass-metallicity relation and star formation rate"
+   ],
+   "year": "2024",
+   "citation_count": 31
+  },
+  {
+   "bibcode": "2025ApJ...987..184W",
+   "title": [
+    "Population Models for Star Formation Timescales in Early Galaxies: The First Step toward Solving Outshining in Star Formation History Inference"
+   ],
+   "year": "2025",
+   "citation_count": 26
+  },
+  {
+   "bibcode": "2025arXiv250217680I",
+   "title": [
+    "The Spectral Energy Distributions of Galaxies"
+   ],
+   "year": "2025",
+   "citation_count": 24
+  },
+  {
+   "bibcode": "2024arXiv241017322J",
+   "title": [
+    "Blast: a Web Application for Characterizing the Host Galaxies of Astrophysical Transients"
+   ],
+   "year": "2024",
+   "citation_count": 24
+  },
+  {
+   "bibcode": "2024ApJ...975..145T",
+   "title": [
+    "pop-cosmos: Scaleable Inference of Galaxy Properties and Redshifts with a Data-driven Population Model"
+   ],
+   "year": "2024",
+   "citation_count": 23
+  },
+  {
+   "bibcode": "2025MNRAS.536..119G",
+   "title": [
+    "Does the fundamental metallicity relation evolve with redshift? - II. The evolution in normalization of the mass-metallicity relation"
+   ],
+   "year": "2025",
+   "citation_count": 23
+  },
+  {
+   "bibcode": "2024MNRAS.532.4002W",
+   "title": [
+    "Stochastic prior for non-parametric star-formation histories"
+   ],
+   "year": "2024",
+   "citation_count": 21
+  },
+  {
+   "bibcode": "2025OJAp....8E.152L",
+   "title": [
+    "Synthesizer: a Software Package for Synthetic Astronomical Observables"
+   ],
+   "year": "2025",
+   "citation_count": 21
+  },
+  {
+   "bibcode": "2024MNRAS.530.4016T",
+   "title": [
+    "Using rest-frame optical and NIR data from the RAISIN survey to explore the redshift evolution of dust laws in SN Ia host galaxies"
+   ],
+   "year": "2024",
+   "citation_count": 18
+  },
+  {
+   "bibcode": "2024A&A...689A..58I",
+   "title": [
+    "Deriving the star formation histories of galaxies from spectra with simulation-based inference"
+   ],
+   "year": "2024",
+   "citation_count": 17
+  }
+ ],
+ "SED-fit dust temperature underestimate": [
+  {
+   "bibcode": "2022ApJ...930..142D",
+   "title": [
+    "No Redshift Evolution of Galaxies' Dust Temperatures Seen from 0 &lt; z &lt; 2"
+   ],
+   "year": "2022",
+   "citation_count": 44
+  },
+  {
+   "bibcode": "2024A&A...692A.161B",
+   "title": [
+    "Genuine Retrieval of the AGN Host Stellar Population (GRAHSP)"
+   ],
+   "year": "2024",
+   "citation_count": 26
+  },
+  {
+   "bibcode": "2023MNRAS.519.4370M",
+   "title": [
+    "Characterizing line-of-sight variability of polarized dust emission with future CMB experiments"
+   ],
+   "year": "2023",
+   "citation_count": 13
+  },
+  {
+   "bibcode": "2018PhDT........87L",
+   "title": [
+    "Multiwavelength Analyses of Mid-Infrared Selected Active Galactic Nuclei"
+   ],
+   "year": "2018",
+   "citation_count": 0
+  },
+  {
+   "bibcode": "2026A&A...708A.120L",
+   "title": [
+    "A homogeneous view of asymptotic giant branch carbon stars as seen by Gaia"
+   ],
+   "year": "2026",
+   "citation_count": 0
+  }
+ ],
+ "energy balance FIR shape unconstrained": [
+  {
+   "bibcode": "2015A&A...576A..10C",
+   "title": [
+    "Constraining the properties of AGN host galaxies with spectral energy distribution modelling"
+   ],
+   "year": "2015",
+   "citation_count": 247
+  },
+  {
+   "bibcode": "2025ApJ...991L..10S",
+   "title": [
+    "A Confirmed Deficit of Hot and Cold Dust Emission in the Most Luminous Little Red Dots"
+   ],
+   "year": "2025",
+   "citation_count": 100
+  },
+  {
+   "bibcode": "2014A&A...571A..69D",
+   "title": [
+    "High-resolution, 3D radiative transfer modeling. I. The grand-design spiral galaxy M 51"
+   ],
+   "year": "2014",
+   "citation_count": 97
+  },
+  {
+   "bibcode": "2014A&A...569A..76D",
+   "title": [
+    "Detailed modelling of the circumstellar molecular line emission of the S-type AGB star W Aquilae"
+   ],
+   "year": "2014",
+   "citation_count": 47
+  },
+  {
+   "bibcode": "2018MNRAS.476.1705S",
+   "title": [
+    "Panchromatic SED modelling of spatially resolved galaxies"
+   ],
+   "year": "2018",
+   "citation_count": 40
+  },
+  {
+   "bibcode": "2015MNRAS.451.1728D",
+   "title": [
+    "Dust energy balance study of two edge-on spiral galaxies in the Herschel-ATLAS survey"
+   ],
+   "year": "2015",
+   "citation_count": 32
+  },
+  {
+   "bibcode": "2016A&A...592A..71M",
+   "title": [
+    "HERschel Observations of Edge-on Spirals (HEROES). III. Dust energy balance study of IC 2531"
+   ],
+   "year": "2016",
+   "citation_count": 31
+  },
+  {
+   "bibcode": "2020A&A...634A..57D",
+   "title": [
+    "Predicting the global far-infrared SED of galaxies via machine learning techniques"
+   ],
+   "year": "2020",
+   "citation_count": 19
+  },
+  {
+   "bibcode": "2023MNRAS.525.5720J",
+   "title": [
+    "Exploring the evolution of dust temperature using spectral energy distribution fitting in a large photometric survey"
+   ],
+   "year": "2023",
+   "citation_count": 13
+  },
+  {
+   "bibcode": "2023MNRAS.522.6354T",
+   "title": [
+    "The long and the short of it: the benefits and leverage of ultraviolet-radio galaxy fitting"
+   ],
+   "year": "2023",
+   "citation_count": 12
+  },
+  {
+   "bibcode": "2014ClDy...43.1103T",
+   "title": [
+    "Using longwave HIRS radiances to test climate models"
+   ],
+   "year": "2014",
+   "citation_count": 6
+  },
+  {
+   "bibcode": "2022MNRAS.513.1175E",
+   "title": [
+    "Ultraviolet to far infrared self-consistent analysis of the stellar populations of massive starburst galaxies at intermediate redshifts"
+   ],
+   "year": "2022",
+   "citation_count": 1
+  }
+ ],
+ "number counts as model validation": [
+  {
+   "bibcode": "2017MNRAS.465.1789G",
+   "title": [
+    "The SCUBA-2 Cosmology Legacy Survey: 850 \u03bcm maps, catalogues and number counts"
+   ],
+   "year": "2017",
+   "citation_count": 309
+  },
+  {
+   "bibcode": "2016A&A...596A.100P",
+   "title": [
+    "Planck intermediate results. XXXIX. The Planck list of high-redshift source candidates"
+   ],
+   "year": "2016",
+   "citation_count": 66
+  },
+  {
+   "bibcode": "2017A&A...602A..96S",
+   "title": [
+    "EGG: hatching a mock Universe from empirical prescriptions\u22c6"
+   ],
+   "year": "2017",
+   "citation_count": 48
+  },
+  {
+   "bibcode": "2020A&A...642A.232L",
+   "title": [
+    "Impact of polarised extragalactic sources on the measurement of CMB B-mode anisotropies"
+   ],
+   "year": "2020",
+   "citation_count": 46
+  },
+  {
+   "bibcode": "2024A&A...685A...1A",
+   "title": [
+    "A<SUP>3</SUP>COSMOS and A<SUP>3</SUP>GOODSS: Continuum source catalogues and multi-band number counts"
+   ],
+   "year": "2024",
+   "citation_count": 39
+  },
+  {
+   "bibcode": "2019A&A...627A..31G",
+   "title": [
+    "SHALOS: Statistical Herschel-ATLAS lensed objects selection"
+   ],
+   "year": "2019",
+   "citation_count": 15
+  },
+  {
+   "bibcode": "2025A&A...698A.236K",
+   "title": [
+    "Modeling submillimeter galaxies in cosmological simulations: Contribution to the cosmic star formation density and predictions for future surveys"
+   ],
+   "year": "2025",
+   "citation_count": 11
+  },
+  {
+   "bibcode": "2024A&A...686A.190C",
+   "title": [
+    "Methodological refinement of the submillimeter galaxy magnification bias. I. Cosmological analysis with a single redshift bin"
+   ],
+   "year": "2024",
+   "citation_count": 6
+  },
+  {
+   "bibcode": "2018ApJ...855...26A",
+   "title": [
+    "The LABOCA/ACT Survey of Clusters at All Redshifts: Multiwavelength Analysis of Background Submillimeter Galaxies"
+   ],
+   "year": "2018",
+   "citation_count": 4
+  },
+  {
+   "bibcode": "2025A&A...695A.204V",
+   "title": [
+    "Quantifying the detection likelihood of faint peaks in interferometric data through jackknifing: Test application on finding z &gt; 10 galaxy candidates"
+   ],
+   "year": "2025",
+   "citation_count": 2
+  },
+  {
+   "bibcode": "2018MNRAS.481.2189D",
+   "title": [
+    "Strong lensing cross-sections for isothermal models. I. Finite source effects in the circular case"
+   ],
+   "year": "2018",
+   "citation_count": 2
+  },
+  {
+   "bibcode": "2026MNRAS.548ag564E",
+   "title": [
+    "Sub-millimetre galaxies in hierarchical models: revisiting the need for a top-heavy stellar initial mass function with Bayesian optimization"
+   ],
+   "year": "2026",
+   "citation_count": 1
+  }
+ ]
+}

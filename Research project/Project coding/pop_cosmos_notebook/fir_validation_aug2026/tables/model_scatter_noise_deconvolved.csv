@@ -1,0 +1,4 @@
+band,total_scatter_dex,wang_noise_dex,intrinsic_model_scatter_dex,n
+250,0.513,0.066,0.508,6221
+350,0.462,0.097,0.452,2370
+500,0.454,0.086,0.445,2065

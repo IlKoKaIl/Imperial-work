@@ -1,0 +1,501 @@
+% ============================================================================
+%  MRes Project Report — DRAFT SKELETON (Introduction section complete)
+%
+%  IMPORTANT — read before submitting:
+%  1. This is an AI-assisted DRAFT. Imperial's regulations require the report to
+%     be written in YOUR OWN WORDS. Rewrite every paragraph in your own voice
+%     rather than submitting this text as-is, and keep the AI Use Declaration
+%     at the end accurate and specific.
+%  2. Fill in every <<PLACEHOLDER>> on the title page.
+%  3. Figure paths: the \graphicspath below points at a local ./figures/ folder.
+%     Copy the PNGs there before compiling (they have been written into your
+%     project folder under Project coding/pop_cosmos_notebook/thesis_figures/).
+%  4. references.bib is a companion file. One entry (Valiante 2016) is a marked
+%     placeholder — verify its DOI/pages on ADS before you cite it.
+% ============================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+% ---------- Packages, layout, bibliography (includes.tex) ----------
+\input{includes}
+\input{notation}
+
+% ---------- Title page metadata ----------
+\newcommand{\ReportTitle}{Extending Pop-cosmos to the Far-Infrared:
+  A Number-Count Validation}
+\newcommand{\degreetype}{Master of Research}
+\newcommand{\ProjectCode}{MLBD\_2025\_17}
+\newcommand{\StudentName}{Mihir Koka}
+\newcommand{\CID}{06067948}
+\newcommand{\Supervisor}{David Clements \& Boris Leistedt}
+\newcommand{\Assessor}{Alan Heavens}
+\newcommand{\WordCount}{<<final word count, excluding layperson's summary>>}
+\newcommand{\SubmissionDate}{4 September 2026}
+
+\begin{document}
+
+% ===================== TITLE PAGE =====================
+\begin{titlepage}
+    \centering
+
+    \includegraphics[width=0.35\textwidth]{Imperial_College_London_new_logo.png}
+    \vspace{1.2cm}
+
+    {\Large Imperial College of Science, Technology and Medicine\par}
+    \vspace{0.4cm}
+    {\large Department of Physics \par}
+    \vspace{1.6cm}
+
+    {\LARGE\bfseries \ReportTitle \par}
+    \vspace{1.8cm}
+
+    \begin{tabular}{@{}ll@{}}
+        \textbf{Project code:}        & \ProjectCode \\[4pt]
+        \textbf{Name:}                & \StudentName \\[4pt]
+        \textbf{CID:}                 & \CID \\[4pt]
+        \textbf{Supervisor:}          & \Supervisor \\[4pt]
+        \textbf{Assessor:}            & \Assessor \\[4pt]
+        \textbf{Word count:}          & \WordCount \\[4pt]
+        \textbf{Date of submission:}  & \SubmissionDate \\
+    \end{tabular}
+
+    \vfill
+    {\small MRes in Machine Learning and Big Data in the Physical Sciences\par}
+\end{titlepage}
+
+% ===================== LAYPERSON'S SUMMARY =====================
+% NOT included in the word count. Limit: one A4 page, < 700 words.
+\newpage
+\newgeometry{a4paper,margin=2cm}
+\section*{\centering Layperson's Summary}
+\vspace{-0.3cm}
+\begin{center}
+{\normalsize\bfseries When Virtual Galaxies Shine Too Brightly}\\[2pt]
+{\small Mihir Koka}
+\end{center}
+
+% --- 1. Opening hook: dust-hidden starlight (~70 words) ---
+How do we know a simulated galaxy is realistic when most of its light emerges beyond
+human vision? In galaxies where new stars form rapidly, clouds of interstellar
+dust absorb the starlight before it reaches our telescopes. The dust warms up and
+re-emits that energy as infrared light, at wavelengths several times
+longer than visible light. Judging these galaxies from visible light alone means a significant part of this is lost to us
+
+% --- 2. Why the model matters (~80 words) ---
+Modern sky surveys record so many galaxies that astronomers need computer-generated
+populations to interpret them. Pop-cosmos is one such model; it learns the
+properties of nearly half a million galaxies from the COSMOS survey, a deep map of a
+patch of sky observed across many wavelengths. It was fitted using visible and
+near-infrared light, up to about 4.5 micrometres. My question was whether its
+predictions hold much farther into the infrared, at 250 to 500 micrometres. This is
+the range where cool interstellar dust, typically only 20 to 40 degrees above absolute
+zero, emits most of its energy.
+
+% --- 3. What I did (~100 words) ---
+I first checked that the model reproduces observed brightnesses close to the
+wavelengths it was trained on. It does, to within a few percent, so any failure at
+longer wavelengths would point to the dust physics lacking somewhere.
+
+I then predicted how bright each model galaxy would look to the Herschel Space
+Observatory, a telescope launched specifically to observe this cool-dust light, and
+counted how many fall into each brightness range per area of sky. I compared those
+counts against published results from real Herschel surveys covering several
+independent regions. I also tried replacing each galaxy's dust spectrum, the pattern of how its infrared
+energy is spread across wavelengths, with warmer alternatives while keeping the total
+energy fixed. This isolates the shape of the emission from the amount.
+
+% --- 4. Main findings (~160 words) ---
+The model predicts too many bright far-infrared sources. In the 30 to 100 millijansky
+range (a unit of brightness used in infrared astronomy), it overestimates by about 1.7 times at 250 and 350 micrometres, rising to about
+3.6 times at 500 micrometres. Seven independent datasets agree on this, so it isn't one
+survey being unusual.
+
+The cause is cold dust. Model galaxies radiate their peak energy near 136 micrometres,
+while observations of galaxies at similar luminosities place the peak closer to 92
+micrometres. Colder dust shifts too much energy to the longest wavelengths, overfilling
+the 350 and 500 micrometre bins.
+
+A second problem emerged from comparing individual galaxies. The predictions aren't
+uniformly wrong; they are scattered. Because bright galaxies are rare, more common faint galaxies scattered upward overfill the bright bins. These two issues are
+distinct.
+
+% --- 5. What the modification showed (~60 words) ---
+I tested warmer dust spectra while holding each galaxy's total energy fixed.
+Intermediate temperatures, around 35 kelvin, matched the published counts considerably
+better than the cold baseline or the hottest alternatives. This points toward how pop-cosmos could be improved. The broader lesson seems to be that the model can
+match the light it was trained on but has partial failures in the parts it wasn't trained on.
+Testing that gap is how we find out what physics is still missing.
+
+\end{spacing}
+\restoregeometry
+
+% ===================== ABSTRACT =====================
+\newpage
+\begin{abstract}
+\noindent
+The \popcosmos{} framework models the joint distribution of galaxy physical parameters
+and photometry, calibrated against optical and near-infrared data from the COSMOS field
+\citep{Alsing_2024,Thorp_2024}. Its far-infrared (FIR) emission is set entirely by
+energy balance within the stellar population synthesis model: the total dust luminosity
+\LIR{} is fixed by the attenuated starlight, but no free parameter controls the
+\emph{shape} of the FIR spectral energy distribution (SED). FIR predictions are therefore
+an untested extrapolation beyond the training range. This work tests them against
+observed \emph{Herschel}/SPIRE differential number counts at 250, 350 and \SI{500}{\um},
+compiled from nine published tables spanning four independent sky fields.
+
+Baseline \popcosmos{} overpredicts the counts in all three bands, by a median factor of
+$1.24$, $1.72$ and $2.29$ at 250, 350 and \SI{500}{\um} respectively over
+\SIrange{10}{30}{\milli\jansky}, rising at brighter fluxes. The excess is positive in
+all seven independent count sources and exceeds the measured inter-survey systematic
+scatter (\dex{0.12}) by a factor of $2.6$--$3.3$. A block bootstrap over sky fields,
+which respects the strong within-survey correlation of the residuals
+($r_{\mathrm{lag1}} = 0.38$--$0.92$), excludes the baseline model at $95\%$ confidence
+(median offset $+0.29$ dex, CI $[+0.16,+0.52]$).
+
+Direct inspection of the model SEDs identifies the cause: the FIR dust bump peaks at a
+median rest-frame wavelength of \SI{136}{\um}, with $64\%$ of galaxies peaking beyond
+\SI{100}{\um}. Substituting warmer, broader FIR SEDs at fixed \LIR{} --- modified
+blackbodies, Casey-like templates \citep{Casey_2012}, and empirical
+ALESS/FSPS hybrids --- brings the counts into agreement, though the template families
+are mutually degenerate at the \dex{0.03}--\dex{0.09} level and cannot be distinguished
+by counts alone.
+
+A per-object comparison against the deblended COSMOS catalogue of \citet{Wang_2024}
+appears to contradict the counts, showing the model too \emph{faint} by
+\dex{0.16}--\dex{0.24}. The two are reconciled by the model's per-object flux scatter of
+$\approx\dex{0.45}$: with count slopes $\alpha = 3.2$--$4.1$, this scatter promotes
+intrinsically faint galaxies into bright flux bins, inflating bright counts by
+\dex{0.55}--\dex{0.86} while typical galaxies remain underluminous. The two effects
+nearly cancel, reproducing the observed net excess. This scatter is unchanged by every
+template variant tested, identifying two independent deficiencies --- an SED shape
+problem that a warmer dust prescription resolves, and a flux-scatter problem that it
+does not.
+\end{abstract}
+
+% ===================== INTRODUCTION =====================
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Why far-infrared light matters}
+\label{sec:intro:fir}
+
+Roughly half of all starlight ever emitted has been absorbed by interstellar dust and
+re-radiated in the infrared \citep{Dole_2006}. The
+obscured fraction rises with star-formation rate (SFR), so the galaxies
+contributing most to cosmic star-formation history are the ones whose ultraviolet and
+optical light is most heavily attenuated. Any dataset of star formation built on
+short-wavelength data alone is insufficient and incomplete in a way that depends on the
+population being studied.
+
+Dust absorbs at short wavelengths and re-emits as thermal continuum peaking, for
+typical star-forming galaxies, between roughly 30 and \SI{200}{\um} in the rest frame.
+A galaxy's spectral energy distribution (SED), the way its energy is spread across
+wavelengths, therefore has a peak in the far-infrared that controls both how much dust
+is present and how hot it is. The
+\emph{Herschel} Space Observatory \citep{Pilbratt_2010} provided the most complete
+extragalactic far-infrared survey coverage to date through its SPIRE instrument
+\citep{Griffin_2010}, which operated at 250, 350 and \SI{500}{\um}. These
+wavelengths sit close to the dust emission peak for galaxies at $z \sim 1$--$3$, so
+SPIRE data constrain the total obscured energy output of the population directly.
+
+\subsection{From individual galaxies to population models}
+\label{sec:intro:population}
+
+Modern sky surveys record so many galaxies that per-object SED fitting becomes both
+computationally expensive and statistically difficult. Individual posteriors are
+prior-dominated for faint sources, and combining them into population-level statements
+can't be done simply. Population-level generative modelling offers an alternative. Rather than
+fitting each galaxy separately, one models the joint distribution of physical parameters
+across the population and forward-models the photometry, allowing selection effects,
+noise and calibration to be treated self-consistently \citep{Alsing_2024}.
+
+Surveys such as COSMOS \citep{Scoville_2007} combine many wavelength bands over the
+same area of sky. Conventional SED-fitting tools like \textsc{fsps}
+\citep{Conroy_2009} and \textsc{Prospector} \citep{Leja_2017} infer quantities such as
+stellar mass, SFR, dust attenuation and redshift from this photometry one galaxy at a
+time. \popcosmos{} \citep{Alsing_2024,Thorp_2024} takes a different approach. It
+describes the joint distribution of galaxy redshift and physical parameters using a
+score-based diffusion model, so that correlated properties (stellar mass,
+star-formation history, metallicity, dust attenuation and AGN contribution) are put
+together rather than taken from unrelated one-dimensional distributions. A 16-parameter
+stellar population synthesis model then converts each parameter vector into a
+rest-frame SED and predicted photometry. A survey data model adds calibration effects,
+photometric uncertainties and the same selection function applied to the COSMOS2020
+catalogue. Synthetic and observed 26-band catalogues are compared using an
+optimal-transport distance, allowing the population and nuisance models to be
+calibrated together. The mathematical details of diffusion training and optimal
+transport are given in the original papers \citep{Alsing_2024,Thorp_2024}.
+
+This makes \popcosmos{} useful for survey simulation and
+forecasting, but it also makes validation beyond the calibration regime important. A plausible
+catalogue in the fitted bands is not automatically correct at unseen wavelengths.
+
+\subsection{The far-infrared extrapolation problem}
+\label{sec:intro:extrapolation}
+
+The photometry used to constrain \popcosmos{} spans roughly \SIrange{0.3}{5}{\um},
+optical to near-infrared. The model receives no far-infrared information. It still makes
+far-infrared predictions, because dust emission in \textsc{fsps} is tied to attenuation
+by \emph{energy balance}: the total luminosity absorbed by dust in the ultraviolet and
+optical is re-emitted in the infrared, conserving energy. This fixes the integrated dust
+luminosity \LIR{} for every galaxy.
+
+The key point for this project is what energy balance does not fix. It constrains
+the total infrared output but not its shape. The wavelength at which the dust emission
+peaks depends on the dust temperature, and the optical/near-infrared training
+data is not enough to perfectly model this. The far-infrared predictions of \popcosmos{} are therefore an
+extrapolation, one that has not been previously tested against far-infrared observations.
+A disagreement here
+is useful to study because it probes physics that the calibration data couldn't
+constrain.
+
+\subsection{Why use observed number counts}
+\label{sec:intro:counts}
+
+Validating a population model in a new wavelength regime requires having some comparison
+metric. An obvious approach is to compare derived physical quantities (\LIR{} or
+obscured SFR) against published catalogue values. In practice this is awkward becase catalogue
+\LIR{} values are themselves outputs of SED fits with their own dust templates and
+initial mass function conventions, so comparing physical quantities tests the union of
+two modelling chains rather than the model itself.
+
+Differential number counts avoid most of this. The count $\mathrm{d}N/\mathrm{d}S$, the
+surface density of sources per unit flux density (brightness measured in one observing
+band), is measured in observed flux space. The model prediction requires only
+redshifting each galaxy's SED and evaluating its flux at the SPIRE band-centre
+wavelength. No dust-template inversion, initial mass function conversion or timescale
+reconciliation is involved. Counts are a long-established diagnostic with a substantial
+published literature at SPIRE wavelengths \citep{Clements_2010, Oliver_2010,
+Glenn_2010, B_thermin_2010}, providing multiple independent measurements against which a
+model can be tested.
+
+Two properties of counts need care. First, they're conventionally reported in
+Euclidean-normalised form, $S^{2.5}\,\mathrm{d}N/\mathrm{d}S$, which flattens the
+steep intrinsic slope and makes the differences visible. This normalisation is used
+throughout. Second, differential counts are preferred over cumulative counts $N(>S)$
+because cumulative bins re-use sources at every threshold and therefore have strongly
+correlated errors. Counts aren't free of systematics either as they require completeness
+and flux-boosting corrections, and in confusion-dominated SPIRE maps those corrections
+are substantial \citep{Nguyen_2010, Roseboom_2010}.
+Section~\ref{sec:data} distinguishes published corrected counts, used as
+the benchmark, from raw deblended catalogue counts, used only as a diagnostic.
+
+\subsection{Aim, questions and scope}
+\label{sec:intro:aims}
+
+This project was originally framed as a multi-wavelength validation of \popcosmos{}
+spanning far-infrared, radio and X-ray. However early work showed that each regime
+required resolving its own systematics, and that the far-infrared alone contained
+enough substance for a coherent project. The scope was narrowed to far-infrared on the
+recommendation that validation focus on directly observed quantities. The objectives
+are:
+
+\begin{enumerate}
+  \item Assemble a benchmark of published SPIRE differential number counts at 250, 350
+        and \SI{500}{\um} from independent sky fields, in consistent units, and
+        establish which sources can be treated as statistically independent
+        (Section~\ref{sec:data}).
+  \item Predict \popcosmos{} number counts by propagating each model galaxy's SED to
+        observed flux, and quantify agreement with the benchmark using a metric whose
+        error budget reflects the systematic scatter between surveys
+        (Section~\ref{sec:methods}).
+  \item Determine whether any disagreement can be attributed to the far-infrared SED
+        shape, by substituting alternative dust prescriptions at fixed \LIR{} and
+        measuring the resulting change in the counts (Section~\ref{sec:methods}).
+  \item Test robustness against correlated residuals, the assumed error floor,
+        small-number statistics at the bright end, and known systematics in the
+        comparison catalogues (Section~\ref{sec:results}).
+  \item Determine why the model fails by isolating the discrepancy in redshift
+        and considering the count-level result with a per-object flux comparison
+        (Section~\ref{sec:results}).
+\end{enumerate}
+
+% ===================== DATA =====================
+\section{Data}
+\label{sec:data}
+
+\subsection{\popcosmos{} catalogue and generated SEDs}
+\label{sec:data:popcosmos}
+
+The analysis uses the \popcosmos{} catalogue of 429,669 galaxies drawn from the
+COSMOS2020 photometric survey \citep{Alsing_2024,Thorp_2024}. Each galaxy carries
+median-posterior estimates of 16 stellar population synthesis parameters, including
+redshift ($0 \leq z \leq 6$, median $z = 1.28$), stellar mass, star-formation history,
+dust attenuation, gas-phase metallicity and AGN bolometric luminosity fraction
+$f_\mathrm{AGN}$. The model was fitted against 26-band photometry spanning roughly
+\SIrange{0.3}{4.5}{\um} (observed frame), from the $u$ band through IRAC channels~1
+and~2 \citep{Conroy_2009}.
+
+For every galaxy, a full rest-frame SED was generated using the \textsc{fsps} stellar
+population synthesis code with the stored median-posterior parameters. The SED products
+were supplied by B.~Leistedt and include the attenuated stellar$+$dust spectrum
+(\texttt{spec\_attenuated}) sampled at 5,994 rest-frame wavelength points from
+\SI{0.009}{\um} to \SI{10\,000}{\um}, together with the integrated dust luminosity
+\LIR{} ($8$--$\SI{1000}{\um}$). Wavelengths in the original files are in \AA ngstr\"om
+and were converted to micrometres throughout. All SEDs used in this work are derived
+from median-posterior parameters rather than from full posterior draws. This is adequate
+for a first population-level validation but may mask bimodality in poorly constrained
+parameters, particularly $f_\mathrm{AGN}$, whose prior is bimodal
+\citep{Thorp_2025_insights}. The implications of this choice are discussed in
+Section~\ref{sec:discussion}.
+
+When converting model galaxies into predicted number counts, the effective sky area of
+the COSMOS field must be specified. The Farmer COSMOS2020 catalogue flag
+\texttt{FLAG\_COMBINED} defines the usable footprint, which covers
+\SI{1.278}{\deg\squared}. This value was used for all model count predictions.
+
+\subsection{Published SPIRE differential counts}
+\label{sec:data:counts}
+
+The observational benchmark consists of published, completeness-corrected differential
+number counts at 250, 350 and \SI{500}{\um} compiled from six studies. These are
+summarised in Table~\ref{tab:counts} and shown in Figure~\ref{fig:compiled_counts}.
+
+\begin{table}[htbp]
+\centering
+\caption{Published SPIRE count datasets used in this work. The three primary survey
+families (H-ATLAS, HerMES, Dark Field) cover independent sky areas and provide the main
+quantitative benchmark. The remaining tables overlap these fields and serve as
+robustness checks on extraction method and depth.}
+\label{tab:counts}
+\small
+\begin{tabular}{lllll}
+\toprule
+Reference & Survey / field & Method & Flux range & Role \\
+\midrule
+\citet{Valiante_2016} & H-ATLAS GAMA fields & matched filter &
+  25--\SI{300}{mJy} & primary (wide, bright) \\
+\citet{Oliver_2010} & HerMES multi-tier & source extraction &
+  24--\SI{374}{mJy} & primary (mid-flux) \\
+\citet{Pearson_2025} & SPIRE Dark Field & XID deblending &
+  11--\SI{100}{mJy} & primary (deep, faint) \\
+\midrule
+\citet{Clements_2010} & H-ATLAS SDP & source extraction &
+  34--\SI{800}{mJy} & robustness (overlaps H-ATLAS) \\
+\citet{Glenn_2010} & HerMES & P(D) fluctuation &
+  2--\SI{1000}{mJy} & robustness (overlaps HerMES) \\
+\citet{Varnish_2025} & SPIRE Dark Field & P(D) fluctuation &
+  0.02--\SI{1000}{mJy} & robustness (overlaps Dark Field) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Although six separate publications provide 235 data points across all three bands, not
+all can be treated as independent measurements. The six tables reduce to three primary
+independent survey/sky families. \citet{Valiante_2016} covers the wide H-ATLAS GAMA
+fields and provides the strongest bright-end constraint. \citet{Oliver_2010} covers the
+separate HerMES multi-tier fields and is most useful in the middle flux range.
+\citet{Pearson_2025} covers the SPIRE Dark Field near the North Ecliptic Pole and
+extends the resolved counts to the faintest fluxes. The remaining three studies overlap
+these fields. \citet{Clements_2010} uses an earlier H-ATLAS release of the same sky as
+Valiante. \citet{Glenn_2010} applies a P(D) fluctuation analysis to HerMES maps, and
+\citet{Varnish_2025} applies P(D) to the same Dark Field maps used by Pearson. These
+overlapping tables are retained for robustness tests but are not counted as additional
+independent evidence.
+
+% FIGURE: compiled published counts
+% Use: external_spire_differential_counts_july21_3dex.png
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{external_spire_differential_counts_july21_3dex.png}
+\caption{Published Euclidean-normalised differential counts at 250, 350 and
+\SI{500}{\um} from the six studies listed in Table~\ref{tab:counts}. The main
+quantitative comparison in this work uses the 10--\SI{100}{mJy} range (shaded),
+where all three primary survey families overlap and the counts are well constrained.
+Bins above \SI{100}{mJy} are shown but treated with caution because of small numbers,
+the limited COSMOS area and the increasing contribution of gravitationally lensed
+sources.}
+\label{fig:compiled_counts}
+\end{figure}
+
+All counts are reported in Euclidean-normalised form,
+$S^{2.5}\,\mathrm{d}N/\mathrm{d}S$, with units of
+$\mathrm{Jy}^{1.5}\,\mathrm{sr}^{-1}$. P(D) counts from \citet{Glenn_2010} and
+\citet{Varnish_2025} are statistical constraints derived from pixel-brightness
+fluctuations below the individual-source detection limit; they are not catalogued
+galaxies and cannot be used for per-object comparisons.
+
+\subsection{Wang and Jin COSMOS catalogues}
+\label{sec:data:catalogues}
+
+Two deblended far-infrared catalogues of the COSMOS field are used for per-object flux
+comparisons. \citet{Wang_2024} provides a probabilistic, prior-based deblended catalogue
+of 128,387 sources with SPIRE flux densities extracted using the XID+ framework
+\citep{Hurley_2017}. \citet{Jin_2018} provides a super-deblended catalogue of 195,107
+sources (192,303 within the UltraVISTA \texttt{goodArea} of \SI{1.7}{\deg\squared})
+using a complementary extraction method.
+
+These catalogues serve a different role from the published counts. They provide
+individual galaxy flux measurements and uncertainties, which are needed for the
+per-object scatter analysis in Section~\ref{sec:results}. They are \emph{not}
+independent sky fields, and their raw entries are not substitutes for the
+completeness-corrected count tables above. The value of having both lies in their
+mutual agreement. Wang and Jin fluxes for matched sources agree to
+0.12--\SI{0.15}{dex}, which is much tighter than either catalogue's agreement with
+\popcosmos{} (0.42--\SI{0.51}{dex}). This localises the large per-object scatter to
+the model rather than to one deblending pipeline.
+
+\subsection{Data-quality and selection limits}
+\label{sec:data:quality}
+
+For per-object comparisons against the Wang catalogue, a signal-to-noise ratio (SNR)
+threshold of $\geq 5$ is applied to the Wang flux measurements. This follows
+\citet{Clements_1999}, who showed that the analytic correction for Eddington bias (noise
+scattering faint sources above a flux threshold) is valid above approximately $5\sigma$.
+The threshold removes fewer than 3\% of sources at \SI{20}{mJy} but a larger fraction
+at fainter fluxes and longer wavelengths, as expected.
+
+The published count tables used as the primary benchmark have already been corrected for
+completeness, flux boosting and reliability by their respective authors. No additional
+corrections are applied here. The main quantitative count claims in this work focus on
+the approximately 10--\SI{100}{mJy} range, where all three primary survey families
+overlap and the corrections are best characterised. Bins above approximately
+\SI{100}{mJy} are shown but interpreted with caution, because the limited COSMOS area
+(\SI{1.278}{\deg\squared}) provides few bright sources and the increasing contribution
+of gravitationally lensed objects complicates the comparison at the longest wavelengths.
+
+\section{Methods}
+\label{sec:methods}
+% TODO: flux prediction chain and k-correction; MBB / Casey / ALESS-hybrid template
+% construction at fixed L_IR; the evaluator, error budget and error floor;
+% the block bootstrap over sky fields.
+
+\section{Results}
+\label{sec:results}
+% TODO: Fig 1 counts+residuals; Table E by band/regime; Fig 2 SED diagnostic;
+% Fig 3 template experiment; Fig 4 bootstrap forest; Fig 5 paradox resolution;
+% Fig 6 z-resolved localisation; Fig 7 catalogue systematics.
+
+\section{Discussion}
+\label{sec:discussion}
+% TODO: two independent deficiencies; template degeneracy; the ~30 mJy reliability
+% ceiling in a COSMOS-sized field; comparison to Schreiber+2017 dust temperature
+% evolution; what this implies for the pop-cosmos team.
+
+\section{Conclusions}
+\label{sec:conclusions}
+% TODO: against the aims in Sec 1.4; recommended further work (Draine-Li/CIGALE dust
+% families; L_IR scatter; z-resolved counts against Bethermin 2012 slices).
+
+\section*{Acknowledgements}
+% TODO: supervisor, Boris (FSPS SED and MIR emulator outputs), the pop-cosmos team.
+
+% ===================== AI USE DECLARATION =====================
+% Imperial requires this to be accurate and specific. EDIT to reflect exactly what
+% you used and how. A vague declaration is worse than none.
+\FloatBarrier
+\section*{AI Use Declaration}
+Generative AI tools were used in the preparation of this report in the following
+specific ways: <<EDIT --- e.g.\ drafting and editing of prose subsequently rewritten by
+the author; assistance in interpreting technical details of cited papers; independent
+re-derivation and cross-checking of numerical results reported in
+Section~\ref{sec:results}; LaTeX formatting and figure layout>>. All scientific
+conclusions, the choice of analysis methods, and the interpretation of results are the
+author's own. Numerical results were produced by code written for this project
+<<add repository reference>> and independently verified.
+
+% ===================== BIBLIOGRAPHY =====================
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

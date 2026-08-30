@@ -1,9 +1,6 @@
 ﻿### pop-cosmos main goal:
 
-## **Understanding Galaxy Evolution: Extending Pop-Cosmos to
-
-Multi-wavelength Validation: FIR, Radio, and X-ray Cross
-checks**
+## Understanding Galaxy Evolution: Extending Pop-Cosmos to Multi-wavelength Validation: FIR, Radio, and X-ray Crosschecks
 
 The study of galaxy evolution- how galaxies change over time, their relationship to each
 other and other phenomena such as active galactic nuclei, and how various observed scaling

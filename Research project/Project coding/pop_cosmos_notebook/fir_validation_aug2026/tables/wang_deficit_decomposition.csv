@@ -1,0 +1,4 @@
+band,count_slope_alpha,wang_jin_flux_ratio,flux_bias_count_factor,wang_raw_vs_published,wang_fluxcorr_vs_published,jin_raw_vs_published
+250,3.22,0.996,0.991,0.454,0.459,0.602
+350,3.65,0.87,0.691,0.46,0.656,0.602
+500,4.14,0.815,0.526,0.479,0.699,0.592

@@ -1,0 +1,4 @@
+band,model_vs_wang,model_vs_jin,deblend_disagreement,model_intrinsic,deblend_share_of_variance
+250,0.501,0.512,0.13,0.484,0.067
+350,0.441,0.466,0.119,0.425,0.073
+500,0.436,0.423,0.154,0.408,0.125

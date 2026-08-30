@@ -1,0 +1,4 @@
+band,sigma_used,median_inflation_dex,measured_fsps_excess_dex,scatter_share
+250,0.508,0.549,0.19,2.89
+350,0.452,0.731,0.31,2.36
+500,0.445,0.855,0.43,1.99

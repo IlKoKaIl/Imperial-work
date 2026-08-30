@@ -1,0 +1,6 @@
+scenario,n_pts,best_model,best_chi2N,fsps_rank,fsps_offset_dex
+"all sources, 10-300 mJy",174,Casey T30K a=2.5,2.24,12/32,0.275
+drop Valiante entirely,143,Casey T30K a=2.5,2.23,12/32,0.268
+cap all sources at 100 mJy,154,Casey T30K a=3.0,2.1,11/32,0.245
+cap Valiante only at 100 mJy,164,Casey T30K a=3.0,2.22,12/32,0.256
+"drop P(D) sources (Glenn,Varnish)",149,Casey T30K a=3.0,2.21,12/32,0.252
