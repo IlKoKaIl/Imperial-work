@@ -551,6 +551,20 @@ Create one compact dataset table with columns:
 
 `reference | field/sky area | bands | extraction method | flux range | role in this thesis`
 
+Draft content for that table:
+
+| Source | Field/area | Method | Role |
+|---|---|---|---|
+| Valiante 2016 H-ATLAS DR1 | GAMA9/12/15, about 161.6 deg2 | inversion-corrected resolved counts | primary wide/bright anchor |
+| Oliver 2010 HerMES | several HerMES SDP fields, effective area varies with flux | corrected resolved counts | primary middle-flux anchor |
+| Pearson 2025 Dark Field XID | SPIRE Dark Field near the NEP | simultaneous prior extraction | primary deep resolved anchor |
+| Clements 2010 H-ATLAS SDP | first roughly 14 deg2 of H-ATLAS | corrected resolved counts | H-ATLAS robustness check |
+| Glenn 2010 HerMES | HerMES SDP fields | P(D) spline constraints | below-confusion sensitivity; overlaps HerMES family |
+| Varnish 2025 Dark Field | central 12 arcmin-diameter core | P(D) spline constraints | very faint sensitivity; overlaps Dark Field family |
+| Bethermin 2012 | COSMOS and GOODS-N | 24 um-prior extraction plus stacking | method/redshift context; not in final score |
+| Wang 2024 | COSMOS Farmer-selected 1.278 deg2 | XID+ deblended object catalogue | matched-object diagnostics only |
+| Jin 2018 | COSMOS goodArea about 1.7 deg2 | super-deblended object catalogue | independent reduction of same maps; scatter check |
+
 Primary independent survey families:
 
 - **Valiante et al. / H-ATLAS:** three wide GAMA fields, strong bright-count constraint;
@@ -571,6 +585,34 @@ family; the others test sensitivity to extraction method and depth.
 Useful citations: `Valiante_2016`, `Oliver_2010`, `Pearson_2025`, `Clements_2010`,
 `Glenn_2010`, `Varnish_2025`.
 
+### Resolved counts, P(D) and stacking are different data products
+
+Explain the distinction because these local folders were not used in the same way:
+
+- **Resolved/prior-extracted counts** identify sources and correct the binned catalogue for
+  incompleteness, flux bias and reliability. Valiante, Oliver and Pearson XID provide the three
+  primary survey-family anchors.
+- **Glenn et al. 2010 P(D)** infers counts statistically from the distribution of map pixels,
+  allowing it to reach below the individual-source confusion limit. Table 4 (spline model
+  without the FIRAS prior) was transcribed into
+  `catalog data/external_number_counts/external_spire_glenn_2010_pd_counts.csv`, converted to
+  the common count units and included in the `174`-point all-source comparison. The spline knots
+  are correlated and the HerMES maps overlap the Oliver survey family, so Glenn is a faint-end
+  sensitivity test rather than an additional independent source in the clean `74`-point score.
+  The no-FIRAS version is preferable here because it tests against the SPIRE fluctuation data
+  without additionally conditioning the points on an external CIB intensity prior.
+- **Bethermin et al. 2012 stacking** uses 24 um prior positions and redshifts in COSMOS and
+  GOODS-N to reconstruct SPIRE counts, including redshift slices, down to about `2 mJy`. The
+  downloaded `bethermin_2012_source` directory is the article's LaTeX/figure source, not an
+  object catalogue. No clean total-count table from it was imported into the compiled evaluator,
+  so do not list Bethermin as one of the scored count datasets. It is still valuable methodology
+  and literature context for confusion, prior selection, stacking and the point that counts in
+  redshift slices constrain models more strongly than total counts alone (`B_thermin_2012`).
+
+This is worth a paragraph in Data and a shorter reference in Methods. It shows why the formal
+comparison uses published corrected products while P(D) and stacking extend/check the faint
+regime through different assumptions.
+
 For Valiante specifically, record that Tables 5, 8 and 9 give inversion-corrected counts in the
 GAMA9, GAMA12 and GAMA15 fields, covering about `161.6 deg^2` in total. Their quoted errors do
 not include covariance between flux bins. This information is needed both for the main model
@@ -578,9 +620,15 @@ comparison and for the separate bright-bin uptick discussed later.
 
 Suggested figure:
 
-- `../outputs/external_spire_differential_counts_july21_3dex.png`
+- `../fir_validation_aug2026/figures/compiled_counts_thesis.png`
 
-Use it to show wavelength and flux coverage, not to claim every coloured series is independent.
+Use it to show the compiled observed counts, their common units and the distinct flux coverage
+of resolved and P(D) products. Its caption must say that curves from the same survey family are
+not independent. Pair it with the dataset table rather than adding a second data-only plot.
+
+Do not use the older `../outputs/external_count_source_flux_coverage.png` unchanged: it predates
+the final Valiante addition. Regenerate it first if a compact flux-coverage graphic is preferred
+over the compiled-count plot.
 
 ## 2.3 Wang and Jin COSMOS catalogues
 
@@ -670,11 +718,12 @@ the common unit `Jy^1.5 deg^-2` before plotting.
 
 ## 3.3 Alternative far-infrared SED families
 
-Separate the experiments from the final physical interpretation:
+Keep this section, but present it as an **exploratory controlled intervention**, not the main
+physical result. Separate the experiments from the final interpretation:
 
 - **FSPS baseline:** the existing pop-cosmos/FSPS dust shape.
 - **ALESS:** an empirical average SED of luminous submillimetre galaxies
-  (`Swinbank_2013`). It is a useful warm-shape bracket, not a universal galaxy model.
+  (`daCunha_2015`). It is a useful warm-shape bracket, not a universal galaxy model.
 - **Rest-frame hybrids:** combine luminosity-density shapes on a common rest-frame grid and
   renormalise the result to the original galaxy `L_IR`. Do not describe a mixture of already
   observed count curves as a physical hybrid.
@@ -683,12 +732,38 @@ Separate the experiments from the final physical interpretation:
 - **Casey-style model:** modified blackbody plus a mid-infrared power law (`Casey_2012`). Treat
   it as a diagnostic parameterisation, not a complete grain-physics replacement.
 
-Suggested Methods figure:
+The purpose of these families is to ask whether the count error responds to a warmer FIR shape
+when the learned galaxy population and `L_IR` are held fixed. They show the direction of the
+needed correction, but the professor's concern is valid: MBB and Casey curves are simplified
+parameterisations and do not uniquely identify the underlying grain physics. Do not centre the
+Methods chapter on their parameter grids or quote `T`, `alpha` or `beta` as measurements.
+
+Move the detailed shape/count grids to Appendix D:
 
 - `../outputs/popcosmos_mbb_temperature_grid_shapes.png`
+- `../outputs/popcosmos_mbb_temperature_grid_counts.png`
+- Casey-grid figures archived with `Casey_extra_work.md`
 
-Its caption should say that the curves are deliberately normalised to equal integrated
-`L_IR`, so it isolates where the same energy appears in wavelength.
+### Main Methods figure: analysis pipeline schematic
+
+Use `../thesis_figures/popcosmos_fir_validation_pipeline.pdf` in the report. A PNG preview and
+editable SVG are in the same folder. The source is
+`../code python files/make_fir_validation_pipeline_figure.py`.
+
+The figure follows the shared prediction path:
+
+`pop-cosmos theta + z -> FSPS rest-frame SED + L_IR -> observed F250/F350/F500`
+
+It then separates two complementary tests: population-level differential counts compared with
+published corrected counts, and per-object residuals for Wang/Jin matched COSMOS galaxies. This
+distinction is important because the plotted count points are flux-bin summaries, whereas the
+Wang/Jin analysis compares individual objects.
+
+![FIR validation pipeline](../thesis_figures/popcosmos_fir_validation_pipeline.png)
+
+Mention Bethermin stacking (`B_thermin_2012`) and Glenn P(D) (`Glenn_2010`) briefly when
+explaining why faint observed counts require statistical methods, but do not reproduce their
+full extraction pipelines as if they were rerun in this project.
 
 ## 3.4 Count evaluator and error treatment
 
@@ -819,17 +894,33 @@ Supporting figures, probably appendix:
 - `../fir_validation_aug2026/figures/fsps_fir_sed_diagnostic.png`
 - `../outputs/popcosmos_full_sed_median_sfr_seds.png`
 
+### Short AGN branch check
+
+Include one paragraph explaining why the primary peak-relation test uses low-AGN objects. The
+population SED diagnostic found a separate hot-peaking branch controlled by the model
+`f_AGN` parameter: about `67%` of objects with `f_AGN>0.3` peak below 40 um, and about `93.9%`
+of all hot-peaking objects lie in that high-AGN group. This supports interpreting the unusual
+20-40 um SEDs as model AGN/torus emission rather than ordinary cold dust.
+
+Keep the caveat beside the result: `f_AGN` is a model luminosity-ratio parameter, not an
+external AGN detection, and its bimodal prior makes posterior-median interpretation delicate
+(`Thorp_2025_insights`). The low-AGN cut prevents this hot branch from driving the claim that
+the star-forming FIR peak is too cold. Put the detailed figure in the appendix:
+
+- `../fir_validation_aug2026/figures/agn_hot_dust_diagnosis.png`
+
 ## 4.4 Controlled template experiments
 
 Ask whether moving the fixed `L_IR` to warmer wavelengths changes the counts in the expected
 direction.
 
-Possible main/supporting figures:
+Use the alternative curves already present in the headline count overlay and a small unified
+score table. Dedicated MBB/Casey parameter-grid plots are appendix material:
 
-- `../outputs/popcosmos_mbb_temperature_grid_shapes.png`
-- `../outputs/popcosmos_mbb_temperature_grid_counts.png`
 - the model-family curves in
   `../fir_validation_aug2026/figures/popcosmos_count_overlay_thesis.png`
+- final numbers from
+  `../fir_validation_aug2026/tables/validation_unified_scorecard.csv`
 
 Report that warmer ALESS/FSPS hybrids and an approximately `35 K` modified blackbody improve the
 count comparison. Then immediately state the limit: several shapes score similarly within
@@ -839,6 +930,10 @@ not uniquely select a dust prescription.
 Do not make the Casey alpha grid a central Results section unless it supplies a conclusion that
 the simpler temperature experiment cannot. It is better placed in an appendix as a useful
 parametric sensitivity test.
+
+The physical evidence should come primarily from the observed Drew-Casey
+`L_IR-lambda_peak` relation in Section 4.3. Avoid confusing that observational paper with the
+separate Casey-style parametric SED experiment in this subsection.
 
 ## 4.5 Per-object scatter is a second problem
 
@@ -878,6 +973,12 @@ Report the band-dependent localisation:
 
 This is expected because the same observed band samples different rest-frame wavelengths as
 redshift changes. Do not collapse this into one universal "bad redshift".
+
+Use Bethermin et al. 2012 as literature context here: their stacking analysis provides SPIRE
+counts in redshift slices and finds that the characteristic contribution shifts to higher
+redshift at longer wavelength (`B_thermin_2012`). This supports the value of the diagnostic,
+but it is not a direct pop-cosmos-vs-Bethermin numerical validation because those tabulated
+redshift-sliced counts were not imported into the evaluator. Say that explicitly.
 
 ## 4.7 Observational side result: the Valiante bright-end uptick
 
@@ -1027,7 +1128,7 @@ Give each limitation its likely effect, not just a list:
 - **Small COSMOS area:** gives weak statistics for very bright/lensed sources.
 - **Posterior medians:** ignore parameter uncertainty and non-Gaussian/bimodal posteriors.
 - **Empirical template scope:** ALESS represents luminous submillimetre galaxies and is not a
-  universal template (`Swinbank_2013`).
+  universal template (`daCunha_2015`).
 - **No full retraining:** the experiments replace or perturb the FIR extension after inference;
   they do not refit the population prior jointly with FIR data.
 
@@ -1059,31 +1160,135 @@ test its predictive scatter.
 
 # 6. Conclusions: Writing Guide
 
-**Purpose:** answer the three Introduction questions directly. Add no new evidence or citation
-thread.
+**Purpose:** close the argument by answering the five objectives in Section 1.4. Summarise what
+was established, what remains uncertain, and what should change in pop-cosmos. Do not introduce
+a new result, figure, method or literature thread here.
 
-**Target:** `400-600` words.
+**Target:** approximately `500-700` words. Six fairly short paragraphs should be enough. This
+section should be more direct than the Discussion: state the answers rather than explaining every
+step again.
 
-Suggested structure:
+## 6.1 Paragraph-by-paragraph structure
 
-1. One sentence restating the aim and why it matters.
-2. One short paragraph on the successful IRAC control.
-3. One short paragraph on the published-count mismatch and wavelength trend.
-4. One short paragraph on the physical diagnosis: cold normalisation plus missing
-   luminosity-temperature slope.
-5. One short paragraph on the second problem: excessive per-object scatter and count promotion.
-6. Final recommendation and broader implication for extrapolating generative population models
-   beyond their constraining data.
+### Paragraph 1: Restate the problem and overall answer
 
-End with the general lesson, not a list of future coding tasks: physically coherent latent
-parameters do not guarantee reliable observables outside the training wavelength range, so
-out-of-sample validation must test both distributions and individual predictions.
+- Begin with the narrowed aim: testing whether a model constrained at optical/near-infrared
+  wavelengths makes reliable out-of-sample predictions in the Herschel/SPIRE bands.
+- State the main answer immediately: the underlying population model works well where it is
+  constrained, but its current far-infrared extension does not reliably reproduce either the
+  population counts or individual galaxy fluxes.
+- Mention the contribution in one sentence: the project built an observed-space validation using
+  published differential counts and matched COSMOS catalogues.
+- Do not repeat the full history of why radio and X-ray were deferred.
+
+### Paragraph 2: Objectives 1 and 2 - benchmark and headline count result
+
+- Say that nine published count products from six papers were placed in common units and grouped
+  into three independent survey families. Overlapping products were retained as robustness checks,
+  not counted as independent evidence.
+- Give one count summary, preferably the clearest common-range result: over `30-100 mJy`, the
+  baseline is about `1.7x` high at 250 and 350 um and `3.6x` high at 500 um.
+- The alternative full-range summary is `+0.25`, `+0.41` and `+0.55 dex` over `10-300 mJy`.
+  These are both valid but use different ranges and pooling. If both are included, explicitly say
+  this; otherwise use only the first set to keep the conclusion clean.
+- Briefly mention that the IRAC residuals are only a few hundredths of a magnitude. This is the
+  control showing that the result is wavelength-specific rather than a broken catalogue or flux
+  pipeline.
+
+### Paragraph 3: Objective 3 - physical diagnosis and template tests
+
+- State the physical diagnosis: the baseline far-infrared bump is too cold and too uniform.
+- Use the strongest comparison: at `L_IR = 10^12 L_sun`, the model peaks near `126 um` rather than
+  the observed relation near `92 um`; its luminosity slope is approximately `+0.005` rather than
+  `-0.09`.
+- Explain the energy-balance point carefully: preserving total `L_IR` does not guarantee that the
+  luminosity is placed at the correct wavelengths. Do not claim that this work proves `L_IR` is
+  correct; it isolates SED shape as one important failure mode.
+- Say that warmer MBB, ALESS/FSPS and Casey-inspired shapes all improve the counts at fixed `L_IR`.
+  Their similar performance means the experiment identifies the required direction, not a unique
+  physical dust model.
+
+### Paragraph 4: Objective 5 - the second, object-level failure
+
+- State that the per-object comparison revealed a separate problem: model fluxes scatter by
+  approximately `0.44-0.54 dex` against Wang, whereas Wang and Jin agree with each other to only
+  `0.12-0.15 dex` scatter.
+- Resolve the apparent contradiction in one or two sentences. The median matched galaxy can be
+  underpredicted while the model still overproduces bright counts because the steep source
+  distribution and large scatter promote many more faint objects upward than bright objects
+  downward.
+- Finish this paragraph with the important distinction: changing the mean dust template improves
+  counts but does not remove the excessive object-to-object scatter. These are two deficiencies,
+  not one.
+
+### Paragraph 5: Objective 4 - robustness and limits
+
+- Give the robustness answer without overstating significance: the excess keeps the same sign
+  across all three independent survey families, under changes to the error floor and source
+  selection, and the Wang/Jin scatter persists under SNR cuts.
+- State only the limitations that affect the conclusion: correlated bins, only three independent
+  survey families, nominal-wavelength rather than full-bandpass fluxes, posterior medians rather
+  than full posterior propagation, and weak bright-end statistics in a COSMOS-sized area.
+- Treat the `95%` block-bootstrap range as a robustness interval, not a formal model exclusion.
+- The Valiante uptick needs at most one sentence: it was verified as a feature of the published
+  bright counts and motivates caution above about `100 mJy`; its origin was not solved.
+
+### Paragraph 6: Recommendation and final broader statement
+
+- Give one prioritised model recommendation: preserve the learned population and energy balance,
+  but introduce a galaxy-dependent, physically motivated far-infrared dust family linked to
+  `L_IR` and potentially redshift/SFR, with intrinsic scatter.
+- Mention variable Draine--Li or CIGALE dust families as examples, not as solutions already proven
+  by this project.
+- State how the extension should be tested: calibrate using one set of fields, validate on held-out
+  fields, and report both differential-count performance and per-object flux scatter.
+- End with the general lesson: a generative population model can infer physically coherent latent
+  parameters while still failing in observables beyond its constraining wavelength range;
+  out-of-sample validation therefore needs both population distributions and individual-object
+  tests.
+
+## 6.2 Headline numbers to keep consistent
+
+| Result | Safe value to quote | Important qualifier |
+|---|---:|---|
+| IRAC Ch1/Ch2 median residual | `+0.020 / -0.012 mag` | Control where model is constrained |
+| Count excess | `1.7x, 1.7x, 3.6x` | 250/350/500 um over `30-100 mJy` |
+| Full-range count residual | `+0.25, +0.41, +0.55 dex` | Different pooling over `10-300 mJy` |
+| Peak at `10^12 L_sun` | model `126 um`, observed `92 um` | Low-AGN sample |
+| Peak-relation slope | model `+0.005`, observed `-0.09` | Shows missing luminosity dependence |
+| Model-object scatter | `0.44-0.54 dex` | Against Wang across SPIRE bands |
+| Wang-Jin scatter | `0.12-0.15 dex` | Catalogue/deblending control |
+| Block-bootstrap FSPS offset | median `+0.29 dex`, interval `[+0.16,+0.52]` | Robustness interval, not formal exclusion |
+
+The conclusion does not need every number in this table. Usually the common-range count factors,
+peak comparison and two scatter ranges are enough.
+
+## 6.3 Claims to avoid
+
+- Do not say that all nine count products are independent; there are three independent survey
+  families.
+- Do not claim that the work proves the original `L_IR` values are correct.
+- Do not call the best Casey/MBB score the uniquely correct dust physics.
+- Do not describe the bootstrap as a formal `95%` model exclusion.
+- Do not describe Wang and Jin as independent sky fields; they are two COSMOS reductions.
+- Do not claim that the cause of the Valiante bright-end uptick was identified.
+- Do not imply that pop-cosmos was retrained. The FIR substitutions were post-hoc controlled tests.
+- Do not claim radio or X-ray validation; the completed scope is far-infrared.
+
+## 6.4 Possible final-sentence direction
+
+Do not end on a list of unfinished work. End on the scientific contribution: this project showed
+how observed-space validation can expose both a systematic SED-shape error and hidden predictive
+scatter that would not be visible from the training-band fit alone.
 
 ### Conclusion checklist
 
-- [ ] Every stated aim from Introduction receives an answer.
+- [ ] All five stated objectives from the Introduction receive an answer.
 - [ ] Numbers match the final unified Results tables.
 - [ ] Template improvement is not presented as a unique physical solution.
+- [ ] Population-level count bias and per-object scatter are described as separate failures.
+- [ ] The 30--100 mJy factors are not mixed with 10--300 mJy median residuals.
+- [ ] The bootstrap is described as a robustness check rather than formal significance.
 - [ ] No radio/X-ray validation is claimed.
 - [ ] No new figure, method or caveat is introduced.
 
@@ -1140,21 +1345,21 @@ machine-readable outputs instead of pasting large code listings.
 
 Aim for about `7-9` main figures. Extra diagnostics belong in appendices.
 
-| Order | Figure                                                                             | Main purpose                                                |
-| ----: | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-|     1 | `../outputs/external_spire_differential_counts_july21_3dex.png`                  | Observational count coverage and the external ruler         |
-|     2 | `../outputs/popcosmos_irac_redshift_histograms.png`                              | Control: agreement in constrained IRAC bands                |
-|     3 | `../fir_validation_aug2026/figures/popcosmos_count_overlay_thesis.png`           | Headline 250/350/500 um count mismatch                      |
-|     4 | `../fir_validation_aug2026/figures/drew_casey_peak_relation.png`                 | Physical diagnosis: wrong peak and missing luminosity trend |
-|     5 | `../outputs/popcosmos_mbb_temperature_grid_shapes.png` plus selected count panel | Controlled warmer-template experiment                       |
-|     6 | `../fir_validation_aug2026/figures/scatter_mechanism_explained.png`              | Second finding: scatter promotes faint objects              |
-|     7 | `../fir_validation_aug2026/figures/z_resolved_fir_diagnosis.png`                 | Redshift localisation of the excess                         |
-|     8 | `../fir_validation_aug2026/figures/bootstrap_forest_plot.png`                    | Robustness across independent survey families               |
-| 9 (optional) | `../code python files/outputs/valiante_2016_hatlas_dr1_number_counts_quicklook.png` or lensing assessment | Observational side finding: verified bright-bin uptick |
+| Order | Figure | Main purpose |
+| ----: | --- | --- |
+| 1 | `../thesis_figures/popcosmos_fir_validation_pipeline.pdf` | How pop-cosmos SEDs become fluxes, counts and matched-object tests |
+| 2 | `../fir_validation_aug2026/figures/compiled_counts_thesis.png` | Observational datasets, common units and resolved/P(D) coverage |
+| 3 | `../fir_validation_aug2026/figures/popcosmos_count_overlay_thesis.png` | Headline 250/350/500 um count mismatch |
+| 4 | Combine `../fir_validation_aug2026/figures/fsps_fir_sed_diagnostic.png` with `../fir_validation_aug2026/figures/drew_casey_peak_relation.png`, or show them consecutively | Physical diagnosis: cold/narrow peaks and the missing luminosity trend |
+| 5 | `../fir_validation_aug2026/figures/scatter_mechanism_explained.png` | Second finding: scatter promotes faint objects |
+| 6 | `../fir_validation_aug2026/figures/z_resolved_fir_diagnosis.png` | Redshift localisation of the excess |
+| 7 | `../fir_validation_aug2026/figures/bootstrap_forest_plot.png` | Robustness across independent survey families |
+| 8 (optional) | `../code python files/outputs/valiante_2016_hatlas_dr1_number_counts_quicklook.png` or lensing assessment | Observational side finding: verified bright-bin uptick |
 
-Before fixing this list, check whether Figure 1 and Figure 8 repeat information that can be
-reported in a table. A figure should carry an argument, not merely prove that a calculation was
-run.
+Keep the IRAC control plot in the appendix or replace it with a compact Results table unless
+there is enough page space. Keep ALESS/MBB/Casey grids in Appendix D. Before fixing the list,
+check whether the bootstrap can be reported more economically as a table. A figure should carry
+an argument, not merely prove that a calculation was run.
 
 # Citation Map
 
@@ -1170,9 +1375,10 @@ run.
 | Observed luminosity-peak relation | `Drew_2022`                                                                                             |
 | Dust-temperature trends           | `Schreiber_2017`                                                                                        |
 | Published SPIRE counts            | `Clements_2010`, `Oliver_2010`, `Glenn_2010`, `Valiante_2016`, `Pearson_2025`, `Varnish_2025` |
+| Below-confusion P(D)/stacking methods | `Glenn_2010`, `B_thermin_2012`, `Varnish_2025` |
 | Confusion/deblending              | `Nguyen_2010`, `Roseboom_2010`, `Hurley_2017`                                                       |
 | COSMOS FIR catalogues             | `Wang_2024`, `Jin_2018`                                                                               |
-| ALESS empirical SED               | `Swinbank_2013`                                                                                         |
+| ALESS empirical SED               | `daCunha_2015`                                                                                          |
 | Flux boosting/Eddington-like bias | `Clements_1999`                                                                                         |
 
 # Final Report Checklist
