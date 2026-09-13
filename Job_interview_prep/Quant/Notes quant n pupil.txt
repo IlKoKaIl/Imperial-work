@@ -1,0 +1,59 @@
+﻿Quantitative maths focus,
+Likely to start with background and cv questions as usual
+
+
+First topic to brush up 
+Linear regression. All the basics, closed forms solutions, ridge regression, reducing beta of linear regression.
+
+
+Quick fire questions.
+Can u find the variance of sum of 3 random variances, individual variances, cross variances.
+
+
+Basic core stats techniques.
+
+
+Looking at classic quant brain teasers, probability heavy questions.
+Flipping coins, rolling dice e.g
+
+
+If i roll 3 fair dice, add sum of spots, what is P() sum is divisible by x
+
+
+Final thing:
+End of interview they like to talk about finance and my interest in finance, 
+Read about
+Definitions of liquidity, market liquidity. 
+Do u know definition bond, stock, how they pay out
+Sharpe..
+Order book liquidity 
+
+
+
+
+
+
+Be able to derive solutions to linear models (simple ols, ridge, lasso). Theory as well. Necessary conditions vs sufficient conditions to run the models. Inference vs predictability. Which violations of assumptions make inference or predictability non robust.
+PCA and other dimensionality reduction techniques.
+In terms of coding be able to show that you can do basic data exploration, plots and data manipulation. Pandas polars, numpy and matplotlib
+Be able to run dklearn models and interpret their results.
+Familiarity and theory of gradient descent methods.
+Mean variance optimization (Lagrangian)
+Bayesian models Kalyan filter
+Derive formula for optimal OLS linear regression coeffs 
+
+
+They asked about mathamatics stuff and some financial real world scenarios such as trading costs, skewing, etc 
+
+
+Online Probability/Statistics/Finance (with a QR for 60 mins): Combinatorial questions (ie: what's the prob. I land heads 3 times in a row in 10 toses) + Surface-level intuition on Volitility and Options 4 
+—----------------------------------------------------------------
+stats: - On average how many toss to get 3 heads in a row? - Given 2 random numbers with a value between 0 and 1. What is the average value of the max of these 2 numbers - Given 999 fair coins and 1 double-headed coin in a bag, if I draw one coin and toss it 10 times and get 10 heads, what is the probability that I am holding the double-headed coin - Given a pair of number (x,y) equally distributed between (0,0), (0,1) and (1,1), what is the line that best fit these numbers (given x, target y)? - On average how many times will you get an even number of heads if you toss a few times an unfair coin (p=1/3 | q=2/3)? - Given a standard deck of 52 cards, if I draw the first card and you draw the second card, what is the probability that I have a greater card? - Given a bag of 3 blue and 3 red candies. You pick one candy at a time, if it is red you eat it, if it is blue you put it back in the bag. On average how many times will you pick a candy from the bag before all red are eaten - Quickly estimate the probability to get 55 heads or more after tossing a fair coin 100 times? 
+—--------------------------------------------------------------
+1st: Online Assessment: A question on binary search (Debugging) MCQ A statistics question about chi squared distribution etc 1 stat question based on Normal distribution 1 stat question Coding problem: based on priority queue Coding problem based on difference array 2nd Coding Round: Three Coding Questions First question : Sort array based on frequency Second : Number of pairs whose difference is k Third: Minimum length subarray where you get atleast k values of any element. 3rd stat round: Which asset to buy if there are many assets, which gives nx return after n years, where n is any real number. (Answer: when n = e) Finance question about arbitrage: Linear regression R^2 definition What is Volatility and howz it measured Convert daily to monthly volatility Bayes theorem fair and biased coin 4th round: Resume projects, theoretical coding questions: Call by ref call by value What is operator overloading What is virtual function What is pure virtual function 5th round: Discussed about BTP in detail Some Normal HR type questions etc 6th round (Which was not supposed) A coding problem , where given two arrays, for each element in 2nd array find number of elements smaller than that element in 1st array Given a coin, create a probability of 0.7 from that coin. Extension: create any probability from that coin. Create a probability which takes minimum expected number of steps. What is multicollinearity and what are the problems with multicollinearity? After few days HR called, and said that they would offer me this role. 
+—----------------------------------------------------------------------------
+5 Rounds in total. R1 (30 mins): Phone interview with HR. General questions about motivation, current job, resume walkthrough. HR describes about DQA role and requirements. R2 (1 hour): Video interview with a DQA. First 30-40 mins code pair round on HackerRank. 3 questions leetcode easy medium. Then, 20-30 mins programming and linux related questions. R3 (1 hour): Phone interview with Quant Researcher. This round covered Statistics, Probability and financial intuition. R4 (1 hour): Video interview with Quant Researcher. This was again a code pair round on HackerRank. 3 questions leetcode easy-medium. R5 (1 hour): Final discussion with a quant researcher. Daily basis of work and bit of general HR kinda questions. 
+
+
+Code pair rounds: Questions similar to Longest Increasing Subsequence, Fibonacci DP, Subarray Sum, Palindromes in binary string. Prob/stats round: Expected value questions, central limit theorem, etc 
+—---------------------------------------------------------------------

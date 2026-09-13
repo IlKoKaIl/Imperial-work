@@ -4,7 +4,8 @@ Start here. This folder is for Squarepoint-style quant prep: coding, probability
 
 ## Immediate Priority
 
-- [Squarepoint_Round2_Sep2_Runbook.md](Squarepoint_Round2_Sep2_Runbook.md): use this first for the 2026-09-02 Squarepoint round 2 HackerRank pair-coding interview.
+- [Squarepoint_Round2_Sep2_Runbook.md](Squarepoint_Round2_Sep2_Runbook.md): use this for the earlier Squarepoint HackerRank pair-coding prep.
+- [Squarepoint_Next_Rounds_Prep.md](Squarepoint_Next_Rounds_Prep.md): use this after the codepair for probability/statistics/finance/CV next rounds.
 
 ## Main Files
 
