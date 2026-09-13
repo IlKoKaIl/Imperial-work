@@ -1,6 +1,6 @@
 # Squarepoint Next Rounds Maths / Stats Prep
 
-Current context: today is Thursday 2026-09-10 and the interview is Tuesday 2026-09-15.
+Current context: today is Sunday 2026-09-13 and the interview is Tuesday 2026-09-15.
 
 Use this as a teaching guide, not a checklist. The goal is to understand the core ideas well enough to explain them aloud, derive the simple formulas, and handle variations.
 
@@ -22,7 +22,7 @@ The signal from your notes points to:
 | Past-question theme from notes                            | Covered here                                            |
 | --------------------------------------------------------- | ------------------------------------------------------- |
 | Linear regression basics and closed form                  | `Linear Regression From Zero`, `OLS Derivation`     |
-| Ridge, lasso, shrinking beta                              | `Ridge Regression`, `Lasso Regression`              |
+| Ridge, lasso, shrinking$\beta$                          | `Ridge Regression`, `Lasso Regression`              |
 | Necessary/sufficient assumptions, inference vs prediction | `Assumptions: Inference vs Prediction`                |
 | R-squared definition                                      | `R-Squared`                                           |
 | Multicollinearity problems                                | `Multicollinearity`                                   |
@@ -77,37 +77,37 @@ Good interview phrase:
 
 ### What Linear Regression Is
 
-You have inputs `X` and an output `y`.
+You have inputs $X$ and an output $y$.
 
 The model says:
 
-```text
-prediction = beta_0 + beta_1 x_1 + beta_2 x_2 + ... + beta_p x_p
-```
+$$
+\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_p x_p
+$$
 
 In matrix form:
 
-```text
-y_hat = X beta
-```
+$$
+\hat{y} = X\beta
+$$
 
-Each row of `X` is one observation. Each column is one feature. `beta` contains the coefficients.
+Each row of $X$ is one observation. Each column is one feature. $\beta$ contains the coefficients.
 
 The error/residual is:
 
-```text
-residual = y - y_hat = y - X beta
-```
+$$
+e = y - \hat{y} = y - X\beta
+$$
 
 ## OLS Objective
 
 OLS means ordinary least squares.
 
-It chooses `beta` to minimise the sum of squared residuals:
+It chooses $\beta$ to minimise the sum of squared residuals:
 
-```text
-min_beta ||y - X beta||^2
-```
+$$
+\min_{\beta} \|y - X\beta\|^2
+$$
 
 Why square errors?
 
@@ -119,53 +119,57 @@ Why square errors?
 
 Start:
 
-```text
-L(beta) = ||y - X beta||^2
-        = (y - X beta)^T (y - X beta)
-```
+$$
+L(\beta) = \|y - X\beta\|^2
+          = (y - X\beta)^T(y - X\beta)
+$$
 
 Expand:
 
-```text
-L(beta) = y^T y - 2 beta^T X^T y + beta^T X^T X beta
-```
+$$
+L(\beta) = y^T y - 2\beta^T X^T y + \beta^T X^T X\beta
+$$
 
-Differentiate with respect to `beta`:
+Differentiate with respect to $\beta$:
 
-```text
-dL/dbeta = -2 X^T y + 2 X^T X beta
-```
+$$
+\frac{\partial L}{\partial \beta}
+= -2X^T y + 2X^T X\beta
+$$
 
 Set the gradient to zero:
 
-```text
--2 X^T y + 2 X^T X beta = 0
-X^T X beta = X^T y
-```
+$$
+-2X^T y + 2X^T X\beta = 0
+$$
 
-If `X^T X` is invertible:
+$$
+X^T X\beta = X^T y
+$$
 
-```text
-beta_hat = (X^T X)^(-1) X^T y
-```
+If $X^T X$ is invertible:
+
+$$
+\hat{\beta} = (X^T X)^{-1}X^T y
+$$
 
 Say this aloud:
 
-> "OLS sets the gradient of squared error to zero. This gives the normal equations. If the feature covariance matrix is invertible, I can solve for beta in closed form."
+> "OLS sets the gradient of squared error to zero. This gives the normal equations. If the feature covariance matrix is invertible, I can solve for $\beta$ in closed form."
 
 ### Ridge Regression
 
 Ridge adds a penalty for large coefficients:
 
-```text
-min_beta ||y - X beta||^2 + lambda ||beta||^2
-```
+$$
+\min_{\beta} \|y - X\beta\|^2 + \lambda \|\beta\|_2^2
+$$
 
 The solution is:
 
-```text
-beta_ridge = (X^T X + lambda I)^(-1) X^T y
-```
+$$
+\hat{\beta}_{\text{ridge}} = (X^T X + \lambda I)^{-1}X^T y
+$$
 
 What ridge does:
 
@@ -183,9 +187,9 @@ Intuition:
 
 Lasso adds an absolute-value penalty:
 
-```text
-min_beta ||y - X beta||^2 + lambda ||beta||_1
-```
+$$
+\min_{\beta} \|y - X\beta\|^2 + \lambda \|\beta\|_1
+$$
 
 What lasso does:
 
@@ -206,9 +210,9 @@ Multicollinearity means features are strongly correlated.
 
 Example:
 
-```text
-x_2 is almost the same as x_1
-```
+$$
+x_2 \approx x_1
+$$
 
 Problem:
 
@@ -233,7 +237,7 @@ Separate two goals.
 Inference asks:
 
 ```text
-Can I interpret beta and confidence intervals?
+Can I interpret coefficients and confidence intervals?
 ```
 
 Prediction asks:
@@ -245,7 +249,7 @@ Does the model perform well on new data?
 For inference, the classical assumptions matter more:
 
 - Correct linear specification.
-- Exogeneity: `E[epsilon | X] = 0`.
+- Exogeneity: $\mathbb{E}[\varepsilon \mid X] = 0$.
 - Independent errors.
 - Homoskedastic errors for textbook standard errors.
 - No severe multicollinearity.
@@ -264,9 +268,9 @@ Good line:
 
 ### R-Squared
 
-```text
-R^2 = 1 - SSE / SST
-```
+$$
+R^2 = 1 - \frac{\text{SSE}}{\text{SST}}
+$$
 
 Where:
 
@@ -288,23 +292,25 @@ Meaning:
 
 Variance measures spread:
 
-```text
-Var(X) = E[X^2] - E[X]^2
-```
+$$
+\operatorname{Var}(X) = \mathbb{E}[X^2] - \mathbb{E}[X]^2
+$$
 
 Covariance measures how two variables move together:
 
-```text
-Cov(X,Y) = E[XY] - E[X]E[Y]
-```
+$$
+\operatorname{Cov}(X,Y) = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+$$
 
 For a sum of three random variables:
 
-```text
-Var(X + Y + Z)
-= Var(X) + Var(Y) + Var(Z)
-  + 2Cov(X,Y) + 2Cov(X,Z) + 2Cov(Y,Z)
-```
+$$
+\operatorname{Var}(X+Y+Z)
+= \operatorname{Var}(X) + \operatorname{Var}(Y) + \operatorname{Var}(Z)
++ 2\operatorname{Cov}(X,Y)
++ 2\operatorname{Cov}(X,Z)
++ 2\operatorname{Cov}(Y,Z)
+$$
 
 If independent, covariance terms are zero.
 
@@ -319,9 +325,9 @@ Know:
 
 Standardisation:
 
-```text
-Z = (X - mean) / sd
-```
+$$
+Z = \frac{X - \mu}{\sigma}
+$$
 
 ### CLT
 
@@ -337,15 +343,15 @@ Important:
 
 If:
 
-```text
-Z_1, ..., Z_k are independent standard normals
-```
+$$
+Z_1, \ldots, Z_k \stackrel{\text{iid}}{\sim} N(0,1)
+$$
 
 Then:
 
-```text
-Z_1^2 + ... + Z_k^2 ~ chi-squared(k)
-```
+$$
+Z_1^2 + \cdots + Z_k^2 \sim \chi^2_k
+$$
 
 Uses:
 
@@ -355,10 +361,11 @@ Uses:
 
 Mean and variance:
 
-```text
-E[chi2_k] = k
-Var(chi2_k) = 2k
-```
+$$
+\mathbb{E}[\chi^2_k] = k,
+\qquad
+\operatorname{Var}(\chi^2_k) = 2k
+$$
 
 ## Worked Probability Questions From The Notes
 
@@ -374,10 +381,13 @@ General method:
 
 Useful simple cases:
 
-```text
-x = 2: probability = 1/2
-x = 3: probability = 1/3
-```
+$$
+x=2: \quad P(\text{sum divisible by }2)=\frac{1}{2}
+$$
+
+$$
+x=3: \quad P(\text{sum divisible by }3)=\frac{1}{3}
+$$
 
 For `x = 3`, each die has residues `0,1,2` exactly twice, so sums are evenly distributed modulo 3.
 
@@ -385,9 +395,9 @@ For `x = 3`, each die has residues `0,1,2` exactly twice, so sums are evenly dis
 
 Use the complement:
 
-```text
-P(at least one HHH) = 1 - P(no HHH)
-```
+$$
+P(\text{at least one HHH}) = 1 - P(\text{no HHH})
+$$
 
 Let `a_n` be the number of length `n` sequences with no `HHH`.
 
@@ -399,183 +409,223 @@ The sequence can end in:
 
 So:
 
-```text
-a_n = a_(n-1) + a_(n-2) + a_(n-3)
-```
+$$
+a_n = a_{n-1} + a_{n-2} + a_{n-3}
+$$
 
 Base cases:
 
-```text
-a_0 = 1
-a_1 = 2
-a_2 = 4
-```
+$$
+a_0 = 1,\qquad a_1 = 2,\qquad a_2 = 4
+$$
 
 This gives:
 
-```text
-a_10 = 504
-P(at least one HHH) = 1 - 504/1024 = 65/128 ~= 0.508
-```
+$$
+a_{10}=504
+$$
+
+$$
+P(\text{at least one HHH})
+= 1 - \frac{504}{1024}
+= \frac{65}{128}
+\approx 0.508
+$$
 
 ### Expected Tosses To Get HHH
 
 Let:
 
-```text
-E0 = expected tosses when current H streak is 0
-E1 = expected tosses when current H streak is 1
-E2 = expected tosses when current H streak is 2
-```
+$E_0$ = expected tosses when the current H streak is 0.
+
+$E_1$ = expected tosses when the current H streak is 1.
+
+$E_2$ = expected tosses when the current H streak is 2.
 
 Equations:
 
-```text
-E0 = 1 + 0.5 E1 + 0.5 E0
-E1 = 1 + 0.5 E2 + 0.5 E0
-E2 = 1 + 0.5 * 0 + 0.5 E0
-```
+$$
+E_0 = 1 + \frac{1}{2}E_1 + \frac{1}{2}E_0
+$$
+
+$$
+E_1 = 1 + \frac{1}{2}E_2 + \frac{1}{2}E_0
+$$
+
+$$
+E_2 = 1 + \frac{1}{2}\cdot 0 + \frac{1}{2}E_0
+$$
 
 Solving gives:
 
-```text
-E0 = 14
-```
+$$
+E_0 = 14
+$$
 
 Shortcut for `k` heads in a row with a fair coin:
 
-```text
-E = 2^(k+1) - 2
-```
+$$
+E = 2^{k+1} - 2
+$$
 
-For `k = 3`, `E = 14`.
+For $k=3$, $E=14$.
 
 ### Max Of Two Uniforms
 
-Let `X, Y ~ U(0,1)`.
+Let $X,Y \sim U(0,1)$.
 
 For the maximum to be at most `t`, both variables must be at most `t`:
 
-```text
-P(max(X,Y) <= t) = P(X <= t, Y <= t) = t^2
-```
+$$
+P(\max(X,Y) \le t)
+= P(X \le t, Y \le t)
+= t^2
+$$
 
 So the density is:
 
-```text
+$$
 f(t) = 2t
-```
+$$
 
 Expected max:
 
-```text
-E[max] = integral_0^1 t * 2t dt = 2/3
-```
+$$
+\mathbb{E}[\max(X,Y)]
+= \int_0^1 t \cdot 2t \, dt
+= \frac{2}{3}
+$$
 
 ### 999 Fair Coins And 1 Double-Headed Coin
 
 Prior:
 
-```text
-P(double-headed) = 1/1000
-P(fair) = 999/1000
-```
+$$
+P(D)=\frac{1}{1000},
+\qquad
+P(F)=\frac{999}{1000}
+$$
 
 Likelihood of seeing 10 heads:
 
-```text
-P(10H | double-headed) = 1
-P(10H | fair) = (1/2)^10
-```
+$$
+P(10H \mid D)=1,
+\qquad
+P(10H \mid F)=\left(\frac{1}{2}\right)^{10}
+$$
 
 Bayes:
 
-```text
-P(double-headed | 10H)
-= (1 * 1/1000) / (1 * 1/1000 + (1/2)^10 * 999/1000)
-= 1024 / (1024 + 999)
-~= 0.506
-```
+$$
+P(D \mid 10H)
+= \frac{1 \cdot \frac{1}{1000}}
+{1 \cdot \frac{1}{1000}
++ \left(\frac{1}{2}\right)^{10}\frac{999}{1000}}
+= \frac{1024}{1024+999}
+\approx 0.506
+$$
 
 ### Bayes With Fair And Biased Coin
 
 General template:
 
-```text
-P(coin A | data) =
-P(data | coin A) P(coin A)
-/
-[P(data | coin A) P(coin A) + P(data | coin B) P(coin B)]
-```
+$$
+P(A \mid \text{data})
+=
+\frac{P(\text{data}\mid A)P(A)}
+{P(\text{data}\mid A)P(A)+P(\text{data}\mid B)P(B)}
+$$
 
-Example: one fair coin and one biased coin with `P(H)=p`, equal prior, observe `h` heads and `t` tails.
+Example: one fair coin and one biased coin with $P(H)=p$, equal prior, observe $h$ heads and $t$ tails.
 
-```text
-P(biased | data)
-= [p^h (1-p)^t * 0.5]
-/
-[p^h (1-p)^t * 0.5 + (0.5)^(h+t) * 0.5]
-```
+$$
+P(\text{biased}\mid \text{data})
+=
+\frac{p^h(1-p)^t \cdot \frac{1}{2}}
+{p^h(1-p)^t \cdot \frac{1}{2}
++ \left(\frac{1}{2}\right)^{h+t}\cdot \frac{1}{2}}
+$$
 
 ### Best Fit Line For Three Points
 
 Points are equally likely:
 
-```text
-(0,0), (0,1), (1,1)
-```
+$$
+(0,0),\quad (0,1),\quad (1,1)
+$$
 
 Fit:
 
-```text
-y = alpha + beta x
-```
+$$
+y = \alpha + \beta x
+$$
 
 For simple linear regression:
 
-```text
-beta = Cov(X,Y) / Var(X)
-alpha = E[Y] - beta E[X]
-```
+$$
+\beta = \frac{\operatorname{Cov}(X,Y)}{\operatorname{Var}(X)}
+$$
+
+$$
+\alpha = \mathbb{E}[Y] - \beta \mathbb{E}[X]
+$$
 
 Compute:
 
-```text
-E[X] = 1/3
-E[Y] = 2/3
-E[XY] = 1/3
-Cov(X,Y) = 1/3 - (1/3)(2/3) = 1/9
-Var(X) = 1/3 - (1/3)^2 = 2/9
-beta = (1/9)/(2/9) = 1/2
-alpha = 2/3 - (1/2)(1/3) = 1/2
-```
+$$
+\mathbb{E}[X] = \frac{1}{3},
+\qquad
+\mathbb{E}[Y] = \frac{2}{3},
+\qquad
+\mathbb{E}[XY] = \frac{1}{3}
+$$
+
+$$
+\operatorname{Cov}(X,Y)
+= \frac{1}{3} - \left(\frac{1}{3}\right)\left(\frac{2}{3}\right)
+= \frac{1}{9}
+$$
+
+$$
+\operatorname{Var}(X)
+= \frac{1}{3} - \left(\frac{1}{3}\right)^2
+= \frac{2}{9}
+$$
+
+$$
+\beta = \frac{1/9}{2/9} = \frac{1}{2},
+\qquad
+\alpha = \frac{2}{3} - \frac{1}{2}\cdot \frac{1}{3}
+= \frac{1}{2}
+$$
 
 Answer:
 
-```text
-y = 1/2 + x/2
-```
+$$
+y = \frac{1}{2} + \frac{x}{2}
+$$
 
 ### Even Number Of Heads
 
 For `n` tosses of a coin with:
 
-```text
-P(H) = p
-P(T) = q = 1 - p
-```
+$$
+P(H)=p,
+\qquad
+P(T)=q=1-p
+$$
 
 Probability of an even number of heads:
 
-```text
-P(even) = [1 + (q - p)^n] / 2
-```
+$$
+P(\text{even}) = \frac{1 + (q-p)^n}{2}
+$$
 
 If `p = 1/3` and `q = 2/3`:
 
-```text
-P(even) = [1 + (1/3)^n] / 2
-```
+$$
+P(\text{even}) = \frac{1 + \left(\frac{1}{3}\right)^n}{2}
+$$
 
 Sanity check: as `n` gets large, the probability tends to `1/2`.
 
@@ -583,21 +633,24 @@ Sanity check: as `n` gets large, the probability tends to `1/2`.
 
 If rank ties count as ties:
 
-```text
-P(same rank) = 3/51 = 1/17
-```
+$$
+P(\text{same rank}) = \frac{3}{51} = \frac{1}{17}
+$$
 
 By symmetry:
 
-```text
-P(first > second) = P(second > first)
-```
+$$
+P(\text{first}>\text{second})
+= P(\text{second}>\text{first})
+$$
 
 So:
 
-```text
-P(first > second) = (1 - 1/17) / 2 = 8/17
-```
+$$
+P(\text{first}>\text{second})
+= \frac{1 - 1/17}{2}
+= \frac{8}{17}
+$$
 
 If every card has a total order and there are no ties, answer is `1/2`.
 
@@ -607,58 +660,72 @@ Bag starts with 3 red and 3 blue. Red is eaten. Blue is put back.
 
 When `r` red remain, probability the next draw is red:
 
-```text
-p = r / (r + 3)
-```
+$$
+p = \frac{r}{r+3}
+$$
 
 Expected draws to get the next red:
 
-```text
-1/p = (r + 3)/r
-```
+$$
+\mathbb{E}[\text{draws to next red}]
+= \frac{1}{p}
+= \frac{r+3}{r}
+$$
 
 Sum over `r = 3, 2, 1`:
 
-```text
-r = 3: 6/3 = 2
-r = 2: 5/2 = 2.5
-r = 1: 4/1 = 4
-total = 8.5
-```
+$$
+r=3:\frac{6}{3}=2,
+\qquad
+r=2:\frac{5}{2}=2.5,
+\qquad
+r=1:\frac{4}{1}=4
+$$
+
+$$
+\text{total}=2+2.5+4=8.5
+$$
 
 ### 55 Or More Heads In 100 Tosses
 
 Let:
 
-```text
-X ~ Binomial(100, 0.5)
-```
+$$
+X \sim \operatorname{Binomial}(100, 0.5)
+$$
 
 Mean and standard deviation:
 
-```text
-mean = np = 50
-sd = sqrt(npq) = sqrt(25) = 5
-```
+$$
+\mu = np = 50
+$$
+
+$$
+\sigma = \sqrt{npq} = \sqrt{25} = 5
+$$
 
 Use continuity correction:
 
-```text
-P(X >= 55) ~= P(N(50,25) >= 54.5)
-z = (54.5 - 50)/5 = 0.9
-```
+$$
+P(X \ge 55)
+\approx P(N(50,25) \ge 54.5)
+$$
+
+$$
+z = \frac{54.5-50}{5}=0.9
+$$
 
 Tail probability:
 
-```text
-P(Z >= 0.9) ~= 0.184
-```
+$$
+P(Z \ge 0.9) \approx 0.184
+$$
 
 Answer: about `18%`.
 
 ### Create Probability 0.7 From Coin Tosses
 
-If the coin is fair, one practical exact method for `0.7 = 7/10`:
+If the coin is fair, one practical exact method for $0.7 = \frac{7}{10}$:
 
 1. Toss 4 times to generate a number from `0` to `15`.
 2. If the number is `0` to `9`, accept the block.
@@ -673,60 +740,78 @@ Why it works:
 
 Expected tosses:
 
-```text
-accept probability = 10/16
-expected blocks = 1 / (10/16) = 1.6
-expected tosses = 4 * 1.6 = 6.4
-```
+$$
+P(\text{accept})=\frac{10}{16}
+$$
 
-For any target probability `p` with a fair coin:
+$$
+\mathbb{E}[\text{blocks}]
+= \frac{1}{10/16}
+= 1.6
+$$
 
-- Generate fair binary digits for a uniform random number `U` in `[0,1]`.
-- Return success if `U < p`.
+$$
+\mathbb{E}[\text{tosses}]
+= 4 \times 1.6
+= 6.4
+$$
+
+For any target probability $p$ with a fair coin:
+
+- Generate fair binary digits for a uniform random number $U \in [0,1]$.
+- Return success if $U < p$.
 - For rational probabilities, rejection sampling with enough bits is often easier to explain.
 
 If the coin is biased with unknown bias, first use the von Neumann trick to create fair bits:
 
-```text
-HT -> fair 1
-TH -> fair 0
-HH or TT -> reject and repeat
-```
+$$
+HT \rightarrow 1,
+\qquad
+TH \rightarrow 0,
+\qquad
+HH \text{ or } TT \rightarrow \text{reject}
+$$
 
 ### The e Growth Question
 
-Reported question: many assets give `n` times return after `n` years. Which `n` is best, where `n` can be any positive real?
+Reported question: many assets give $n$ times return after $n$ years. Which $n$ is best, where $n$ can be any positive real?
 
 Compare annualised growth:
 
-```text
-growth per year = n^(1/n)
-```
+$$
+\text{growth per year} = n^{1/n}
+$$
 
 Maximise:
 
-```text
-f(n) = n^(1/n)
-log f(n) = log(n) / n
-```
+$$
+f(n)=n^{1/n}
+$$
+
+$$
+\log f(n)=\frac{\log n}{n}
+$$
 
 Differentiate:
 
-```text
-d/dn [log(n)/n] = (1 - log(n)) / n^2
-```
+$$
+\frac{d}{dn}\left(\frac{\log n}{n}\right)
+= \frac{1-\log n}{n^2}
+$$
 
 Set to zero:
 
-```text
-1 - log(n) = 0
-log(n) = 1
-n = e
-```
+$$
+1-\log n=0
+\quad\Rightarrow\quad
+\log n=1
+\quad\Rightarrow\quad
+n=e
+$$
 
 Answer:
 
-> "The best annualised return occurs at `n = e`."
+> "The best annualised return occurs at $n=e$."
 
 ## Finance From The Ground Up
 
@@ -755,12 +840,17 @@ Option:
 
 Volatility is the standard deviation of returns.
 
-If daily volatility is `sigma_daily`:
+If daily volatility is $\sigma_{\text{daily}}$:
 
-```text
-monthly vol ~= sigma_daily * sqrt(21)
-annual vol ~= sigma_daily * sqrt(252)
-```
+$$
+\sigma_{\text{monthly}}
+\approx \sigma_{\text{daily}}\sqrt{21}
+$$
+
+$$
+\sigma_{\text{annual}}
+\approx \sigma_{\text{daily}}\sqrt{252}
+$$
 
 This square-root scaling assumes returns are roughly independent with stable variance.
 
@@ -768,15 +858,18 @@ This square-root scaling assumes returns are roughly independent with stable var
 
 Sharpe measures return per unit of risk:
 
-```text
-Sharpe = E[R - R_f] / sd(R)
-```
+$$
+\text{Sharpe}
+= \frac{\mathbb{E}[R - R_f]}{\sigma_R}
+$$
 
 Annualisation:
 
-```text
-annual Sharpe ~= daily Sharpe * sqrt(252)
-```
+$$
+\text{Sharpe}_{\text{annual}}
+\approx
+\text{Sharpe}_{\text{daily}}\sqrt{252}
+$$
 
 Caveat:
 
@@ -792,7 +885,7 @@ Order book basics:
 
 - Bid: best price someone is willing to buy at.
 - Ask: best price someone is willing to sell at.
-- Spread: `ask - bid`.
+- Spread: $\text{ask} - \text{bid}$.
 - Depth: how much quantity is available at each price level.
 - Market order: trades immediately, but pays spread and impact.
 - Limit order: controls price, but may not execute.
@@ -850,52 +943,62 @@ Reason:
 
 ## Mean-Variance Optimisation
 
-You choose portfolio weights `w`.
+You choose portfolio weights $w$.
 
 Portfolio variance:
 
-```text
-Var(portfolio) = w^T Sigma w
-```
+$$
+\operatorname{Var}(\text{portfolio}) = w^T \Sigma w
+$$
 
-Where `Sigma` is the covariance matrix of asset returns.
+Where $\Sigma$ is the covariance matrix of asset returns.
 
 Minimum-variance portfolio:
 
-```text
-min_w w^T Sigma w
-subject to 1^T w = 1
-```
+$$
+\min_w \; w^T \Sigma w
+$$
+
+subject to:
+
+$$
+\mathbf{1}^T w = 1
+$$
 
 Lagrangian:
 
-```text
-L = w^T Sigma w - lambda(1^T w - 1)
-```
+$$
+\mathcal{L}
+= w^T \Sigma w - \lambda(\mathbf{1}^T w - 1)
+$$
 
 Differentiate:
 
-```text
-dL/dw = 2 Sigma w - lambda 1 = 0
-```
+$$
+\frac{\partial \mathcal{L}}{\partial w}
+= 2\Sigma w - \lambda \mathbf{1}
+= 0
+$$
 
 Rearrange:
 
-```text
-w = (lambda / 2) Sigma^(-1) 1
-```
+$$
+w = \frac{\lambda}{2}\Sigma^{-1}\mathbf{1}
+$$
 
-Use `1^T w = 1`:
+Use $\mathbf{1}^T w = 1$:
 
-```text
-w = Sigma^(-1) 1 / (1^T Sigma^(-1) 1)
-```
+$$
+w =
+\frac{\Sigma^{-1}\mathbf{1}}
+{\mathbf{1}^T\Sigma^{-1}\mathbf{1}}
+$$
 
 If also targeting expected return, add:
 
-```text
-mu^T w = target
-```
+$$
+\mu^T w = \text{target}
+$$
 
 Main caveat:
 
@@ -928,15 +1031,15 @@ Caveat:
 
 Goal:
 
-```text
-minimise loss(theta)
-```
+$$
+\min_{\theta} L(\theta)
+$$
 
 Update:
 
-```text
-theta <- theta - learning_rate * gradient
-```
+$$
+\theta \leftarrow \theta - \eta \nabla L(\theta)
+$$
 
 Intuition:
 
