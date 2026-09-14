@@ -179,6 +179,8 @@ What ridge does:
 - Makes the matrix easier to invert.
 - Does not usually make coefficients exactly zero.
 
+Intercept detail: the formula above assumes the intercept isn't penalised. Shrinking the intercept towards zero would make the fit depend on where you put the origin of $y$, which is meaningless. The standard fix is to centre $X$ and $y$ first. The intercept then drops out, you run ridge on the centred data, and you recover $\beta_0 = \bar{y} - \bar{x}^T \hat{\beta}$ afterwards. Standardise the features too, otherwise the penalty hits features differently depending on their units.
+
 Intuition:
 
 > "Ridge is useful when OLS coefficients are too unstable. I accept a bit of bias to get a more stable model."
@@ -222,6 +224,26 @@ Problem:
 - Individual coefficient interpretation becomes unreliable.
 - Prediction may still be fine if the same relationship holds out of sample.
 
+Why the standard errors blow up. Under homoskedastic errors:
+
+$$
+\operatorname{Var}(\hat{\beta} \mid X) = \sigma^2 (X^T X)^{-1}
+$$
+
+When columns are nearly collinear, $X^T X$ is close to singular. Its smallest eigenvalue is near zero, so its inverse has huge entries, and the coefficient variances are huge too.
+
+For a single coefficient this is the variance inflation factor:
+
+$$
+\operatorname{Var}(\hat{\beta}_j) = \frac{\sigma^2}{\sum_i (x_{ij} - \bar{x}_j)^2} \cdot \frac{1}{1 - R_j^2}
+$$
+
+where $R_j^2$ is the R-squared from regressing $x_j$ on all the other features. $\text{VIF}_j = 1/(1 - R_j^2)$. If $x_j$ is 95% explained by the others, its variance is inflated 20 times.
+
+Say this aloud:
+
+> "Multicollinearity doesn't bias OLS. It makes $X^T X$ nearly singular, so $(X^T X)^{-1}$ and the coefficient variances blow up. Ridge fixes this by adding $\lambda I$, which pushes the small eigenvalues away from zero."
+
 Fixes:
 
 - Drop one of the correlated features.
@@ -246,14 +268,19 @@ Prediction asks:
 Does the model perform well on new data?
 ```
 
-For inference, the classical assumptions matter more:
+For inference, the classical assumptions matter more. Layer them by what each one buys you:
 
-- Correct linear specification.
-- Exogeneity: $\mathbb{E}[\varepsilon \mid X] = 0$.
-- Independent errors.
-- Homoskedastic errors for textbook standard errors.
-- No severe multicollinearity.
-- Normal errors for exact small-sample t-tests and F-tests.
+| Result you want                         | Assumptions needed                                                                                          |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| $\hat{\beta}$ exists and is unique      | Full column rank: no *perfect* collinearity, so $X^T X$ is invertible.                                     |
+| $\hat{\beta}$ is unbiased               | Linearity + full rank + exogeneity $\mathbb{E}[\varepsilon \mid X] = 0$. Nothing else.                    |
+| $\hat{\beta}$ is BLUE (Gauss-Markov)    | Above + homoskedastic errors + uncorrelated errors: $\operatorname{Var}(\varepsilon \mid X) = \sigma^2 I$. |
+| Exact small-sample t-tests and F-tests  | Above + normal errors.                                                                                      |
+| Consistency / large-sample inference    | Normality can be dropped. The CLT handles it for large $n$.                                               |
+
+Common trap: "no multicollinearity" isn't an assumption. Only *perfect* collinearity breaks OLS. Severe but imperfect collinearity doesn't bias $\hat{\beta}$. It inflates the variance (see `Multicollinearity`).
+
+Normality isn't needed for unbiasedness or for Gauss-Markov. It only matters for exact finite-sample tests.
 
 For prediction:
 
@@ -390,6 +417,27 @@ x=3: \quad P(\text{sum divisible by }3)=\frac{1}{3}
 $$
 
 For `x = 3`, each die has residues `0,1,2` exactly twice, so sums are evenly distributed modulo 3.
+
+Shortcut for `x = 2, 3, 6` (any divisor of 6): fix the first two dice. The third die is uniform mod `x`, so exactly `6/x` of its faces make the sum divisible. Answer is `1/x`.
+
+For other `x` you need the count table for 3 dice. Memorise it or rebuild it fast (it's symmetric around 10.5):
+
+| Sum   | 3 | 4 | 5 | 6  | 7  | 8  | 9  | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 |
+| ----- | - | - | - | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| Count | 1 | 3 | 6 | 10 | 15 | 21 | 25 | 27 | 27 | 25 | 21 | 15 | 10 | 6  | 3  | 1  |
+
+Quick rebuild: counts for 3 to 8 are the triangular numbers `1, 3, 6, 10, 15, 21`. Then `25, 27, 27` in the middle, and mirror.
+
+| `x` | Sums hit       | Count           | Probability      |
+| --- | -------------- | --------------- | ---------------- |
+| 2   | even sums      | 108             | 1/2              |
+| 3   | 3,6,...,18     | 72              | 1/3              |
+| 4   | 4, 8, 12, 16   | 3+21+25+6 = 55  | 55/216 ≈ 0.255   |
+| 5   | 5, 10, 15      | 6+27+10 = 43    | 43/216 ≈ 0.199   |
+| 6   | 6, 12, 18      | 10+25+1 = 36    | 1/6              |
+| 7   | 7, 14          | 15+15 = 30      | 5/36 ≈ 0.139     |
+
+Sanity check: the answer is always close to `1/x` but not equal to it unless `x` divides 6.
 
 ### At Least One Run Of 3 Heads In 10 Tosses
 
@@ -756,11 +804,39 @@ $$
 = 6.4
 $$
 
-For any target probability $p$ with a fair coin:
+Better answer: binary expansion, 2 tosses on average for any $p$.
 
-- Generate fair binary digits for a uniform random number $U \in [0,1]$.
-- Return success if $U < p$.
-- For rational probabilities, rejection sampling with enough bits is often easier to explain.
+This is the one to lead with. The rejection method works but costs 6.4 tosses.
+
+Write $p$ in binary:
+
+$$
+0.7 = 0.1011001100110011\ldots_2
+$$
+
+Think of your tosses as building a uniform random number $U = 0.b_1 b_2 b_3 \ldots$ in binary, one bit per toss (H = 1, T = 0). Success means $U < 0.7$.
+
+You don't need all of $U$. Compare bit by bit:
+
+1. Toss to get $b_k$. Compare it with the $k$-th binary digit of $0.7$.
+2. If they match, you can't tell yet. Toss again.
+3. At the first mismatch, stop:
+   - Your bit is 0 and $p$'s bit is 1: $U < p$, **success**.
+   - Your bit is 1 and $p$'s bit is 0: $U > p$, **failure**.
+
+Example: $0.7$ starts `1, 0, 1, 1`. Toss T on the first toss: your bit 0, $p$'s bit 1, so success immediately. That happens with probability 1/2. Toss H, then H: second bits are 1 vs 0, so failure.
+
+Why it's exact: $U$ is uniform on $[0,1]$, so $P(U < p) = p$. The stopping rule only decides that comparison early.
+
+Expected tosses: every toss mismatches with probability 1/2, so the number of tosses is geometric:
+
+$$
+\mathbb{E}[\text{tosses}] = \frac{1}{1/2} = 2
+$$
+
+This holds for any $p$, rational or irrational. You only need to compute the digits of $p$ as you go.
+
+Binary digits of 0.7, if asked: double and take the integer part. $0.7 \to 1.4$ (1), $0.4 \to 0.8$ (0), $0.8 \to 1.6$ (1), $0.6 \to 1.2$ (1), $0.2 \to 0.4$ (0), $0.4 \to$ repeat. So $0.1\overline{0110}$.
 
 If the coin is biased with unknown bias, first use the von Neumann trick to create fair bits:
 
@@ -1106,7 +1182,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import Ridge
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import root_mean_squared_error, r2_score
 
 df = pd.read_csv("data.csv")
 print(df.head())
@@ -1125,7 +1201,8 @@ model = Ridge(alpha=1.0)
 model.fit(X_train, y_train)
 pred = model.predict(X_test)
 
-rmse = mean_squared_error(y_test, pred, squared=False)
+# squared=False was removed in sklearn 1.6. Older versions: np.sqrt(mean_squared_error(...))
+rmse = root_mean_squared_error(y_test, pred)
 r2 = r2_score(y_test, pred)
 
 print(rmse, r2)
@@ -1310,8 +1387,10 @@ Before the interview, make sure you can explain:
 
 - OLS objective and derivation.
 - Ridge vs lasso.
-- What multicollinearity does.
+- What multicollinearity does, via $\operatorname{Var}(\hat{\beta}) = \sigma^2 (X^T X)^{-1}$.
+- Which assumptions buy unbiasedness vs BLUE vs exact tests.
 - Why inference assumptions differ from prediction validation.
+- Binary-expansion coin trick for any probability $p$ (2 tosses expected).
 - Variance of a sum with covariance terms.
 - Bayes theorem with coin examples.
 - Expected value by states, especially 3 heads in a row.
